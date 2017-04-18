@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/genexplain/genexplain-api.svg?branch=master)](https://travis-ci.org/genexplain/genexplain-api)
+[![codecov](https://codecov.io/gh/genexplain/genexplain-api/branch/master/graph/badge.svg)](https://codecov.io/gh/genexplain/genexplain-api)
 
 # genexplain-api #
 
