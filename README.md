@@ -148,7 +148,7 @@ Config parameters:
 
 The program will accept either data specified in *table* **or** parsed from the *file*,
 in that order. The *columns* property is not optional. The type of a column must be one
-enumerated in [com.genexplain.api.core.GxColumnDef.ColumnType](https://colossus.genexplain.com/gitblit/blob/?r=genexplain-api.git&f=src/main/java/com/genexplain/api/core/GxColumnDef.java&h=master).
+enumerated in [com.genexplain.api.core.GxColumnDef.ColumnType](https://github.com/genexplain/genexplain-api/blob/master/src/main/java/com/genexplain/api/core/GxColumnDef.java).
 
 ### analyze ### 
 
