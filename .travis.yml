@@ -1,11 +1,12 @@
 language: java
-jdk:
-  - openjdk8
-  
+
 before_script:
 - chmod a+x gradlew
 - chmod +x gradle/wrapper/gradle-wrapper.jar
 
+jdk:
+  - openjdk8
+  
 sccript: ./gradlew build
 
 before_cache:
