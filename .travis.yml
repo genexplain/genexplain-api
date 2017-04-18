@@ -4,5 +4,6 @@ jdk:
   
 before_script:
 - chmod a+x gradlew
+- chmod +x gradle/wrapper/gradle-wrapper.jar
 
 sccript: ./gradlew build
