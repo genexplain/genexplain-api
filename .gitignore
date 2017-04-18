@@ -17,7 +17,6 @@ hs_err_pid*
 .gradle/
 .project
 .settings/
-gradle/
 build/
 
 # Local
