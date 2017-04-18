@@ -1,17 +1,16 @@
 language: java
 
-before_script:
-- chmod a+x gradlew
-- chmod +x gradle/wrapper/gradle-wrapper.jar
-
 jdk:
   - openjdk8
-  
-sccript: ./gradlew build
+
+before_script:
+- chmod a+x gradlew
+- chmod a+x gradle/wrapper/gradle-wrapper.jar
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+  
 cache:
   directories:
     - $HOME/.gradle/caches/
