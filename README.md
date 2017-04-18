@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/genexplain/genexplain-api.svg?branch=master)](https://travis-ci.org/genexplain/genexplain-api)
+
 # genexplain-api #
 
 The [geneXplain](http://genexplain.com) API is a Java programming interface for the [geneXplain platform](http://genexplain.com/genexplain-platform/). The geneXplain platform is an online toolbox and workflow management system for a broad range of bioinformatic and systems biology applications. This API can be used to write Java programs that can invoke functionality of the platform through its web interface, e.g. for import and export of biological data, or to submit and monitor analysis jobs. Furthermore, platform tasks can be specified in [JSON](https://json.org) format and submitted using the executable jar file.
