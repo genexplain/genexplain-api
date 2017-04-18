@@ -61,9 +61,9 @@ where the JSON file contains an object with the following properties.
 
 ```json
 {
-    "server":          "<https://example.com>"
-    "user":            "<username>"
-    "password":        "<password>"
+    "server":          "<https://example.com>",
+    "user":            "<username>",
+    "password":        "<password>",
     "with-parameters": true
 }
 ```
@@ -227,7 +227,7 @@ Config parameters:
   "do":   "itemParameters",
   "type":   "<one of (applications, exporters, importers)>",
   "name":   "<name of app, exporter, or importer>",
-  "path":   "<path for export or import>" // This is not needed if 'type' is 'application'
+  "path":   "<path for export or import>", // This is not needed if 'type' is 'application'
   "toFile": "<outfile>",
   "toStdout": true
 }
