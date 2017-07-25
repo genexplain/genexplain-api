@@ -121,7 +121,7 @@ public class GxHttpClientStub implements GxHttpClient {
      * @see com.genexplain.api.core.GxHttpClient#analyze(java.lang.String, java.util.Map, boolean, boolean, boolean)
      */
     @Override
-    public JsonObject analyze(String appName, Map<String, String> params,
+    public JsonObject analyze(String appName, JsonObject params,
             boolean isWorkflow, boolean wait, boolean progress)
             throws Exception {
         // TODO Auto-generated method stub
@@ -212,7 +212,7 @@ public class GxHttpClientStub implements GxHttpClient {
      */
     @Override
     public void export(String path, String exporter, OutputStream fs,
-            Map<String, String> params) throws Exception {
+            JsonObject params) throws Exception {
         // TODO Auto-generated method stub
 
     }
@@ -222,7 +222,7 @@ public class GxHttpClientStub implements GxHttpClient {
      */
     @Override
     public JsonObject imPort(String file, String parentPath, String importer,
-            Map<String, String> params) throws Exception {
+            JsonObject params) throws Exception {
         // TODO Auto-generated method stub
         return null;
     }

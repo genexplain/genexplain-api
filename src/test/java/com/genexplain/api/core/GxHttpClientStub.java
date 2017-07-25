@@ -98,13 +98,13 @@ public class GxHttpClientStub implements GxHttpClient {
     }
 
     @Override
-    public JsonObject analyze(String appName, Map<String, String> params, boolean isWorkflow,
+    public JsonObject analyze(String appName, JsonObject params, boolean isWorkflow,
                               boolean wait, boolean progress) throws Exception {
         callNum++;
         JsonObject js = new JsonObject()
                 .add("type", 0)
                 .add("app", appName)
-                .add("params", getJsonParams(params))
+                .add("params", params)
                 .add("workflow", isWorkflow)
                 .add("wait", wait)
                 .add("progress", progress)
@@ -113,14 +113,6 @@ public class GxHttpClientStub implements GxHttpClient {
         return js;
     }
     
-    private JsonObject getJsonParams(Map<String,String> params) {
-        JsonObject js = new JsonObject();
-        params.forEach((key, val) -> {
-            js.add(key,  val);
-        });
-        return js;
-    }
-
     @Override
     public JsonObject getJobStatus(String jobId) throws Exception {
         callNum++;
@@ -177,14 +169,14 @@ public class GxHttpClientStub implements GxHttpClient {
 
     @Override
     public void export(String path, String exporter, OutputStream fs,
-                       Map<String, String> params) throws Exception {
+                       JsonObject params) throws Exception {
         try {
             callNum++;
             called.add("export");
             forVoid = new JsonObject().add("called", "export")
                                .add("path", path)
                                .add("exporter", exporter)
-                               .add("params", getJsonParams(params));
+                               .add("params", params);
         } finally {
             fs.close();
         }
@@ -193,13 +185,13 @@ public class GxHttpClientStub implements GxHttpClient {
 
     @Override
     public JsonObject imPort(String file, String parentPath, String importer,
-                             Map<String, String> params) throws Exception {
+                             JsonObject params) throws Exception {
         callNum++;
         called.add("imPort");
         return new JsonObject().add("called", "imPort")
                                .add("path", parentPath)
                                .add("importer", importer)
-                               .add("params", getJsonParams(params));
+                               .add("params", params);
     }
 
     @Override

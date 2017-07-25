@@ -64,7 +64,7 @@ public class ImportExecutor extends AbstractGxExecutor {
         String path     = getString("path",conf,true,false);
         String importer = getString("importer",conf,true,false);
         
-        Map<String,String> params = GxJsonExecutor.getJsonParameters(conf);
+        JsonObject params = GxJsonExecutor.getJsonParameters(conf);
         
         return executor.setLastJsonObject(executor.getParameters().getHttpClient().imPort(file, path, importer, params));
     }

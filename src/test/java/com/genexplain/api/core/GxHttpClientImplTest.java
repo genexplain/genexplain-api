@@ -517,9 +517,9 @@ public class GxHttpClientImplTest {
         GxHttpConnection con = new GxHttpConnectionStub();
         con.login();
         client.setConnection(con);
-        Map<String,String> params = new HashMap<>();
-        params.put("param1","value1");
-        params.put("param2","value2");
+        JsonObject params = new JsonObject();
+        params.add("param1","value1");
+        params.add("param2","value2");
         JsonObject js = client.analyze("testApp", params, false, false, false);
         assertEquals(js.get("path").asString(), con.getBasePath() + GxHttpClient.Path.ANALYZE.getPath());
         assertEquals(js.get("de").asString(),"testApp");
@@ -538,9 +538,9 @@ public class GxHttpClientImplTest {
         con.setSendTerminatedByError(true);
         con.login();
         client.setConnection(con);
-        Map<String,String> params = new HashMap<>();
-        params.put("param1","value1");
-        params.put("param2","value2");
+        JsonObject params = new JsonObject();
+        params.add("param1","value1");
+        params.add("param2","value2");
         JsonObject js = client.analyze("testApp", params, false, true, false);
         assertTrue(js.getString("message", "").startsWith(GxHttpClient.JobStatus.TERMINATED_BY_ERROR.toString()));
     }
@@ -593,7 +593,7 @@ public class GxHttpClientImplTest {
         con.setPath(GxHttpClient.Path.ANALYZE);
         con.login();
         client.setConnection(con);
-        Map<String,String> params = new HashMap<>();
+        JsonObject params = new JsonObject();
         JsonObject js = client.analyze("testApp", params, false, true, true);
         assertEquals(js.get("type").asInt(),0);
         assertEquals(con.getQueryCount(),4);
@@ -606,10 +606,10 @@ public class GxHttpClientImplTest {
         GxHttpConnection con = new GxHttpConnectionStub();
         con.login();
         client.setConnection(con);
-        Map<String,String> params = new LinkedHashMap<>();
-        params.put("param1","value1");
-        params.put("param2","value2");
-        params.put("param3","$DECODE$[1,2,3,4]");
+        JsonObject params = new JsonObject();
+        params.add("param1","value1");
+        params.add("param2","value2");
+        params.add("param3",new JsonArray().add(1).add(2).add(3).add(4));
         JsonObject js = client.analyze("testWorkflow", params, true, false, false);
         assertEquals(js.get("path").asString(), con.getBasePath() + GxHttpClient.Path.WORKFLOW.getPath());
         assertEquals(js.get("de").asString(),"testWorkflow");
@@ -632,7 +632,7 @@ public class GxHttpClientImplTest {
         con.setPath(GxHttpClient.Path.WORKFLOW);
         con.login();
         client.setConnection(con);
-        Map<String,String> params = new HashMap<>();
+        JsonObject params = new JsonObject();
         JsonObject js = client.analyze("testWorkflow", params, true, true, true);
         assertEquals(js.get("type").asInt(),0);
         assertEquals(con.getQueryCount(),4);
@@ -764,9 +764,9 @@ public class GxHttpClientImplTest {
         con.login();
         client.setConnection(con);
         OutputStreamStub os = new OutputStreamStub();
-        Map<String,String> params = new HashMap<>();
-        params.put("test_param1", "test_value1");
-        params.put("test_param2", "test_value2");
+        JsonObject params = new JsonObject();
+        params.add("test_param1", "test_value1");
+        params.add("test_param2", "test_value2");
         client.export("data/test", "test_exporter", os, params);
         System.out.println(os.getData());
         assertNotNull(os.getData());
@@ -790,8 +790,8 @@ public class GxHttpClientImplTest {
         con.setHttpClient(new CloseableHttpClientStub());
         con.login();
         client.setConnection(con);
-        Map<String,String> params = new HashMap<>();
-        params.put("test_param1", "test_value1");
+        JsonObject params = new JsonObject();
+        params.add("test_param1", "test_value1");
         JsonObject js = client.imPort("src/test_resources/test_import.txt","test/data/parent","test_importer",params);
         assertEquals(js.get("type").asInt(),0);
         assertEquals(js.get("path").asString(), con.getBasePath() + GxHttpClient.Path.IMPORT.getPath());

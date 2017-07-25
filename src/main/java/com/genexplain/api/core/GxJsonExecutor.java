@@ -129,36 +129,13 @@ public class GxJsonExecutor implements ApplicationCommand {
     /**
      * Extracts parameters from a property of the input object named <b>parameters</b>,
      * which is itself an object that specifies parameters as property names and values.
-     * <p>
-     * Non-string parameter values are converted to a string prefixed with the word
-     * <b>$DECODE$</b>, so that they can be recognized, e.g. by 
-     * {@link com.genexplain.api.core.GxHttpClientImpl#analyze(String, Map, boolean, boolean, boolean) 
-     * GxHttpClientImpl#analyze} and properly converted to JsonValues before submission
-     * to the platform.
-     * </p>
-     * <p>
-     * Other implementations of {@link com.genexplain.api.core.GxHttpClient GxHttpClient} may need to
-     * be aware of this if used behind this executor.
-     * </p>
-     * 
-     * @param conf
-     *           A JSON object that contains a property object named <code>parameters</b>
-     *           
-     * @return The map corresponding to the <code>parameter</code> object
      */
-    public static Map<String,String> getJsonParameters(JsonObject conf) {
-        Map<String,String> params = new HashMap<>();
+    public static JsonObject getJsonParameters(JsonObject conf) {
         if (conf.get("parameters") != null) {
-           conf.get("parameters").asObject().forEach(param -> {
-               JsonValue val  = param.getValue();
-               if (val.isString()) {
-                   params.put(param.getName(), val.asString());
-               } else {
-                   params.put(param.getName(), "$DECODE$" + val.toString());
-               }
-           });
+           return conf.get("parameters").asObject();
+        } else {
+            return new JsonObject();
         }
-        return params;
     }
     
     /**

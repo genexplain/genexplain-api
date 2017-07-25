@@ -65,7 +65,7 @@ public class ExportExecutor extends AbstractGxExecutor {
         String path     = getString("path",conf,true,false);
         String exporter = getString("exporter",conf,true,false);
         
-        Map<String,String> params = GxJsonExecutor.getJsonParameters(conf);
+        JsonObject params = GxJsonExecutor.getJsonParameters(conf);
         
         executor.getParameters().getHttpClient().export(path, exporter, new FileOutputStream(file), params);
         

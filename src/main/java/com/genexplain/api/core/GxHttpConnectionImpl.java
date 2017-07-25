@@ -355,7 +355,7 @@ public class GxHttpConnectionImpl implements GxHttpConnection {
      * @see com.genexplain.api.core.GxHttpConnection#queryJSON(String,Map)
      */
 	@Override
-	public JsonObject queryJSON(String path, Map<String, String> params) throws Exception {
+	public JsonObject queryJSON(String path, Map<String,String> params) throws Exception {
 	    GxUtil.showMessage(verbose, "Sending JSON query to path: " + path, logger, GxUtil.LogLevel.INFO);
 		CloseableHttpResponse resp = queryBioUML(path, params);
 		JsonObject response = Json.parse(EntityUtils.toString(resp.getEntity())).asObject();
