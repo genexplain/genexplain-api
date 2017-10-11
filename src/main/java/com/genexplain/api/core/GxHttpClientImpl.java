@@ -370,7 +370,7 @@ public class GxHttpClientImpl implements GxHttpClient {
                     logger.error("An error occurred: " + js.toString());
                 break;
             }
-            Thread.sleep(500L);
+            Thread.sleep(1000L);
         } while (!(stat == null || stat == JobStatus.COMPLETED || stat == JobStatus.TERMINATED_BY_ERROR || stat == JobStatus.TERMINATED_BY_REQUEST));
         return stat;
     }

@@ -145,8 +145,8 @@ public class GxHttpConnectionImpl implements GxHttpConnection {
 	 */
 	@Override
 	public GxHttpConnection setUsername(String username) throws IllegalArgumentException {
-		if (username == null || username.isEmpty()) {
-			throw new IllegalArgumentException("Username must not be null or empty");
+		if (username == null) {
+			throw new IllegalArgumentException("Username must not be null");
 		} else {
 		    this.username = username;
 		}
