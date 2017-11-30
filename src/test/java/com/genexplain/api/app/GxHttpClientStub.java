@@ -262,4 +262,14 @@ public class GxHttpClientStub implements GxHttpClient {
         return null;
     }
 
+    /* (non-Javadoc)
+     * @see com.genexplain.api.core.GxHttpClient#existsElement(java.lang.String, java.lang.String)
+     */
+    @Override
+    public JsonObject existsElement(String element, String folder)
+            throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

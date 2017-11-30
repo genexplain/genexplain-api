@@ -155,6 +155,26 @@ public class GxHttpClientImpl implements GxHttpClient {
         return con.queryJSON(con.getBasePath() + Path.DELETE_ELEMENT.getPath(), params);
     }
     
+	/*
+     * (non-Javadoc)
+     * @see com.genexplain.api.core.GxHttpClient#existsElement(java.lang.String,java.lang.String)
+     */
+    @Override
+    public JsonObject existsElement(String element, String folder) throws Exception {
+        JsonObject js = list(folder);
+        if (js.get("names") != null) {
+            JsonArray names = js.get("names").asArray();
+            for (JsonValue value : names) {
+                if (value.asObject().get("name") != null && 
+                        value.asObject().get("name").asString().equals(element))
+                    return new JsonObject().add("exists", true);
+            };
+        } else {
+            return js;
+        }
+        return new JsonObject().add("exists", false);
+    }
+    
     /*
      * (non-Javadoc)
      * @see com.genexplain.api.core.GxHttpClient#list(java.lang.String)

@@ -152,6 +152,21 @@ public interface GxHttpClient {
     public JsonObject deleteElement(String folder, String name) throws Exception;
     
     /**
+     * Returns a boolean indicating whether an element with specified name exists in the folder
+     *  
+     * @param element
+     *           The name of the element
+     * @param folder
+     *           The folder that might contain the element
+     *     
+     * @return An object that contains the result of the request or an alternative response in case of failure 
+     * 
+     * @throws Exception
+     *           May throw or cause an exception
+     */
+    public JsonObject existsElement(String element, String folder) throws Exception;
+    
+    /**
      * Returns a JSON object with the elements contained in specified folder or an alternative response from
      * the platform.
      *  
