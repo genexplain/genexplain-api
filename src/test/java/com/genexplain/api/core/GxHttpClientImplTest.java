@@ -199,6 +199,20 @@ public class GxHttpClientImplTest {
     }
     
     @Test
+    public void canTestExistsElement() throws Exception {
+        GxHttpConnection con    = new GxHttpConnectionStub();
+        con.login();
+        client.setConnection(con);
+        String dc = "data/Projects/my_project";
+        String de = "data_element";
+        JsonObject js = client.existsElement(de, dc);
+        assertEquals(js.getString("path",""), con.getBasePath() + GxHttpClient.Path.LIST.getPath());
+        assertEquals(js.getString("service", ""), "access.service");
+        assertEquals(js.getString("command", ""), "29");
+        assertEquals(js.getString("dc", ""), dc);
+    }
+    
+    @Test
     public void canListFolder() throws Exception {
         GxHttpConnection con    = new GxHttpConnectionStub();
         con.login();
