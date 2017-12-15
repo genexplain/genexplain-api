@@ -208,6 +208,10 @@ public class GxJsonExecutor implements ApplicationCommand {
      * Gets the listing for specified folder and stores it in the object so
      * that it can be retrieved by {@link #getLastJsonObject() getLastJsonObject}.
      * 
+     * The conf object may further contain properties <b>toFile</b> (with String value) and/or <b>toStdout</b>
+     * (with boolean value) that can be used to log the returned JSON to file and/or standard output.
+     * </p>
+     * 
      * @param conf
      *           Object containing a property <b>folder</b> to be provided
      *           to {@link com.genexplain.api.core.GxHttpClient#list(String) the client method}.

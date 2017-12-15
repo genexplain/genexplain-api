@@ -46,7 +46,7 @@ public class GxJsonExecutorParameters {
      * @author pst
      *
      */
-    public enum JsonField {
+    public enum JsonProperty {
         TASKS("tasks"),
         SERVER("server"),
         USER("user"),
@@ -58,7 +58,7 @@ public class GxJsonExecutorParameters {
         
         private String name;
         
-        private JsonField(String name) {
+        private JsonProperty(String name) {
             this.name = name;
         }
         
@@ -382,17 +382,17 @@ public class GxJsonExecutorParameters {
      */
     public GxJsonExecutorParameters setConfig(JsonObject config) throws Exception {
         this.config = config;
-        setServer(config.getString(JsonField.SERVER.get(),""));
-        setUser(config.getString(JsonField.USER.get(),""));
-        setPassword(config.getString(JsonField.PASSWORD.get(),""));
-        setVerbose(config.getBoolean(JsonField.VERBOSE.get(),false));
-        setReconnect(config.getBoolean(JsonField.RECONNECT.get(),false));
-        setHttpConnection(config.getString(JsonField.CONNECTION.get(), GxHttpConnectionImpl.class.getName()));
-        setHttpClient(config.getString(JsonField.HTTP_CLIENT.get(), GxHttpClientImpl.class.getName()));
+        setServer(config.getString(JsonProperty.SERVER.get(),""));
+        setUser(config.getString(JsonProperty.USER.get(),""));
+        setPassword(config.getString(JsonProperty.PASSWORD.get(),""));
+        setVerbose(config.getBoolean(JsonProperty.VERBOSE.get(),false));
+        setReconnect(config.getBoolean(JsonProperty.RECONNECT.get(),false));
+        setHttpConnection(config.getString(JsonProperty.CONNECTION.get(), GxHttpConnectionImpl.class.getName()));
+        setHttpClient(config.getString(JsonProperty.HTTP_CLIENT.get(), GxHttpClientImpl.class.getName()));
         
         
-        if (config.get(JsonField.TASKS.get()) != null) {
-            setTasks(config.get(JsonField.TASKS.get()).asArray());
+        if (config.get(JsonProperty.TASKS.get()) != null) {
+            setTasks(config.get(JsonProperty.TASKS.get()).asArray());
         }
         
         this.config = config;
