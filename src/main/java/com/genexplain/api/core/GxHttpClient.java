@@ -101,6 +101,59 @@ public interface GxHttpClient {
         }
     }
     
+    public enum ColumnDelimiter {
+        Tab(0), Spaces(1), Commas(2), Pipes(3);
+        
+        private int index;
+        
+        private ColumnDelimiter(int index) {
+            this.index = index;
+        }
+        
+        public int getValue() { return index; }
+        
+        public static ColumnDelimiter get(int i) {
+            for (ColumnDelimiter cd : ColumnDelimiter.values()) {
+                if (cd.getValue() == i) {
+                    return cd;
+                }
+            }
+            return null;
+        }
+    }
+    
+    /**
+     * Imports a table from a text file into the platform
+     * 
+     * @param file
+     *           path to file to import
+     * @param folder
+     *           folder into which the table is imported
+     * @param tableName
+     *           name for the table within the platform
+     * @param processQuotes
+     *           true to process quotation marks
+     * @param delim
+     *           column delimiter, one of (Tab, Spaces, Commas, Pipes)
+     * @param headerRow
+     *           row index of the table header
+     * @param dataRow
+     *           row index of the first data row
+     * @param commentString
+     *           string to recognize comment lines
+     * @param columnForID
+     *           name of column with ids
+     * @param addSuffix
+     *           true to add suffix to ensure unique ids
+     * @param tableType
+     *           type of platform table, e.g. Genes: Ensembl
+     * @param species
+     *           Latin name of species
+     */
+    public JsonObject importTable(String file, String folder, String tableName, boolean processQuotes,
+            ColumnDelimiter delim, int headerRow, int dataRow, String commentString, String columnForID,
+            boolean addSuffix, String tableType, String species) throws Exception;
+    
     /**
      * Creates a project in the user's workspace
      * 

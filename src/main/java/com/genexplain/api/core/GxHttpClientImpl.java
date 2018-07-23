@@ -71,6 +71,60 @@ public class GxHttpClientImpl implements GxHttpClient {
 	
 	private String blockingProcessError = "";
     
+	
+	
+	/**
+     * (non-Javadoc)
+     * @see com.genexplain.api.core.GxHttpClient#importTable(String, String, String, boolean, String, int, int, String, String, boolean, String, String)
+	 */
+	@Override
+	public JsonObject importTable(String file, String folder, String tableName, boolean processQuotes,
+            GxHttpClient.ColumnDelimiter delim, int headerRow, int dataRow, String commentString, String columnForID,
+            boolean addSuffix, String tableType, String species) throws Exception {
+	    GxUtil.showMessage(verbose, "Importing: " + file + " into " + folder, logger, GxUtil.LogLevel.INFO);
+        String fileId = nextJobId();
+        String jobId  = nextJobId();
+        
+        HttpPost   httpPost  = new HttpPost(con.getServer() + con.getBasePath() + Path.UPLOAD.getPath());
+        FileBody   fileBody  = new FileBody(new File(file));
+        StringBody idPart    = new StringBody(fileId, ContentType.TEXT_PLAIN);
+        HttpEntity reqEntity = MultipartEntityBuilder.create()
+                .addPart("fileID",idPart)
+                .addPart("file", fileBody)
+                .build();
+        httpPost.setEntity(reqEntity);
+        CloseableHttpResponse response = con.getHttpClient().execute(httpPost);
+        try {
+            logger.info(EntityUtils.toString(response.getEntity()));
+        } finally {
+            response.close();
+        }
+        String pq = "true";
+        if (!processQuotes)
+            pq = "false";
+        String sf = "true";
+        if (!addSuffix)
+            sf = "false";
+        Map<String,String> iparams = new HashMap<>();
+        String params = "[\n {\"name\": \"tableName\",\n\"value\": \"" + tableName + "\"},\n" +
+                            "{\"name\": \"delimiterType\",\n\"value\": \"" + delim.getValue() + "\"},\n" + 
+                            "{\"name\": \"processQuotes\",\n \"value\": " + pq + "},\n" +
+                            "{\"name\": \"headerRow\",\n \"value\": \"" + headerRow + "\"},\n" +
+                            "{\"name\": \"dataRow\",\n \"value\": \"" + dataRow + "\"},\n" +
+                            "{\"name\": \"commentString\",\"value\": \"" + commentString + "\"},\n" +
+                            "{\"name\": \"columnForID\",\"value\": \"" + columnForID + "\"},\n" + 
+                            "{\"name\": \"addSuffix\",\"value\": " + sf + "},\n" +
+                            "{\"name\": \"tableType\",\"value\": \"" + tableType + "\"},\n" +
+                            "{\"name\": \"species\",\"value\": \"" + species + "\"}\n]";
+        iparams.put("type", "import");
+        iparams.put("de", folder);
+        iparams.put("fileID", fileId);
+        iparams.put("jobID", jobId);
+        iparams.put("format", "Tabular (*.txt, *.xls, *.tab, etc.)");
+        iparams.put("json", params);
+        return con.queryJSON(con.getBasePath() + Path.IMPORT.getPath(), iparams);
+	}
+	
 	/**
 	 * Creates a new project in the workspace of the user whose
 	 * username and password are provided parameters.

@@ -36,7 +36,7 @@ public class GetTableExample extends AbstractAPIExample {
     @Override
     public void run() throws Exception {
         connect();
-        JsonObject result = client.getTable("data/Examples/Encode TFBS CEBPB in H1-hESC cells/Data/ChIPMunk/CEBP H1-hESC cells motif profile CEBP in H1-hESC cells YES roc");
+        JsonObject result = client.getTable("data/Examples/Encode TFBS CEBPB in H1-hESC cells/Data/ChIPMunk/CEBP H1-hESC cells motif profile CEBP in H1-hESC cells YES roc 50");
         logger.info(result.toString());
     }
 

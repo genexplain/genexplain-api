@@ -227,4 +227,12 @@ public class GxHttpClientStub implements GxHttpClient {
         return null;
     }
 
+    @Override
+    public JsonObject importTable(String file, String folder, String tableName, boolean processQuotes,
+            ColumnDelimiter delim, int headerRow, int dataRow, String commentString, String columnForID,
+            boolean addSuffix, String tableType, String species) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }
