@@ -111,6 +111,7 @@ public class PutTableExecutor extends AbstractGxExecutor {
                 data.get(c).asArray().add(L[c]);
             }
         }
+        br.close();
         return data;
     }
     

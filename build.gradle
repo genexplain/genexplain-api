@@ -62,9 +62,16 @@ jacocoTestReport {
     reports {
         xml.enabled true
         csv.enabled false
-        html.enabled false
+        html.enabled true
         html.destination "${buildDir}/jacocoHtml"
         xml.destination "${buildDir}/reports/jacoco/report.xml"
+    }
+    
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            // Don't unit test the examples
+            fileTree(dir: it, exclude: ['**/com/genexplain/api/eg/**'])
+        })
     }
 }
 

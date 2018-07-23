@@ -22,6 +22,7 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -54,6 +55,14 @@ public class GxUtilTest {
         configurator.setContext(lc);
         lc.reset();
         configurator.doConfigure(new ByteArrayInputStream(config.getBytes()));
+    }
+    
+    @Test
+    public void scanFindsTestClass() {
+        List<String> cls = GxUtil.scanPackage(new String[] {"com.genexplain.test"},
+                    cname -> { return true; }
+                );
+        assertTrue(cls.contains("com.genexplain.test.FindableTestClass"));
     }
     
     @Test

@@ -20,8 +20,13 @@ package com.genexplain.util;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 import org.slf4j.Logger;
+
+import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 
 /**
  * A class for small utility functions that aren't better put elsewhere.
@@ -30,6 +35,26 @@ import org.slf4j.Logger;
  *
  */
 public class GxUtil {
+    
+    /**
+     * Scans packages for classes that pass the provided filter and returns a list
+     * of class names.
+     * 
+     * @param packages - the packages to scan
+     * @param filter   - a filter predicate to return the desired classes
+     * @return a list of class names
+     */
+    public static List<String> scanPackage(String[] packages, Predicate<String> filter) {
+        FastClasspathScanner scanner = new FastClasspathScanner(packages);
+        scanner.scan();
+        List<String> classes = new ArrayList<>();
+        
+        scanner.getNamesOfAllClasses().stream().filter(filter).forEach(cls -> {
+            classes.add(cls);
+        });
+        
+        return classes;
+    }
     
     /**
      * Available log levels.

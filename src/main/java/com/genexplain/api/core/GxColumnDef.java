@@ -24,7 +24,7 @@ package com.genexplain.api.core;
  *
  */
 public class GxColumnDef {
-	
+    
     /**
      * Available column types.
      * 
@@ -39,6 +39,13 @@ public class GxColumnDef {
 	
 	private String     name = "";
 	private ColumnType type = ColumnType.Text;
+	
+	public GxColumnDef() {}
+	
+    public GxColumnDef(String name, ColumnType type) {
+        setName(name);
+        setType(type);
+    }
 	
 	/**
 	 * Returns the column name.
