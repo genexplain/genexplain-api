@@ -24,6 +24,7 @@ import java.util.Set;
 
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.JsonValue;
 import com.genexplain.api.core.GxColumnDef;
 import com.genexplain.api.core.GxHttpClient;
 import com.genexplain.api.core.GxHttpConnection;
@@ -121,7 +122,7 @@ public class GxHttpClientStub implements GxHttpClient {
      * @see com.genexplain.api.core.GxHttpClient#analyze(java.lang.String, java.util.Map, boolean, boolean, boolean)
      */
     @Override
-    public JsonObject analyze(String appName, JsonObject params,
+    public JsonObject analyze(String appName, JsonValue params,
             boolean isWorkflow, boolean wait, boolean progress)
             throws Exception {
         // TODO Auto-generated method stub
@@ -212,7 +213,7 @@ public class GxHttpClientStub implements GxHttpClient {
      */
     @Override
     public void export(String path, String exporter, OutputStream fs,
-            JsonObject params) throws Exception {
+            JsonValue params) throws Exception {
         // TODO Auto-generated method stub
 
     }
@@ -222,7 +223,7 @@ public class GxHttpClientStub implements GxHttpClient {
      */
     @Override
     public JsonObject imPort(String file, String parentPath, String importer,
-            JsonObject params) throws Exception {
+            JsonValue params) throws Exception {
         // TODO Auto-generated method stub
         return null;
     }

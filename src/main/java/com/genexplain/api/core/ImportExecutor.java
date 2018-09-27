@@ -22,6 +22,7 @@ import java.util.Map;
 import org.slf4j.LoggerFactory;
 
 import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.JsonValue;
 import com.genexplain.util.GxUtil;
 
 /**
@@ -64,7 +65,7 @@ public class ImportExecutor extends AbstractGxExecutor {
         String path     = getString("path",conf,true,false);
         String importer = getString("importer",conf,true,false);
         
-        JsonObject params = GxJsonExecutor.getJsonParameters(conf);
+        JsonValue params = GxJsonExecutor.getJsonParameters(conf);
         
         return executor.setLastJsonObject(executor.getParameters().getHttpClient().imPort(file, path, importer, params));
     }

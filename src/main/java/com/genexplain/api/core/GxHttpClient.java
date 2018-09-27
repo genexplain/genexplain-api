@@ -23,6 +23,7 @@ import java.util.Map;
 
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.JsonValue;
 
 
 /**
@@ -293,7 +294,7 @@ public interface GxHttpClient {
      * @throws Exception
      *           May throw or cause an exception
      */
-    public JsonObject analyze(String appName, JsonObject params, boolean isWorkflow, boolean wait, boolean progress) throws Exception;
+    public JsonObject analyze(String appName, JsonValue params, boolean isWorkflow, boolean wait, boolean progress) throws Exception;
     
     /**
      * Fetches the status of specified job.
@@ -404,7 +405,7 @@ public interface GxHttpClient {
      * @throws Exception
      *           May throw or cause an exception
      */
-    public void export(String path, String exporter, OutputStream fs, JsonObject params) throws Exception;
+    public void export(String path, String exporter, OutputStream fs, JsonValue params) throws Exception;
     
     /**
      * Imports a file into the platform.
@@ -426,7 +427,7 @@ public interface GxHttpClient {
      * @throws Exception
      *           May throw or cause an exception
      */
-    public JsonObject imPort(String file, String parentPath, String importer, JsonObject params) throws Exception;
+    public JsonObject imPort(String file, String parentPath, String importer, JsonValue params) throws Exception;
     
     /**
      * Returns the {@link com.genexplain.api.core.GxHttpConnection connection} that is 

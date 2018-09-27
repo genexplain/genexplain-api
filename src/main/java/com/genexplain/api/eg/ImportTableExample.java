@@ -52,7 +52,7 @@ public class ImportTableExample extends AbstractAPIExample {
         connect();
         
         String localFile = "gx_mouse_import_data.txt";
-        if (!System.getProperty("localImportTable").isEmpty()) {
+        if (!(System.getProperty("localImportTable") == null || System.getProperty("localImportTable").isEmpty())) {
             localFile = System.getProperty("localImportTable");
         }
         

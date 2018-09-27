@@ -343,7 +343,7 @@ public class GxHttpClientImpl implements GxHttpClient {
      * @see com.genexplain.api.core.GxHttpClient#analyze(java.lang.String, java.util.Map, boolean, boolean, boolean)
      */
     @Override
-    public JsonObject analyze(String appName, JsonObject params, boolean isWorkflow, boolean wait, boolean progress) throws Exception {
+    public JsonObject analyze(String appName, JsonValue params, boolean isWorkflow, boolean wait, boolean progress) throws Exception {
         GxUtil.showMessage(verbose, "Starting analysis " + appName, logger, GxUtil.LogLevel.INFO);
         String jobId = nextJobId();
         JsonArray ja = getParameterArray(params);
@@ -380,17 +380,21 @@ public class GxHttpClientImpl implements GxHttpClient {
      * 
      * @return The JsonArray for parameters
      */
-    private JsonArray getParameterArray(JsonObject params) {
-        JsonArray ja = new JsonArray();
-        params.forEach(mem -> {
-            JsonValue jv = mem.getValue();
-            if (jv.isObject()) {
-                ja.add(new JsonObject().add("name", mem.getName()).add("value", getParameterArray(jv.asObject())));
-            } else {
-                ja.add(new JsonObject().add("name", mem.getName()).add("value", mem.getValue()));
-            }
-        });
-        return ja;
+    private JsonArray getParameterArray(JsonValue params) {
+        if (params.isArray()) {
+            return params.asArray();
+        } else {
+            JsonArray ja = new JsonArray();
+            params.asObject().forEach(mem -> {
+                JsonValue jv = mem.getValue();
+                if (jv.isObject()) {
+                    ja.add(new JsonObject().add("name", mem.getName()).add("value", getParameterArray(jv.asObject())));
+                } else {
+                    ja.add(new JsonObject().add("name", mem.getName()).add("value", mem.getValue()));
+                }
+            });
+            return ja;
+        }
     }
     
     /**
@@ -431,11 +435,18 @@ public class GxHttpClientImpl implements GxHttpClient {
                     percent = "0%";
                 }
                 if (js.get("values") != null) {
-                    String msg = js.getString("values","").substring(messageLen);
+                    JsonValue values = js.get("values");
+                    String msg, val;
+                    if (values.isArray()) {
+                        val = values.asArray().get(0).asString();
+                    } else {
+                        val = values.asString();
+                    }
+                    msg = val.substring(messageLen);
                     if (msg.length() > 0) {
                         logger.info(msg.replaceAll("[\\n]?INFO", "\n " + percent + ": INFO"));
                     }
-                    messageLen = js.getString("values","").length();
+                    messageLen = val.length();
                 }
             }
             if (stat == JobStatus.TERMINATED_BY_ERROR) {
@@ -444,7 +455,7 @@ public class GxHttpClientImpl implements GxHttpClient {
                     logger.error("An error occurred: " + js.toString());
                 break;
             }
-            Thread.sleep(1000L);
+            Thread.sleep(5000L);
         } while (!(stat == null || stat == JobStatus.COMPLETED || stat == JobStatus.TERMINATED_BY_ERROR || stat == JobStatus.TERMINATED_BY_REQUEST));
         return stat;
     }
@@ -472,7 +483,7 @@ public class GxHttpClientImpl implements GxHttpClient {
      * @see com.genexplain.api.core.GxHttpClient#imPort(java.lang.String, java.lang.String, java.lang.String, java.util.Map)
      */
     @Override
-    public JsonObject imPort(String file, String parentPath, String importer, JsonObject params) throws Exception {
+    public JsonObject imPort(String file, String parentPath, String importer, JsonValue params) throws Exception {
         GxUtil.showMessage(verbose, "Importing: " + file + " into " + parentPath + " using " + importer, logger, GxUtil.LogLevel.INFO);
         String fileId = nextJobId();
         String jobId  = nextJobId();
@@ -507,7 +518,7 @@ public class GxHttpClientImpl implements GxHttpClient {
      * @see com.genexplain.api.core.GxHttpClient#export(java.lang.String, java.lang.String, java.io.OutputStream, java.util.Map)
      */
     @Override
-    public void export(String path, String exporter, OutputStream fs, JsonObject params) throws Exception {
+    public void export(String path, String exporter, OutputStream fs, JsonValue params) throws Exception {
         GxUtil.showMessage(verbose, "Exporting " + path + " using " + exporter, logger, GxUtil.LogLevel.INFO);
         JsonArray ja = getParameterArray(params);
         Map<String, String> eparams = new HashMap<>();

@@ -17,19 +17,9 @@
 
 package com.genexplain.api.core;
 
-import java.io.InputStream;
-import java.io.StringWriter;
-
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
-import com.genexplain.util.GxUtil;
-
-import prophecy.common.JSONMinify;
+import com.genexplain.base.JsonConfigurable;
 
 /**
  * Parameter object that configures a {@link com.genexplain.api.core.GxJsonExecutor}.
@@ -37,7 +27,7 @@ import prophecy.common.JSONMinify;
  * @author pst
  *
  */
-public class GxJsonExecutorParameters {
+public class GxJsonExecutorParameters implements JsonConfigurable{
     
     /**
      * Names of JSON properties that are read
@@ -324,63 +314,12 @@ public class GxJsonExecutorParameters {
     }
     
     /**
-     * Returns the config object.
-     * 
-     * @return the JsonObject with configuration parameters, may be null if
-     *         parameters were not configured using a JsonObject
-     */
-    public JsonObject getConfig() { return config; }
-    
-    /**
-     * Sets configuration from an input stream. The input stream is extracted
-     * to a string which is parsed by a JSON parser. The JSON is minified before
-     * parsing. The minifier removes C/C++-style comments.
-     * 
-     * @param is
-     *           Inputstream from which a JsonObject can be read
-     *           
-     * @return This parameter object to enable fluent calls
-     * 
-     * @throws Exception
-     *           An exception may be thrown or caused by internal
-     *           method calls
-     */
-    public GxJsonExecutorParameters setConfig(InputStream is) throws Exception {
-        StringWriter sw = new StringWriter();
-        IOUtils.copy(is, sw, "UTF-8");
-        return setConfig(JSONMinify.minify(sw.toString()));
-    }
-    
-    /**
-     * Sets configuration from a string which is parsed by a JSON parser.
-     * The JSON is minified before parsing. The minifier removes C/C++-style comments.
-     * 
-     * @param config
-     *           String that can be parsed into a JsonObject
-     *           
-     * @return This parameter object to enable fluent calls
-     * 
-     * @throws Exception
-     *           An exception may be thrown or caused by internal
-     *           method calls
-     */
-    public GxJsonExecutorParameters setConfig(String config) throws Exception {
-        return setConfig(Json.parse(config).asObject());
-    }
-    
-    /**
      * Sets configuration object.
      * 
-     * @param config
-     *           JsonObject containing configuration parameters
-     *           
-     * @return This parameter object to enable fluent calls
-     * 
-     * @throws Exception
-     *           An exception may be thrown or caused by internal
-     *           method calls
+     * @see com.genexplain.base.JsonConfigurable#setConfig(JsonObject)
      */
-    public GxJsonExecutorParameters setConfig(JsonObject config) throws Exception {
+    @Override
+    public JsonConfigurable setConfig(JsonObject config) throws Exception {
         this.config = config;
         setServer(config.getString(JsonProperty.SERVER.get(),""));
         setUser(config.getString(JsonProperty.USER.get(),""));

@@ -130,9 +130,9 @@ public class GxJsonExecutor implements ApplicationCommand {
      * Extracts parameters from a property of the input object named <b>parameters</b>,
      * which is itself an object that specifies parameters as property names and values.
      */
-    public static JsonObject getJsonParameters(JsonObject conf) {
+    public static JsonValue getJsonParameters(JsonObject conf) {
         if (conf.get("parameters") != null) {
-           return conf.get("parameters").asObject();
+            return conf.get("parameters");
         } else {
             return new JsonObject();
         }
@@ -541,7 +541,7 @@ public class GxJsonExecutor implements ApplicationCommand {
      *           method calls
      */
     public GxJsonExecutor run(InputStream is) throws Exception {
-        return run(new GxJsonExecutorParameters().setConfig(is));
+        return run((GxJsonExecutorParameters)new GxJsonExecutorParameters().setConfig(is));
     }
     
     /**

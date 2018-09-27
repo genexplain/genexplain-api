@@ -24,6 +24,7 @@ import java.util.Map;
 
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.JsonValue;
 import com.genexplain.api.core.GxColumnDef;
 import com.genexplain.api.core.GxHttpClient;
 import com.genexplain.api.core.GxHttpConnection;
@@ -98,7 +99,7 @@ public class GxHttpClientStub implements GxHttpClient {
     }
 
     @Override
-    public JsonObject analyze(String appName, JsonObject params, boolean isWorkflow,
+    public JsonObject analyze(String appName, JsonValue params, boolean isWorkflow,
                               boolean wait, boolean progress) throws Exception {
         callNum++;
         JsonObject js = new JsonObject()
@@ -169,7 +170,7 @@ public class GxHttpClientStub implements GxHttpClient {
 
     @Override
     public void export(String path, String exporter, OutputStream fs,
-                       JsonObject params) throws Exception {
+                       JsonValue params) throws Exception {
         try {
             callNum++;
             called.add("export");
@@ -185,7 +186,7 @@ public class GxHttpClientStub implements GxHttpClient {
 
     @Override
     public JsonObject imPort(String file, String parentPath, String importer,
-                             JsonObject params) throws Exception {
+                             JsonValue params) throws Exception {
         callNum++;
         called.add("imPort");
         return new JsonObject().add("called", "imPort")
