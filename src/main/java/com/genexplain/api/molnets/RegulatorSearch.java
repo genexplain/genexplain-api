@@ -99,6 +99,17 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
     }
     
     public RegulatorSearch execute(JsonObject config) throws Exception {
+        JsonObject execParams = makeExecutable(config);
+        if (config.getBoolean("justPrint", false)) {
+            System.out.println(execParams.toString());
+            return this;
+        }
+        GxJsonExecutor executor = new GxJsonExecutor();
+        executor.run((GxJsonExecutorParameters)new GxJsonExecutorParameters().setConfig(execParams));
+        return this;
+    }
+    
+    public JsonObject makeExecutable(JsonObject config) throws Exception {
         JsonArray params = getSearchParameters(config);
         JsonObject execParams = new JsonObject();
         JsonObject regTask = new JsonObject().add("do", "analyze")
@@ -113,9 +124,7 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
         }
         addGlobalExecutorParams(config, execParams);
         execParams.add("tasks", new JsonArray().add(regTask));
-        GxJsonExecutor executor = new GxJsonExecutor();
-        executor.run((GxJsonExecutorParameters)new GxJsonExecutorParameters().setConfig(execParams));
-        return this;
+        return execParams;
     }
     
     private void addGlobalExecutorParams(JsonObject config, JsonObject execParams) {
@@ -146,6 +155,10 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
         if (config.get(GxJsonExecutorParameters.JsonProperty.HTTP_CLIENT.get()) != null) {
             execParams.add(GxJsonExecutorParameters.JsonProperty.HTTP_CLIENT.get(), 
                     config.get(GxJsonExecutorParameters.JsonProperty.HTTP_CLIENT.get()).asString());
+        }
+        if (config.get(GxJsonExecutorParameters.JsonProperty.REPLACE_STRINGS.get()) != null) {
+            execParams.add(GxJsonExecutorParameters.JsonProperty.REPLACE_STRINGS.get(), 
+                    config.get(GxJsonExecutorParameters.JsonProperty.REPLACE_STRINGS.get()).asArray());
         }
     }
     

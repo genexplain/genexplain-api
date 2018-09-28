@@ -17,6 +17,9 @@
 
 package com.genexplain.api.core;
 
+import java.io.FileReader;
+
+import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.genexplain.base.JsonConfigurable;
@@ -43,8 +46,10 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
         VERBOSE("verbose"),
         RECONNECT("reconnect"),
         PASSWORD("password"),
+        CREDENTIALS("credentials"),
         CONNECTION("connection-class"),
-        HTTP_CLIENT("client-class");
+        HTTP_CLIENT("client-class"),
+        REPLACE_STRINGS("replacements");
         
         private String name;
         
@@ -60,6 +65,7 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
     private String server;
     private String user;
     private String password;
+    private String credentials;
     
     private boolean verbose   = false;
     private boolean reconnect = false;
@@ -69,10 +75,24 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
     private GxHttpClient     client;
     private GxHttpConnection connection;
     
+    private JsonArray replacements;
     
     public GxJsonExecutorParameters() {
         client     = new GxHttpClientImpl();
         connection = new GxHttpConnectionImpl();
+    }
+    
+    public String makeReplacements(String input) {
+        String output = input;
+        if (replacements != null && replacements.isArray()) {
+            JsonArray rep;
+            for (int r = 0;r < replacements.size(); ++r) {
+                rep = replacements.get(r).asArray();
+                output = output.replace(rep.get(0).asString(),
+                        rep.get(1).asString());
+            }
+        }
+        return output;
     }
     
     /**
@@ -245,6 +265,27 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
     }
     
     /**
+     * Returns the string replacement array.
+     * 
+     * @return The array of replacements if defined
+     */
+    public JsonArray getReplacements() {
+        return replacements;
+    }
+    
+    /**
+     * Sets string replacements that can be exchanged in task
+     * objects before execution.
+     * 
+     * @param  reps - an array of two-element arrays defining string replacements
+     * @return This parameter object to enable fluent calls
+     */
+    public GxJsonExecutorParameters setReplacements(JsonArray reps) {
+        this.replacements = reps;
+        return this;
+    }
+    
+    /**
      * Returns the server used to configure the connection.
      * 
      * @return The server
@@ -314,6 +355,30 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
     }
     
     /**
+     * Returns the filepath with credentials applied for log in.
+     * 
+     * @return The credential file path if defined
+     * 
+     */
+    public String getCredentials() {
+        return credentials;
+    }
+    
+    /**
+     * Sets the filepath with credentials applied for log in.
+     * 
+     * @return This parameter object to enable fluent calls
+     */
+    public void setCredentials(String credentials) throws Exception {
+        this.credentials = credentials;
+        if (credentials.isEmpty())
+            return;
+        JsonObject crs = Json.parse(new FileReader(credentials)).asObject();
+        setUser(crs.getString(JsonProperty.USER.get(),""));
+        setPassword(crs.getString(JsonProperty.PASSWORD.get(),""));
+    }
+
+    /**
      * Sets configuration object.
      * 
      * @see com.genexplain.base.JsonConfigurable#setConfig(JsonObject)
@@ -324,10 +389,14 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
         setServer(config.getString(JsonProperty.SERVER.get(),""));
         setUser(config.getString(JsonProperty.USER.get(),""));
         setPassword(config.getString(JsonProperty.PASSWORD.get(),""));
+        setCredentials(config.getString(JsonProperty.CREDENTIALS.get(),""));
         setVerbose(config.getBoolean(JsonProperty.VERBOSE.get(),false));
         setReconnect(config.getBoolean(JsonProperty.RECONNECT.get(),false));
         setHttpConnection(config.getString(JsonProperty.CONNECTION.get(), GxHttpConnectionImpl.class.getName()));
         setHttpClient(config.getString(JsonProperty.HTTP_CLIENT.get(), GxHttpClientImpl.class.getName()));
+        if (config.get(JsonProperty.REPLACE_STRINGS.get()) != null) {
+            setReplacements(config.get(JsonProperty.REPLACE_STRINGS.get()).asArray());
+        }
         
         
         if (config.get(JsonProperty.TASKS.get()) != null) {

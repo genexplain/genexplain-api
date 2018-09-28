@@ -18,14 +18,19 @@
 package com.genexplain.api.core;
 
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.InputStream;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
@@ -70,7 +75,8 @@ public class GxJsonExecutor implements ApplicationCommand {
         createFolder("Creates a folder"),
         itemParameters("Lists parameters for specified application, importer, or exporter"),
         listItems("Lists available application, importer, or exporter items"),
-        jobStatus("Gets the status for a job id");
+        jobStatus("Gets the status for a job id"),
+        external("Runs an external tool");
         
         private String desc = "";
         
@@ -123,6 +129,7 @@ public class GxJsonExecutor implements ApplicationCommand {
         executors.put(ExecutorType.jobStatus, this::getJobStatus);
         executors.put(ExecutorType.itemParameters, this::getItemParameters);
         executors.put(ExecutorType.listItems, this::listItems);
+        executors.put(ExecutorType.external, this::runExternal);
     }
     
     
@@ -174,8 +181,51 @@ public class GxJsonExecutor implements ApplicationCommand {
      *           method calls
      */
     public GxJsonExecutor execute(JsonObject task) throws Exception {
+        if (task.get("fromFile") != null) {
+            task = Json.parse(new FileReader(task.getString("fromFile", ""))).asObject();
+        }
+        task = Json.parse(params.makeReplacements(task.toString())).asObject();
         ExecutorType et = ExecutorType.valueOf(task.getString("do",""));
         return executors.get(et).apply(task);
+    }
+    
+    /**
+     * Runs an external tool.
+     * 
+     * @param conf
+     *           Object containing a properties to configure and invoke the external tool.
+     *          
+     * @return This executor to enable fluent calls
+     * 
+     * @throws Exception
+     *           An exception may be thrown or caused by internal
+     *           method calls
+     */
+    public GxJsonExecutor runExternal(JsonObject conf) throws Exception {
+        GxUtil.showMessage(params.isVerbose(), "Running external tool", logger, GxUtil.LogLevel.INFO);
+        if (conf.get("bin") == null) {
+            GxUtil.showMessage(params.isVerbose(), "No binary specified", logger, GxUtil.LogLevel.INFO);
+            return this;
+        }
+        List<String> args = new ArrayList<>();
+        args.add(conf.get("bin").asString());
+        if (conf.get("params") != null) {
+            JsonValue jv = conf.get("params");
+            if (jv.isString()) {
+                args.add(jv.asString());
+            } else if (jv.isArray()) {
+                jv.asArray().forEach(p -> {
+                    args.add(p.asString());
+                });
+            }
+        }
+        ProcessBuilder builder = new ProcessBuilder();
+        GxUtil.showMessage(params.isVerbose(), "Starting " + args, logger, GxUtil.LogLevel.INFO);
+        builder.command(args);
+        if (builder.start().waitFor() != 0) {
+            throw new RuntimeException("An error occurred when trying to execute: " + args);
+        }
+        return this;
     }
     
     /**
