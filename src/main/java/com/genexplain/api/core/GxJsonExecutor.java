@@ -17,14 +17,17 @@
 
 package com.genexplain.api.core;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -76,7 +79,9 @@ public class GxJsonExecutor implements ApplicationCommand {
         itemParameters("Lists parameters for specified application, importer, or exporter"),
         listItems("Lists available application, importer, or exporter items"),
         jobStatus("Gets the status for a job id"),
-        external("Runs an external tool");
+        external("Runs an external tool"),
+        setParameters("Sets/adds/removes parameter strings"),
+        branch("Executes a branch point");
         
         private String desc = "";
         
@@ -101,6 +106,17 @@ public class GxJsonExecutor implements ApplicationCommand {
     public interface Executor<T,R> {
         public R apply(T t) throws Exception;
     }
+    
+    /**
+     * Implemented by branching methods or classes.
+     * 
+     * @author pst
+     */
+    @FunctionalInterface
+    public interface BranchSelector {
+        public JsonValue apply(JsonObject task, GxJsonExecutorParameters params) throws Exception;
+    }
+    
     
     private Logger                   logger = LoggerFactory.getLogger(this.getClass());
     private GxJsonExecutorParameters params;
@@ -130,6 +146,8 @@ public class GxJsonExecutor implements ApplicationCommand {
         executors.put(ExecutorType.itemParameters, this::getItemParameters);
         executors.put(ExecutorType.listItems, this::listItems);
         executors.put(ExecutorType.external, this::runExternal);
+        executors.put(ExecutorType.setParameters, this::setTaskParameters);
+        executors.put(ExecutorType.branch, this::doBranch);
     }
     
     
@@ -157,14 +175,43 @@ public class GxJsonExecutor implements ApplicationCommand {
      *           An exception may be thrown or caused by internal
      *           method calls
      */
-    public GxJsonExecutor execute(JsonArray tasks) throws Exception {
-        tasks.forEach(task -> {
-            try {
-                execute(task.asObject());
-            } catch (Exception e) {
-                throw new GxJsonExecutorException(e);
-            }
-        });
+    public GxJsonExecutor execute(JsonValue taskItem) throws Exception {
+        if (taskItem == null)
+            throw new NullPointerException("Invalid null pointer for task item");
+        //logger.info("Executing " + taskItem.toString());
+        if (taskItem.isArray()) {
+            taskItem.asArray().forEach(task -> {
+                try {
+                    execute(task);
+                } catch (Exception e) {
+                    throw new GxJsonExecutorException(e);
+                }
+            });
+        } else if (taskItem.isObject()) {
+            JsonObject obj = taskItem.asObject();
+            if (obj.get("fromFile") != null) {
+                JsonObject fromFile = obj.get("fromFile").asObject(); 
+                JsonValue fileTasks = Json.parse(new FileReader(fromFile.getString("file", "")));
+                //task = fileTasks.get(fromFile.getString("task", "")).asObject();
+                if (fileTasks.isObject()) {
+                    if (fromFile.get("get") != null) {
+                        execute(fileTasks.asObject().get(fromFile.get("get").asString()));
+                    } else if (fromFile.get("task") != null) {
+                        execute(fileTasks.asObject().get(fromFile.get("task").asString()));
+                    } else if (fileTasks.asObject().get(params.getNextTaskItem()) != null) {
+                        execute(fileTasks.asObject().get(params.getNextTaskItem()));
+                    } else {
+                        execute(fileTasks);
+                    }
+                } else if (fileTasks.isArray()) {
+                    execute(fileTasks);
+                }
+            } else if (obj.get("do") != null) {
+                executeTask(obj);
+            } else if (!params.getNextTaskItem().isEmpty() && obj.get(params.getNextTaskItem()) != null) {
+                execute(obj.get(params.getNextTaskItem()));
+            } // Otherwise nothing will be done
+        }
         return this;
     }
     
@@ -180,13 +227,91 @@ public class GxJsonExecutor implements ApplicationCommand {
      *           An exception may be thrown or caused by internal
      *           method calls
      */
-    public GxJsonExecutor execute(JsonObject task) throws Exception {
-        if (task.get("fromFile") != null) {
-            task = Json.parse(new FileReader(task.getString("fromFile", ""))).asObject();
-        }
-        task = Json.parse(params.makeReplacements(task.toString())).asObject();
+    public GxJsonExecutor executeTask(JsonObject task) throws Exception {
         ExecutorType et = ExecutorType.valueOf(task.getString("do",""));
+        if (!executors.containsKey(et)) {
+            throw new IllegalArgumentException("Invalid executor name " + et);
+        }
+        if (et != ExecutorType.setParameters) {
+            task = Json.parse(params.replaceLists(task.toString())).asObject();
+            task = Json.parse(params.replaceStrings(task.toString())).asObject();
+            task = Json.parse(params.replaceNums(task.toString())).asObject();
+        }
         return executors.get(et).apply(task);
+    }
+    
+    /**
+     * Sets/adds/removes string replacements in the parameter object that will modify parameters
+     * of subsequent tasks.
+     * 
+     * @param conf
+     *           Object containing a properties to configure and invoke the external tool.
+     *          
+     * @return This executor to enable fluent calls
+     * 
+     * @throws Exception
+     *           An exception may be thrown or caused by internal
+     *           method calls
+     */
+    public GxJsonExecutor setTaskParameters(JsonObject conf) throws Exception {
+        GxUtil.showMessage(params.isVerbose(), "Setting task parameters", logger, GxUtil.LogLevel.INFO);
+        JsonArray reps = params.getReplaceStrings();
+        if (reps == null)
+            reps = new JsonArray();
+        logger.info(reps.toString());
+        if (conf.get("set") != null) {
+            JsonObject set = conf.get("set").asObject();
+            reps.forEach(val -> {
+                JsonArray ar = val.asArray();
+                if (set.get(ar.get(0).asString()) != null) {
+                    ar.set(1, set.get(ar.get(0).asString()).asString());
+                }
+            });
+        }
+        if (conf.get("remove") != null) {
+            JsonObject rem  = conf.get("remove").asObject();
+            JsonArray next = new JsonArray();
+            reps.forEach(val -> {
+                JsonArray ar = val.asArray();
+                if (rem.get(ar.get(0).asString()) == null) {
+                    next.add(ar);
+                }
+            });
+            reps = next;
+        }
+        if (conf.get("before") != null) {
+            JsonArray bef = conf.get("before").asArray();
+            reps.forEach(val -> { bef.add(val); });
+            reps = bef;
+        }
+        if (conf.get("after") != null) {
+            JsonArray af = conf.get("after").asArray();
+            for (JsonValue val : af) { reps.add(val); }
+        }
+        logger.info(reps.toString());
+        params.setReplaceStrings(reps);
+        return this;
+    }
+    
+    /**
+     * Runs a branch selector that returns the task that is eventually executed.
+     * 
+     * @param conf
+     *           Object containing a properties to configure and invoke the external tool.
+     *          
+     * @return This executor to enable fluent calls
+     * 
+     * @throws Exception
+     *           An exception may be thrown or caused by internal
+     *           method calls
+     */
+    public GxJsonExecutor doBranch(JsonObject conf) throws Exception {
+        GxUtil.showMessage(params.isVerbose(), "Branching", logger, GxUtil.LogLevel.INFO);
+        if (conf.get("branchSelector") == null)
+            throw new IllegalArgumentException("Missing specification of branch selector");
+        BranchSelector selector = (BranchSelector)Class.forName(conf.get("branchSelector").asString()).newInstance();
+        JsonValue nextTask = selector.apply(conf, params);
+        return execute(nextTask);
     }
     
     /**
@@ -221,8 +346,17 @@ public class GxJsonExecutor implements ApplicationCommand {
         }
         ProcessBuilder builder = new ProcessBuilder();
         GxUtil.showMessage(params.isVerbose(), "Starting " + args, logger, GxUtil.LogLevel.INFO);
-        builder.command(args);
-        if (builder.start().waitFor() != 0) {
+        final Process prc = builder.command(args).start();
+        if (conf.getBoolean("showOutput", false)) {
+            InputStream is = prc.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            String line;
+            while ((line = br.readLine()) != null) {
+              logger.info("External output: " + line);
+            }
+            br.close();
+            is.close();
+        } else if (prc.waitFor() != 0) {
             throw new RuntimeException("An error occurred when trying to execute: " + args);
         }
         return this;

@@ -339,7 +339,7 @@ public class GxHttpConnectionImpl implements GxHttpConnection {
 	 */
 	@Override
 	public CloseableHttpResponse queryBioUML(String path, Map<String, String> params) throws Exception {
-	    GxUtil.showMessage(verbose, "Sending query to path: " + path, logger, GxUtil.LogLevel.INFO);
+	    //GxUtil.showMessage(verbose, "Sending query to path: " + path, logger, GxUtil.LogLevel.INFO);
 		RequestBuilder rbuilder = RequestBuilder.post()
                 .setUri(new URI(server + path));
 		params.forEach((key, val) -> {
@@ -356,32 +356,42 @@ public class GxHttpConnectionImpl implements GxHttpConnection {
      */
 	@Override
 	public JsonObject queryJSON(String path, Map<String,String> params) throws Exception {
-	    GxUtil.showMessage(verbose, "Sending JSON query to path: " + path, logger, GxUtil.LogLevel.INFO);
+	    //GxUtil.showMessage(verbose, "Sending JSON query to path: " + path, logger, GxUtil.LogLevel.INFO);
 		CloseableHttpResponse resp = queryBioUML(path, params);
-		JsonObject response = Json.parse(EntityUtils.toString(resp.getEntity())).asObject();
+		String strResp = EntityUtils.toString(resp.getEntity());
+		resp.close();
+		JsonObject response = new JsonObject();
+		try {
+		    response = Json.parse(strResp).asObject();
+		} catch (Exception e) {
+            GxUtil.showMessage(true, 
+                    "Could not parse supposed JSON response:\n  " + strResp, 
+                    logger, GxUtil.LogLevel.ERROR);
+            response.add("type", -1);
+            return response;
+        }
 		if (response.get("type") != null) {
-            JsonValue type = response.get("type");
-			if (type.isString()) {
-			    switch (type.asString()) {
-			    case "ok": response.add("type", 0); break;
-			    case "error": response.add("type", 1); break;
-			    default: throw new GxHttpException("Unexpected type value neither ok nor error:" + type.asString());
-			    }
+		    JsonValue type = response.get("type");
+		    if (type.isString()) {
+		        switch (type.asString()) {
+		        case "ok": response.add("type", 0); break;
+		        case "error": response.add("type", 1); break;
+		        default: throw new GxHttpException("Unexpected type value neither ok nor error:" + type.asString());
+		        }
 		    } else if (!type.isNumber()) {
-		    	throw new GxHttpException("Content of type field is neither string nor integer");
+		        throw new GxHttpException("Content of type field is neither string nor integer");
 		    } else if (type.asInt() == 3) {
 		        if (!triedReconnect && reconnect) {
 		            triedReconnect = true;
-				    login();
-				    return queryJSON(path, params);
+		            login();
+		            return queryJSON(path, params);
 		        }
 		    } else {
 		        triedReconnect = false;
 		    }
 		} else {
-			throw new GxHttpException("Response does not contain a type field");
+		    throw new GxHttpException("Response does not contain a type field");
 		}
-		resp.close();
 		return response;
 	}
 }

@@ -56,8 +56,9 @@ import com.genexplain.util.GxUtil;
  */
 public class GxHttpClientImpl implements GxHttpClient {    
     
-    public static final String  PROJECT_NAME_REGEX   = "[a-zA-Z0-9]{3,}[a-zA-Z0-9,\\.\\s\\(\\)\\[\\]\\_-]*";
-    public static final Pattern PROJECT_NAME_PATTERN = Pattern.compile(PROJECT_NAME_REGEX);
+    public static final String  PROJECT_NAME_REGEX      = "[a-zA-Z0-9]{3,}[a-zA-Z0-9,\\.\\s\\(\\)\\[\\]\\_-]*";
+    public static final Pattern PROJECT_NAME_PATTERN    = Pattern.compile(PROJECT_NAME_REGEX);
+    public static final int     NON_JSON_RESPONSE_LIMIT = 10;
 	
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     
@@ -406,7 +407,7 @@ public class GxHttpClientImpl implements GxHttpClient {
      */
     private String nextJobId() {
         jobNo++;
-        return "APIJ" + timeFormat.format(new Date()) + String.format("%03d",jobNo);
+        return "JOBID" + timeFormat.format(new Date()) + String.format("%03d",jobNo);
     }
     
     /**
@@ -424,36 +425,47 @@ public class GxHttpClientImpl implements GxHttpClient {
     private JobStatus waitForProcess(String jobId, boolean progress) throws Exception {
         JobStatus stat;
         int messageLen = 0;
+        int nonJsonCounter = 0;
         do {
             JsonObject js = getJobStatus(jobId);
-            stat = JobStatus.get(js.get("status").asInt() + 1);
-            if (progress) {
-                String percent = "";
-                if (js.get("percent") != null) {
-                    percent = js.getInt("percent",0) + "%";
+            if (js.getInt("type", 0) == -1) {
+                nonJsonCounter++;
+                if (nonJsonCounter >= NON_JSON_RESPONSE_LIMIT) {
+                    throw new IllegalStateException("Received too many non-JSON responses from server");
                 } else {
-                    percent = "0%";
+                    stat = JobStatus.RUNNING;
                 }
-                if (js.get("values") != null) {
-                    JsonValue values = js.get("values");
-                    String msg, val;
-                    if (values.isArray()) {
-                        val = values.asArray().get(0).asString();
+            } else {
+                nonJsonCounter = 0;
+                stat = JobStatus.get(js.get("status").asInt() + 1);
+                if (progress) {
+                    String percent = "";
+                    if (js.get("percent") != null) {
+                        percent = js.getInt("percent",0) + "%";
                     } else {
-                        val = values.asString();
+                        percent = "0%";
                     }
-                    msg = val.substring(messageLen);
-                    if (msg.length() > 0) {
-                        logger.info(msg.replaceAll("[\\n]?INFO", "\n " + percent + ": INFO"));
+                    if (js.get("values") != null) {
+                        JsonValue values = js.get("values");
+                        String msg, val;
+                        if (values.isArray()) {
+                            val = values.asArray().get(0).asString();
+                        } else {
+                            val = values.asString();
+                        }
+                        msg = val.substring(messageLen);
+                        if (msg.length() > 0) {
+                            logger.info(msg.replaceAll("[\\n]?INFO", "\n " + percent + ": INFO"));
+                        }
+                        messageLen = val.length();
                     }
-                    messageLen = val.length();
                 }
-            }
-            if (stat == JobStatus.TERMINATED_BY_ERROR) {
-                blockingProcessError = js.toString();
-                if (verbose)
-                    logger.error("An error occurred: " + js.toString());
-                break;
+                if (stat == JobStatus.TERMINATED_BY_ERROR) {
+                    blockingProcessError = js.toString();
+                    if (verbose)
+                        logger.error("An error occurred: " + js.toString());
+                    break;
+                }
             }
             Thread.sleep(5000L);
         } while (!(stat == null || stat == JobStatus.COMPLETED || stat == JobStatus.TERMINATED_BY_ERROR || stat == JobStatus.TERMINATED_BY_REQUEST));
@@ -602,7 +614,7 @@ public class GxHttpClientImpl implements GxHttpClient {
      */
     @Override
     public JsonObject getJobStatus(String jobId) throws Exception {
-        GxUtil.showMessage(verbose, "Getting status for job " + jobId, logger, GxUtil.LogLevel.INFO);
+        //GxUtil.showMessage(verbose, "Getting status for job " + jobId, logger, GxUtil.LogLevel.INFO);
         Map<String,String> params = new HashMap<>();
         params.put("jobID", jobId);
         return con.queryJSON(con.getBasePath() + Path.JOB_CONTROL.getPath(), params);
