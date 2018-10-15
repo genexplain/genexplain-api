@@ -92,6 +92,11 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
     public GxJsonExecutorParameters() {
         client     = new GxHttpClientImpl();
         connection = new GxHttpConnectionImpl();
+        replaceStrings = new JsonArray();
+        replaceLists = new JsonArray();
+        replaceNums = new JsonArray();
+        nextTaskItem = "";
+        withoutConnect = false;
     }
     
     public String replaceStrings(String input) {

@@ -68,6 +68,233 @@ public class GxJsonExecutorTest {
     }
     
     @Test
+    public void nullPointerTaskIntercepted() throws Exception {
+        exception.expect(NullPointerException.class);
+        executor.execute(null);
+    }
+    
+    @Test
+    public void unknownTaskIntercepted() throws Exception {
+        exception.expect(IllegalArgumentException.class);
+        executor.execute(new JsonObject().add("do", "unknown task"));
+    }
+    
+    @Test
+    /**
+     * Integration test.
+     * 
+     * @throws Exception
+     */
+    public void canExecuteExternalTool() throws Exception {
+        if (System.getProperty("os.name").contains("inux") || System.getProperty("os.name").contains("nix")) {
+            FileWriter fw = new FileWriter("temp.sh");
+            fw.write("#!/bin/sh\necho \"API test\" > temp_out.txt\n");
+            fw.close();
+            conf.add("bin", "sh")
+                .add("params", "temp.sh")
+                .add("do", "external");
+            executor.execute(conf);
+            File outfile = new File("temp_out.txt");
+            assertTrue(outfile.exists());
+            new File("temp.sh").delete();
+            if (outfile.exists())
+                outfile.delete();
+        }
+    }
+    
+    @Test
+    /**
+     * Integration test.
+     * 
+     * @throws Exception
+     */
+    public void canExecuteExternalToolArray() throws Exception {
+        if (System.getProperty("os.name").contains("inux") || System.getProperty("os.name").contains("nix")) {
+            FileWriter fw = new FileWriter("temp.sh");
+            fw.write("#!/bin/sh\necho \"API test\" > $1\n");
+            fw.close();
+            conf.add("bin", "sh")
+                .add("params", new JsonArray().add("temp.sh").add("specified.txt"))
+                .add("showOutput", true)
+                .add("do", "external");
+            executor.execute(conf);
+            File outfile = new File("specified.txt");
+            assertTrue(outfile.exists());
+            new File("temp.sh").delete();
+            if (outfile.exists())
+                outfile.delete();
+        }
+    }
+    
+    @Test
+    /**
+     * Integration test.
+     * 
+     * @throws Exception
+     */
+    public void interceptsExternalToolError() throws Exception {
+        if (System.getProperty("os.name").contains("inux") || System.getProperty("os.name").contains("nix")) {
+            FileWriter fw = new FileWriter("temp.sh");
+            fw.write("#!/bin/sh\necho \"Exiting with error\"\nexit 1\n");
+            fw.close();
+            conf.add("bin", "sh")
+                .add("params", new JsonArray().add("temp.sh").add("specified.txt"))
+                .add("do", "external");
+            exception.expect(RuntimeException.class);
+            executor.execute(conf);
+            new File("temp.sh").delete();
+        }
+    }
+    
+    @Test
+    /**
+     * @throws Exception
+     */
+    public void interceptsMissingExternalTool() throws Exception {
+        conf.add("params", "temp.sh")
+            .add("do", "external");
+        JsonObject json = executor.execute(conf).getLastJsonObject();
+        assertEquals(json.getString("error",""),"No tool specified");
+    }
+    
+    @Test
+    public void canExecuteTaskFromFile() throws Exception {
+        conf.add("fromFile", new JsonObject()
+                .add("file", "temp_task.json"));
+        FileWriter fw = new FileWriter("temp_task.json");
+        JsonObject json = new JsonObject().add("do","setParameters")
+                .add("before", new JsonArray().add(new JsonArray().add("$FROM_FILE$").add("file_param")));
+        fw.write(json.toString());
+        fw.close();
+        GxJsonExecutorParameters params = executor.getParameters();
+        params.setReplaceStrings(new JsonArray());
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$FROM_FILE$");
+        assertEquals(params.getReplaceStrings().size(), 1);
+        new File("temp_task.json").delete();
+    }
+    
+    @Test
+    public void canExecuteTaskFromFileGet() throws Exception {
+        conf.add("fromFile", new JsonObject()
+                .add("file", "temp_task.json")
+                .add("get", "fileTask"));
+        FileWriter fw = new FileWriter("temp_task.json");
+        JsonObject json = new JsonObject().add("fileTask", 
+                new JsonObject().add("do","setParameters")
+                .add("before", new JsonArray().add(new JsonArray().add("$FROM_FILE$").add("file_param"))));
+        fw.write(json.toString());
+        fw.close();
+        GxJsonExecutorParameters params = executor.getParameters();
+        params.setReplaceStrings(new JsonArray());
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$FROM_FILE$");
+        assertEquals(params.getReplaceStrings().size(), 1);
+        new File("temp_task.json").delete();
+    }
+    
+    @Test
+    public void canExecuteTaskFromFileTask() throws Exception {
+        conf.add("fromFile", new JsonObject()
+                .add("file", "temp_task.json")
+                .add("task", "fileTask"));
+        FileWriter fw = new FileWriter("temp_task.json");
+        JsonObject json = new JsonObject().add("fileTask", 
+                new JsonObject().add("do","setParameters")
+                .add("before", new JsonArray().add(new JsonArray().add("$FROM_FILE$").add("file_param"))));
+        fw.write(json.toString());
+        fw.close();
+        GxJsonExecutorParameters params = executor.getParameters();
+        params.setReplaceStrings(new JsonArray());
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$FROM_FILE$");
+        assertEquals(params.getReplaceStrings().size(), 1);
+        new File("temp_task.json").delete();
+    }
+    
+    @Test
+    public void canExecuteTaskFromFileNextTask() throws Exception {
+        conf.add("fromFile", new JsonObject()
+                .add("file", "temp_task.json"));
+        FileWriter fw = new FileWriter("temp_task.json");
+        JsonObject json = new JsonObject().add("fileTask", 
+                new JsonObject().add("do","setParameters")
+                .add("before", new JsonArray().add(new JsonArray().add("$FROM_FILE$").add("file_param"))));
+        fw.write(json.toString());
+        fw.close();
+        GxJsonExecutorParameters params = executor.getParameters();
+        params.setReplaceStrings(new JsonArray());
+        params.setNextTaskItem("fileTask");
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$FROM_FILE$");
+        assertEquals(params.getReplaceStrings().size(), 1);
+        new File("temp_task.json").delete();
+        params.setNextTaskItem("");
+    }
+    
+    @Test
+    public void canExecuteTaskFromFileArray() throws Exception {
+        conf.add("fromFile", new JsonObject()
+                .add("file", "temp_task.json"));
+        FileWriter fw = new FileWriter("temp_task.json");
+        JsonArray json = new JsonArray()
+                .add(new JsonObject().add("do","setParameters")
+                    .add("before", new JsonArray().add(new JsonArray().add("$FROM_FILE$").add("file_param"))))
+                .add(new JsonObject().add("do","setParameters")
+                        .add("before", new JsonArray().add(new JsonArray().add("$BEFORE_FROM_FILE$").add("file_param"))));
+        fw.write(json.toString());
+        fw.close();
+        GxJsonExecutorParameters params = executor.getParameters();
+        params.setReplaceStrings(new JsonArray());
+        params.setNextTaskItem("fileTask");
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$BEFORE_FROM_FILE$");
+        assertEquals(params.getReplaceStrings().size(), 2);
+        new File("temp_task.json").delete();
+        params.setNextTaskItem("");
+    }
+    
+    @Test
+    public void canExecuteNextTask() throws Exception {
+        conf = new JsonObject().add("fileTask", 
+                new JsonObject().add("do","setParameters")
+                .add("before", new JsonArray().add(new JsonArray().add("$FROM_FILE$").add("file_param"))));
+        GxJsonExecutorParameters params = executor.getParameters();
+        params.setReplaceStrings(new JsonArray());
+        params.setNextTaskItem("fileTask");
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$FROM_FILE$");
+        assertEquals(params.getReplaceStrings().size(), 1);
+        new File("temp_task.json").delete();
+        params.setNextTaskItem("");
+    }
+    
+    @Test
+    public void canExecuteDoBranch() throws Exception {
+        String select = "{\"do\": \"setParameters\", \"before\": [[\"$SELECTED$\",\"branched\"]]}";
+        conf.add("select", Json.parse(select))
+            .add("branchSelector", "com.genexplain.test.TestBranchSelector")
+            .add("do", GxJsonExecutor.ExecutorType.branch.toString());
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+    }
+    
+    @Test
+    public void interceptsMissingBranchSelector() throws Exception {
+        String select = "{\"do\": \"setParameters\", \"before\": [[\"$SELECTED$\",\"branched\"]]}";
+        conf.add("select", Json.parse(select))
+            .add("do", GxJsonExecutor.ExecutorType.branch.toString());
+        exception.expect(IllegalArgumentException.class);
+        executor.execute(conf);
+    }
+    
+    @Test
     public void canAnalyzeTool() throws Exception {
         String method = "test analysis method";
         conf.add("method", method);
@@ -224,6 +451,50 @@ public class GxJsonExecutorTest {
         assertEquals(client.getCalled().get(0), "createFolder");
         assertEquals(lastJson.getString("path", ""), "test path");
         assertEquals(lastJson.getString("name", ""), "test name");
+    }
+    
+    @Test
+    public void canExecuteSetParameters() throws Exception {
+        conf.add("set", new JsonObject().add("$TEST_STRING$", "TestReplacement"))
+            .add("do", GxJsonExecutor.ExecutorType.setParameters.toString());
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(lastJson.get("set").asObject().getString("$TEST_STRING$", ""), "TestReplacement");
+    }
+    
+    @Test
+    public void canSetTaskParameters() throws Exception {
+        conf.add("set", new JsonObject().add("$IS_REPLACED$", "after replacement"))
+            .add("remove", new JsonObject().add("$IS_REMOVED$", "rem"))
+            .add("before", new JsonArray().add(new JsonArray().add("$BEFORE$").add("inserted before")))
+            .add("after", new JsonArray().add(new JsonArray().add("$AFTER$").add("inserted after")))
+            .add("do", GxJsonExecutor.ExecutorType.setParameters.toString());
+        JsonArray reps = new JsonArray().add(new JsonArray().add("$IS_REMOVED$").add("to be removed"))
+                .add(new JsonArray().add("$IS_REPLACED$").add("before replacement"));
+        GxJsonExecutorParameters params = executor.getParameters();
+        params.setReplaceStrings(reps);
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$BEFORE$");
+        assertEquals(params.getReplaceStrings().get(1).asArray().get(1).asString(), "after replacement");
+        assertEquals(params.getReplaceStrings().get(2).asArray().get(0).asString(), "$AFTER$");
+        assertEquals(params.getReplaceStrings().size(), 3);
+    }
+    
+    @Test
+    public void canSetEmptyTaskParameters() throws Exception {
+        conf.add("set", new JsonObject().add("$IS_REPLACED$", "after replacement"))
+            .add("remove", new JsonObject().add("$IS_REMOVED$", "rem"))
+            .add("before", new JsonArray().add(new JsonArray().add("$BEFORE$").add("inserted before")))
+            .add("after", new JsonArray().add(new JsonArray().add("$AFTER$").add("inserted after")))
+            .add("do", GxJsonExecutor.ExecutorType.setParameters.toString());
+        GxJsonExecutorParameters params = executor.getParameters();
+        params.setReplaceStrings(new JsonArray());
+        JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        assertEquals(lastJson.getString("called", ""), "setTaskParameters");
+        assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$BEFORE$");
+        assertEquals(params.getReplaceStrings().get(1).asArray().get(0).asString(), "$AFTER$");
+        assertEquals(params.getReplaceStrings().size(), 2);
     }
     
     /**

@@ -39,6 +39,14 @@ public class GxHttpClientStub implements GxHttpClient {
     
     private JsonObject forVoid;
     
+    private JsonArray testTable = new JsonArray();
+    
+    public void setTestTable(JsonArray table) {
+        testTable = table;
+    }
+    
+    public JsonArray getTestTable() { return testTable; }
+    
     public int getCallNum() { return callNum; }
     
     public List<String> getCalled() { return called; }
@@ -80,6 +88,7 @@ public class GxHttpClientStub implements GxHttpClient {
         callNum++;
         called.add("getTable");
         return new JsonObject().add("called", "getTable")
+                               .add("data", testTable)
                                .add("table", tablePath);
     }
 

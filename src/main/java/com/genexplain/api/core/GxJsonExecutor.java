@@ -192,7 +192,6 @@ public class GxJsonExecutor implements ApplicationCommand {
             if (obj.get("fromFile") != null) {
                 JsonObject fromFile = obj.get("fromFile").asObject(); 
                 JsonValue fileTasks = Json.parse(new FileReader(fromFile.getString("file", "")));
-                //task = fileTasks.get(fromFile.getString("task", "")).asObject();
                 if (fileTasks.isObject()) {
                     if (fromFile.get("get") != null) {
                         execute(fileTasks.asObject().get(fromFile.get("get").asString()));
@@ -288,7 +287,8 @@ public class GxJsonExecutor implements ApplicationCommand {
             JsonArray af = conf.get("after").asArray();
             for (JsonValue val : af) { reps.add(val); }
         }
-        logger.info(reps.toString());
+        lastJsonObject = conf;
+        lastJsonObject.add("called", "setTaskParameters");
         params.setReplaceStrings(reps);
         return this;
     }
@@ -329,9 +329,12 @@ public class GxJsonExecutor implements ApplicationCommand {
     public GxJsonExecutor runExternal(JsonObject conf) throws Exception {
         GxUtil.showMessage(params.isVerbose(), "Running external tool", logger, GxUtil.LogLevel.INFO);
         if (conf.get("bin") == null) {
-            GxUtil.showMessage(params.isVerbose(), "No binary specified", logger, GxUtil.LogLevel.INFO);
+            GxUtil.showMessage(params.isVerbose(), "No tool specified", logger, GxUtil.LogLevel.INFO);
+            conf.add("error", "No tool specified");
+            setLastJsonObject(conf);
             return this;
         }
+        setLastJsonObject(conf);
         List<String> args = new ArrayList<>();
         args.add(conf.get("bin").asString());
         if (conf.get("params") != null) {
