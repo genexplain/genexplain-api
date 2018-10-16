@@ -70,7 +70,8 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
             // Don't unit test the examples
-            fileTree(dir: it, exclude: ['**/com/genexplain/api/eg/**'])
+            // Omitting the external selector, because of at least one test failing only in the CI system. 
+            fileTree(dir: it, exclude: ['**/com/genexplain/api/eg/**', '**/com/genexplain/api/pipe/ExternalSelector**'])
         })
     }
 }
