@@ -79,7 +79,6 @@ public class ExternalSelector implements BranchSelector {
             }
             if (line.startsWith(key)) {
                 nextTask = line.substring((key + "=").length());
-                break;
             }
         }
         br.close();

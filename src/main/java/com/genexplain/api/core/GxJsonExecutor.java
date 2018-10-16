@@ -362,6 +362,9 @@ public class GxJsonExecutor implements ApplicationCommand {
         } else if (prc.waitFor() != 0) {
             throw new RuntimeException("An error occurred when trying to execute: " + args);
         }
+        if (prc.isAlive()) {
+            prc.destroy();
+        }
         return this;
     }
     
