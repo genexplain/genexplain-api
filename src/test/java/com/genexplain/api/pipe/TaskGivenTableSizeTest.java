@@ -1,8 +1,11 @@
-package com.genexplain.api.core;
+package com.genexplain.api.pipe;
 
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
-import com.eclipsesource.json.JsonValue;
+import com.genexplain.api.core.GxHttpClientStub;
+import com.genexplain.api.core.GxHttpConnectionStub;
+import com.genexplain.api.core.GxJsonExecutor;
+import com.genexplain.api.core.GxJsonExecutorParameters;
 
 import static org.junit.Assert.assertEquals;
 
@@ -37,8 +40,8 @@ public class TaskGivenTableSizeTest {
     }
     
     @Test
-    public void canExecuteGivenTableType() throws Exception {
-        client.setTestTable(new JsonArray().add(new JsonArray().add("A").add("B").add("C").add("D")));
+    public void canExecuteGivenTableSize() throws Exception {
+        client.setTestTable("test_table", new JsonArray().add(new JsonArray().add("A").add("B").add("C").add("D")));
         JsonObject yes = new JsonObject().add("do","setParameters")
                 .add("before", new JsonArray().add(new JsonArray().add("$DECIDE_YES$").add("executed")));
         JsonObject no = new JsonObject().add("do","setParameters")
@@ -60,7 +63,7 @@ public class TaskGivenTableSizeTest {
     
     @Test
     public void canDecideNo() throws Exception {
-        client.setTestTable(new JsonArray().add(new JsonArray().add("A").add("B").add("C").add("D")));
+        client.setTestTable("test_table", new JsonArray().add(new JsonArray().add("A").add("B").add("C").add("D")));
         JsonObject yes = new JsonObject().add("do","setParameters")
                 .add("before", new JsonArray().add(new JsonArray().add("$DECIDE_YES$").add("executed")));
         JsonObject no = new JsonObject().add("do","setParameters")
@@ -75,6 +78,7 @@ public class TaskGivenTableSizeTest {
         GxJsonExecutorParameters params = executor.getParameters();
         params.setReplaceStrings(new JsonArray());
         JsonObject lastJson = executor.execute(conf).getLastJsonObject();
+        client.removeTestTable("test_table");
         assertEquals(lastJson.getString("called", ""), "setTaskParameters");
         assertEquals(params.getReplaceStrings().get(0).asArray().get(0).asString(), "$DECIDE_NO$");
         assertEquals(params.getReplaceStrings().size(), 1);

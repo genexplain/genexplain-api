@@ -39,13 +39,23 @@ public class GxHttpClientStub implements GxHttpClient {
     
     private JsonObject forVoid;
     
-    private JsonArray testTable = new JsonArray();
+    private JsonObject testTable = new JsonObject();
     
-    public void setTestTable(JsonArray table) {
-        testTable = table;
+    public void setTestTable(String name, JsonArray table) {
+        testTable.add(name,  table);
     }
     
-    public JsonArray getTestTable() { return testTable; }
+    public JsonArray getTestTable(String name) { return testTable.get(name).asArray(); }
+    
+    public void removeTestTable(String name) { 
+        if (testTable.get(name) != null) {
+            testTable.remove(name);
+        }
+    }
+    
+    public void clearTestTables() { 
+        testTable = new JsonObject();
+    }
     
     public int getCallNum() { return callNum; }
     
@@ -87,8 +97,11 @@ public class GxHttpClientStub implements GxHttpClient {
     public JsonObject getTable(String tablePath) throws Exception {
         callNum++;
         called.add("getTable");
+        JsonArray data = new JsonArray();
+        if (testTable.get(tablePath) != null)
+            data = testTable.get(tablePath).asArray();
         return new JsonObject().add("called", "getTable")
-                               .add("data", testTable)
+                               .add("data", data)
                                .add("table", tablePath);
     }
 
