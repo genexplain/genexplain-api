@@ -79,6 +79,7 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
     
     private JsonObject config;
     private Logger     logger;
+    private GxJsonExecutor executor;
     
     public RegulatorSearch() {
         logger = LoggerFactory.getLogger(this.getClass());
@@ -94,6 +95,14 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
         execute();
     }
     
+    public GxJsonExecutor getExecutor() {
+        return executor;
+    }
+
+    public void setExecutor(GxJsonExecutor executor) {
+        this.executor = executor;
+    }
+
     public RegulatorSearch execute() throws Exception {
         return execute(config);
     }
@@ -104,7 +113,8 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
             System.out.println(execParams.toString());
             return this;
         }
-        GxJsonExecutor executor = new GxJsonExecutor();
+        if (executor == null)
+            executor = new GxJsonExecutor();
         executor.run((GxJsonExecutorParameters)new GxJsonExecutorParameters().setConfig(execParams));
         return this;
     }
@@ -214,7 +224,7 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
             });
         }
         if (config.get(JsonProperty.REMOVE_NODES.get()) != null) {
-            JsonArray rns = config.get(JsonProperty.CONTEXTS.get()).asArray();
+            JsonArray rns = config.get(JsonProperty.REMOVE_NODES.get()).asArray();
             rns.forEach(t -> {
                 JsonArray ja = new JsonArray();
                 ja.add(new JsonObject().add("name", "decoratorName").add("value", "Remove nodes"));
@@ -253,6 +263,11 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
             }
         }
     }
+    
+    /**
+     * Returns the current configuration object.
+     */
+    public JsonObject getConfig() { return config; }
     
     /**
      * Sets the configuration object.
