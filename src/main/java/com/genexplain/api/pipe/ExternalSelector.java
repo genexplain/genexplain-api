@@ -86,6 +86,8 @@ public class ExternalSelector implements BranchSelector {
         is.close();
         if (prc.exitValue() != 0) {
             throw new RuntimeException("An error occurred when trying to execute: " + args);
+        } else if (prc.isAlive()) {
+            prc.destroy();
         }
         GxUtil.showMessage(params.isVerbose(), "Selected task: " + nextTask, logger, GxUtil.LogLevel.INFO);
         return task.get(nextTask);
