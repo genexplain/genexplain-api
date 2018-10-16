@@ -42,6 +42,9 @@ public class ExternalSelectorTest {
     }
     
     /*
+     * This test is currently skipped, because it passes when building locally but fails
+     * in Travis CI. TODO: Looking for a better possibility.
+     * 
     @Test
     public void canSelectByExternalTool() throws Exception {
         if (System.getProperty("os.name").contains("inux") || System.getProperty("os.name").contains("nix")) {
