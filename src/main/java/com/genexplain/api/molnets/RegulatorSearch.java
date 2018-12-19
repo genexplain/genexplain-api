@@ -19,6 +19,7 @@ package com.genexplain.api.molnets;
 
 import java.io.FileInputStream;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,6 +35,7 @@ import com.genexplain.base.JsonConfigurable;
 public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
     
     public static final String REGULATOR_SEARCH_TOOL = "Regulator search";
+    public static final String EFFECTOR_SEARCH_TOOL  = "Effector search";
     /**
      * Names of JSON properties that are used in the config
      * 
@@ -41,6 +43,7 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
      *
      */
     public enum JsonProperty {
+        SEARCH_EFFECTORS("searchEffectors"),
         SOURCE_PATH("sourcePath"),
         WEIGHT_COLUMN("weightColumn"),
         LIMIT_INPUT("isInputSizeLimited"),
@@ -61,6 +64,7 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
         REMOVE_NODES_TABLE("inputTable"),
         WITH_ISOFORMS("isoformFactor"),
         OUTPUT("outputTable"),
+        JUST_PRINT("justPrint"),
         WAIT("wait"),
         PROGRESS("progress");
         
@@ -109,8 +113,8 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
     
     public RegulatorSearch execute(JsonObject config) throws Exception {
         JsonObject execParams = makeExecutable(config);
-        if (config.getBoolean("justPrint", false)) {
-            System.out.println(execParams.toString());
+        if (config.getBoolean(JsonProperty.JUST_PRINT.get(), false)) {
+            System.out.println(new JSONObject(execParams.toString()).toString(4));
             return this;
         }
         if (executor == null)
@@ -123,7 +127,7 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
         JsonArray params = getSearchParameters(config);
         JsonObject execParams = new JsonObject();
         JsonObject regTask = new JsonObject().add("do", "analyze")
-                .add("method", REGULATOR_SEARCH_TOOL)
+                .add("method", getSearchType(config))
                 .add("workflow", false);
         regTask.add("parameters", params);
         if (config.get(JsonProperty.WAIT.get()) != null) {
@@ -262,6 +266,13 @@ public class RegulatorSearch implements ApplicationCommand, JsonConfigurable {
                 break;
             }
         }
+    }
+    
+    private String getSearchType(JsonObject config) {
+        if (config.getBoolean(JsonProperty.SEARCH_EFFECTORS.get(), false)) {
+            return EFFECTOR_SEARCH_TOOL;
+        }
+        return REGULATOR_SEARCH_TOOL;
     }
     
     /**

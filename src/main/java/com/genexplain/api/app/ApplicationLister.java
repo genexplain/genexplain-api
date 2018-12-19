@@ -75,7 +75,7 @@ public class ApplicationLister implements ApplicationCommand {
         JsonObject apps = client.listApplications();
         if (apps.getInt("type",-1) == 0) {
             apps.get("values").asArray().forEach(app -> {
-                if (config.getBoolean("with-parameters", false)) {
+                if (config.getBoolean("withParameters", false)) {
                     try {
                         getAppParameters(app.asString());
                     } catch (Exception e) {

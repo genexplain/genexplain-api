@@ -178,7 +178,6 @@ public class GxJsonExecutor implements ApplicationCommand {
     public GxJsonExecutor execute(JsonValue taskItem) throws Exception {
         if (taskItem == null)
             throw new NullPointerException("Invalid null pointer for task item");
-        //logger.info("Executing " + taskItem.toString());
         if (taskItem.isArray()) {
             taskItem.asArray().forEach(task -> {
                 try {
@@ -188,28 +187,36 @@ public class GxJsonExecutor implements ApplicationCommand {
                 }
             });
         } else if (taskItem.isObject()) {
-            JsonObject obj = taskItem.asObject();
-            if (obj.get("fromFile") != null) {
-                JsonObject fromFile = obj.get("fromFile").asObject(); 
-                JsonValue fileTasks = Json.parse(new FileReader(fromFile.getString("file", "")));
-                if (fileTasks.isObject()) {
-                    if (fromFile.get("get") != null) {
-                        execute(fileTasks.asObject().get(fromFile.get("get").asString()));
-                    } else if (fromFile.get("task") != null) {
-                        execute(fileTasks.asObject().get(fromFile.get("task").asString()));
-                    } else if (fileTasks.asObject().get(params.getNextTaskItem()) != null) {
-                        execute(fileTasks.asObject().get(params.getNextTaskItem()));
-                    } else {
+            try {
+                JsonObject obj = taskItem.asObject();
+                if (obj.get("fromFile") != null) {
+                    JsonObject fromFile = obj.get("fromFile").asObject();
+                    String filepath = params.replaceStrings(fromFile.getString("file", ""));
+                    JsonValue fileTasks = Json.parse(new FileReader(filepath));
+                    if (fileTasks.isObject()) {
+                        if (fromFile.get("get") != null) {
+                            execute(fileTasks.asObject().get(fromFile.get("get").asString()));
+                        } else if (fromFile.get("task") != null) {
+                            execute(fileTasks.asObject().get(fromFile.get("task").asString()));
+                        } else if (fileTasks.asObject().get(params.getNextTaskItem()) != null) {
+                            execute(fileTasks.asObject().get(params.getNextTaskItem()));
+                        } else {
+                            execute(fileTasks);
+                        }
+                    } else if (fileTasks.isArray()) {
                         execute(fileTasks);
                     }
-                } else if (fileTasks.isArray()) {
-                    execute(fileTasks);
-                }
-            } else if (obj.get("do") != null) {
-                executeTask(obj);
-            } else if (!params.getNextTaskItem().isEmpty() && obj.get(params.getNextTaskItem()) != null) {
-                execute(obj.get(params.getNextTaskItem()));
-            } // Otherwise nothing will be done
+                } else if (obj.get("do") != null) {
+                    executeTask(obj);
+                } else if (obj.get("fromLib") != null) {
+                    execute(params.getTaskLib().get(obj.get("fromLib").asString()));
+                } else if (!params.getNextTaskItem().isEmpty() && obj.get(params.getNextTaskItem()) != null) {
+                    execute(obj.get(params.getNextTaskItem()));
+                } // Otherwise nothing will be done
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw e;
+            }
         }
         return this;
     }
@@ -232,9 +239,11 @@ public class GxJsonExecutor implements ApplicationCommand {
             throw new IllegalArgumentException("Invalid executor name " + et);
         }
         if (et != ExecutorType.setParameters) {
-            task = Json.parse(params.replaceLists(task.toString())).asObject();
             task = Json.parse(params.replaceStrings(task.toString())).asObject();
-            task = Json.parse(params.replaceNums(task.toString())).asObject();
+        }
+        if (params.isVerbose()) {
+            String ts = task.toString();
+            logger.info("Executing task: " + ts.substring(0, Math.min(100, ts.length())));
         }
         return executors.get(et).apply(task);
     }
@@ -257,13 +266,12 @@ public class GxJsonExecutor implements ApplicationCommand {
         JsonArray reps = params.getReplaceStrings();
         if (reps == null)
             reps = new JsonArray();
-        logger.info(reps.toString());
         if (conf.get("set") != null) {
             JsonObject set = conf.get("set").asObject();
             reps.forEach(val -> {
                 JsonArray ar = val.asArray();
                 if (set.get(ar.get(0).asString()) != null) {
-                    ar.set(1, set.get(ar.get(0).asString()).asString());
+                    ar.set(1, set.get(ar.get(0).asString()));
                 }
             });
         }

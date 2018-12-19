@@ -21,6 +21,7 @@ public class TaskGivenTableSize implements BranchSelector {
     public enum JsonProperty {
         TEST_TABLE("testTable"),
         MIN_SIZE("minSize"),
+        MAX_SIZE("maxSize"),
         DECIDE_YES("decideYes"),
         DECIDE_NO("decideNo");
         

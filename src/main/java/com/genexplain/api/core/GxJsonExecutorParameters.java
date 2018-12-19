@@ -52,8 +52,7 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
         CONNECTION("connection-class"),
         HTTP_CLIENT("client-class"),
         REPLACE_STRINGS("replaceStrings"),
-        REPLACE_LISTS("replaceLists"), 
-        REPLACE_NUMS("replaceNumbers"),
+        LOAD_TASKS("loadTasks"),
         NEXT_TASK("nextTask");
         
         
@@ -84,8 +83,8 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
     private boolean withoutConnect;
     
     private JsonArray replaceStrings;
-    private JsonArray replaceLists;
-    private JsonArray replaceNums;
+    
+    private JsonObject taskLib;
     
     private String nextTaskItem;
     
@@ -93,51 +92,38 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
         client     = new GxHttpClientImpl();
         connection = new GxHttpConnectionImpl();
         replaceStrings = new JsonArray();
-        replaceLists = new JsonArray();
-        replaceNums = new JsonArray();
         nextTaskItem = "";
         withoutConnect = false;
     }
     
-    public String replaceStrings(String input) {
+    public String replaceStrings(String input) throws Exception {
         String output = input;
         if (replaceStrings != null && replaceStrings.isArray()) {
             JsonArray rep;
+            JsonValue val;
             for (int r = 0;r < replaceStrings.size(); ++r) {
                 rep = replaceStrings.get(r).asArray();
-                output = output.replace(rep.get(0).asString(),
-                        rep.get(1).asString());
+                val = rep.get(1);
+                if (val.isString()) {
+                    output = output.replace(rep.get(0).asString(),
+                            val.asString());
+                } else if (val.isArray()) {
+                    output = output.replace("\"" + rep.get(0).asString() + "\"",
+                            val.asArray().toString());
+                } else if (val.isObject()) {
+                    output = output.replace("\"" + rep.get(0).asString() + "\"",
+                            val.asObject().toString());
+                } else if (val.isBoolean() || val.isNumber()) {
+                    output = output.replace("\"" + rep.get(0).asString() + "\"",
+                            val.toString()).replace(rep.get(0).asString(),
+                            val.toString());
+                } else {
+                    throw new IllegalArgumentException("Unknown type of replacement");
+                }
             }
         }
         return output;
     }
-    
-    public String replaceLists(String input) {
-        String output = input;
-        if (replaceLists != null && replaceLists.isArray()) {
-            JsonObject rep;
-            for (int r = 0;r < replaceLists.size(); ++r) {
-                rep = replaceLists.get(r).asObject();
-                output = output.replace("\"" + rep.get("label").asString() + "\"",
-                        rep.get("replace").asArray().toString());
-            }
-        }
-        return output;
-    }
-    
-    public String replaceNums(String input) {
-        String output = input;
-        if (replaceNums != null && replaceNums.isArray()) {
-            JsonArray rep;
-            for (int r = 0;r < replaceNums.size(); ++r) {
-                rep = replaceNums.get(r).asArray();
-                output = output.replace("\"" + rep.get(0).asString() + "\"",
-                        rep.get(1).toString());
-            }
-        }
-        return output;
-    }
-    
     
     /**
      * Configures connection and client according to
@@ -345,49 +331,30 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
         this.replaceStrings = reps;
         return this;
     }
-    
-    /**
-     * Returns the number/boolean replacement array.
-     * 
-     * @return The array of replacements if defined
-     */
-    public JsonArray getReplaceNums() {
-        return replaceNums;
+        
+    public JsonObject getTaskLib() {
+        return taskLib;
     }
 
-    /**
-     * Sets number or boolean replacements that can be exchanged in task
-     * objects before execution.
-     * 
-     * @param  reps - an array of two-element arrays defining number/boolean replacements
-     * @return This parameter object to enable fluent calls
-     */
-    public GxJsonExecutorParameters setReplaceNums(JsonArray replaceNums) {
-        this.replaceNums = replaceNums;
-        return this;
+    public void setTaskLib(JsonValue taskLib) throws Exception {
+        if (taskLib.isObject()) {
+            this.taskLib = taskLib.asObject();
+        } else if (taskLib.isArray()) {
+            JsonArray T = taskLib.asArray();
+            JsonObject jo = new JsonObject();
+            for (int t = 0;t < T.size();++t) {
+                Json.parse(new FileReader(T.get(t).asString())).asObject().forEach(mem -> {
+                    jo.add(mem.getName(), mem.getValue());
+                });
+            }
+            this.taskLib = jo;
+        } else {
+            throw new IllegalArgumentException("JSON type " + 
+                                               taskLib.getClass().getCanonicalName() + 
+                                               " not supported by task library.");
+        }
     }
 
-    /**
-     * Returns the list replacement array.
-     * 
-     * @return The array of replacements if defined
-     */
-    public JsonArray getReplaceLists() {
-        return replaceLists;
-    }
-    
-    /**
-     * Sets list replacements that can be exchanged in task
-     * objects before execution.
-     * 
-     * @param  reps - an array of two-element arrays defining string-by-list replacements
-     * @return This parameter object to enable fluent calls
-     */
-    public GxJsonExecutorParameters setReplaceLists(JsonArray reps) {
-        this.replaceLists = reps;
-        return this;
-    }
-    
     /**
      * Returns the server used to configure the connection.
      * 
@@ -502,11 +469,8 @@ public class GxJsonExecutorParameters implements JsonConfigurable{
         if (config.get(JsonProperty.REPLACE_STRINGS.get()) != null) {
             setReplaceStrings(config.get(JsonProperty.REPLACE_STRINGS.get()).asArray());
         }
-        if (config.get(JsonProperty.REPLACE_LISTS.get()) != null) {
-            setReplaceLists(config.get(JsonProperty.REPLACE_LISTS.get()).asArray());
-        }
-        if (config.get(JsonProperty.REPLACE_NUMS.get()) != null) {
-            setReplaceNums(config.get(JsonProperty.REPLACE_NUMS.get()).asArray());
+        if (config.get(JsonProperty.LOAD_TASKS.get()) != null) {
+            setTaskLib(config.get(JsonProperty.LOAD_TASKS.get()));
         }
         
         if (config.get(JsonProperty.TASKS.get()) != null) {

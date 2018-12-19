@@ -128,7 +128,7 @@ public class ApplicationListerTest {
                     .add("user", "test-user")
                     .add("password",  "test-password")
                     .add("connection", con)
-                    .add("with-parameters", true)
+                    .add("withParameters", true)
                     .add("client", client);
             ApplicationLister lister = new ApplicationLister();
             lister.setParameters(params.toString());
@@ -176,7 +176,7 @@ public class ApplicationListerTest {
                     .add("user", "test-user")
                     .add("password",  "test-password")
                     .add("connection", con)
-                    .add("with-parameters", true)
+                    .add("withParameters", true)
                     .add("client", client);
             ApplicationLister lister = new ApplicationLister();
             lister.setParameters(params.toString());
@@ -200,7 +200,7 @@ public class ApplicationListerTest {
                 .add("user", "test-user")
                 .add("password",  "test-password")
                 .add("connection", con)
-                .add("with-parameters", true)
+                .add("withParameters", true)
                 .add("client", client);
         ApplicationLister lister = new ApplicationLister();
         lister.setParameters(params.toString());
@@ -230,7 +230,7 @@ public class ApplicationListerTest {
                     .add("user", "test-user")
                     .add("password",  "test-password")
                     .add("connection", con)
-                    .add("with-parameters", true)
+                    .add("withParameters", true)
                     .add("client", client);
             FileWriter fw = new FileWriter(infile);
             fw.write(params.toString());

@@ -63,8 +63,9 @@ jacocoTestReport {
         xml.enabled true
         csv.enabled false
         html.enabled true
-        html.destination "${buildDir}/jacocoHtml"
-        xml.destination "${buildDir}/reports/jacoco/report.xml"
+        //html.destination "${buildDir}/jacocoHtml"
+        //xml.destination "${buildDir}/reports/jacoco/report.xml"
+        //reportsDir = file("$buildDir/reports/jacoco")
     }
     
     afterEvaluate {
@@ -108,9 +109,9 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.10'
-}
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '2.10'
+//}
 
 /*
 uploadArchives {
