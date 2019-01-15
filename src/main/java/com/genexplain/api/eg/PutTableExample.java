@@ -55,4 +55,9 @@ public class PutTableExample extends AbstractAPIExample {
         JsonObject result = client.putTable("data/Projects/Demo project/Data/a_test_table", data, columns);
         logger.info(result.toString());
     }
+
+    @Override
+    void run(String[] args) throws Exception {
+        run();
+    }
 }

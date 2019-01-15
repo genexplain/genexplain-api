@@ -396,8 +396,8 @@ public interface GxHttpClient {
      * @param exporter
      *           Exporter to apply to this download
      *  
-     * @param outfile
-     *           File to export to
+     * @param fs
+     *           {@link java.io.OutputStream OutputStream} to write export
      *           
      * @param params
      *           Any parameters to be provided to the exporter

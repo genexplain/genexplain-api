@@ -32,6 +32,7 @@ import java.util.regex.Pattern;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
@@ -59,6 +60,7 @@ public class GxHttpClientImpl implements GxHttpClient {
     public static final String  PROJECT_NAME_REGEX      = "[a-zA-Z0-9]{3,}[a-zA-Z0-9,\\.\\s\\(\\)\\[\\]\\_-]*";
     public static final Pattern PROJECT_NAME_PATTERN    = Pattern.compile(PROJECT_NAME_REGEX);
     public static final int     NON_JSON_RESPONSE_LIMIT = 10;
+    public static final String  JOB_PREF = "JOBID";
 	
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     
@@ -72,7 +74,6 @@ public class GxHttpClientImpl implements GxHttpClient {
 	
 	private String blockingProcessError = "";
     
-	
 	
 	/**
      * (non-Javadoc)
@@ -407,7 +408,7 @@ public class GxHttpClientImpl implements GxHttpClient {
      */
     private String nextJobId() {
         jobNo++;
-        return "JOBID" + timeFormat.format(new Date()) + String.format("%03d",jobNo);
+        return JOB_PREF + timeFormat.format(new Date()) + String.format("%03d",jobNo);
     }
     
     /**
@@ -497,14 +498,20 @@ public class GxHttpClientImpl implements GxHttpClient {
     @Override
     public JsonObject imPort(String file, String parentPath, String importer, JsonValue params) throws Exception {
         GxUtil.showMessage(verbose, "Importing: " + file + " into " + parentPath + " using " + importer, logger, GxUtil.LogLevel.INFO);
-        String fileId = nextJobId();
+        String fileId = nextJobId().substring(JOB_PREF.length());
         String jobId  = nextJobId();
-        
-        HttpPost   httpPost  = new HttpPost(con.getServer() + con.getBasePath() + Path.UPLOAD.getPath());
+        URIBuilder builder   = new URIBuilder(
+                con.getServer() + 
+                con.getBasePath() + 
+                Path.UPLOAD.getPath());
+        builder.addParameter("fileID", fileId)
+               .addParameter("name", "\"upload" + 
+                                     fileId + "\" id=\"upload" + 
+                                     fileId + "\" enctype=\"multipart/form-data\"");
+        HttpPost   httpPost  = new HttpPost(builder.build());
         FileBody   fileBody  = new FileBody(new File(file));
-        StringBody idPart    = new StringBody(fileId, ContentType.TEXT_PLAIN);
+        
         HttpEntity reqEntity = MultipartEntityBuilder.create()
-                .addPart("fileID",idPart)
                 .addPart("file", fileBody)
                 .build();
         httpPost.setEntity(reqEntity);
@@ -514,14 +521,14 @@ public class GxHttpClientImpl implements GxHttpClient {
         } finally {
             response.close();
         }
+        params = getParameterArray(params);
         Map<String,String> iparams = new HashMap<>();
-        JsonArray ja = getParameterArray(params);
         iparams.put("type", "import");
         iparams.put("de", parentPath);
         iparams.put("fileID", fileId);
         iparams.put("jobID", jobId);
         iparams.put("format", importer);
-        iparams.put("json", ja.toString());
+        iparams.put("json", params.toString());
         return con.queryJSON(con.getBasePath() + Path.IMPORT.getPath(), iparams);
     }
     

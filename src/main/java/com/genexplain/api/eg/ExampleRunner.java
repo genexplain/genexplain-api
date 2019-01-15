@@ -16,6 +16,7 @@
  */
 package com.genexplain.api.eg;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -61,7 +62,7 @@ public class ExampleRunner implements ApplicationCommand {
         if (args[0].equals("list")) {
             listExamples();
         } else {
-            executeExample(args[0]);
+            executeExample(args);
         }
     }
     
@@ -80,14 +81,18 @@ public class ExampleRunner implements ApplicationCommand {
         });
     }
     
-    private void executeExample(String name) throws Exception {
+    private void executeExample(String[] args) throws Exception {
         List<String> examples = GxUtil.scanPackage(new String[] {this.getClass().getPackage().getName()}, filter);
         for (String cls : examples) {
             Class<?> cl = Class.forName(cls);
             GxAPIExample annotation = cl.getAnnotation(GxAPIExample.class);
-            if (annotation.name().equals(name)) {
+            if (annotation.name().equals(args[0])) {
                 Object obj = cl.newInstance();
-                ((AbstractAPIExample) obj).run();
+                if (args.length < 2) {
+                    ((AbstractAPIExample) obj).run();
+                } else {
+                    ((AbstractAPIExample) obj).run(Arrays.copyOfRange(args, 1, args.length));
+                }
                 return;
             }
         }

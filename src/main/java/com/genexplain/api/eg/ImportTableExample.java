@@ -75,4 +75,9 @@ public class ImportTableExample extends AbstractAPIExample {
         new File(localFile).delete();
         logger.info(result.toString());
     }
+
+    @Override
+    void run(String[] args) throws Exception {
+        run();
+    }
 }

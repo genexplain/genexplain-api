@@ -40,4 +40,9 @@ public class GetParametersExample extends AbstractAPIExample {
         JsonObject result = client.getAnalysisParameters("Search for enriched TFBSs (genes)");
         logger.info(result.toString());
     }
+
+    @Override
+    void run(String[] args) throws Exception {
+        run();
+    }
 }

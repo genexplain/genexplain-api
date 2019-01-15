@@ -345,6 +345,7 @@ public class GxHttpConnectionImpl implements GxHttpConnection {
 		params.forEach((key, val) -> {
 			rbuilder.addParameter(key, val);
 		});
+		HttpUriRequest req = rbuilder.build();
 		return httpClient.execute(rbuilder.build());
 	}
     

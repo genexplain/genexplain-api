@@ -39,4 +39,9 @@ public class ListAFolderExample extends AbstractAPIExample {
         JsonObject result = client.list("data/Projects");
         logger.info(result.toString());
     }
+
+    @Override
+    void run(String[] args) throws Exception {
+        run();
+    }
 }

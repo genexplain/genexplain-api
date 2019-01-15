@@ -40,4 +40,9 @@ public class GetTableExample extends AbstractAPIExample {
         logger.info(result.toString());
     }
 
+    @Override
+    void run(String[] args) throws Exception {
+        run();
+    }
+
 }

@@ -280,5 +280,4 @@ public class GxHttpClientStub implements GxHttpClient {
         // TODO Auto-generated method stub
         return null;
     }
-
 }

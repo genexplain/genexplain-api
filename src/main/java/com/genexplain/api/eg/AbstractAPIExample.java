@@ -61,4 +61,12 @@ public abstract class AbstractAPIExample {
         client.setConnection(connection);
         client.setVerbose(true);
     }
+
+    /**
+     * This method is called by {@link com.genexplain.api.eg.ExampleRunner} to
+     * execute the example code with arguments.
+     * 
+     * @throws Exception
+     */
+    abstract void run(String[] args) throws Exception;
 }

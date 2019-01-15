@@ -41,4 +41,9 @@ public class CreateFolderExample extends AbstractAPIExample {
                 "test_folder");
         logger.info(result.toString());
     }
+
+    @Override
+    void run(String[] args) throws Exception {
+        run();
+    }
 }
