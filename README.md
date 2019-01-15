@@ -3,11 +3,11 @@
 
 # genexplain-api #
 
-The [geneXplain](http://genexplain.com) API is a Java programming interface for the [geneXplain platform](http://genexplain.com/genexplain-platform/). The geneXplain platform is an online toolbox and workflow management system for a broad range of bioinformatic and systems biology applications. This API can be used to write Java programs that can invoke functionality of the platform through its web interface, e.g. for import and export of biological data, or to submit and monitor analysis jobs. Furthermore, platform tasks can be specified in [JSON](https://json.org) format and submitted using the executable jar file, enabling pipeline building in various programming languages.
+The [geneXplain](http://genexplain.com) API is a Java programming interface for the [geneXplain platform](http://genexplain.com/genexplain-platform/). The geneXplain platform is an online toolbox and workflow management system for a broad range of bioinformatic and systems biology applications. This API can be used to write Java programs that can invoke functionality of the platform through its web interface, e.g. for import and export of biological data, or to submit and monitor analysis jobs. Furthermore, platform tasks can be specified in [JSON](https://json.org) format and submitted using the executable JAR file. Though not endowed with all possiblities of a programming language, the JSON interface facilitates, among other things, definition of templates, branch points, or nesting of tasks, so that one can build complex workflows from reusable components. It is intended to be applied as part of a dynamic and polyglot analysis environment that utilizes diverse programming languages and resources.
 
 ## Quick start ##
 
-A prerequisite for using the geneXplain platform is a user account which can be created for free [here](http://genexplain.com/genexplain-platform-registration/).
+A first step in using a geneXplain platform service is to sign into an existing user account. A server may offer a demo account to which one can connect through the API by omitting username and password. However, uploaded data or analysis results are accessible to everyone entering the demo workspace. A user account for the geneXplain platform can be created for free [here](http://genexplain.com/genexplain-platform-registration/).
 
 Here is a small example class that logs into the platform and retrieves the list of available analysis applications. Running the example requires three commandline parameters
 
@@ -71,199 +71,18 @@ where the JSON file contains an object with the following properties.
 }
 ```
 
-The *server* property specifies the URL of the platform server to connect to containing protocol
+The *server* property specifies the URL of the platform server to connect to and consists of protocol
 and hostname. The *with-parameters* property is optional. If omitted or set to *false* the app 
 will only produce a list of analysis tools. Otherwise a table with application names, their 
 parameter names and descriptions is printed out.
 
 The result is printed to standard output.
 
-## Executable types ##
+## Example applications
 
-The following task types can be executed through the JSON interface. The config parameters
-are provided as part of the *tasks* array:
+Online manual and tutorials will soon be ready. Furthermore, we have prepared several example applications. Their sources are located in the package `com.genexplain.api.eg`. Furthermore, they can be executed by invoking the JAR with the word _example_ as first argument as shown below. This will print out the list of available examples and a short description.
 
-```JSON
-{
-    "user":      "<user>",
-    "password":  "<password>",
-    "server":    "<server>",
-    "verbose":   true,
-    "reconnect": true,
-    "tasks": [
-       // Tasks to execute
-       // Here one can place a list of task objects described below.
-    ]
-}
-```
-
-**Note** that in the following the parameters *toFile* and *toStdout* are optional.
-
-### list ###
-
-Lists contents of specified folder
-
-Config parameters:
-
-```JSON
-{
-  "do":       "list",
-  "folder":   "<folder path>",
-  "toFile":   "<outfile>",
-  "toStdout": true
-}
-```
-
-### get ###
-
-Gets specified table
-
-Config parameters:
-
-```JSON
-{
-  "do":       "get",
-  "table":    "<table path>",
-  "toFile":   "<outfile>",
-  "toStdout": true
-}
-```
-
-### put ### 
-
-Puts table into specified folder
-
-Config parameters:
-
-
-```JSON
-{
-  "do":       "put",
-  "path":     "<destination folder path>",
-  "table":    [[... column 1 data ...],[... column 2 data ...],...],
-  "file":     "<file with table>",
-  "columns":  [["column 1","Text"],["column 2","Float"],...]
-}
-```
-
-The program will accept either data specified in *table* **or** parsed from the *file*,
-in that order. The *columns* property is not optional. The type of a column must be one
-enumerated in [com.genexplain.api.core.GxColumnDef.ColumnType](https://github.com/genexplain/genexplain-api/blob/master/src/main/java/com/genexplain/api/core/GxColumnDef.java).
-
-### analyze ### 
-
-Calls the analysis method with specified parameters
-
-Config parameters:
-
-```JSON
-{
-  "do":       "analyze",
-  "method":   "<analysis tool or workflow path>",
-  "workflow": true, // whether 'method' is a workflow
-  "wait":     true, // true if program shall wait for analysis to complete
-  "progress": true, // true if progress shall be shown
-  "parameters": {
-      // Parameters required by the method
-  }
-}
-```
-
-### imPort ### 
-
-Import a data file using a dedicated importer
-
-Config parameters:
-
-```JSON
-{
-  "do":       "imPort",
-  "path":     "<folder path>",
-  "file":     "<file path>",
-  "importer": "<exporter>",
-  "parameters": {
-      // Parameters required by the importer
-  }   
-}
-```
-
-### export ### 
-
-Export data using a dedicated exporter
-
-Config parameters:
-
-```JSON
-{
-  "do":       "export",
-  "path":     "<export folder path>",
-  "file":     "<file path>",
-  "exporter": "<exporter>",
-  "parameters": {
-      // Parameters required by the importer
-  }   
-}
-```
-
-### createFolder ### 
-
-Creates a folder
-
-Config parameters:
-
-```JSON
-{
-  "do":   "createFolder",
-  "path": "destination path",
-  "name": "<folder name>"
-}
-```
-
-### itemParameters ### 
-
-Lists parameters for specified application, importer, or exporter
-
-Config parameters:
-
-```JSON
-{
-  "do":   "itemParameters",
-  "type":   "<one of (applications, exporters, importers)>",
-  "name":   "<name of app, exporter, or importer>",
-  "path":   "<path for export or import>", // This is not needed if 'type' is 'application'
-  "toFile": "<outfile>",
-  "toStdout": true
-}
-```
-
-### listItems ### 
-
-Lists available application, importer, or exporter items
-
-Config parameters:
-
-```JSON
-{
-  "do":     "listItems",
-  "type":   "<one of (applications, exporters, importers)>",
-  "toFile": "<outfile>",
-  "toStdout": true
-}
-```
-
-### jobStatus ### 
-
-Gets the status for a job id
-
-
-Config parameters:
-
-```JSON
-{
-  "do":     "jobStatus",
-  "jobId":  "<job id>",
-  "toFile": "<outfile>",
-  "toStdout": true
-}
+```sh
+java -jar genexplain-api-1.0.jar example
 ```
 
