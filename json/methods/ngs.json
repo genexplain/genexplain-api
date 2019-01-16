@@ -1,0 +1,246 @@
+{
+  "Bowtie": {
+    "do": "analyze",
+    "method": "Bowtie",
+    "workflow": false,
+    "wait": "$BOWTIE_WAIT$",
+    "progress": "$BOWTIE_PROGRESS$",
+    "parameters": {
+      "inputSequencesAsTracks": "$BOWTIE_INPUTSEQUENCESASTRACKS$",
+      "inputSequencesAsFiles": "$BOWTIE_INPUTSEQUENCESASFILES$",
+      "species": "$BOWTIE_SPECIES$",
+      "defaultAlignmentParameters": "$BOWTIE_DEFAULTALIGNMENTPARAMETERS$",
+      "outputTrack": "$BOWTIE_OUTPUTTRACK$"
+    }
+  },
+
+  "ChIPseqPeakProfile": {
+    "do": "analyze",
+    "method": "ChIP-seq peak profile",
+    "workflow": false,
+    "wait": "$CHIPSEQ_PEAK_PROFILE_WAIT$",
+    "progress": "$CHIPSEQ_PEAK_PROFILE_PROGRESS$",
+    "parameters": {
+      "peakTrackPath": "$CHIPSEQ_PEAK_PROFILE_PEAKTRACKPATH$",
+      "tagTrackPath": "$CHIPSEQ_PEAK_PROFILE_TAGTRACKPATH$",
+      "fragmentSize": "$CHIPSEQ_PEAK_PROFILE_FRAGMENTSIZE$",
+      "sigma": "$CHIPSEQ_PEAK_PROFILE_SIGMA$",
+      "errorRate": "$CHIPSEQ_PEAK_PROFILE_ERRORRATE$",
+      "profileTrackPath": "$CHIPSEQ_PEAK_PROFILE_PROFILETRACKPATH$"
+    }
+  },
+
+  "ChIPHorde": {
+    "do": "analyze",
+    "method": "ChIPHorde",
+    "workflow": false,
+    "wait": "$CHIPHORDE_WAIT$",
+    "progress": "$CHIPHORDE_PROGRESS$",
+    "parameters": {
+      "inputSequences": "$CHIPHORDE_INPUTSEQUENCES$",
+      "startLength": "$CHIPHORDE_STARTLENGTH$",
+      "stopLength": "$CHIPHORDE_STOPLENGTH$",
+      "nMotifs": "$CHIPHORDE_NMOTIFS$",
+      "mode": "$CHIPHORDE_MODE$",
+      "outputLibrary": "$CHIPHORDE_OUTPUTLIBRARY$",
+      "matrixName": "$CHIPHORDE_MATRIXNAME$"
+    }
+  },
+
+  "ChIPMunk": {
+    "do": "analyze",
+    "method": "ChIPMunk",
+    "workflow": false,
+    "wait": "$CHIPMUNK_WAIT$",
+    "progress": "$CHIPMUNK_PROGRESS$",
+    "parameters": {
+      "inputSequences": "$CHIPMUNK_INPUTSEQUENCES$",
+      "startLength": "$CHIPMUNK_STARTLENGTH$",
+      "stopLength": "$CHIPMUNK_STOPLENGTH$",
+      "outputLibrary": "$CHIPMUNK_OUTPUTLIBRARY$",
+      "matrixName": "$CHIPMUNK_MATRIXNAME$"
+    }
+  },
+
+  "DiChIPHorde": {
+    "do": "analyze",
+    "method": "DiChIPHorde",
+    "workflow": false,
+    "wait": "$DICHIPHORDE_WAIT$",
+    "progress": "$DICHIPHORDE_PROGRESS$",
+    "parameters": {
+      "inputSequences": "$DICHIPHORDE_INPUTSEQUENCES$",
+      "startLength": "$DICHIPHORDE_STARTLENGTH$",
+      "stopLength": "$DICHIPHORDE_STOPLENGTH$",
+      "nMotifs": "$DICHIPHORDE_NMOTIFS$",
+      "mode": "$DICHIPHORDE_MODE$",
+      "outputLibrary": "$DICHIPHORDE_OUTPUTLIBRARY$",
+      "matrixName": "$DICHIPHORDE_MATRIXNAME$"
+    }
+  },
+
+  "DiChIPMunk": {
+    "do": "analyze",
+    "method": "DiChIPMunk",
+    "workflow": false,
+    "wait": "$DICHIPMUNK_WAIT$",
+    "progress": "$DICHIPMUNK_PROGRESS$",
+    "parameters": {
+      "inputSequences": "$DICHIPMUNK_INPUTSEQUENCES$",
+      "startLength": "$DICHIPMUNK_STARTLENGTH$",
+      "stopLength": "$DICHIPMUNK_STOPLENGTH$",
+      "outputLibrary": "$DICHIPMUNK_OUTPUTLIBRARY$",
+      "matrixName": "$DICHIPMUNK_MATRIXNAME$"
+    }
+  },
+
+  "MutationEffect": {
+    "do": "analyze",
+    "method": "Mutation effect",
+    "workflow": false,
+    "wait": "$MUTATION_EFFECT_WAIT$",
+    "progress": "$MUTATION_EFFECT_PROGRESS$",
+    "parameters": {
+      "inputTrack": "$MUTATION_EFFECT_INPUTTRACK$",
+      "genome/dbSelector": "$MUTATION_EFFECT_GENOMEDBSELECTOR$",
+      "outputTrack": "$MUTATION_EFFECT_OUTPUTTRACK$"
+    }
+  },
+
+  "MutationEffectOnSites": {
+    "do": "analyze",
+    "method": "Mutation effect on sites",
+    "workflow": false,
+    "wait": "$MUTATION_EFFECT_ON_SITES_WAIT$",
+    "progress": "$MUTATION_EFFECT_ON_SITES_PROGRESS$",
+    "parameters": {
+      "vcfTrack": "$MUTATION_EFFECT_ON_SITES_VCFTRACK$",
+      "genome/dbSelector": "$MUTATION_EFFECT_ON_SITES_GENOMEDBSELECTOR$",
+      "siteModels": "$MUTATION_EFFECT_ON_SITES_SITEMODELS$",
+      "scoreDiff": "$MUTATION_EFFECT_ON_SITES_SCOREDIFF$",
+      "siteGainTrack": "$MUTATION_EFFECT_ON_SITES_SITEGAINTRACK$",
+      "siteLossTrack": "$MUTATION_EFFECT_ON_SITES_SITELOSSTRACK$",
+      "summaryTable": "$MUTATION_EFFECT_ON_SITES_SUMMARYTABLE$"
+    }
+  },
+
+  "PrepareGTFAnnotation": {
+    "do": "analyze",
+    "method": "Prepare GTF annotation",
+    "workflow": false,
+    "wait": "$PREPARE_GTF_ANNOTATION_WAIT$",
+    "progress": "$PREPARE_GTF_ANNOTATION_PROGRESS$",
+    "parameters": {
+      "ensembl": "$PREPARE_GTF_ANNOTATION_ENSEMBL$",
+      "tssDistance": "$PREPARE_GTF_ANNOTATION_TSSDISTANCE$",
+      "tssGroups": "$PREPARE_GTF_ANNOTATION_TSSGROUPS$",
+      "outputAnnotation": "$PREPARE_GTF_ANNOTATION_OUTPUTANNOTATION$"
+    }
+  },
+
+  "PreprocessRawReads": {
+    "do": "analyze",
+    "method": "Preprocess raw reads",
+    "workflow": false,
+    "wait": "$PREPROCESS_RAW_READS_WAIT$",
+    "progress": "$PREPROCESS_RAW_READS_PROGRESS$",
+    "parameters": {
+      "libraryType": "$PREPROCESS_RAW_READS_LIBRARYTYPE$",
+      "inputType": "$PREPROCESS_RAW_READS_INPUTTYPE$",
+      "singleEndFastq": "$PREPROCESS_RAW_READS_SINGLEENDFASTQ$",
+      "encoding": "$PREPROCESS_RAW_READS_ENCODING$",
+      "taskProcessorsDPS/Cut adapters/enabled": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSENABLED$",
+      "taskProcessorsDPS/Cut adapters/adapters": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERS$",
+      "taskProcessorsDPS/Cut adapters/adapterAlignerName": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERALIGNERNAME$",
+      "taskProcessorsDPS/Cut adapters/adapterAligner/minMatchLength": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERALIGNERMINMATCHLENGTH$",
+      "taskProcessorsDPS/Cut adapters/adapterAligner/errorRate": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERALIGNERERRORRATE$",
+      "taskProcessorsDPS/Cut adapters/adapterAligner/leftMost": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERALIGNERLEFTMOST$",
+      "singleEndFastqOutput": "$PREPROCESS_RAW_READS_SINGLEENDFASTQOUTPUT$"
+    }
+  },
+
+  "ReadCounter": {
+    "do": "analyze",
+    "method": "Read counter",
+    "workflow": false,
+    "wait": "$READ_COUNTER_WAIT$",
+    "progress": "$READ_COUNTER_PROGRESS$",
+    "parameters": {
+      "trackPath": "$READ_COUNTER_TRACKPATH$",
+      "genesTablePath": "$READ_COUNTER_GENESTABLEPATH$",
+      "geneTrack": "$READ_COUNTER_GENETRACK$",
+      "outputTablePath": "$READ_COUNTER_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "RunMACS137OnChiPSeq": {
+    "do": "analyze",
+    "method": "Run MACS 1_3_7 on ChiP-Seq",
+    "workflow": false,
+    "wait": "$RUN_MACS_1_3_7_ON_CHIPSEQ_WAIT$",
+    "progress": "$RUN_MACS_1_3_7_ON_CHIPSEQ_PROGRESS$",
+    "parameters": {
+      "trackPath": "$RUN_MACS_1_3_7_ON_CHIPSEQ_TRACKPATH$",
+      "controlPath": "$RUN_MACS_1_3_7_ON_CHIPSEQ_CONTROLPATH$",
+      "nolambda": "$RUN_MACS_1_3_7_ON_CHIPSEQ_NOLAMBDA$",
+      "lambdaSet/lambda1": "$RUN_MACS_1_3_7_ON_CHIPSEQ_LAMBDASETLAMBDA1$",
+      "lambdaSet/lambda2": "$RUN_MACS_1_3_7_ON_CHIPSEQ_LAMBDASETLAMBDA2$",
+      "lambdaSet/lambda3": "$RUN_MACS_1_3_7_ON_CHIPSEQ_LAMBDASETLAMBDA3$",
+      "nomodel": "$RUN_MACS_1_3_7_ON_CHIPSEQ_NOMODEL$",
+      "shiftsize": "$RUN_MACS_1_3_7_ON_CHIPSEQ_SHIFTSIZE$",
+      "bw": "$RUN_MACS_1_3_7_ON_CHIPSEQ_BW$",
+      "gsize": "$RUN_MACS_1_3_7_ON_CHIPSEQ_GSIZE$",
+      "mfold": "$RUN_MACS_1_3_7_ON_CHIPSEQ_MFOLD$",
+      "tsize": "$RUN_MACS_1_3_7_ON_CHIPSEQ_TSIZE$",
+      "pvalue": "$RUN_MACS_1_3_7_ON_CHIPSEQ_PVALUE$",
+      "futureFDR": "$RUN_MACS_1_3_7_ON_CHIPSEQ_FUTUREFDR$",
+      "outputPath": "$RUN_MACS_1_3_7_ON_CHIPSEQ_OUTPUTPATH$"
+    }
+  },
+
+  "RunMACS140OnChiPSeq": {
+    "do": "analyze",
+    "method": "Run MACS 1_4_0 on ChiP-Seq",
+    "workflow": false,
+    "wait": "$RUN_MACS_1_4_0_ON_CHIPSEQ_WAIT$",
+    "progress": "$RUN_MACS_1_4_0_ON_CHIPSEQ_PROGRESS$",
+    "parameters": {
+      "trackPath": "$RUN_MACS_1_4_0_ON_CHIPSEQ_TRACKPATH$",
+      "controlPath": "$RUN_MACS_1_4_0_ON_CHIPSEQ_CONTROLPATH$",
+      "gsize": "$RUN_MACS_1_4_0_ON_CHIPSEQ_GSIZE$",
+      "bw": "$RUN_MACS_1_4_0_ON_CHIPSEQ_BW$",
+      "pvalue": "$RUN_MACS_1_4_0_ON_CHIPSEQ_PVALUE$",
+      "mfoldLower": "$RUN_MACS_1_4_0_ON_CHIPSEQ_MFOLDLOWER$",
+      "mfoldUpper": "$RUN_MACS_1_4_0_ON_CHIPSEQ_MFOLDUPPER$",
+      "toSmall": "$RUN_MACS_1_4_0_ON_CHIPSEQ_TOSMALL$",
+      "outputPath": "$RUN_MACS_1_4_0_ON_CHIPSEQ_OUTPUTPATH$"
+    }
+  },
+
+  "TrackStatistics": {
+    "do": "analyze",
+    "method": "Track statistics",
+    "workflow": false,
+    "wait": "$TRACK_STATISTICS_WAIT$",
+    "progress": "$TRACK_STATISTICS_PROGRESS$",
+    "parameters": {
+      "source": "$TRACK_STATISTICS_SOURCE$",
+      "track": "$TRACK_STATISTICS_TRACK$",
+      "alignment": "$TRACK_STATISTICS_ALIGNMENT$",
+      "processorsDPS/Basic statistics": "$TRACK_STATISTICS_PROCESSORSDPSBASIC_STATISTICS$",
+      "processorsDPS/Quality per base": "$TRACK_STATISTICS_PROCESSORSDPSQUALITY_PER_BASE$",
+      "processorsDPS/Quality per sequence": "$TRACK_STATISTICS_PROCESSORSDPSQUALITY_PER_SEQUENCE$",
+      "processorsDPS/Nucleotide content per base": "$TRACK_STATISTICS_PROCESSORSDPSNUCLEOTIDE_CONTENT_PER_BASE$",
+      "processorsDPS/GC content per base": "$TRACK_STATISTICS_PROCESSORSDPSGC_CONTENT_PER_BASE$",
+      "processorsDPS/GC content per sequence": "$TRACK_STATISTICS_PROCESSORSDPSGC_CONTENT_PER_SEQUENCE$",
+      "processorsDPS/N content per base": "$TRACK_STATISTICS_PROCESSORSDPSN_CONTENT_PER_BASE$",
+      "processorsDPS/Sequence length distribution": "$TRACK_STATISTICS_PROCESSORSDPSSEQUENCE_LENGTH_DISTRIBUTION$",
+      "processorsDPS/Duplicate sequences": "$TRACK_STATISTICS_PROCESSORSDPSDUPLICATE_SEQUENCES$",
+      "processorsDPS/Overrepresented sequences": "$TRACK_STATISTICS_PROCESSORSDPSOVERREPRESENTED_SEQUENCES$",
+      "processorsDPS/Overrepresented K-mers": "$TRACK_STATISTICS_PROCESSORSDPSOVERREPRESENTED_KMERS$",
+      "processorsDPS/Overrepresented prefixes": "$TRACK_STATISTICS_PROCESSORSDPSOVERREPRESENTED_PREFIXES$",
+      "output": "$TRACK_STATISTICS_OUTPUT$"
+    }
+
+  }
+}

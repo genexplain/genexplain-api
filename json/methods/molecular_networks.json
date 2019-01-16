@@ -1,0 +1,248 @@
+{
+  "AddExpressionValues": {
+    "do": "analyze",
+    "method": "Add expression values",
+    "workflow": false,
+    "wait": "$ADD_EXPRESSION_VALUES_WAIT$",
+    "progress": "$ADD_EXPRESSION_VALUES_PROGRESS$",
+    "parameters": {
+      "inputDiagram": "$ADD_EXPRESSION_VALUES_INPUTDIAGRAM$",
+      "filterProperties/table": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESTABLE$",
+      "filterProperties/useOutsideFill": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESUSEOUTSIDEFILL$",
+      "filterProperties/outsideOptions/columns": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSCOLUMNS$",
+      "filterProperties/outsideOptions/fillWidth": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSFILLWIDTH$",
+      "filterProperties/outsideOptions/min": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSMIN$",
+      "filterProperties/outsideOptions/color1": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSCOLOR1$",
+      "filterProperties/outsideOptions/max": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSMAX$",
+      "filterProperties/outsideOptions/color2": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSCOLOR2$",
+      "filterProperties/outsideOptions/useZeroColor": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSUSEZEROCOLOR$",
+      "filterProperties/outsideOptions/colorZero": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSCOLORZERO$",
+      "filterProperties/outsideOptions/zeroLevel": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSZEROLEVEL$",
+      "filterProperties/useInsideFill": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESUSEINSIDEFILL$",
+      "filterProperties/usePval": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESUSEPVAL$",
+      "filterProperties/useFlux": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESUSEFLUX$",
+      "outputDiagram": "$ADD_EXPRESSION_VALUES_OUTPUTDIAGRAM$"
+    }
+  },
+
+  "AddReactants": {
+    "do": "analyze",
+    "method": "Add reactants",
+    "workflow": false,
+    "wait": "$ADD_REACTANTS_WAIT$",
+    "progress": "$ADD_REACTANTS_PROGRESS$",
+    "parameters": {
+      "inputDiagram": "$ADD_REACTANTS_INPUTDIAGRAM$",
+      "species": "$ADD_REACTANTS_SPECIES$",
+      "bioHub": "$ADD_REACTANTS_BIOHUB$",
+      "outputDiagram": "$ADD_REACTANTS_OUTPUTDIAGRAM$"
+    }
+  },
+
+  "ApplyStateToDiagram": {
+    "do": "analyze",
+    "method": "Apply state to diagram",
+    "workflow": false,
+    "wait": "$APPLY_STATE_TO_DIAGRAM_WAIT$",
+    "progress": "$APPLY_STATE_TO_DIAGRAM_PROGRESS$",
+    "parameters": {
+      "inputDiagramPath": "$APPLY_STATE_TO_DIAGRAM_INPUTDIAGRAMPATH$",
+      "statePath": "$APPLY_STATE_TO_DIAGRAM_STATEPATH$",
+      "newDiagram": "$APPLY_STATE_TO_DIAGRAM_NEWDIAGRAM$",
+      "stateName": "$APPLY_STATE_TO_DIAGRAM_STATENAME$"
+    }
+  },
+
+  "ClusterByPath": {
+    "do": "analyze",
+    "method": "Cluster by path",
+    "workflow": false,
+    "wait": "$CLUSTER_BY_PATH_WAIT$",
+    "progress": "$CLUSTER_BY_PATH_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$CLUSTER_BY_PATH_SOURCEPATH$",
+      "direction": "$CLUSTER_BY_PATH_DIRECTION$",
+      "maxRadius": "$CLUSTER_BY_PATH_MAXRADIUS$",
+      "bioHub": "$CLUSTER_BY_PATH_BIOHUB$",
+      "species": "$CLUSTER_BY_PATH_SPECIES$",
+      "outputPath": "$CLUSTER_BY_PATH_OUTPUTPATH$"
+    }
+  },
+
+  "ClusterByShortestPath": {
+    "do": "analyze",
+    "method": "Cluster by shortest path",
+    "workflow": false,
+    "wait": "$CLUSTER_BY_SHORTEST_PATH_WAIT$",
+    "progress": "$CLUSTER_BY_SHORTEST_PATH_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$CLUSTER_BY_SHORTEST_PATH_SOURCEPATH$",
+      "direction": "$CLUSTER_BY_SHORTEST_PATH_DIRECTION$",
+      "maxRadius": "$CLUSTER_BY_SHORTEST_PATH_MAXRADIUS$",
+      "useFullPath": "$CLUSTER_BY_SHORTEST_PATH_USEFULLPATH$",
+      "bioHub": "$CLUSTER_BY_SHORTEST_PATH_BIOHUB$",
+      "species": "$CLUSTER_BY_SHORTEST_PATH_SPECIES$",
+      "outputPath": "$CLUSTER_BY_SHORTEST_PATH_OUTPUTPATH$"
+    }
+  },
+
+  "EffectorSearch": {
+    "do": "analyze",
+    "method": "Effector search",
+    "workflow": false,
+    "wait": "$EFFECTOR_SEARCH_WAIT$",
+    "progress": "$EFFECTOR_SEARCH_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$EFFECTOR_SEARCH_SOURCEPATH$",
+      "maxRadius": "$EFFECTOR_SEARCH_MAXRADIUS$",
+      "scoreCutoff": "$EFFECTOR_SEARCH_SCORECUTOFF$",
+      "bioHub": "$EFFECTOR_SEARCH_BIOHUB$",
+      "species": "$EFFECTOR_SEARCH_SPECIES$",
+      "calculatingFDR": "$EFFECTOR_SEARCH_CALCULATINGFDR$",
+      "decorators": "$EFFECTOR_SEARCH_DECORATORS$",
+      "outputTable": "$EFFECTOR_SEARCH_OUTPUTTABLE$"
+    }
+  },
+
+  "ExtendNetwork": {
+    "do": "analyze",
+    "method": "Extend network",
+    "workflow": false,
+    "wait": "$EXTEND_NETWORK_WAIT$",
+    "progress": "$EXTEND_NETWORK_PROGRESS$",
+    "parameters": {
+      "inputDiagramPath": "$EXTEND_NETWORK_INPUTDIAGRAMPATH$",
+      "stepNumber": "$EXTEND_NETWORK_STEPNUMBER$",
+      "reactionsOnly": "$EXTEND_NETWORK_REACTIONSONLY$",
+      "outputDiagramPath": "$EXTEND_NETWORK_OUTPUTDIAGRAMPATH$"
+    }
+  },
+
+  "FindLongestConnectedChains": {
+    "do": "analyze",
+    "method": "Find longest connected chains",
+    "workflow": false,
+    "wait": "$FIND_LONGEST_CONNECTED_CHAINS_WAIT$",
+    "progress": "$FIND_LONGEST_CONNECTED_CHAINS_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$FIND_LONGEST_CONNECTED_CHAINS_SOURCEPATH$",
+      "direction": "$FIND_LONGEST_CONNECTED_CHAINS_DIRECTION$",
+      "maxRadius": "$FIND_LONGEST_CONNECTED_CHAINS_MAXRADIUS$",
+      "maxDijkstraDepth": "$FIND_LONGEST_CONNECTED_CHAINS_MAXDIJKSTRADEPTH$",
+      "scoreCutoff": "$FIND_LONGEST_CONNECTED_CHAINS_SCORECUTOFF$",
+      "bioHub": "$FIND_LONGEST_CONNECTED_CHAINS_BIOHUB$",
+      "species": "$FIND_LONGEST_CONNECTED_CHAINS_SPECIES$",
+      "decorators": "$FIND_LONGEST_CONNECTED_CHAINS_DECORATORS$",
+      "outputTable": "$FIND_LONGEST_CONNECTED_CHAINS_OUTPUTTABLE$"
+    }
+  },
+
+  "FindShortestPathBetweenTwoSets": {
+    "do": "analyze",
+    "method": "Find shortest path between two sets",
+    "workflow": false,
+    "wait": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_WAIT$",
+    "progress": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_SOURCEPATH$",
+      "endSet": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_ENDSET$",
+      "direction": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_DIRECTION$",
+      "maxRadius": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_MAXRADIUS$",
+      "bioHub": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_BIOHUB$",
+      "species": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_SPECIES$",
+      "outputPath": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_OUTPUTPATH$"
+    }
+  },
+
+  "JoinDiagrams": {
+    "do": "analyze",
+    "method": "Join diagrams",
+    "workflow": false,
+    "wait": "$JOIN_DIAGRAMS_WAIT$",
+    "progress": "$JOIN_DIAGRAMS_PROGRESS$",
+    "parameters": {
+      "inputDiagrams": "$JOIN_DIAGRAMS_INPUTDIAGRAMS$",
+      "layouterName": "$JOIN_DIAGRAMS_LAYOUTERNAME$",
+      "outputDiagramPath": "$JOIN_DIAGRAMS_OUTPUTDIAGRAMPATH$"
+    }
+  },
+
+  "MatchGenesAndMetabolites": {
+    "do": "analyze",
+    "method": "Match genes and metabolites",
+    "workflow": false,
+    "wait": "$MATCH_GENES_AND_METABOLITES_WAIT$",
+    "progress": "$MATCH_GENES_AND_METABOLITES_PROGRESS$",
+    "parameters": {
+      "sourceTable": "$MATCH_GENES_AND_METABOLITES_SOURCETABLE$",
+      "moduleName": "$MATCH_GENES_AND_METABOLITES_MODULENAME$",
+      "roleFilter": "$MATCH_GENES_AND_METABOLITES_ROLEFILTER$",
+      "strategy": "$MATCH_GENES_AND_METABOLITES_STRATEGY$",
+      "outputTable": "$MATCH_GENES_AND_METABOLITES_OUTPUTTABLE$"
+    }
+  },
+
+  "RegulatorSearch": {
+    "do": "analyze",
+    "method": "Regulator search",
+    "workflow": false,
+    "wait": "$REGULATOR_SEARCH_WAIT$",
+    "progress": "$REGULATOR_SEARCH_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$REGULATOR_SEARCH_SOURCEPATH$",
+      "maxRadius": "$REGULATOR_SEARCH_MAXRADIUS$",
+      "scoreCutoff": "$REGULATOR_SEARCH_SCORECUTOFF$",
+      "bioHub": "$REGULATOR_SEARCH_BIOHUB$",
+      "species": "$REGULATOR_SEARCH_SPECIES$",
+      "calculatingFDR": "$REGULATOR_SEARCH_CALCULATINGFDR$",
+      "decorators": "$REGULATOR_SEARCH_DECORATORS$",
+      "outputTable": "$REGULATOR_SEARCH_OUTPUTTABLE$"
+    }
+  },
+
+  "SaveHits": {
+    "do": "analyze",
+    "method": "Save hits",
+    "workflow": false,
+    "wait": "$SAVE_HITS_WAIT$",
+    "progress": "$SAVE_HITS_PROGRESS$",
+    "parameters": {
+      "knResultPath": "$SAVE_HITS_KNRESULTPATH$",
+      "rankColumn": "$SAVE_HITS_RANKCOLUMN$",
+      "numTopRanking": "$SAVE_HITS_NUMTOPRANKING$",
+      "outputPath": "$SAVE_HITS_OUTPUTPATH$"
+    }
+  },
+
+  "SaveNetwork": {
+    "do": "analyze",
+    "method": "Save network",
+    "workflow": false,
+    "wait": "$SAVE_NETWORK_WAIT$",
+    "progress": "$SAVE_NETWORK_PROGRESS$",
+    "parameters": {
+      "knResultPath": "$SAVE_NETWORK_KNRESULTPATH$",
+      "rankColumn": "$SAVE_NETWORK_RANKCOLUMN$",
+      "numTopRanking": "$SAVE_NETWORK_NUMTOPRANKING$",
+      "outputPath": "$SAVE_NETWORK_OUTPUTPATH$"
+    }
+  },
+
+  "VisualizeResults": {
+    "do": "analyze",
+    "method": "Visualize results",
+    "workflow": false,
+    "wait": "$VISUALIZE_RESULTS_WAIT$",
+    "progress": "$VISUALIZE_RESULTS_PROGRESS$",
+    "parameters": {
+      "knResultPath": "$VISUALIZE_RESULTS_KNRESULTPATH$",
+      "rankColumn": "$VISUALIZE_RESULTS_RANKCOLUMN$",
+      "numTopRanking": "$VISUALIZE_RESULTS_NUMTOPRANKING$",
+      "lowestRanking": "$VISUALIZE_RESULTS_LOWESTRANKING$",
+      "outputPath": "$VISUALIZE_RESULTS_OUTPUTPATH$",
+      "layoutDiagram": "$VISUALIZE_RESULTS_LAYOUTDIAGRAM$",
+      "addParticipants": "$VISUALIZE_RESULTS_ADDPARTICIPANTS$"
+    }
+
+  }
+}

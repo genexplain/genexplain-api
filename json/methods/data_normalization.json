@@ -1,0 +1,119 @@
+{
+  "AffymetrixNormalization": {
+    "do": "analyze",
+    "method": "Affymetrix normalization",
+    "workflow": false,
+    "wait": "$AFFYMETRIX_NORMALIZATION_WAIT$",
+    "progress": "$AFFYMETRIX_NORMALIZATION_PROGRESS$",
+    "parameters": {
+      "celFiles": "$AFFYMETRIX_NORMALIZATION_CELFILES$",
+      "method": "$AFFYMETRIX_NORMALIZATION_METHOD$",
+      "outputLogarithmBase": "$AFFYMETRIX_NORMALIZATION_OUTPUTLOGARITHMBASE$",
+      "outputPath": "$AFFYMETRIX_NORMALIZATION_OUTPUTPATH$"
+    }
+  },
+
+  "AgilentNormalization": {
+    "do": "analyze",
+    "method": "Agilent normalization",
+    "workflow": false,
+    "wait": "$AGILENT_NORMALIZATION_WAIT$",
+    "progress": "$AGILENT_NORMALIZATION_PROGRESS$",
+    "parameters": {
+      "agilentFiles": "$AGILENT_NORMALIZATION_AGILENTFILES$",
+      "outputLogarithmBase": "$AGILENT_NORMALIZATION_OUTPUTLOGARITHMBASE$",
+      "outputPath": "$AGILENT_NORMALIZATION_OUTPUTPATH$"
+    }
+  },
+
+  "DifferentialExpressionWithDESeq": {
+    "do": "analyze",
+    "method": "Differential expression with DESeq",
+    "workflow": false,
+    "wait": "$DIFFERENTIAL_EXPRESSION_WITH_DESEQ_WAIT$",
+    "progress": "$DIFFERENTIAL_EXPRESSION_WITH_DESEQ_PROGRESS$",
+    "parameters": {
+      "deseqVersion": "$DIFFERENTIAL_EXPRESSION_WITH_DESEQ_DESEQVERSION$",
+      "experimentGroup/tablePath": "$DIFFERENTIAL_EXPRESSION_WITH_DESEQ_EXPERIMENTGROUPTABLEPATH$",
+      "experimentGroup/columns": "$DIFFERENTIAL_EXPRESSION_WITH_DESEQ_EXPERIMENTGROUPCOLUMNS$",
+      "controlGroup/tablePath": "$DIFFERENTIAL_EXPRESSION_WITH_DESEQ_CONTROLGROUPTABLEPATH$",
+      "controlGroup/columns": "$DIFFERENTIAL_EXPRESSION_WITH_DESEQ_CONTROLGROUPCOLUMNS$",
+      "testsTable": "$DIFFERENTIAL_EXPRESSION_WITH_DESEQ_TESTSTABLE$"
+    }
+  },
+
+  "IlluminaNormalization": {
+    "do": "analyze",
+    "method": "Illumina normalization",
+    "workflow": false,
+    "wait": "$ILLUMINA_NORMALIZATION_WAIT$",
+    "progress": "$ILLUMINA_NORMALIZATION_PROGRESS$",
+    "parameters": {
+      "illuminaFiles": "$ILLUMINA_NORMALIZATION_ILLUMINAFILES$",
+      "outputLogarithmBase": "$ILLUMINA_NORMALIZATION_OUTPUTLOGARITHMBASE$",
+      "outputPath": "$ILLUMINA_NORMALIZATION_OUTPUTPATH$"
+    }
+  },
+
+  "NormalizationQualityPlots": {
+    "do": "analyze",
+    "method": "Normalization quality plots",
+    "workflow": false,
+    "wait": "$NORMALIZATION_QUALITY_PLOTS_WAIT$",
+    "progress": "$NORMALIZATION_QUALITY_PLOTS_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$NORMALIZATION_QUALITY_PLOTS_INPUTTABLEPATH$",
+      "columnSet": "$NORMALIZATION_QUALITY_PLOTS_COLUMNSET$",
+      "inputLogarithmBase": "$NORMALIZATION_QUALITY_PLOTS_INPUTLOGARITHMBASE$",
+      "outputFolderPath": "$NORMALIZATION_QUALITY_PLOTS_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "NormalizeAffymetrixExperimentAndControl": {
+    "do": "analyze",
+    "method": "Normalize Affymetrix experiment and control",
+    "workflow": false,
+    "wait": "$NORMALIZE_AFFYMETRIX_EXPERIMENT_AND_CONTROL_WAIT$",
+    "progress": "$NORMALIZE_AFFYMETRIX_EXPERIMENT_AND_CONTROL_PROGRESS$",
+    "parameters": {
+      "celFiles": "$NORMALIZE_AFFYMETRIX_EXPERIMENT_AND_CONTROL_CELFILES$",
+      "controlFiles": "$NORMALIZE_AFFYMETRIX_EXPERIMENT_AND_CONTROL_CONTROLFILES$",
+      "method": "$NORMALIZE_AFFYMETRIX_EXPERIMENT_AND_CONTROL_METHOD$",
+      "outputLogarithmBase": "$NORMALIZE_AFFYMETRIX_EXPERIMENT_AND_CONTROL_OUTPUTLOGARITHMBASE$",
+      "outputPath": "$NORMALIZE_AFFYMETRIX_EXPERIMENT_AND_CONTROL_OUTPUTPATH$",
+      "controlOutputPath": "$NORMALIZE_AFFYMETRIX_EXPERIMENT_AND_CONTROL_CONTROLOUTPUTPATH$"
+    }
+  },
+
+  "NormalizeAgilentExperimentAndControl": {
+    "do": "analyze",
+    "method": "Normalize Agilent experiment and control",
+    "workflow": false,
+    "wait": "$NORMALIZE_AGILENT_EXPERIMENT_AND_CONTROL_WAIT$",
+    "progress": "$NORMALIZE_AGILENT_EXPERIMENT_AND_CONTROL_PROGRESS$",
+    "parameters": {
+      "agilentFiles": "$NORMALIZE_AGILENT_EXPERIMENT_AND_CONTROL_AGILENTFILES$",
+      "controlFiles": "$NORMALIZE_AGILENT_EXPERIMENT_AND_CONTROL_CONTROLFILES$",
+      "dualChannel": "$NORMALIZE_AGILENT_EXPERIMENT_AND_CONTROL_DUALCHANNEL$",
+      "outputLogarithmBase": "$NORMALIZE_AGILENT_EXPERIMENT_AND_CONTROL_OUTPUTLOGARITHMBASE$",
+      "outputPath": "$NORMALIZE_AGILENT_EXPERIMENT_AND_CONTROL_OUTPUTPATH$",
+      "controlOutputPath": "$NORMALIZE_AGILENT_EXPERIMENT_AND_CONTROL_CONTROLOUTPUTPATH$"
+    }
+  },
+
+  "NormalizeIlluminaExperimentAndControl": {
+    "do": "analyze",
+    "method": "Normalize Illumina experiment and control",
+    "workflow": false,
+    "wait": "$NORMALIZE_ILLUMINA_EXPERIMENT_AND_CONTROL_WAIT$",
+    "progress": "$NORMALIZE_ILLUMINA_EXPERIMENT_AND_CONTROL_PROGRESS$",
+    "parameters": {
+      "illuminaFiles": "$NORMALIZE_ILLUMINA_EXPERIMENT_AND_CONTROL_ILLUMINAFILES$",
+      "controlFiles": "$NORMALIZE_ILLUMINA_EXPERIMENT_AND_CONTROL_CONTROLFILES$",
+      "outputLogarithmBase": "$NORMALIZE_ILLUMINA_EXPERIMENT_AND_CONTROL_OUTPUTLOGARITHMBASE$",
+      "outputPath": "$NORMALIZE_ILLUMINA_EXPERIMENT_AND_CONTROL_OUTPUTPATH$",
+      "controlOutputPath": "$NORMALIZE_ILLUMINA_EXPERIMENT_AND_CONTROL_CONTROLOUTPUTPATH$"
+    }
+
+  }
+}

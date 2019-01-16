@@ -1,0 +1,281 @@
+{
+  "AffymetrixCELFileCel": {
+    "do": "analyze",
+    "method": "Affymetrix CEL file (*.cel)",
+    "workflow": false,
+    "wait": "$AFFYMETRIX_CEL_FILE_CEL_WAIT$",
+    "progress": "$AFFYMETRIX_CEL_FILE_CEL_PROGRESS$",
+    "parameters": {
+      "file": "$AFFYMETRIX_CEL_FILE_CEL_FILE$",
+      "resultPath": "$AFFYMETRIX_CEL_FILE_CEL_RESULTPATH$",
+      "properties/preserveExtension": "$AFFYMETRIX_CEL_FILE_CEL_PROPERTIESPRESERVEEXTENSION$"
+    }
+  },
+
+  "AgilentMicroarrayFileTxt": {
+    "do": "analyze",
+    "method": "Agilent microarray file (*.txt)",
+    "workflow": false,
+    "wait": "$AGILENT_MICROARRAY_FILE_TXT_WAIT$",
+    "progress": "$AGILENT_MICROARRAY_FILE_TXT_PROGRESS$",
+    "parameters": {
+      "file": "$AGILENT_MICROARRAY_FILE_TXT_FILE$",
+      "resultPath": "$AGILENT_MICROARRAY_FILE_TXT_RESULTPATH$",
+      "properties/preserveExtension": "$AGILENT_MICROARRAY_FILE_TXT_PROPERTIESPRESERVEEXTENSION$"
+    }
+  },
+
+  "BEDFormatBed": {
+    "do": "analyze",
+    "method": "BED format (*.bed)",
+    "workflow": false,
+    "wait": "$BED_FORMAT_BED_WAIT$",
+    "progress": "$BED_FORMAT_BED_PROGRESS$",
+    "parameters": {
+      "file": "$BED_FORMAT_BED_FILE$",
+      "resultPath": "$BED_FORMAT_BED_RESULTPATH$",
+      "properties/dbSelector": "$BED_FORMAT_BED_PROPERTIESDBSELECTOR$",
+      "properties/genomeId": "$BED_FORMAT_BED_PROPERTIESGENOMEID$"
+    }
+  },
+
+  "BioUMLFormatdml": {
+    "do": "analyze",
+    "method": "BioUML format(*.dml)",
+    "workflow": false,
+    "wait": "$BIOUML_FORMATDML_WAIT$",
+    "progress": "$BIOUML_FORMATDML_PROGRESS$",
+    "parameters": {
+      "file": "$BIOUML_FORMATDML_FILE$",
+      "resultPath": "$BIOUML_FORMATDML_RESULTPATH$"
+    }
+  },
+
+  "CellML": {
+    "do": "analyze",
+    "method": "CellML",
+    "workflow": false,
+    "wait": "$CELLML_WAIT$",
+    "progress": "$CELLML_PROGRESS$",
+    "parameters": {
+      "file": "$CELLML_FILE$",
+      "resultPath": "$CELLML_RESULTPATH$"
+    }
+  },
+
+  "EMBLFormatEmbl": {
+    "do": "analyze",
+    "method": "EMBL format (*.embl)",
+    "workflow": false,
+    "wait": "$EMBL_FORMAT_EMBL_WAIT$",
+    "progress": "$EMBL_FORMAT_EMBL_PROGRESS$",
+    "parameters": {
+      "file": "$EMBL_FORMAT_EMBL_FILE$",
+      "resultPath": "$EMBL_FORMAT_EMBL_RESULTPATH$"
+    }
+  },
+
+  "FastaFormatFasta": {
+    "do": "analyze",
+    "method": "Fasta format (*.fasta)",
+    "workflow": false,
+    "wait": "$FASTA_FORMAT_FASTA_WAIT$",
+    "progress": "$FASTA_FORMAT_FASTA_PROGRESS$",
+    "parameters": {
+      "file": "$FASTA_FORMAT_FASTA_FILE$",
+      "resultPath": "$FASTA_FORMAT_FASTA_RESULTPATH$"
+    }
+  },
+
+  "GenBankFormatGb": {
+    "do": "analyze",
+    "method": "GenBank format (*.gb)",
+    "workflow": false,
+    "wait": "$GENBANK_FORMAT_GB_WAIT$",
+    "progress": "$GENBANK_FORMAT_GB_PROGRESS$",
+    "parameters": {
+      "file": "$GENBANK_FORMAT_GB_FILE$",
+      "resultPath": "$GENBANK_FORMAT_GB_RESULTPATH$"
+    }
+  },
+
+  "GeneralFeatureFormatGff": {
+    "do": "analyze",
+    "method": "General Feature Format (*.gff)",
+    "workflow": false,
+    "wait": "$GENERAL_FEATURE_FORMAT_GFF_WAIT$",
+    "progress": "$GENERAL_FEATURE_FORMAT_GFF_PROGRESS$",
+    "parameters": {
+      "file": "$GENERAL_FEATURE_FORMAT_GFF_FILE$",
+      "resultPath": "$GENERAL_FEATURE_FORMAT_GFF_RESULTPATH$",
+      "properties/dbSelector": "$GENERAL_FEATURE_FORMAT_GFF_PROPERTIESDBSELECTOR$",
+      "properties/genomeId": "$GENERAL_FEATURE_FORMAT_GFF_PROPERTIESGENOMEID$"
+    }
+  },
+
+  "GenericFile": {
+    "do": "analyze",
+    "method": "Generic file",
+    "workflow": false,
+    "wait": "$GENERIC_FILE_WAIT$",
+    "progress": "$GENERIC_FILE_PROGRESS$",
+    "parameters": {
+      "file": "$GENERIC_FILE_FILE$",
+      "resultPath": "$GENERIC_FILE_RESULTPATH$",
+      "properties/preserveExtension": "$GENERIC_FILE_PROPERTIESPRESERVEEXTENSION$"
+    }
+  },
+
+  "IlluminaMicroarrayFileTxt": {
+    "do": "analyze",
+    "method": "Illumina microarray file (*.txt)",
+    "workflow": false,
+    "wait": "$ILLUMINA_MICROARRAY_FILE_TXT_WAIT$",
+    "progress": "$ILLUMINA_MICROARRAY_FILE_TXT_PROGRESS$",
+    "parameters": {
+      "file": "$ILLUMINA_MICROARRAY_FILE_TXT_FILE$",
+      "resultPath": "$ILLUMINA_MICROARRAY_FILE_TXT_RESULTPATH$",
+      "properties/preserveExtension": "$ILLUMINA_MICROARRAY_FILE_TXT_PROPERTIESPRESERVEEXTENSION$"
+    }
+  },
+
+  "SBML": {
+    "do": "analyze",
+    "method": "SBML",
+    "workflow": false,
+    "wait": "$SBML_WAIT$",
+    "progress": "$SBML_PROGRESS$",
+    "parameters": {
+      "file": "$SBML_FILE$",
+      "resultPath": "$SBML_RESULTPATH$",
+      "properties/diagramName": "$SBML_PROPERTIESDIAGRAMNAME$",
+      "properties/enableAutoLayout": "$SBML_PROPERTIESENABLEAUTOLAYOUT$"
+    }
+  },
+
+  "SBMLCellDesigner": {
+    "do": "analyze",
+    "method": "SBML(CellDesigner)",
+    "workflow": false,
+    "wait": "$SBMLCELLDESIGNER_WAIT$",
+    "progress": "$SBMLCELLDESIGNER_PROGRESS$",
+    "parameters": {
+      "file": "$SBMLCELLDESIGNER_FILE$",
+      "resultPath": "$SBMLCELLDESIGNER_RESULTPATH$"
+    }
+  },
+
+  "SDFFile": {
+    "do": "analyze",
+    "method": "SDF file",
+    "workflow": false,
+    "wait": "$SDF_FILE_WAIT$",
+    "progress": "$SDF_FILE_PROGRESS$",
+    "parameters": {
+      "file": "$SDF_FILE_FILE$",
+      "resultPath": "$SDF_FILE_RESULTPATH$"
+    }
+  },
+
+  "SEDMLFile": {
+    "do": "analyze",
+    "method": "SED-ML file",
+    "workflow": false,
+    "wait": "$SEDML_FILE_WAIT$",
+    "progress": "$SEDML_FILE_PROGRESS$",
+    "parameters": {
+      "file": "$SEDML_FILE_FILE$",
+      "resultPath": "$SEDML_FILE_RESULTPATH$",
+      "properties/modelCollectionPath": "$SEDML_FILE_PROPERTIESMODELCOLLECTIONPATH$"
+    }
+  },
+
+  "SIF": {
+    "do": "analyze",
+    "method": "SIF",
+    "workflow": false,
+    "wait": "$SIF_WAIT$",
+    "progress": "$SIF_PROGRESS$",
+    "parameters": {
+      "file": "$SIF_FILE$",
+      "resultPath": "$SIF_RESULTPATH$"
+    }
+  },
+
+  "TabularTxtXlsTabEtc": {
+    "do": "analyze",
+    "method": "Tabular (*.txt, *.xls, *.tab, etc.)",
+    "workflow": false,
+    "wait": "$TABULAR_TXT_XLS_TAB_ETC_WAIT$",
+    "progress": "$TABULAR_TXT_XLS_TAB_ETC_PROGRESS$",
+    "parameters": {
+      "file": "$TABULAR_TXT_XLS_TAB_ETC_FILE$",
+      "resultPath": "$TABULAR_TXT_XLS_TAB_ETC_RESULTPATH$",
+      "properties/delimiterType": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESDELIMITERTYPE$",
+      "properties/processQuotes": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESPROCESSQUOTES$",
+      "properties/headerRow": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESHEADERROW$",
+      "properties/dataRow": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESDATAROW$",
+      "properties/commentString": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESCOMMENTSTRING$",
+      "properties/columnForID": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESCOLUMNFORID$",
+      "properties/addSuffix": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESADDSUFFIX$",
+      "properties/tableType": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESTABLETYPE$"
+    }
+  },
+
+  "TextOutputFileGeneratedByRRoutput": {
+    "do": "analyze",
+    "method": "Text output file generated by R (.Routput)",
+    "workflow": false,
+    "wait": "$TEXT_OUTPUT_FILE_GENERATED_BY_R_ROUTPUT_WAIT$",
+    "progress": "$TEXT_OUTPUT_FILE_GENERATED_BY_R_ROUTPUT_PROGRESS$",
+    "parameters": {
+      "file": "$TEXT_OUTPUT_FILE_GENERATED_BY_R_ROUTPUT_FILE$",
+      "resultPath": "$TEXT_OUTPUT_FILE_GENERATED_BY_R_ROUTPUT_RESULTPATH$"
+    }
+  },
+
+  "UploadFromFTP": {
+    "do": "analyze",
+    "method": "Upload from FTP",
+    "workflow": false,
+    "wait": "$UPLOAD_FROM_FTP_WAIT$",
+    "progress": "$UPLOAD_FROM_FTP_PROGRESS$",
+    "parameters": {
+      "fileURL": "$UPLOAD_FROM_FTP_FILEURL$",
+      "resultPath": "$UPLOAD_FROM_FTP_RESULTPATH$",
+      "importFormat": "$UPLOAD_FROM_FTP_IMPORTFORMAT$",
+      "importerProperties/preserveExtension": "$UPLOAD_FROM_FTP_IMPORTERPROPERTIESPRESERVEEXTENSION$"
+    }
+  },
+
+  "WiggleFormatWig": {
+    "do": "analyze",
+    "method": "Wiggle format (*.wig)",
+    "workflow": false,
+    "wait": "$WIGGLE_FORMAT_WIG_WAIT$",
+    "progress": "$WIGGLE_FORMAT_WIG_PROGRESS$",
+    "parameters": {
+      "file": "$WIGGLE_FORMAT_WIG_FILE$",
+      "resultPath": "$WIGGLE_FORMAT_WIG_RESULTPATH$",
+      "properties/dbSelector": "$WIGGLE_FORMAT_WIG_PROPERTIESDBSELECTOR$",
+      "properties/genomeId": "$WIGGLE_FORMAT_WIG_PROPERTIESGENOMEID$"
+    }
+  },
+
+  "ZIParchiveZip": {
+    "do": "analyze",
+    "method": "ZIP-archive (*.zip)",
+    "workflow": false,
+    "wait": "$ZIPARCHIVE_ZIP_WAIT$",
+    "progress": "$ZIPARCHIVE_ZIP_PROGRESS$",
+    "parameters": {
+      "file": "$ZIPARCHIVE_ZIP_FILE$",
+      "resultPath": "$ZIPARCHIVE_ZIP_RESULTPATH$",
+      "properties/cleanupFolder": "$ZIPARCHIVE_ZIP_PROPERTIESCLEANUPFOLDER$",
+      "properties/preserveExtension": "$ZIPARCHIVE_ZIP_PROPERTIESPRESERVEEXTENSION$",
+      "properties/preserveArchiveStructure": "$ZIPARCHIVE_ZIP_PROPERTIESPRESERVEARCHIVESTRUCTURE$",
+      "properties/importFormat": "$ZIPARCHIVE_ZIP_PROPERTIESIMPORTFORMAT$"
+    }
+
+  }
+}

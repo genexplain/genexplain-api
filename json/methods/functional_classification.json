@@ -1,0 +1,88 @@
+{
+  "EnrichmentAnalysis": {
+    "do": "analyze",
+    "method": "Enrichment analysis",
+    "workflow": false,
+    "wait": "$ENRICHMENT_ANALYSIS_WAIT$",
+    "progress": "$ENRICHMENT_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$ENRICHMENT_ANALYSIS_SOURCEPATH$",
+      "species": "$ENRICHMENT_ANALYSIS_SPECIES$",
+      "columnName": "$ENRICHMENT_ANALYSIS_COLUMNNAME$",
+      "bioHub": "$ENRICHMENT_ANALYSIS_BIOHUB$",
+      "minHits": "$ENRICHMENT_ANALYSIS_MINHITS$",
+      "pvalueThreshold": "$ENRICHMENT_ANALYSIS_PVALUETHRESHOLD$",
+      "outputTable": "$ENRICHMENT_ANALYSIS_OUTPUTTABLE$"
+    }
+  },
+
+  "FunctionalClassification": {
+    "do": "analyze",
+    "method": "Functional classification",
+    "workflow": false,
+    "wait": "$FUNCTIONAL_CLASSIFICATION_WAIT$",
+    "progress": "$FUNCTIONAL_CLASSIFICATION_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$FUNCTIONAL_CLASSIFICATION_SOURCEPATH$",
+      "species": "$FUNCTIONAL_CLASSIFICATION_SPECIES$",
+      "bioHub": "$FUNCTIONAL_CLASSIFICATION_BIOHUB$",
+      "minHits": "$FUNCTIONAL_CLASSIFICATION_MINHITS$",
+      "pvalueThreshold": "$FUNCTIONAL_CLASSIFICATION_PVALUETHRESHOLD$",
+      "outputTable": "$FUNCTIONAL_CLASSIFICATION_OUTPUTTABLE$"
+    }
+  },
+
+  "FunctionalClassificationByDiagrams": {
+    "do": "analyze",
+    "method": "Functional classification by diagrams",
+    "workflow": false,
+    "wait": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_WAIT$",
+    "progress": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_SOURCEPATH$",
+      "type": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_TYPE$",
+      "repositoryHubRoot": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_REPOSITORYHUBROOT$",
+      "referenceCollection": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_REFERENCECOLLECTION$",
+      "minHits": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_MINHITS$",
+      "pvalueThreshold": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_PVALUETHRESHOLD$",
+      "outputTable": "$FUNCTIONAL_CLASSIFICATION_BY_DIAGRAMS_OUTPUTTABLE$"
+    }
+  },
+
+  "LRPath": {
+    "do": "analyze",
+    "method": "LRPath",
+    "workflow": false,
+    "wait": "$LRPATH_WAIT$",
+    "progress": "$LRPATH_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$LRPATH_INPUTTABLEPATH$",
+      "species": "$LRPATH_SPECIES$",
+      "bioHub": "$LRPATH_BIOHUB$",
+      "predictorColumn": "$LRPATH_PREDICTORCOLUMN$",
+      "treatAsPvalues": "$LRPATH_TREATASPVALUES$",
+      "significanceColumn": "$LRPATH_SIGNIFICANCECOLUMN$",
+      "significanceCut": "$LRPATH_SIGNIFICANCECUT$",
+      "isLower": "$LRPATH_ISLOWER$",
+      "onlyClassifiedGenes": "$LRPATH_ONLYCLASSIFIEDGENES$",
+      "outputTable": "$LRPATH_OUTPUTTABLE$"
+    }
+  },
+
+  "TreeMapOnFunctionalClassification": {
+    "do": "analyze",
+    "method": "TreeMap on Functional classification",
+    "workflow": false,
+    "wait": "$TREEMAP_ON_FUNCTIONAL_CLASSIFICATION_WAIT$",
+    "progress": "$TREEMAP_ON_FUNCTIONAL_CLASSIFICATION_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$TREEMAP_ON_FUNCTIONAL_CLASSIFICATION_SOURCEPATH$",
+      "species": "$TREEMAP_ON_FUNCTIONAL_CLASSIFICATION_SPECIES$",
+      "pvalueColumn": "$TREEMAP_ON_FUNCTIONAL_CLASSIFICATION_PVALUECOLUMN$",
+      "similarity": "$TREEMAP_ON_FUNCTIONAL_CLASSIFICATION_SIMILARITY$",
+      "displayLimit": "$TREEMAP_ON_FUNCTIONAL_CLASSIFICATION_DISPLAYLIMIT$",
+      "outputPath": "$TREEMAP_ON_FUNCTIONAL_CLASSIFICATION_OUTPUTPATH$"
+    }
+
+  }
+}

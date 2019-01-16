@@ -1,0 +1,49 @@
+{
+  "BuildingFluxBalanceDataTable": {
+    "do": "analyze",
+    "method": "Building Flux Balance DataTable",
+    "workflow": false,
+    "wait": "$BUILDING_FLUX_BALANCE_DATATABLE_WAIT$",
+    "progress": "$BUILDING_FLUX_BALANCE_DATATABLE_PROGRESS$",
+    "parameters": {
+      "diagramPath": "$BUILDING_FLUX_BALANCE_DATATABLE_DIAGRAMPATH$",
+      "fbcResultPath": "$BUILDING_FLUX_BALANCE_DATATABLE_FBCRESULTPATH$",
+      "lowerBoundDefault": "$BUILDING_FLUX_BALANCE_DATATABLE_LOWERBOUNDDEFAULT$",
+      "equalsDefault": "$BUILDING_FLUX_BALANCE_DATATABLE_EQUALSDEFAULT$",
+      "upperBoundDefault": "$BUILDING_FLUX_BALANCE_DATATABLE_UPPERBOUNDDEFAULT$",
+      "fbcObjective": "$BUILDING_FLUX_BALANCE_DATATABLE_FBCOBJECTIVE$"
+    }
+  },
+
+  "FluxBalanceConstraint": {
+    "do": "analyze",
+    "method": "Flux Balance Constraint",
+    "workflow": false,
+    "wait": "$FLUX_BALANCE_CONSTRAINT_WAIT$",
+    "progress": "$FLUX_BALANCE_CONSTRAINT_PROGRESS$",
+    "parameters": {
+      "diagramPath": "$FLUX_BALANCE_CONSTRAINT_DIAGRAMPATH$",
+      "fbcDataTablePath": "$FLUX_BALANCE_CONSTRAINT_FBCDATATABLEPATH$",
+      "fbcResultPath": "$FLUX_BALANCE_CONSTRAINT_FBCRESULTPATH$"
+    }
+  },
+
+  "ScoreBasedFBCTableBuilder": {
+    "do": "analyze",
+    "method": "Score based FBC table builder",
+    "workflow": false,
+    "wait": "$SCORE_BASED_FBC_TABLE_BUILDER_WAIT$",
+    "progress": "$SCORE_BASED_FBC_TABLE_BUILDER_PROGRESS$",
+    "parameters": {
+      "inputDiagram": "$SCORE_BASED_FBC_TABLE_BUILDER_INPUTDIAGRAM$",
+      "inputEnzymes": "$SCORE_BASED_FBC_TABLE_BUILDER_INPUTENZYMES$",
+      "maxColumnName": "$SCORE_BASED_FBC_TABLE_BUILDER_MAXCOLUMNNAME$",
+      "norm": "$SCORE_BASED_FBC_TABLE_BUILDER_NORM$",
+      "scoreColumnName": "$SCORE_BASED_FBC_TABLE_BUILDER_SCORECOLUMNNAME$",
+      "objectiveTable": "$SCORE_BASED_FBC_TABLE_BUILDER_OBJECTIVETABLE$",
+      "objectiveColumnName": "$SCORE_BASED_FBC_TABLE_BUILDER_OBJECTIVECOLUMNNAME$",
+      "outputPath": "$SCORE_BASED_FBC_TABLE_BUILDER_OUTPUTPATH$"
+    }
+
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "SimulationAnalysis": {
+    "do": "analyze",
+    "method": "Simulation analysis",
+    "workflow": false,
+    "wait": "$SIMULATION_ANALYSIS_WAIT$",
+    "progress": "$SIMULATION_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "modelPath": "$SIMULATION_ANALYSIS_MODELPATH$",
+      "simulationEngineName": "$SIMULATION_ANALYSIS_SIMULATIONENGINENAME$",
+      "simulationEngine/": "$SIMULATION_ANALYSIS_SIMULATIONENGINE$",
+      "simulationResultPath": "$SIMULATION_ANALYSIS_SIMULATIONRESULTPATH$"
+    }
+
+  }
+}

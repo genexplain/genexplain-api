@@ -1,0 +1,277 @@
+{
+  "CRCClustering": {
+    "do": "analyze",
+    "method": "CRC clustering",
+    "workflow": false,
+    "wait": "$CRC_CLUSTERING_WAIT$",
+    "progress": "$CRC_CLUSTERING_PROGRESS$",
+    "parameters": {
+      "experimentData/tablePath": "$CRC_CLUSTERING_EXPERIMENTDATATABLEPATH$",
+      "experimentData/columns": "$CRC_CLUSTERING_EXPERIMENTDATACOLUMNS$",
+      "outputTablePath": "$CRC_CLUSTERING_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "CompareAnalysisResults": {
+    "do": "analyze",
+    "method": "Compare analysis results",
+    "workflow": false,
+    "wait": "$COMPARE_ANALYSIS_RESULTS_WAIT$",
+    "progress": "$COMPARE_ANALYSIS_RESULTS_PROGRESS$",
+    "parameters": {
+      "firstTablePath": "$COMPARE_ANALYSIS_RESULTS_FIRSTTABLEPATH$",
+      "firstColumn": "$COMPARE_ANALYSIS_RESULTS_FIRSTCOLUMN$",
+      "secondTablePath": "$COMPARE_ANALYSIS_RESULTS_SECONDTABLEPATH$",
+      "secondColumn": "$COMPARE_ANALYSIS_RESULTS_SECONDCOLUMN$",
+      "outputFolderPath": "$COMPARE_ANALYSIS_RESULTS_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "CorrelationAnalysis": {
+    "do": "analyze",
+    "method": "Correlation Analysis",
+    "workflow": false,
+    "wait": "$CORRELATION_ANALYSIS_WAIT$",
+    "progress": "$CORRELATION_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "experimentData/tablePath": "$CORRELATION_ANALYSIS_EXPERIMENTDATATABLEPATH$",
+      "experimentData/columns": "$CORRELATION_ANALYSIS_EXPERIMENTDATACOLUMNS$",
+      "controlData/tablePath": "$CORRELATION_ANALYSIS_CONTROLDATATABLEPATH$",
+      "controlData/columns": "$CORRELATION_ANALYSIS_CONTROLDATACOLUMNS$",
+      "dataSource": "$CORRELATION_ANALYSIS_DATASOURCE$",
+      "resultType": "$CORRELATION_ANALYSIS_RESULTTYPE$",
+      "correlationType": "$CORRELATION_ANALYSIS_CORRELATIONTYPE$",
+      "pvalue": "$CORRELATION_ANALYSIS_PVALUE$",
+      "fdr": "$CORRELATION_ANALYSIS_FDR$",
+      "outputTablePath": "$CORRELATION_ANALYSIS_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "EBarrays": {
+    "do": "analyze",
+    "method": "EBarrays",
+    "workflow": false,
+    "wait": "$EBARRAYS_WAIT$",
+    "progress": "$EBARRAYS_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$EBARRAYS_INPUTTABLEPATH$",
+      "inputLogarithmBase": "$EBARRAYS_INPUTLOGARITHMBASE$",
+      "firstName": "$EBARRAYS_FIRSTNAME$",
+      "firstColumns": "$EBARRAYS_FIRSTCOLUMNS$",
+      "firstControl": "$EBARRAYS_FIRSTCONTROL$",
+      "secondName": "$EBARRAYS_SECONDNAME$",
+      "secondColumns": "$EBARRAYS_SECONDCOLUMNS$",
+      "secondControl": "$EBARRAYS_SECONDCONTROL$",
+      "outputFolderPath": "$EBARRAYS_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "FoldChangeCalculation": {
+    "do": "analyze",
+    "method": "Fold-Change calculation",
+    "workflow": false,
+    "wait": "$FOLDCHANGE_CALCULATION_WAIT$",
+    "progress": "$FOLDCHANGE_CALCULATION_PROGRESS$",
+    "parameters": {
+      "experimentData/tablePath": "$FOLDCHANGE_CALCULATION_EXPERIMENTDATATABLEPATH$",
+      "experimentData/columns": "$FOLDCHANGE_CALCULATION_EXPERIMENTDATACOLUMNS$",
+      "controlData/tablePath": "$FOLDCHANGE_CALCULATION_CONTROLDATATABLEPATH$",
+      "controlData/columns": "$FOLDCHANGE_CALCULATION_CONTROLDATACOLUMNS$",
+      "type": "$FOLDCHANGE_CALCULATION_TYPE$",
+      "inputLogarithmBase": "$FOLDCHANGE_CALCULATION_INPUTLOGARITHMBASE$",
+      "outputLogarithmBase": "$FOLDCHANGE_CALCULATION_OUTPUTLOGARITHMBASE$",
+      "outputTablePath": "$FOLDCHANGE_CALCULATION_OUTPUTTABLEPATH$",
+      "histogramOutput": "$FOLDCHANGE_CALCULATION_HISTOGRAMOUTPUT$"
+    }
+  },
+
+  "GlycanR": {
+    "do": "analyze",
+    "method": "GlycanR",
+    "workflow": false,
+    "wait": "$GLYCANR_WAIT$",
+    "progress": "$GLYCANR_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$GLYCANR_INPUTTABLEPATH$",
+      "glycanrFunction": "$GLYCANR_GLYCANRFUNCTION$",
+      "groupColumn": "$GLYCANR_GROUPCOLUMN$",
+      "logTransform": "$GLYCANR_LOGTRANSFORM$",
+      "collapse": "$GLYCANR_COLLAPSE$",
+      "outputFolderPath": "$GLYCANR_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "Heatmap": {
+    "do": "analyze",
+    "method": "Heatmap",
+    "workflow": false,
+    "wait": "$HEATMAP_WAIT$",
+    "progress": "$HEATMAP_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$HEATMAP_INPUTTABLEPATH$",
+      "colors": "$HEATMAP_COLORS$",
+      "transform": "$HEATMAP_TRANSFORM$",
+      "scale": "$HEATMAP_SCALE$",
+      "imgFormat": "$HEATMAP_IMGFORMAT$",
+      "width": "$HEATMAP_WIDTH$",
+      "height": "$HEATMAP_HEIGHT$",
+      "resolution": "$HEATMAP_RESOLUTION$",
+      "lhei": "$HEATMAP_LHEI$",
+      "orderRows": "$HEATMAP_ORDERROWS$",
+      "orderCols": "$HEATMAP_ORDERCOLS$",
+      "firstName": "$HEATMAP_FIRSTNAME$",
+      "firstColumns": "$HEATMAP_FIRSTCOLUMNS$",
+      "secondName": "$HEATMAP_SECONDNAME$",
+      "secondColumns": "$HEATMAP_SECONDCOLUMNS$",
+      "outputFolderPath": "$HEATMAP_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "HypergeometricAnalysis": {
+    "do": "analyze",
+    "method": "Hypergeometric analysis",
+    "workflow": false,
+    "wait": "$HYPERGEOMETRIC_ANALYSIS_WAIT$",
+    "progress": "$HYPERGEOMETRIC_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "experimentData/tablePath": "$HYPERGEOMETRIC_ANALYSIS_EXPERIMENTDATATABLEPATH$",
+      "experimentData/columns": "$HYPERGEOMETRIC_ANALYSIS_EXPERIMENTDATACOLUMNS$",
+      "controlData/tablePath": "$HYPERGEOMETRIC_ANALYSIS_CONTROLDATATABLEPATH$",
+      "controlData/columns": "$HYPERGEOMETRIC_ANALYSIS_CONTROLDATACOLUMNS$",
+      "inputLogarithmBase": "$HYPERGEOMETRIC_ANALYSIS_INPUTLOGARITHMBASE$",
+      "isControlAveraged": "$HYPERGEOMETRIC_ANALYSIS_ISCONTROLAVERAGED$",
+      "pvalue": "$HYPERGEOMETRIC_ANALYSIS_PVALUE$",
+      "outputType": "$HYPERGEOMETRIC_ANALYSIS_OUTPUTTYPE$",
+      "fdr": "$HYPERGEOMETRIC_ANALYSIS_FDR$",
+      "outputTablePath": "$HYPERGEOMETRIC_ANALYSIS_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "KmeansClustering": {
+    "do": "analyze",
+    "method": "K-means clustering",
+    "workflow": false,
+    "wait": "$KMEANS_CLUSTERING_WAIT$",
+    "progress": "$KMEANS_CLUSTERING_PROGRESS$",
+    "parameters": {
+      "experimentData/tablePath": "$KMEANS_CLUSTERING_EXPERIMENTDATATABLEPATH$",
+      "experimentData/columns": "$KMEANS_CLUSTERING_EXPERIMENTDATACOLUMNS$",
+      "method": "$KMEANS_CLUSTERING_METHOD$",
+      "clusterCount": "$KMEANS_CLUSTERING_CLUSTERCOUNT$",
+      "outputTablePath": "$KMEANS_CLUSTERING_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "Limma": {
+    "do": "analyze",
+    "method": "Limma",
+    "workflow": false,
+    "wait": "$LIMMA_WAIT$",
+    "progress": "$LIMMA_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$LIMMA_INPUTTABLEPATH$",
+      "inputLogarithmBase": "$LIMMA_INPUTLOGARITHMBASE$",
+      "firstName": "$LIMMA_FIRSTNAME$",
+      "firstColumns": "$LIMMA_FIRSTCOLUMNS$",
+      "secondName": "$LIMMA_SECONDNAME$",
+      "secondColumns": "$LIMMA_SECONDCOLUMNS$",
+      "outputFolderPath": "$LIMMA_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "MetaAnalysis": {
+    "do": "analyze",
+    "method": "Meta analysis",
+    "workflow": false,
+    "wait": "$META_ANALYSIS_WAIT$",
+    "progress": "$META_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "tablePaths": "$META_ANALYSIS_TABLEPATHS$",
+      "outputType": "$META_ANALYSIS_OUTPUTTYPE$",
+      "pvalue": "$META_ANALYSIS_PVALUE$",
+      "fdr": "$META_ANALYSIS_FDR$",
+      "outputTablePath": "$META_ANALYSIS_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "PCA": {
+    "do": "analyze",
+    "method": "PCA",
+    "workflow": false,
+    "wait": "$PCA_WAIT$",
+    "progress": "$PCA_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$PCA_INPUTTABLEPATH$",
+      "firstName": "$PCA_FIRSTNAME$",
+      "firstColumns": "$PCA_FIRSTCOLUMNS$",
+      "secondName": "$PCA_SECONDNAME$",
+      "secondColumns": "$PCA_SECONDCOLUMNS$",
+      "outputFolderPath": "$PCA_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "PolynomialRegressionAnalysis": {
+    "do": "analyze",
+    "method": "Polynomial Regression analysis",
+    "workflow": false,
+    "wait": "$POLYNOMIAL_REGRESSION_ANALYSIS_WAIT$",
+    "progress": "$POLYNOMIAL_REGRESSION_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "experimentData/tablePath": "$POLYNOMIAL_REGRESSION_ANALYSIS_EXPERIMENTDATATABLEPATH$",
+      "experimentData/columns": "$POLYNOMIAL_REGRESSION_ANALYSIS_EXPERIMENTDATACOLUMNS$",
+      "regressionPower": "$POLYNOMIAL_REGRESSION_ANALYSIS_REGRESSIONPOWER$",
+      "pvalue": "$POLYNOMIAL_REGRESSION_ANALYSIS_PVALUE$",
+      "fdr": "$POLYNOMIAL_REGRESSION_ANALYSIS_FDR$",
+      "outputTablePath": "$POLYNOMIAL_REGRESSION_ANALYSIS_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "TableImputation": {
+    "do": "analyze",
+    "method": "Table imputation",
+    "workflow": false,
+    "wait": "$TABLE_IMPUTATION_WAIT$",
+    "progress": "$TABLE_IMPUTATION_PROGRESS$",
+    "parameters": {
+      "inputTable": "$TABLE_IMPUTATION_INPUTTABLE$",
+      "minFiniteCount": "$TABLE_IMPUTATION_MINFINITECOUNT$",
+      "outputTable": "$TABLE_IMPUTATION_OUTPUTTABLE$"
+    }
+  },
+
+  "UpAndDownIdentification": {
+    "do": "analyze",
+    "method": "Up and Down Identification",
+    "workflow": false,
+    "wait": "$UP_AND_DOWN_IDENTIFICATION_WAIT$",
+    "progress": "$UP_AND_DOWN_IDENTIFICATION_PROGRESS$",
+    "parameters": {
+      "experimentData/tablePath": "$UP_AND_DOWN_IDENTIFICATION_EXPERIMENTDATATABLEPATH$",
+      "experimentData/columns": "$UP_AND_DOWN_IDENTIFICATION_EXPERIMENTDATACOLUMNS$",
+      "controlData/tablePath": "$UP_AND_DOWN_IDENTIFICATION_CONTROLDATATABLEPATH$",
+      "controlData/columns": "$UP_AND_DOWN_IDENTIFICATION_CONTROLDATACOLUMNS$",
+      "method": "$UP_AND_DOWN_IDENTIFICATION_METHOD$",
+      "inputLogarithmBase": "$UP_AND_DOWN_IDENTIFICATION_INPUTLOGARITHMBASE$",
+      "outputType": "$UP_AND_DOWN_IDENTIFICATION_OUTPUTTYPE$",
+      "pvalue": "$UP_AND_DOWN_IDENTIFICATION_PVALUE$",
+      "fdr": "$UP_AND_DOWN_IDENTIFICATION_FDR$",
+      "outputTablePath": "$UP_AND_DOWN_IDENTIFICATION_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "VarianceFilter": {
+    "do": "analyze",
+    "method": "Variance filter",
+    "workflow": false,
+    "wait": "$VARIANCE_FILTER_WAIT$",
+    "progress": "$VARIANCE_FILTER_PROGRESS$",
+    "parameters": {
+      "inputPath": "$VARIANCE_FILTER_INPUTPATH$",
+      "dataColumns": "$VARIANCE_FILTER_DATACOLUMNS$",
+      "selectRowNum": "$VARIANCE_FILTER_SELECTROWNUM$",
+      "minimalVarianceRowNum": "$VARIANCE_FILTER_MINIMALVARIANCEROWNUM$",
+      "outputPath": "$VARIANCE_FILTER_OUTPUTPATH$"
+    }
+
+  }
+}
