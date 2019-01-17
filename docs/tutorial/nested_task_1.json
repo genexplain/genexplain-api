@@ -1,0 +1,20 @@
+[
+	{
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "Executing task 1a"]
+	},
+	{
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "Executing task 1b"]
+	},
+	{
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "Executing task 1c"]
+	}
+]

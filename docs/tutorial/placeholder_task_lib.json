@@ -1,0 +1,20 @@
+{
+	"task1": {
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "$FIRST_MESSAGE$"]
+	},
+	"task2": {
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "SECOND_MESSAGE"]
+	},
+	"task3": {
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "third message"]
+	}
+}

@@ -1,0 +1,21 @@
+site_name: 'The geneXplain Java API documentation'
+theme: 'material'
+repo_url: https://github.com/genexplain/genexplain-api
+repo_name: GitHub
+site_description: The geneXplain platform Java API manual
+copyright: '&copy; 2019 geneXplain GmbH, Wolfenbuettel, Germany'
+site_author: pstegma
+extra_javascript: 
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+markdown_extensions:
+    - codehilite:
+        linenums: true
+    - mdx_math
+nav:
+  - Introduction: index.md
+  - Java API: java_api.md
+  - JAR applications and JSON interface:
+    - Introduction: java_json_manual_intro.md
+    - JAR application manuals: json_interface.md
+    - JSON interface Hello world tutorial: json_hello_world.md
+  

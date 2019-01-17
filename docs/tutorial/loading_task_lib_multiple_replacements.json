@@ -1,0 +1,17 @@
+{
+	"withoutConnect": true,
+	"replaceStrings": [
+		["$FIRST_MESSAGE$", "SECOND_MESSAGE"],
+		["SECOND_MESSAGE", "third message"],
+		["third message", "FINALLY"],
+		["FINALLY", "Finally, they are all equal."]
+	],
+	"loadTasks": [
+		"placeholder_task_lib.json"
+	],
+	"tasks": [
+		{ "fromLib": "task1" },
+		{ "fromLib": "task2" },
+		{ "fromLib": "task3" }
+	]
+}

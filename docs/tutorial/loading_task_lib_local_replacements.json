@@ -1,0 +1,39 @@
+{
+	"withoutConnect": true,
+	"replaceStrings": [
+		["$FIRST_MESSAGE$", "SECOND_MESSAGE"],
+		["SECOND_MESSAGE", "third message"],
+		["third message", "FINALLY"],
+		["FINALLY", "Finally, they are all equal."]
+	],
+	"loadTasks": [
+		"placeholder_task_lib.json"
+	],
+	"tasks": [
+		{ "fromLib": "task1" },
+		{ "fromLib": "task2" },
+		{ "fromLib": "task3" },
+		{ 
+			"do": "setParameters",
+			"set": {
+				"$FIRST_MESSAGE$": "Not anymore!",
+				"SECOND_MESSAGE": "What happened?",
+				"FINALLY": "This can be changed again."
+			}
+		},
+		{ "fromLib": "task1" },
+		{ "fromLib": "task2" },
+		{ "fromLib": "task3" },
+		{ 
+			"do": "setParameters",
+			"set": {
+				"$FIRST_MESSAGE$": "SECOND_MESSAGE",
+				"SECOND_MESSAGE": "FINALLY",
+				"FINALLY": "All equal again."
+			}
+		},
+		{ "fromLib": "task1" },
+		{ "fromLib": "task2" },
+		{ "fromLib": "task3" }
+	]
+}

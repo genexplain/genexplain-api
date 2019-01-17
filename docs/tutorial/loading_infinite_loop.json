@@ -1,0 +1,8 @@
+{
+	"withoutConnect": true,
+	"tasks": {
+		"fromFile": {
+			"file": "infinite_loop.json"
+		}
+	}
+}

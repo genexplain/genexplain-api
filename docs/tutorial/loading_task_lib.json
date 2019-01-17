@@ -1,0 +1,11 @@
+{
+	"withoutConnect": true,
+	"loadTasks": [
+		"task_lib.json"
+	],
+	"tasks": [
+		{ "fromLib": "task1" },
+		{ "fromLib": "task2" },
+		{ "fromLib": "task3" }
+	]
+}

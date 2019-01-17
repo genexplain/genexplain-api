@@ -1,0 +1,16 @@
+{
+	"withoutConnect": true,
+	"replaceStrings": [
+		["$FIRST_MESSAGE$", "First task"],
+		["SECOND_MESSAGE", "Second task"],
+		["third message", "Third task"]
+	],
+	"loadTasks": [
+		"placeholder_task_lib.json"
+	],
+	"tasks": [
+		{ "fromLib": "task1" },
+		{ "fromLib": "task2" },
+		{ "fromLib": "task3" }
+	]
+}

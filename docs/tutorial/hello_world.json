@@ -1,0 +1,9 @@
+{
+	"withoutConnect": true,
+	"tasks": {
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "Hello world"]
+	}
+}

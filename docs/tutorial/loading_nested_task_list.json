@@ -1,0 +1,8 @@
+{
+	"withoutConnect": true,
+	"tasks": {
+		"fromFile": {
+			"file": "loadable_nested_task_list.json"
+		}
+	}
+}

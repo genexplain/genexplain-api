@@ -1,0 +1,25 @@
+[
+	{
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "Starting infinite loop period"]
+	},
+	{
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "Middle of infinite loop period"]
+	},
+	{
+		"do": "external",
+		"showOutput": true,
+		"bin": "sh",
+		"params": ["script.sh", "End of infinite loop period"]
+	},
+	{
+		"fromFile": {
+			"file": "infinite_loop.json"
+		}
+	}
+]
