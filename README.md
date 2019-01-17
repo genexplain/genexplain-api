@@ -5,6 +5,10 @@
 
 The [geneXplain](http://genexplain.com) API is a Java programming interface for the [geneXplain platform](http://genexplain.com/genexplain-platform/). The geneXplain platform is an online toolbox and workflow management system for a broad range of bioinformatic and systems biology applications. This API can be used to write Java programs that can invoke functionality of the platform through its web interface, e.g. for import and export of biological data, or to submit and monitor analysis jobs. Furthermore, platform tasks can be specified in [JSON](https://json.org) format and submitted using the executable JAR file. Though not endowed with all possiblities of a programming language, the JSON interface facilitates, among other things, definition of templates, branch points, or nesting of tasks, so that one can build complex workflows from reusable components. It is intended to be applied as part of a dynamic and polyglot analysis environment that utilizes diverse programming languages and resources.
 
+## Documentation ##
+
+A documentation of the API is available on [GitHub Pages](https://genexplain.github.io/genexplain-api/).
+
 ## Quick start ##
 
 A first step in using a geneXplain platform service is to sign into an existing user account. A server may offer a demo account to which one can connect through the API by omitting username and password. However, uploaded data or analysis results are accessible to everyone entering the demo workspace. A user account for the geneXplain platform can be created for free [here](http://genexplain.com/genexplain-platform-registration/).
@@ -80,7 +84,7 @@ The result is printed to standard output.
 
 ## Example applications
 
-Online manual and tutorials will soon be ready. We have prepared several example applications. Their sources are located in the package `com.genexplain.api.eg`. Furthermore, they can be executed by invoking the JAR with the word _example_ as first argument as shown below. This will print out the list of available examples and a short description.
+Besides [online manual and tutorial](https://genexplain.github.io/genexplain-api/), we have prepared several example applications. Their sources are located in the package `com.genexplain.api.eg`. Furthermore, they can be executed by invoking the JAR with the word _example_ as first argument as shown below. This will print out the list of available examples and a short description.
 
 ```sh
 java -jar genexplain-api-1.0.jar example
