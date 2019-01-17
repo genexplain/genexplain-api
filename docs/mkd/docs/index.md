@@ -1,6 +1,6 @@
 # The geneXplain platform Java API
 
-The geneXplain platform is a software that, as a web service, provides a comprehensive environment to analyze biomedical and biological data. Its functionality includes, among other things, data storage, data management, data sharing, running bioinformatics and systems biology analysis tools, building and running analysis pipelines and workflows, building and visualizing molecular network models, or developing quantitative models and simulation.
+The [geneXplain](http://genexplain.com) platform is a software that, as a web service, provides a comprehensive environment to analyze biomedical and biological data. Its functionality includes, among other things, data storage, data management, data sharing, running bioinformatics and systems biology analysis tools, building and running analysis pipelines and workflows, building and visualizing molecular network models, or developing quantitative models and simulation. More details about the platform can be found [here](http://genexplain.com/genexplain-platform/) and in corresponding [research articles](http://genexplain.com/publications/).
 
 This document describes the Java API for the geneXplain platform, which allows operation of platform functionality on a remote server using Java programs. Like user accounts for the platform, the API is freely available at [GitHub](https://github.com/genexplain/genexplain-api).
 
