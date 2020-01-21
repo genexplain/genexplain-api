@@ -55,7 +55,8 @@ task copyJavaDoc(type: Copy, dependsOn: javadoc) {
 
 
 jacoco {
-    toolVersion = "0.7.6+"
+    //toolVersion = "0.7.6+"
+    toolVersion = "0.8.5"
 }
 
 jacocoTestReport {
@@ -63,17 +64,17 @@ jacocoTestReport {
         xml.enabled true
         csv.enabled false
         html.enabled true
-        //html.destination "${buildDir}/jacocoHtml"
+        html.destination file("${buildDir}/jacocoHtml")
         //xml.destination "${buildDir}/reports/jacoco/report.xml"
         //reportsDir = file("$buildDir/reports/jacoco")
     }
     
     afterEvaluate {
-        classDirectories = files(classDirectories.files.collect {
+        classDirectories.setFrom(files(classDirectories.files.collect {
             // Don't unit test the examples
             // Omitting the external selector, because of at least one test failing only in the CI system. 
             fileTree(dir: it, exclude: ['**/com/genexplain/api/eg/**', '**/com/genexplain/api/pipe/ExternalSelector**'])
-        })
+        }))
     }
 }
 
