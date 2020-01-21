@@ -40,22 +40,22 @@ import com.genexplain.api.eg.TfbsAnalysisForFolderExample.Parameter;
  *   <th>Parameter</th><th>Description</th>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">user</td><td>login user (default: empty)</td>
+ *   <td style="font-weight: bold;">user</td><td>Login user (default: empty)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">password</td><td>login password (default: empty)</td>
+ *   <td style="font-weight: bold;">password</td><td>Login password (default: empty)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">server</td><td>server URL, (default: <a href="https://platform.genexplain.com/bioumlweb">https://platform.genexplain.com</a>)</td>
+ *   <td style="font-weight: bold;">server</td><td>Server URL, (default: <a href="https://platform.genexplain.com/bioumlweb">https://platform.genexplain.com</a>)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">zipArchive</td><td>local path of ZIP archive, required, no default</td>
+ *   <td style="font-weight: bold;">zipArchive</td><td>Local path of ZIP archive, required, no default</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">outputFolder</td><td>destination platform folder, required, no default</td>
+ *   <td style="font-weight: bold;">outputFolder</td><td>Destination platform folder, required, no default</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">importParams</td><td>parameters for the file type-specific importer, required, no default</td>
+ *   <td style="font-weight: bold;">importParams</td><td>Parameters for the file type-specific importer, required, no default</td>
  * </tr>
  * </table>
  * 
@@ -88,7 +88,7 @@ public class ZipImportExample extends AbstractAPIExample {
     public static final String CEL_IMPORT_PARAMS = "[\n" + 
             "  {\"name\":\"cleanupFolder\",\"value\":false},\n" + 
             "  {\"name\":\"preserveExtension\",\"value\":false},\n" + 
-            "  {\"name\":\"preserveArchiveStructure\",\"value\":false},\n" + 
+            "  {\"name\":\"preserveArchiveStructure\",\"value\":true},\n" + 
             "  {\"name\":\"importFormat\",\"value\":\"Affymetrix CEL file (*.cel)\"}\n" + 
             "]";
     

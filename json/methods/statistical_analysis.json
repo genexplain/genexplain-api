@@ -58,10 +58,14 @@
       "inputLogarithmBase": "$EBARRAYS_INPUTLOGARITHMBASE$",
       "firstName": "$EBARRAYS_FIRSTNAME$",
       "firstColumns": "$EBARRAYS_FIRSTCOLUMNS$",
-      "firstControl": "$EBARRAYS_FIRSTCONTROL$",
       "secondName": "$EBARRAYS_SECONDNAME$",
       "secondColumns": "$EBARRAYS_SECONDCOLUMNS$",
-      "secondControl": "$EBARRAYS_SECONDCONTROL$",
+	  "thirdName": "$EBARRAYS_THIRDNAME$",
+      "thirdColumns": "$EBARRAYS_THIRDCOLUMNS$",
+      "fourthName": "$EBARRAYS_FOURTHNAME$",
+      "fourthColumns": "$EBARRAYS_FOURTHCOLUMNS$",
+      "fifthName": "$EBARRAYS_FIFTHNAME$",
+      "fifthColumns": "$EBARRAYS_FIFTHCOLUMNS$",
       "outputFolderPath": "$EBARRAYS_OUTPUTFOLDERPATH$"
     }
   },
@@ -175,6 +179,12 @@
       "firstColumns": "$LIMMA_FIRSTCOLUMNS$",
       "secondName": "$LIMMA_SECONDNAME$",
       "secondColumns": "$LIMMA_SECONDCOLUMNS$",
+	  "thirdName": "$LIMMA_THIRDNAME$",
+      "thirdColumns": "$LIMMA_THIRDCOLUMNS$",
+      "fourthName": "$LIMMA_FOURTHNAME$",
+      "fourthColumns": "$LIMMA_FOURTHCOLUMNS$",
+      "fifthName": "$LIMMA_FIFTHNAME$",
+      "fifthColumns": "$LIMMA_FIFTHCOLUMNS$",
       "outputFolderPath": "$LIMMA_OUTPUTFOLDERPATH$"
     }
   },
@@ -206,7 +216,13 @@
       "firstColumns": "$PCA_FIRSTCOLUMNS$",
       "secondName": "$PCA_SECONDNAME$",
       "secondColumns": "$PCA_SECONDCOLUMNS$",
-      "outputFolderPath": "$PCA_OUTPUTFOLDERPATH$"
+	  "thirdName": "$PCA_THIRDNAME$",
+      "thirdColumns": "$PCA_THIRDCOLUMNS$",
+      "fourthName": "$PCA_FOURTHNAME$",
+      "fourthColumns": "$PCA_FOURTHCOLUMNS$",
+      "fifthName": "$PCA_FIFTHNAME$",
+      "fifthColumns": "$PCA_FIFTHCOLUMNS$",
+	  "outputFolderPath": "$PCA_OUTPUTFOLDERPATH$"
     }
   },
 

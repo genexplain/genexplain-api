@@ -42,52 +42,49 @@ import com.genexplain.api.core.GxHttpConnectionImpl;
  *   <th>Parameter</th><th>Description</th>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">user</td><td>login user (default: empty)</td>
+ *   <td style="font-weight: bold;">user</td><td>Login user (default: empty)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">password</td><td>login password (default: empty)</td>
+ *   <td style="font-weight: bold;">password</td><td>Login password (default: empty)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">server</td><td>server URL, (default: <a href="https://platform.genexplain.com/bioumlweb">https://platform.genexplain.com</a>)</td>
+ *   <td style="font-weight: bold;">server</td><td>Server URL, (default: <a href="https://platform.genexplain.com/bioumlweb">https://platform.genexplain.com</a>)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">species</td><td>species to specify for import (default: Human (Homo sapiens)</td>
+ *   <td style="font-weight: bold;">inputFolder</td><td>Platform path of input folder, required, no default</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">inputFolder</td><td>platform path of input folder, required, no default</td>
+ *   <td style="font-weight: bold;">inputRegex</td><td>Regular expression to filter folder contents for input files</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">inputRegex</td><td>regular expression to filter folder contents for input files</td>
- * </tr>
- * <tr>
- *   <td style="font-weight: bold;">noSet</td><td>path of NO set, required, no default</td>
+ *   <td style="font-weight: bold;">noSet</td><td>Path of NO set, required, no default</td>
  * </tr>
  * <tr>
  *   <td style="font-weight: bold;">profile</td><td>PWM profile to use</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">species</td><td>species of gene sets in folder (default: Human (Homo sapiens) )</td>
+ *   <td style="font-weight: bold;">species</td><td>Species of gene sets in folder (default: Human (Homo sapiens) )</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">outputFolder</td><td>folder for output (default: input folder)</td>
+ *   <td style="font-weight: bold;">outputFolder</td><td>Folder for output (default: input folder)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">doSample</td><td>true or false to draw subsamples from the NO set (default: false)</td>
+ *   <td style="font-weight: bold;">doSample</td><td>True or false to draw subsamples from the NO set (default: false)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">sampleNum</td><td>number of NO set samples (default: 5)</td>
+ *   <td style="font-weight: bold;">sampleNum</td><td>Number of NO set samples (default: 5)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">sampleSize</td><td>size of NO set samples (default: 1000)</td>
+ *   <td style="font-weight: bold;">sampleSize</td><td>Size of NO set samples (default: 1000)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">siteFeCutoff</td><td>fold enrichment cutoff for sites (default: 1.0)</td>
+ *   <td style="font-weight: bold;">siteFeCutoff</td><td>Fold enrichment cutoff for sites (default: 1.0)</td>
  * </tr>
  * <tr>
  *   <td style="font-weight: bold;">siteFdrCutoff</td><td>FDR cutoff for site enrichment (default: 1.0)</td>
  * </tr>
  * <tr>
- *   <td style="font-weight: bold;">seqFeCutoff</td><td>fold enrichment cutoff for sequences with sites (default: 0.0)</td>
+ *   <td style="font-weight: bold;">seqFeCutoff</td><td>Fold enrichment cutoff for sequences with sites (default: 0.0)</td>
  * </tr>
  * <tr>
  *   <td style="font-weight: bold;">seqFdrCutoff</td><td>FDR cutoff for sequences with sites (default: 1.0)</td>
