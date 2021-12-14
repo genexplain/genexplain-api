@@ -10,6 +10,9 @@
       "inputSequencesAsFiles": "$BOWTIE_INPUTSEQUENCESASFILES$",
       "species": "$BOWTIE_SPECIES$",
       "defaultAlignmentParameters": "$BOWTIE_DEFAULTALIGNMENTPARAMETERS$",
+      "threadCount": "$BOWTIE_THREADCOUNT$",
+      "minimalOutput": "$BOWTIE_MINIMALOUTPUT$",
+      "useSharedMemory": "$BOWTIE_USESHAREDMEMORY$",
       "outputTrack": "$BOWTIE_OUTPUTTRACK$"
     }
   },
@@ -42,6 +45,13 @@
       "stopLength": "$CHIPHORDE_STOPLENGTH$",
       "nMotifs": "$CHIPHORDE_NMOTIFS$",
       "mode": "$CHIPHORDE_MODE$",
+      "threadCount": "$CHIPHORDE_THREADCOUNT$",
+      "stepLimit": "$CHIPHORDE_STEPLIMIT$",
+      "tryLimit": "$CHIPHORDE_TRYLIMIT$",
+      "gcPercent": "$CHIPHORDE_GCPERCENT$",
+      "zoopsFactor": "$CHIPHORDE_ZOOPSFACTOR$",
+      "shape": "$CHIPHORDE_SHAPE$",
+      "useProfiles": "$CHIPHORDE_USEPROFILES$",
       "outputLibrary": "$CHIPHORDE_OUTPUTLIBRARY$",
       "matrixName": "$CHIPHORDE_MATRIXNAME$"
     }
@@ -57,6 +67,13 @@
       "inputSequences": "$CHIPMUNK_INPUTSEQUENCES$",
       "startLength": "$CHIPMUNK_STARTLENGTH$",
       "stopLength": "$CHIPMUNK_STOPLENGTH$",
+      "threadCount": "$CHIPMUNK_THREADCOUNT$",
+      "stepLimit": "$CHIPMUNK_STEPLIMIT$",
+      "tryLimit": "$CHIPMUNK_TRYLIMIT$",
+      "gcPercent": "$CHIPMUNK_GCPERCENT$",
+      "zoopsFactor": "$CHIPMUNK_ZOOPSFACTOR$",
+      "shape": "$CHIPMUNK_SHAPE$",
+      "useProfiles": "$CHIPMUNK_USEPROFILES$",
       "outputLibrary": "$CHIPMUNK_OUTPUTLIBRARY$",
       "matrixName": "$CHIPMUNK_MATRIXNAME$"
     }
@@ -74,6 +91,13 @@
       "stopLength": "$DICHIPHORDE_STOPLENGTH$",
       "nMotifs": "$DICHIPHORDE_NMOTIFS$",
       "mode": "$DICHIPHORDE_MODE$",
+      "threadCount": "$DICHIPHORDE_THREADCOUNT$",
+      "stepLimit": "$DICHIPHORDE_STEPLIMIT$",
+      "tryLimit": "$DICHIPHORDE_TRYLIMIT$",
+      "localBackground": "$DICHIPHORDE_LOCALBACKGROUND$",
+      "zoopsFactor": "$DICHIPHORDE_ZOOPSFACTOR$",
+      "shape": "$DICHIPHORDE_SHAPE$",
+      "useProfiles": "$DICHIPHORDE_USEPROFILES$",
       "outputLibrary": "$DICHIPHORDE_OUTPUTLIBRARY$",
       "matrixName": "$DICHIPHORDE_MATRIXNAME$"
     }
@@ -89,6 +113,13 @@
       "inputSequences": "$DICHIPMUNK_INPUTSEQUENCES$",
       "startLength": "$DICHIPMUNK_STARTLENGTH$",
       "stopLength": "$DICHIPMUNK_STOPLENGTH$",
+      "threadCount": "$DICHIPMUNK_THREADCOUNT$",
+      "stepLimit": "$DICHIPMUNK_STEPLIMIT$",
+      "tryLimit": "$DICHIPMUNK_TRYLIMIT$",
+      "localBackground": "$DICHIPMUNK_LOCALBACKGROUND$",
+      "zoopsFactor": "$DICHIPMUNK_ZOOPSFACTOR$",
+      "shape": "$DICHIPMUNK_SHAPE$",
+      "useProfiles": "$DICHIPMUNK_USEPROFILES$",
       "outputLibrary": "$DICHIPMUNK_OUTPUTLIBRARY$",
       "matrixName": "$DICHIPMUNK_MATRIXNAME$"
     }
@@ -118,9 +149,44 @@
       "genome/dbSelector": "$MUTATION_EFFECT_ON_SITES_GENOMEDBSELECTOR$",
       "siteModels": "$MUTATION_EFFECT_ON_SITES_SITEMODELS$",
       "scoreDiff": "$MUTATION_EFFECT_ON_SITES_SCOREDIFF$",
+      "independentVariations": "$MUTATION_EFFECT_ON_SITES_INDEPENDENTVARIATIONS$",
+      "targetGeneTSSUpstream": "$MUTATION_EFFECT_ON_SITES_TARGETGENETSSUPSTREAM$",
+      "targetGeneTSSDownstream": "$MUTATION_EFFECT_ON_SITES_TARGETGENETSSDOWNSTREAM$",
+      "oneNearestTargetGene": "$MUTATION_EFFECT_ON_SITES_ONENEARESTTARGETGENE$",
+      "outputTable": "$MUTATION_EFFECT_ON_SITES_OUTPUTTABLE$",
       "siteGainTrack": "$MUTATION_EFFECT_ON_SITES_SITEGAINTRACK$",
       "siteLossTrack": "$MUTATION_EFFECT_ON_SITES_SITELOSSTRACK$",
+      "importantMutationsTrack": "$MUTATION_EFFECT_ON_SITES_IMPORTANTMUTATIONSTRACK$",
       "summaryTable": "$MUTATION_EFFECT_ON_SITES_SUMMARYTABLE$"
+    }
+  },
+
+  "MutationEffectOnSitesAdvanced": {
+    "do": "analyze",
+    "method": "Mutation effect on sites advanced",
+    "workflow": false,
+    "wait": "$MUTATION_EFFECT_ON_SITES_ADVANCED_WAIT$",
+    "progress": "$MUTATION_EFFECT_ON_SITES_ADVANCED_PROGRESS$",
+    "parameters": {
+      "vcfTrack": "$MUTATION_EFFECT_ON_SITES_ADVANCED_VCFTRACK$",
+      "genome/dbSelector": "$MUTATION_EFFECT_ON_SITES_ADVANCED_GENOMEDBSELECTOR$",
+      "siteModels": "$MUTATION_EFFECT_ON_SITES_ADVANCED_SITEMODELS$",
+      "scoreDiff": "$MUTATION_EFFECT_ON_SITES_ADVANCED_SCOREDIFF$",
+      "independentVariations": "$MUTATION_EFFECT_ON_SITES_ADVANCED_INDEPENDENTVARIATIONS$",
+      "targetGeneTSSUpstream": "$MUTATION_EFFECT_ON_SITES_ADVANCED_TARGETGENETSSUPSTREAM$",
+      "targetGeneTSSDownstream": "$MUTATION_EFFECT_ON_SITES_ADVANCED_TARGETGENETSSDOWNSTREAM$",
+      "oneNearestTargetGene": "$MUTATION_EFFECT_ON_SITES_ADVANCED_ONENEARESTTARGETGENE$",
+      "tfClassDepth": "$MUTATION_EFFECT_ON_SITES_ADVANCED_TFCLASSDEPTH$",
+      "addTranspathAnnotation": "$MUTATION_EFFECT_ON_SITES_ADVANCED_ADDTRANSPATHANNOTATION$",
+      "transpathHub": "$MUTATION_EFFECT_ON_SITES_ADVANCED_TRANSPATHHUB$",
+      "addPsdAnnotation": "$MUTATION_EFFECT_ON_SITES_ADVANCED_ADDPSDANNOTATION$",
+      "psdHub": "$MUTATION_EFFECT_ON_SITES_ADVANCED_PSDHUB$",
+      "outputTable": "$MUTATION_EFFECT_ON_SITES_ADVANCED_OUTPUTTABLE$",
+      "siteGainTrack": "$MUTATION_EFFECT_ON_SITES_ADVANCED_SITEGAINTRACK$",
+      "siteLossTrack": "$MUTATION_EFFECT_ON_SITES_ADVANCED_SITELOSSTRACK$",
+      "importantMutationsTrack": "$MUTATION_EFFECT_ON_SITES_ADVANCED_IMPORTANTMUTATIONSTRACK$",
+      "summaryTable": "$MUTATION_EFFECT_ON_SITES_ADVANCED_SUMMARYTABLE$",
+      "selectedGTRDPeaks": "$MUTATION_EFFECT_ON_SITES_ADVANCED_SELECTEDGTRDPEAKS$"
     }
   },
 
@@ -149,12 +215,24 @@
       "inputType": "$PREPROCESS_RAW_READS_INPUTTYPE$",
       "singleEndFastq": "$PREPROCESS_RAW_READS_SINGLEENDFASTQ$",
       "encoding": "$PREPROCESS_RAW_READS_ENCODING$",
+      "taskProcessorsDPS/Trim low quality/enabled": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSTRIM_LOW_QUALITYENABLED$",
+      "taskProcessorsDPS/Trim low quality/phredQualityThreashold": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSTRIM_LOW_QUALITYPHREDQUALITYTHREASHOLD$",
+      "taskProcessorsDPS/Trim low quality/from3PrimeEnd": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSTRIM_LOW_QUALITYFROM3PRIMEEND$",
+      "taskProcessorsDPS/Trim low quality/from5PrimeEnd": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSTRIM_LOW_QUALITYFROM5PRIMEEND$",
       "taskProcessorsDPS/Cut adapters/enabled": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSENABLED$",
       "taskProcessorsDPS/Cut adapters/adapters": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERS$",
       "taskProcessorsDPS/Cut adapters/adapterAlignerName": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERALIGNERNAME$",
       "taskProcessorsDPS/Cut adapters/adapterAligner/minMatchLength": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERALIGNERMINMATCHLENGTH$",
       "taskProcessorsDPS/Cut adapters/adapterAligner/errorRate": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERALIGNERERRORRATE$",
       "taskProcessorsDPS/Cut adapters/adapterAligner/leftMost": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSCUT_ADAPTERSADAPTERALIGNERLEFTMOST$",
+      "taskProcessorsDPS/Remove too short/enabled": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSREMOVE_TOO_SHORTENABLED$",
+      "taskProcessorsDPS/Remove too short/minLength": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSREMOVE_TOO_SHORTMINLENGTH$",
+      "taskProcessorsDPS/Remove too short/shortSequencesPath": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSREMOVE_TOO_SHORTSHORTSEQUENCESPATH$",
+      "taskProcessorsDPS/Remove too short/maxLength": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSREMOVE_TOO_SHORTMAXLENGTH$",
+      "taskProcessorsDPS/Remove too short/longSequencesPath": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSREMOVE_TOO_SHORTLONGSEQUENCESPATH$",
+      "taskProcessorsDPS/Remove low quality reads/enabled": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSREMOVE_LOW_QUALITY_READSENABLED$",
+      "taskProcessorsDPS/Remove low quality reads/minQuality": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSREMOVE_LOW_QUALITY_READSMINQUALITY$",
+      "taskProcessorsDPS/Remove low quality reads/maxLowQualityPercentage": "$PREPROCESS_RAW_READS_TASKPROCESSORSDPSREMOVE_LOW_QUALITY_READSMAXLOWQUALITYPERCENTAGE$",
       "singleEndFastqOutput": "$PREPROCESS_RAW_READS_SINGLEENDFASTQOUTPUT$"
     }
   },
@@ -168,7 +246,7 @@
     "parameters": {
       "trackPath": "$READ_COUNTER_TRACKPATH$",
       "genesTablePath": "$READ_COUNTER_GENESTABLEPATH$",
-      "geneTrack": "$READ_COUNTER_GENETRACK$",
+      "ensemblDB": "$READ_COUNTER_ENSEMBLDB$",
       "outputTablePath": "$READ_COUNTER_OUTPUTTABLEPATH$"
     }
   },
@@ -208,11 +286,18 @@
       "trackPath": "$RUN_MACS_1_4_0_ON_CHIPSEQ_TRACKPATH$",
       "controlPath": "$RUN_MACS_1_4_0_ON_CHIPSEQ_CONTROLPATH$",
       "gsize": "$RUN_MACS_1_4_0_ON_CHIPSEQ_GSIZE$",
+      "tsize": "$RUN_MACS_1_4_0_ON_CHIPSEQ_TSIZE$",
       "bw": "$RUN_MACS_1_4_0_ON_CHIPSEQ_BW$",
       "pvalue": "$RUN_MACS_1_4_0_ON_CHIPSEQ_PVALUE$",
       "mfoldLower": "$RUN_MACS_1_4_0_ON_CHIPSEQ_MFOLDLOWER$",
       "mfoldUpper": "$RUN_MACS_1_4_0_ON_CHIPSEQ_MFOLDUPPER$",
+      "nolambda": "$RUN_MACS_1_4_0_ON_CHIPSEQ_NOLAMBDA$",
+      "autoOff": "$RUN_MACS_1_4_0_ON_CHIPSEQ_AUTOOFF$",
+      "nomodel": "$RUN_MACS_1_4_0_ON_CHIPSEQ_NOMODEL$",
+      "shiftsize": "$RUN_MACS_1_4_0_ON_CHIPSEQ_SHIFTSIZE$",
+      "keepDup": "$RUN_MACS_1_4_0_ON_CHIPSEQ_KEEPDUP$",
       "toSmall": "$RUN_MACS_1_4_0_ON_CHIPSEQ_TOSMALL$",
+      "computePeakProfile": "$RUN_MACS_1_4_0_ON_CHIPSEQ_COMPUTEPEAKPROFILE$",
       "outputPath": "$RUN_MACS_1_4_0_ON_CHIPSEQ_OUTPUTPATH$"
     }
   },

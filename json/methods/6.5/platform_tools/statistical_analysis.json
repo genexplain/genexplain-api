@@ -8,6 +8,12 @@
     "parameters": {
       "experimentData/tablePath": "$CRC_CLUSTERING_EXPERIMENTDATATABLEPATH$",
       "experimentData/columns": "$CRC_CLUSTERING_EXPERIMENTDATACOLUMNS$",
+      "chainsCount": "$CRC_CLUSTERING_CHAINSCOUNT$",
+      "cycleCount": "$CRC_CLUSTERING_CYCLECOUNT$",
+      "cutoff": "$CRC_CLUSTERING_CUTOFF$",
+      "invert": "$CRC_CLUSTERING_INVERT$",
+      "threshold/thresholdDown": "$CRC_CLUSTERING_THRESHOLDTHRESHOLDDOWN$",
+      "threshold/thresholdUp": "$CRC_CLUSTERING_THRESHOLDTHRESHOLDUP$",
       "outputTablePath": "$CRC_CLUSTERING_OUTPUTTABLEPATH$"
     }
   },
@@ -42,6 +48,8 @@
       "resultType": "$CORRELATION_ANALYSIS_RESULTTYPE$",
       "correlationType": "$CORRELATION_ANALYSIS_CORRELATIONTYPE$",
       "pvalue": "$CORRELATION_ANALYSIS_PVALUE$",
+      "threshold/thresholdDown": "$CORRELATION_ANALYSIS_THRESHOLDTHRESHOLDDOWN$",
+      "threshold/thresholdUp": "$CORRELATION_ANALYSIS_THRESHOLDTHRESHOLDUP$",
       "fdr": "$CORRELATION_ANALYSIS_FDR$",
       "outputTablePath": "$CORRELATION_ANALYSIS_OUTPUTTABLEPATH$"
     }
@@ -58,34 +66,22 @@
       "inputLogarithmBase": "$EBARRAYS_INPUTLOGARITHMBASE$",
       "firstName": "$EBARRAYS_FIRSTNAME$",
       "firstColumns": "$EBARRAYS_FIRSTCOLUMNS$",
+      "firstControl": "$EBARRAYS_FIRSTCONTROL$",
       "secondName": "$EBARRAYS_SECONDNAME$",
       "secondColumns": "$EBARRAYS_SECONDCOLUMNS$",
-	  "thirdName": "$EBARRAYS_THIRDNAME$",
+      "secondControl": "$EBARRAYS_SECONDCONTROL$",
+      "thirdName": "$EBARRAYS_THIRDNAME$",
       "thirdColumns": "$EBARRAYS_THIRDCOLUMNS$",
+      "thirdControl": "$EBARRAYS_THIRDCONTROL$",
       "fourthName": "$EBARRAYS_FOURTHNAME$",
       "fourthColumns": "$EBARRAYS_FOURTHCOLUMNS$",
+      "fourthControl": "$EBARRAYS_FOURTHCONTROL$",
       "fifthName": "$EBARRAYS_FIFTHNAME$",
       "fifthColumns": "$EBARRAYS_FIFTHCOLUMNS$",
+      "fifthControl": "$EBARRAYS_FIFTHCONTROL$",
+      "fdrCutoff": "$EBARRAYS_FDRCUTOFF$",
+      "modelFamily": "$EBARRAYS_MODELFAMILY$",
       "outputFolderPath": "$EBARRAYS_OUTPUTFOLDERPATH$"
-    }
-  },
-
-  "FoldChangeCalculation": {
-    "do": "analyze",
-    "method": "Fold-Change calculation",
-    "workflow": false,
-    "wait": "$FOLDCHANGE_CALCULATION_WAIT$",
-    "progress": "$FOLDCHANGE_CALCULATION_PROGRESS$",
-    "parameters": {
-      "experimentData/tablePath": "$FOLDCHANGE_CALCULATION_EXPERIMENTDATATABLEPATH$",
-      "experimentData/columns": "$FOLDCHANGE_CALCULATION_EXPERIMENTDATACOLUMNS$",
-      "controlData/tablePath": "$FOLDCHANGE_CALCULATION_CONTROLDATATABLEPATH$",
-      "controlData/columns": "$FOLDCHANGE_CALCULATION_CONTROLDATACOLUMNS$",
-      "type": "$FOLDCHANGE_CALCULATION_TYPE$",
-      "inputLogarithmBase": "$FOLDCHANGE_CALCULATION_INPUTLOGARITHMBASE$",
-      "outputLogarithmBase": "$FOLDCHANGE_CALCULATION_OUTPUTLOGARITHMBASE$",
-      "outputTablePath": "$FOLDCHANGE_CALCULATION_OUTPUTTABLEPATH$",
-      "histogramOutput": "$FOLDCHANGE_CALCULATION_HISTOGRAMOUTPUT$"
     }
   },
 
@@ -105,6 +101,29 @@
     }
   },
 
+  "GuidedLinearModelAnalysis": {
+    "do": "analyze",
+    "method": "Guided linear model analysis",
+    "workflow": false,
+    "wait": "$GUIDED_LINEAR_MODEL_ANALYSIS_WAIT$",
+    "progress": "$GUIDED_LINEAR_MODEL_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$GUIDED_LINEAR_MODEL_ANALYSIS_INPUTTABLEPATH$",
+      "inputType": "$GUIDED_LINEAR_MODEL_ANALYSIS_INPUTTYPE$",
+      "normalization": "$GUIDED_LINEAR_MODEL_ANALYSIS_NORMALIZATION$",
+      "dataColumns": "$GUIDED_LINEAR_MODEL_ANALYSIS_DATACOLUMNS$",
+      "sampleTablePath": "$GUIDED_LINEAR_MODEL_ANALYSIS_SAMPLETABLEPATH$",
+      "sampleColumn": "$GUIDED_LINEAR_MODEL_ANALYSIS_SAMPLECOLUMN$",
+      "mainFactor": "$GUIDED_LINEAR_MODEL_ANALYSIS_MAINFACTOR$",
+      "refLevel": "$GUIDED_LINEAR_MODEL_ANALYSIS_REFLEVEL$",
+      "compareToRefOnly": "$GUIDED_LINEAR_MODEL_ANALYSIS_COMPARETOREFONLY$",
+      "controlFactors": "$GUIDED_LINEAR_MODEL_ANALYSIS_CONTROLFACTORS$",
+      "withSva": "$GUIDED_LINEAR_MODEL_ANALYSIS_WITHSVA$",
+      "robust": "$GUIDED_LINEAR_MODEL_ANALYSIS_ROBUST$",
+      "outputFolderPath": "$GUIDED_LINEAR_MODEL_ANALYSIS_OUTPUTFOLDERPATH$"
+    }
+  },
+
   "Heatmap": {
     "do": "analyze",
     "method": "Heatmap",
@@ -117,16 +136,27 @@
       "transform": "$HEATMAP_TRANSFORM$",
       "scale": "$HEATMAP_SCALE$",
       "imgFormat": "$HEATMAP_IMGFORMAT$",
+      "autoSize": "$HEATMAP_AUTOSIZE$",
+      "addLegend": "$HEATMAP_ADDLEGEND$",
       "width": "$HEATMAP_WIDTH$",
       "height": "$HEATMAP_HEIGHT$",
       "resolution": "$HEATMAP_RESOLUTION$",
       "lhei": "$HEATMAP_LHEI$",
+      "autoNameKeyXLab": "$HEATMAP_AUTONAMEKEYXLAB$",
+      "keyXLabTemplate": "$HEATMAP_KEYXLABTEMPLATE$",
+      "keyXLab": "$HEATMAP_KEYXLAB$",
       "orderRows": "$HEATMAP_ORDERROWS$",
       "orderCols": "$HEATMAP_ORDERCOLS$",
       "firstName": "$HEATMAP_FIRSTNAME$",
       "firstColumns": "$HEATMAP_FIRSTCOLUMNS$",
       "secondName": "$HEATMAP_SECONDNAME$",
       "secondColumns": "$HEATMAP_SECONDCOLUMNS$",
+      "thirdName": "$HEATMAP_THIRDNAME$",
+      "thirdColumns": "$HEATMAP_THIRDCOLUMNS$",
+      "fourthName": "$HEATMAP_FOURTHNAME$",
+      "fourthColumns": "$HEATMAP_FOURTHCOLUMNS$",
+      "fifthName": "$HEATMAP_FIFTHNAME$",
+      "fifthColumns": "$HEATMAP_FIFTHCOLUMNS$",
       "outputFolderPath": "$HEATMAP_OUTPUTFOLDERPATH$"
     }
   },
@@ -146,7 +176,13 @@
       "isControlAveraged": "$HYPERGEOMETRIC_ANALYSIS_ISCONTROLAVERAGED$",
       "pvalue": "$HYPERGEOMETRIC_ANALYSIS_PVALUE$",
       "outputType": "$HYPERGEOMETRIC_ANALYSIS_OUTPUTTYPE$",
+      "threshold/thresholdDown": "$HYPERGEOMETRIC_ANALYSIS_THRESHOLDTHRESHOLDDOWN$",
+      "threshold/thresholdUp": "$HYPERGEOMETRIC_ANALYSIS_THRESHOLDTHRESHOLDUP$",
+      "bv": "$HYPERGEOMETRIC_ANALYSIS_BV$",
       "fdr": "$HYPERGEOMETRIC_ANALYSIS_FDR$",
+      "detailed": "$HYPERGEOMETRIC_ANALYSIS_DETAILED$",
+      "matchingCollectionPath": "$HYPERGEOMETRIC_ANALYSIS_MATCHINGCOLLECTIONPATH$",
+      "newKeySource": "$HYPERGEOMETRIC_ANALYSIS_NEWKEYSOURCE$",
       "outputTablePath": "$HYPERGEOMETRIC_ANALYSIS_OUTPUTTABLEPATH$"
     }
   },
@@ -179,7 +215,7 @@
       "firstColumns": "$LIMMA_FIRSTCOLUMNS$",
       "secondName": "$LIMMA_SECONDNAME$",
       "secondColumns": "$LIMMA_SECONDCOLUMNS$",
-	  "thirdName": "$LIMMA_THIRDNAME$",
+      "thirdName": "$LIMMA_THIRDNAME$",
       "thirdColumns": "$LIMMA_THIRDCOLUMNS$",
       "fourthName": "$LIMMA_FOURTHNAME$",
       "fourthColumns": "$LIMMA_FOURTHCOLUMNS$",
@@ -216,13 +252,13 @@
       "firstColumns": "$PCA_FIRSTCOLUMNS$",
       "secondName": "$PCA_SECONDNAME$",
       "secondColumns": "$PCA_SECONDCOLUMNS$",
-	  "thirdName": "$PCA_THIRDNAME$",
+      "thirdName": "$PCA_THIRDNAME$",
       "thirdColumns": "$PCA_THIRDCOLUMNS$",
       "fourthName": "$PCA_FOURTHNAME$",
       "fourthColumns": "$PCA_FOURTHCOLUMNS$",
       "fifthName": "$PCA_FIFTHNAME$",
       "fifthColumns": "$PCA_FIFTHCOLUMNS$",
-	  "outputFolderPath": "$PCA_OUTPUTFOLDERPATH$"
+      "outputFolderPath": "$PCA_OUTPUTFOLDERPATH$"
     }
   },
 
@@ -237,8 +273,25 @@
       "experimentData/columns": "$POLYNOMIAL_REGRESSION_ANALYSIS_EXPERIMENTDATACOLUMNS$",
       "regressionPower": "$POLYNOMIAL_REGRESSION_ANALYSIS_REGRESSIONPOWER$",
       "pvalue": "$POLYNOMIAL_REGRESSION_ANALYSIS_PVALUE$",
+      "threshold/thresholdDown": "$POLYNOMIAL_REGRESSION_ANALYSIS_THRESHOLDTHRESHOLDDOWN$",
+      "threshold/thresholdUp": "$POLYNOMIAL_REGRESSION_ANALYSIS_THRESHOLDTHRESHOLDUP$",
       "fdr": "$POLYNOMIAL_REGRESSION_ANALYSIS_FDR$",
       "outputTablePath": "$POLYNOMIAL_REGRESSION_ANALYSIS_OUTPUTTABLEPATH$"
+    }
+  },
+
+  "RandomForestPrediction": {
+    "do": "analyze",
+    "method": "Random forest prediction",
+    "workflow": false,
+    "wait": "$RANDOM_FOREST_PREDICTION_WAIT$",
+    "progress": "$RANDOM_FOREST_PREDICTION_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$RANDOM_FOREST_PREDICTION_INPUTTABLEPATH$",
+      "predictorColumns": "$RANDOM_FOREST_PREDICTION_PREDICTORCOLUMNS$",
+      "idColumn": "$RANDOM_FOREST_PREDICTION_IDCOLUMN$",
+      "randomForestPath": "$RANDOM_FOREST_PREDICTION_RANDOMFORESTPATH$",
+      "outputFolderPath": "$RANDOM_FOREST_PREDICTION_OUTPUTFOLDERPATH$"
     }
   },
 
@@ -252,6 +305,25 @@
       "inputTable": "$TABLE_IMPUTATION_INPUTTABLE$",
       "minFiniteCount": "$TABLE_IMPUTATION_MINFINITECOUNT$",
       "outputTable": "$TABLE_IMPUTATION_OUTPUTTABLE$"
+    }
+  },
+
+  "TrainRandomForest": {
+    "do": "analyze",
+    "method": "Train random forest",
+    "workflow": false,
+    "wait": "$TRAIN_RANDOM_FOREST_WAIT$",
+    "progress": "$TRAIN_RANDOM_FOREST_PROGRESS$",
+    "parameters": {
+      "columnTablePath": "$TRAIN_RANDOM_FOREST_COLUMNTABLEPATH$",
+      "responseColumn": "$TRAIN_RANDOM_FOREST_RESPONSECOLUMN$",
+      "predictorColumns": "$TRAIN_RANDOM_FOREST_PREDICTORCOLUMNS$",
+      "exampleIdColumn": "$TRAIN_RANDOM_FOREST_EXAMPLEIDCOLUMN$",
+      "posResponse": "$TRAIN_RANDOM_FOREST_POSRESPONSE$",
+      "numTrees": "$TRAIN_RANDOM_FOREST_NUMTREES$",
+      "numVars": "$TRAIN_RANDOM_FOREST_NUMVARS$",
+      "seed": "$TRAIN_RANDOM_FOREST_SEED$",
+      "outputFolderPath": "$TRAIN_RANDOM_FOREST_OUTPUTFOLDERPATH$"
     }
   },
 
@@ -270,6 +342,8 @@
       "inputLogarithmBase": "$UP_AND_DOWN_IDENTIFICATION_INPUTLOGARITHMBASE$",
       "outputType": "$UP_AND_DOWN_IDENTIFICATION_OUTPUTTYPE$",
       "pvalue": "$UP_AND_DOWN_IDENTIFICATION_PVALUE$",
+      "threshold/thresholdDown": "$UP_AND_DOWN_IDENTIFICATION_THRESHOLDTHRESHOLDDOWN$",
+      "threshold/thresholdUp": "$UP_AND_DOWN_IDENTIFICATION_THRESHOLDTHRESHOLDUP$",
       "fdr": "$UP_AND_DOWN_IDENTIFICATION_FDR$",
       "outputTablePath": "$UP_AND_DOWN_IDENTIFICATION_OUTPUTTABLEPATH$"
     }
@@ -287,6 +361,38 @@
       "selectRowNum": "$VARIANCE_FILTER_SELECTROWNUM$",
       "minimalVarianceRowNum": "$VARIANCE_FILTER_MINIMALVARIANCEROWNUM$",
       "outputPath": "$VARIANCE_FILTER_OUTPUTPATH$"
+    }
+  },
+
+  "Tsne": {
+    "do": "analyze",
+    "method": "t-SNE",
+    "workflow": false,
+    "wait": "$TSNE_WAIT$",
+    "progress": "$TSNE_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$TSNE_INPUTTABLEPATH$",
+      "dataColumns": "$TSNE_DATACOLUMNS$",
+      "idColumn": "$TSNE_IDCOLUMN$",
+      "groupColumn": "$TSNE_GROUPCOLUMN$",
+      "outputFolderPath": "$TSNE_OUTPUTFOLDERPATH$",
+      "dims": "$TSNE_DIMS$",
+      "initialDims": "$TSNE_INITIALDIMS$",
+      "perplexity": "$TSNE_PERPLEXITY$",
+      "theta": "$TSNE_THETA$",
+      "checkDuplicates": "$TSNE_CHECKDUPLICATES$",
+      "pca": "$TSNE_PCA$",
+      "partialPca": "$TSNE_PARTIALPCA$",
+      "maxIter": "$TSNE_MAXITER$",
+      "pcaCenter": "$TSNE_PCACENTER$",
+      "pcaScale": "$TSNE_PCASCALE$",
+      "normalize": "$TSNE_NORMALIZE$",
+      "stopLyingIter": "$TSNE_STOPLYINGITER$",
+      "momSwitchIter": "$TSNE_MOMSWITCHITER$",
+      "momentum": "$TSNE_MOMENTUM$",
+      "finalMomentum": "$TSNE_FINALMOMENTUM$",
+      "eta": "$TSNE_ETA$",
+      "exaggerationFactor": "$TSNE_EXAGGERATIONFACTOR$"
     }
 
   }

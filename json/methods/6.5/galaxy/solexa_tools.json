@@ -1,0 +1,52 @@
+{
+  "BowtieWrapper": {
+    "do": "analyze",
+    "method": "bowtie_wrapper",
+    "workflow": false,
+    "wait": "$BOWTIE_WRAPPER_WAIT$",
+    "progress": "$BOWTIE_WRAPPER_PROGRESS$",
+    "parameters": {
+      "refGenomeSource|genomeSource": "$BOWTIE_WRAPPER_REFGENOMESOURCEGENOMESOURCE$",
+      "refGenomeSource|indexed|index": "$BOWTIE_WRAPPER_REFGENOMESOURCEINDEXEDINDEX$",
+      "singlePaired|sPaired": "$BOWTIE_WRAPPER_SINGLEPAIREDSPAIRED$",
+      "singlePaired|single|sInput1": "$BOWTIE_WRAPPER_SINGLEPAIREDSINGLESINPUT1$",
+      "singlePaired|single|sParams|sSettingsType": "$BOWTIE_WRAPPER_SINGLEPAIREDSINGLESPARAMSSSETTINGSTYPE$",
+      "output": "$BOWTIE_WRAPPER_OUTPUT$"
+    }
+  },
+
+  "BwaWrapper": {
+    "do": "analyze",
+    "method": "bwa_wrapper",
+    "workflow": false,
+    "wait": "$BWA_WRAPPER_WAIT$",
+    "progress": "$BWA_WRAPPER_PROGRESS$",
+    "parameters": {
+      "genomeSource|refGenomeSource": "$BWA_WRAPPER_GENOMESOURCEREFGENOMESOURCE$",
+      "genomeSource|indexed|indices": "$BWA_WRAPPER_GENOMESOURCEINDEXEDINDICES$",
+      "paired|sPaired": "$BWA_WRAPPER_PAIREDSPAIRED$",
+      "paired|single|input1": "$BWA_WRAPPER_PAIREDSINGLEINPUT1$",
+      "params|source_select": "$BWA_WRAPPER_PARAMSSOURCE_SELECT$",
+      "output": "$BWA_WRAPPER_OUTPUT$"
+    }
+  },
+
+  "Bowtie2": {
+    "do": "analyze",
+    "method": "bowtie2",
+    "workflow": false,
+    "wait": "$BOWTIE2_WAIT$",
+    "progress": "$BOWTIE2_PROGRESS$",
+    "parameters": {
+      "library|type": "$BOWTIE2_LIBRARYTYPE$",
+      "library|single|input_1": "$BOWTIE2_LIBRARYSINGLEINPUT_1$",
+      "unaligned_file": "$BOWTIE2_UNALIGNED_FILE$",
+      "reference_genome|source": "$BOWTIE2_REFERENCE_GENOMESOURCE$",
+      "reference_genome|indexed|index": "$BOWTIE2_REFERENCE_GENOMEINDEXEDINDEX$",
+      "read_group|selection": "$BOWTIE2_READ_GROUPSELECTION$",
+      "params|full": "$BOWTIE2_PARAMSFULL$",
+      "output": "$BOWTIE2_OUTPUT$"
+    }
+
+  }
+}

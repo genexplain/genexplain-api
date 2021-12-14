@@ -1,0 +1,99 @@
+{
+  "Subreadalign": {
+    "do": "analyze",
+    "method": "subread-align",
+    "workflow": false,
+    "wait": "$SUBREADALIGN_WAIT$",
+    "progress": "$SUBREADALIGN_PROGRESS$",
+    "parameters": {
+      "library|type": "$SUBREADALIGN_LIBRARYTYPE$",
+      "library|single|input_1": "$SUBREADALIGN_LIBRARYSINGLEINPUT_1$",
+      "seq_type": "$SUBREADALIGN_SEQ_TYPE$",
+      "reference_genome|source": "$SUBREADALIGN_REFERENCE_GENOMESOURCE$",
+      "reference_genome|indexed|index": "$SUBREADALIGN_REFERENCE_GENOMEINDEXEDINDEX$",
+      "annotation|use_annotation": "$SUBREADALIGN_ANNOTATIONUSE_ANNOTATION$",
+      "read_group|selection": "$SUBREADALIGN_READ_GROUPSELECTION$",
+      "params|full": "$SUBREADALIGN_PARAMSFULL$",
+      "output": "$SUBREADALIGN_OUTPUT$",
+      "indel": "$SUBREADALIGN_INDEL$",
+      "summary": "$SUBREADALIGN_SUMMARY$"
+    }
+  },
+
+  "Subjunc": {
+    "do": "analyze",
+    "method": "subjunc",
+    "workflow": false,
+    "wait": "$SUBJUNC_WAIT$",
+    "progress": "$SUBJUNC_PROGRESS$",
+    "parameters": {
+      "library|type": "$SUBJUNC_LIBRARYTYPE$",
+      "library|single|input_1": "$SUBJUNC_LIBRARYSINGLEINPUT_1$",
+      "reference_genome|source": "$SUBJUNC_REFERENCE_GENOMESOURCE$",
+      "reference_genome|indexed|index": "$SUBJUNC_REFERENCE_GENOMEINDEXEDINDEX$",
+      "annotation|use_annotation": "$SUBJUNC_ANNOTATIONUSE_ANNOTATION$",
+      "all_junc": "$SUBJUNC_ALL_JUNC$",
+      "read_group|selection": "$SUBJUNC_READ_GROUPSELECTION$",
+      "params|full": "$SUBJUNC_PARAMSFULL$",
+      "output": "$SUBJUNC_OUTPUT$",
+      "indel": "$SUBJUNC_INDEL$",
+      "junc": "$SUBJUNC_JUNC$"
+    }
+  },
+
+  "Featurecounts": {
+    "do": "analyze",
+    "method": "featureCounts",
+    "workflow": false,
+    "wait": "$FEATURECOUNTS_WAIT$",
+    "progress": "$FEATURECOUNTS_PROGRESS$",
+    "parameters": {
+      "input": "$FEATURECOUNTS_INPUT$",
+      "annotation|source": "$FEATURECOUNTS_ANNOTATIONSOURCE$",
+      "annotation|ensembl|annot_ensembl": "$FEATURECOUNTS_ANNOTATIONENSEMBLANNOT_ENSEMBL$",
+      "min_qual": "$FEATURECOUNTS_MIN_QUAL$",
+      "strand": "$FEATURECOUNTS_STRAND$",
+      "params|full": "$FEATURECOUNTS_PARAMSFULL$",
+      "count_table": "$FEATURECOUNTS_COUNT_TABLE$",
+      "summary_table": "$FEATURECOUNTS_SUMMARY_TABLE$",
+      "logs": "$FEATURECOUNTS_LOGS$"
+    }
+  },
+
+  "Exactsnp": {
+    "do": "analyze",
+    "method": "exactSNP",
+    "workflow": false,
+    "wait": "$EXACTSNP_WAIT$",
+    "progress": "$EXACTSNP_PROGRESS$",
+    "parameters": {
+      "input": "$EXACTSNP_INPUT$",
+      "reference_genome|source": "$EXACTSNP_REFERENCE_GENOMESOURCE$",
+      "reference_genome|indexed|index": "$EXACTSNP_REFERENCE_GENOMEINDEXEDINDEX$",
+      "params|full": "$EXACTSNP_PARAMSFULL$",
+      "output": "$EXACTSNP_OUTPUT$",
+      "logs": "$EXACTSNP_LOGS$"
+    }
+  },
+
+  "Voom": {
+    "do": "analyze",
+    "method": "voom",
+    "workflow": false,
+    "wait": "$VOOM_WAIT$",
+    "progress": "$VOOM_PROGRESS$",
+    "parameters": {
+      "input|format": "$VOOM_INPUTFORMAT$",
+      "input|matrix|counts": "$VOOM_INPUTMATRIXCOUNTS$",
+      "input|matrix|factors|ffile": "$VOOM_INPUTMATRIXFACTORSFFILE$",
+      "input|matrix|factors|yes|finfo": "$VOOM_INPUTMATRIXFACTORSYESFINFO$",
+      "input|matrix|factors|yes|rep_contrast": "$VOOM_INPUTMATRIXFACTORSYESREP_CONTRAST$",
+      "filt|filt_select": "$VOOM_FILTFILT_SELECT$",
+      "filt|counts|minCounts": "$VOOM_FILTCOUNTSMINCOUNTS$",
+      "filt|counts|samples|count_select": "$VOOM_FILTCOUNTSSAMPLESCOUNT_SELECT$",
+      "normalisation": "$VOOM_NORMALISATION$",
+      "output": "$VOOM_OUTPUT$"
+    }
+
+  }
+}

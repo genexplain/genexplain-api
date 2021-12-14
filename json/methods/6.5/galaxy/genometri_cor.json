@@ -1,0 +1,17 @@
+{
+  "GenometricCorrelation": {
+    "do": "analyze",
+    "method": "genometric_correlation",
+    "workflow": false,
+    "wait": "$GENOMETRIC_CORRELATION_WAIT$",
+    "progress": "$GENOMETRIC_CORRELATION_PROGRESS$",
+    "parameters": {
+      "query": "$GENOMETRIC_CORRELATION_QUERY$",
+      "reference": "$GENOMETRIC_CORRELATION_REFERENCE$",
+      "output_statistics": "$GENOMETRIC_CORRELATION_OUTPUT_STATISTICS$",
+      "relative_png": "$GENOMETRIC_CORRELATION_RELATIVE_PNG$",
+      "absolute_png": "$GENOMETRIC_CORRELATION_ABSOLUTE_PNG$"
+    }
+
+  }
+}

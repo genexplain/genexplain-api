@@ -1,0 +1,20 @@
+{
+  "Mc": {
+    "do": "analyze",
+    "method": "mc",
+    "workflow": false,
+    "wait": "$MC_WAIT$",
+    "progress": "$MC_PROGRESS$",
+    "parameters": {
+      "seqs": "$MC_SEQS$",
+      "pwm1": "$MC_PWM1$",
+      "pwm2": "$MC_PWM2$",
+      "dist": "$MC_DIST$",
+      "cs": "$MC_CS$",
+      "intervals": "$MC_INTERVALS$",
+      "outfile": "$MC_OUTFILE$",
+      "outfileE": "$MC_OUTFILEE$"
+    }
+
+  }
+}

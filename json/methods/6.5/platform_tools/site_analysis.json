@@ -1,0 +1,746 @@
+{
+  "ApplyCMAModelToTracks": {
+    "do": "analyze",
+    "method": "Apply CMA model to tracks",
+    "workflow": false,
+    "wait": "$APPLY_CMA_MODEL_TO_TRACKS_WAIT$",
+    "progress": "$APPLY_CMA_MODEL_TO_TRACKS_PROGRESS$",
+    "parameters": {
+      "cmaResultPath": "$APPLY_CMA_MODEL_TO_TRACKS_CMARESULTPATH$",
+      "yesTrackPath": "$APPLY_CMA_MODEL_TO_TRACKS_YESTRACKPATH$",
+      "noTrackPath": "$APPLY_CMA_MODEL_TO_TRACKS_NOTRACKPATH$",
+      "outputPath": "$APPLY_CMA_MODEL_TO_TRACKS_OUTPUTPATH$"
+    }
+  },
+
+  "ChangeProfileCutoffs": {
+    "do": "analyze",
+    "method": "Change profile cutoffs",
+    "workflow": false,
+    "wait": "$CHANGE_PROFILE_CUTOFFS_WAIT$",
+    "progress": "$CHANGE_PROFILE_CUTOFFS_PROGRESS$",
+    "parameters": {
+      "inputProfile": "$CHANGE_PROFILE_CUTOFFS_INPUTPROFILE$",
+      "template": "$CHANGE_PROFILE_CUTOFFS_TEMPLATE$",
+      "threshold": "$CHANGE_PROFILE_CUTOFFS_THRESHOLD$",
+      "outputProfile": "$CHANGE_PROFILE_CUTOFFS_OUTPUTPROFILE$"
+    }
+  },
+
+  "ClusterTrack": {
+    "do": "analyze",
+    "method": "Cluster track",
+    "workflow": false,
+    "wait": "$CLUSTER_TRACK_WAIT$",
+    "progress": "$CLUSTER_TRACK_PROGRESS$",
+    "parameters": {
+      "inputTrack": "$CLUSTER_TRACK_INPUTTRACK$",
+      "genome/dbSelector": "$CLUSTER_TRACK_GENOMEDBSELECTOR$",
+      "maxDistance": "$CLUSTER_TRACK_MAXDISTANCE$",
+      "minClusterSize": "$CLUSTER_TRACK_MINCLUSTERSIZE$",
+      "clusterTrack": "$CLUSTER_TRACK_CLUSTERTRACK$"
+    }
+  },
+
+  "CompareTFBSMutations": {
+    "do": "analyze",
+    "method": "Compare TFBS mutations",
+    "workflow": false,
+    "wait": "$COMPARE_TFBS_MUTATIONS_WAIT$",
+    "progress": "$COMPARE_TFBS_MUTATIONS_PROGRESS$",
+    "parameters": {
+      "yesVCFTrack": "$COMPARE_TFBS_MUTATIONS_YESVCFTRACK$",
+      "noVCFTrack": "$COMPARE_TFBS_MUTATIONS_NOVCFTRACK$",
+      "genome/dbSelector": "$COMPARE_TFBS_MUTATIONS_GENOMEDBSELECTOR$",
+      "siteModels": "$COMPARE_TFBS_MUTATIONS_SITEMODELS$",
+      "pValueCutoff": "$COMPARE_TFBS_MUTATIONS_PVALUECUTOFF$",
+      "inputSizeLimit": "$COMPARE_TFBS_MUTATIONS_INPUTSIZELIMIT$",
+      "siteGainsTable": "$COMPARE_TFBS_MUTATIONS_SITEGAINSTABLE$",
+      "siteLossesTable": "$COMPARE_TFBS_MUTATIONS_SITELOSSESTABLE$"
+    }
+  },
+
+  "ComputeProfileThresholds": {
+    "do": "analyze",
+    "method": "Compute profile thresholds",
+    "workflow": false,
+    "wait": "$COMPUTE_PROFILE_THRESHOLDS_WAIT$",
+    "progress": "$COMPUTE_PROFILE_THRESHOLDS_PROGRESS$",
+    "parameters": {
+      "inputModels": "$COMPUTE_PROFILE_THRESHOLDS_INPUTMODELS$",
+      "methodName": "$COMPUTE_PROFILE_THRESHOLDS_METHODNAME$",
+      "method/sampleSize": "$COMPUTE_PROFILE_THRESHOLDS_METHODSAMPLESIZE$",
+      "method/errorRate": "$COMPUTE_PROFILE_THRESHOLDS_METHODERRORRATE$",
+      "outputModels": "$COMPUTE_PROFILE_THRESHOLDS_OUTPUTMODELS$"
+    }
+  },
+
+  "ConstructIPSCisModule": {
+    "do": "analyze",
+    "method": "Construct IPS CisModule",
+    "workflow": false,
+    "wait": "$CONSTRUCT_IPS_CISMODULE_WAIT$",
+    "progress": "$CONSTRUCT_IPS_CISMODULE_PROGRESS$",
+    "parameters": {
+      "siteTrackPath": "$CONSTRUCT_IPS_CISMODULE_SITETRACKPATH$",
+      "siteModels": "$CONSTRUCT_IPS_CISMODULE_SITEMODELS$",
+      "windowSize": "$CONSTRUCT_IPS_CISMODULE_WINDOWSIZE$",
+      "minSites": "$CONSTRUCT_IPS_CISMODULE_MINSITES$",
+      "minAverageScore": "$CONSTRUCT_IPS_CISMODULE_MINAVERAGESCORE$",
+      "moduleTrack": "$CONSTRUCT_IPS_CISMODULE_MODULETRACK$"
+    }
+  },
+
+  "ConstructCompositeModules": {
+    "do": "analyze",
+    "method": "Construct composite modules",
+    "workflow": false,
+    "wait": "$CONSTRUCT_COMPOSITE_MODULES_WAIT$",
+    "progress": "$CONSTRUCT_COMPOSITE_MODULES_PROGRESS$",
+    "parameters": {
+      "siteSearchResult": "$CONSTRUCT_COMPOSITE_MODULES_SITESEARCHRESULT$",
+      "geneticParameters/iterationsCount": "$CONSTRUCT_COMPOSITE_MODULES_GENETICPARAMETERSITERATIONSCOUNT$",
+      "geneticParameters/populationSize": "$CONSTRUCT_COMPOSITE_MODULES_GENETICPARAMETERSPOPULATIONSIZE$",
+      "geneticParameters/nonChangeLimit": "$CONSTRUCT_COMPOSITE_MODULES_GENETICPARAMETERSNONCHANGELIMIT$",
+      "geneticParameters/eliteSize": "$CONSTRUCT_COMPOSITE_MODULES_GENETICPARAMETERSELITESIZE$",
+      "geneticParameters/mutationRate": "$CONSTRUCT_COMPOSITE_MODULES_GENETICPARAMETERSMUTATIONRATE$",
+      "scoreParameters/penaltyRate": "$CONSTRUCT_COMPOSITE_MODULES_SCOREPARAMETERSPENALTYRATE$",
+      "scoreParameters/siteModelsInFocus": "$CONSTRUCT_COMPOSITE_MODULES_SCOREPARAMETERSSITEMODELSINFOCUS$",
+      "scoreParameters/siteModelsInFocusTable": "$CONSTRUCT_COMPOSITE_MODULES_SCOREPARAMETERSSITEMODELSINFOCUSTABLE$",
+      "scoreParameters/sequenceColumn": "$CONSTRUCT_COMPOSITE_MODULES_SCOREPARAMETERSSEQUENCECOLUMN$",
+      "modelParameters/minComplexes": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSMINCOMPLEXES$",
+      "modelParameters/maxComplexes": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSMAXCOMPLEXES$",
+      "modelParameters/gaussModelParameters/minModels": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSGAUSSMODELPARAMETERSMINMODELS$",
+      "modelParameters/gaussModelParameters/maxModels": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSGAUSSMODELPARAMETERSMAXMODELS$",
+      "modelParameters/gaussModelParameters/minSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSGAUSSMODELPARAMETERSMINSITESTOCOUNT$",
+      "modelParameters/gaussModelParameters/maxSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSGAUSSMODELPARAMETERSMAXSITESTOCOUNT$",
+      "modelParameters/gaussModelParameters/minSigma": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSGAUSSMODELPARAMETERSMINSIGMA$",
+      "modelParameters/gaussModelParameters/maxSigma": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSGAUSSMODELPARAMETERSMAXSIGMA$",
+      "modelParameters/gaussModelParameters/pairsMode": "$CONSTRUCT_COMPOSITE_MODULES_MODELPARAMETERSGAUSSMODELPARAMETERSPAIRSMODE$",
+      "result": "$CONSTRUCT_COMPOSITE_MODULES_RESULT$"
+    }
+  },
+
+  "ConstructCompositeModulesOnTrackCorrelation": {
+    "do": "analyze",
+    "method": "Construct composite modules on track (correlation)",
+    "workflow": false,
+    "wait": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_WAIT$",
+    "progress": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_PROGRESS$",
+    "parameters": {
+      "yesTrackPath": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_YESTRACKPATH$",
+      "correlationColumn": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_CORRELATIONCOLUMN$",
+      "geneticParameters/iterationsCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_GENETICPARAMETERSITERATIONSCOUNT$",
+      "geneticParameters/populationSize": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_GENETICPARAMETERSPOPULATIONSIZE$",
+      "geneticParameters/nonChangeLimit": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_GENETICPARAMETERSNONCHANGELIMIT$",
+      "geneticParameters/eliteSize": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_GENETICPARAMETERSELITESIZE$",
+      "geneticParameters/mutationRate": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_GENETICPARAMETERSMUTATIONRATE$",
+      "scoreParameters/penaltyRate": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_SCOREPARAMETERSPENALTYRATE$",
+      "scoreParameters/siteModelsInFocus": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_SCOREPARAMETERSSITEMODELSINFOCUS$",
+      "scoreParameters/siteModelsInFocusTable": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_SCOREPARAMETERSSITEMODELSINFOCUSTABLE$",
+      "scoreParameters/sequenceColumn": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_SCOREPARAMETERSSEQUENCECOLUMN$",
+      "modelParameters/minComplexes": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSMINCOMPLEXES$",
+      "modelParameters/maxComplexes": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSMAXCOMPLEXES$",
+      "modelParameters/gaussModelParameters/minModels": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSGAUSSMODELPARAMETERSMINMODELS$",
+      "modelParameters/gaussModelParameters/maxModels": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSGAUSSMODELPARAMETERSMAXMODELS$",
+      "modelParameters/gaussModelParameters/minSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSGAUSSMODELPARAMETERSMINSITESTOCOUNT$",
+      "modelParameters/gaussModelParameters/maxSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSGAUSSMODELPARAMETERSMAXSITESTOCOUNT$",
+      "modelParameters/gaussModelParameters/minSigma": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSGAUSSMODELPARAMETERSMINSIGMA$",
+      "modelParameters/gaussModelParameters/maxSigma": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSGAUSSMODELPARAMETERSMAXSIGMA$",
+      "modelParameters/gaussModelParameters/pairsMode": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_MODELPARAMETERSGAUSSMODELPARAMETERSPAIRSMODE$",
+      "result": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACK_CORRELATION_RESULT$"
+    }
+  },
+
+  "ConstructCompositeModulesOnTracks": {
+    "do": "analyze",
+    "method": "Construct composite modules on tracks",
+    "workflow": false,
+    "wait": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WAIT$",
+    "progress": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_PROGRESS$",
+    "parameters": {
+      "yesTrackPath": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_YESTRACKPATH$",
+      "noTrackPath": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_NOTRACKPATH$",
+      "geneticParameters/iterationsCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_GENETICPARAMETERSITERATIONSCOUNT$",
+      "geneticParameters/populationSize": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_GENETICPARAMETERSPOPULATIONSIZE$",
+      "geneticParameters/nonChangeLimit": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_GENETICPARAMETERSNONCHANGELIMIT$",
+      "geneticParameters/eliteSize": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_GENETICPARAMETERSELITESIZE$",
+      "geneticParameters/mutationRate": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_GENETICPARAMETERSMUTATIONRATE$",
+      "scoreParameters/penaltyRate": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_SCOREPARAMETERSPENALTYRATE$",
+      "scoreParameters/siteModelsInFocus": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_SCOREPARAMETERSSITEMODELSINFOCUS$",
+      "scoreParameters/siteModelsInFocusTable": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_SCOREPARAMETERSSITEMODELSINFOCUSTABLE$",
+      "scoreParameters/sequenceColumn": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_SCOREPARAMETERSSEQUENCECOLUMN$",
+      "modelParameters/minComplexes": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSMINCOMPLEXES$",
+      "modelParameters/maxComplexes": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSMAXCOMPLEXES$",
+      "modelParameters/gaussModelParameters/minModels": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSGAUSSMODELPARAMETERSMINMODELS$",
+      "modelParameters/gaussModelParameters/maxModels": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSGAUSSMODELPARAMETERSMAXMODELS$",
+      "modelParameters/gaussModelParameters/minSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSGAUSSMODELPARAMETERSMINSITESTOCOUNT$",
+      "modelParameters/gaussModelParameters/maxSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSGAUSSMODELPARAMETERSMAXSITESTOCOUNT$",
+      "modelParameters/gaussModelParameters/minSigma": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSGAUSSMODELPARAMETERSMINSIGMA$",
+      "modelParameters/gaussModelParameters/maxSigma": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSGAUSSMODELPARAMETERSMAXSIGMA$",
+      "modelParameters/gaussModelParameters/pairsMode": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_MODELPARAMETERSGAUSSMODELPARAMETERSPAIRSMODE$",
+      "result": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_RESULT$"
+    }
+  },
+
+  "ConstructCompositeModulesOnTracksWithKeynodes": {
+    "do": "analyze",
+    "method": "Construct composite modules on tracks with keynodes",
+    "workflow": false,
+    "wait": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_WAIT$",
+    "progress": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_PROGRESS$",
+    "parameters": {
+      "yesTrackPath": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_YESTRACKPATH$",
+      "noTrackPath": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_NOTRACKPATH$",
+      "geneticParameters/iterationsCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_GENETICPARAMETERSITERATIONSCOUNT$",
+      "geneticParameters/populationSize": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_GENETICPARAMETERSPOPULATIONSIZE$",
+      "geneticParameters/nonChangeLimit": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_GENETICPARAMETERSNONCHANGELIMIT$",
+      "geneticParameters/eliteSize": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_GENETICPARAMETERSELITESIZE$",
+      "geneticParameters/mutationRate": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_GENETICPARAMETERSMUTATIONRATE$",
+      "scoreParameters/penaltyRate": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_SCOREPARAMETERSPENALTYRATE$",
+      "scoreParameters/siteModelsInFocus": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_SCOREPARAMETERSSITEMODELSINFOCUS$",
+      "scoreParameters/siteModelsInFocusTable": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_SCOREPARAMETERSSITEMODELSINFOCUSTABLE$",
+      "scoreParameters/sequenceColumn": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_SCOREPARAMETERSSEQUENCECOLUMN$",
+      "modelParameters/maxRadius": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMAXRADIUS$",
+      "modelParameters/numberTopRanking": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSNUMBERTOPRANKING$",
+      "modelParameters/scoreCutoff": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSSCORECUTOFF$",
+      "modelParameters/penalty": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSPENALTY$",
+      "modelParameters/bioHub": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSBIOHUB$",
+      "modelParameters/referenceType": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSREFERENCETYPE$",
+      "modelParameters/species": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSSPECIES$",
+      "modelParameters/decorators": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSDECORATORS$",
+      "modelParameters/multiGaussModelParameters/minComplexes": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSMINCOMPLEXES$",
+      "modelParameters/multiGaussModelParameters/maxComplexes": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSMAXCOMPLEXES$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/minModels": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMINMODELS$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/maxModels": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMAXMODELS$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/minSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMINSITESTOCOUNT$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/maxSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMAXSITESTOCOUNT$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/minSigma": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMINSIGMA$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/maxSigma": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMAXSIGMA$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/pairsMode": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSPAIRSMODE$",
+      "result": "$CONSTRUCT_COMPOSITE_MODULES_ON_TRACKS_WITH_KEYNODES_RESULT$"
+    }
+  },
+
+  "ConstructCompositeModulesWithKeynodes": {
+    "do": "analyze",
+    "method": "Construct composite modules with keynodes",
+    "workflow": false,
+    "wait": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_WAIT$",
+    "progress": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_PROGRESS$",
+    "parameters": {
+      "siteSearchResult": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_SITESEARCHRESULT$",
+      "geneticParameters/iterationsCount": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_GENETICPARAMETERSITERATIONSCOUNT$",
+      "geneticParameters/populationSize": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_GENETICPARAMETERSPOPULATIONSIZE$",
+      "geneticParameters/nonChangeLimit": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_GENETICPARAMETERSNONCHANGELIMIT$",
+      "geneticParameters/eliteSize": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_GENETICPARAMETERSELITESIZE$",
+      "geneticParameters/mutationRate": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_GENETICPARAMETERSMUTATIONRATE$",
+      "scoreParameters/penaltyRate": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_SCOREPARAMETERSPENALTYRATE$",
+      "scoreParameters/siteModelsInFocus": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_SCOREPARAMETERSSITEMODELSINFOCUS$",
+      "scoreParameters/siteModelsInFocusTable": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_SCOREPARAMETERSSITEMODELSINFOCUSTABLE$",
+      "scoreParameters/sequenceColumn": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_SCOREPARAMETERSSEQUENCECOLUMN$",
+      "modelParameters/maxRadius": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMAXRADIUS$",
+      "modelParameters/numberTopRanking": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSNUMBERTOPRANKING$",
+      "modelParameters/scoreCutoff": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSSCORECUTOFF$",
+      "modelParameters/penalty": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSPENALTY$",
+      "modelParameters/bioHub": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSBIOHUB$",
+      "modelParameters/referenceType": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSREFERENCETYPE$",
+      "modelParameters/species": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSSPECIES$",
+      "modelParameters/decorators": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSDECORATORS$",
+      "modelParameters/multiGaussModelParameters/minComplexes": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSMINCOMPLEXES$",
+      "modelParameters/multiGaussModelParameters/maxComplexes": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSMAXCOMPLEXES$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/minModels": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMINMODELS$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/maxModels": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMAXMODELS$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/minSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMINSITESTOCOUNT$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/maxSitesToCount": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMAXSITESTOCOUNT$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/minSigma": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMINSIGMA$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/maxSigma": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSMAXSIGMA$",
+      "modelParameters/multiGaussModelParameters/gaussModelParameters/pairsMode": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_MODELPARAMETERSMULTIGAUSSMODELPARAMETERSGAUSSMODELPARAMETERSPAIRSMODE$",
+      "result": "$CONSTRUCT_COMPOSITE_MODULES_WITH_KEYNODES_RESULT$"
+    }
+  },
+
+  "ContinueCMA": {
+    "do": "analyze",
+    "method": "Continue CMA",
+    "workflow": false,
+    "wait": "$CONTINUE_CMA_WAIT$",
+    "progress": "$CONTINUE_CMA_PROGRESS$",
+    "parameters": {
+      "cmaResultPath": "$CONTINUE_CMA_CMARESULTPATH$",
+      "geneticParameters/iterationsCount": "$CONTINUE_CMA_GENETICPARAMETERSITERATIONSCOUNT$",
+      "geneticParameters/populationSize": "$CONTINUE_CMA_GENETICPARAMETERSPOPULATIONSIZE$",
+      "geneticParameters/nonChangeLimit": "$CONTINUE_CMA_GENETICPARAMETERSNONCHANGELIMIT$",
+      "geneticParameters/eliteSize": "$CONTINUE_CMA_GENETICPARAMETERSELITESIZE$",
+      "geneticParameters/mutationRate": "$CONTINUE_CMA_GENETICPARAMETERSMUTATIONRATE$",
+      "scoreParameters/penaltyRate": "$CONTINUE_CMA_SCOREPARAMETERSPENALTYRATE$",
+      "scoreParameters/siteModelsInFocus": "$CONTINUE_CMA_SCOREPARAMETERSSITEMODELSINFOCUS$",
+      "scoreParameters/siteModelsInFocusTable": "$CONTINUE_CMA_SCOREPARAMETERSSITEMODELSINFOCUSTABLE$",
+      "scoreParameters/sequenceColumn": "$CONTINUE_CMA_SCOREPARAMETERSSEQUENCECOLUMN$",
+      "modelParameters/minComplexes": "$CONTINUE_CMA_MODELPARAMETERSMINCOMPLEXES$",
+      "modelParameters/maxComplexes": "$CONTINUE_CMA_MODELPARAMETERSMAXCOMPLEXES$",
+      "modelParameters/gaussModelParameters/minModels": "$CONTINUE_CMA_MODELPARAMETERSGAUSSMODELPARAMETERSMINMODELS$",
+      "modelParameters/gaussModelParameters/maxModels": "$CONTINUE_CMA_MODELPARAMETERSGAUSSMODELPARAMETERSMAXMODELS$",
+      "modelParameters/gaussModelParameters/minSitesToCount": "$CONTINUE_CMA_MODELPARAMETERSGAUSSMODELPARAMETERSMINSITESTOCOUNT$",
+      "modelParameters/gaussModelParameters/maxSitesToCount": "$CONTINUE_CMA_MODELPARAMETERSGAUSSMODELPARAMETERSMAXSITESTOCOUNT$",
+      "modelParameters/gaussModelParameters/minSigma": "$CONTINUE_CMA_MODELPARAMETERSGAUSSMODELPARAMETERSMINSIGMA$",
+      "modelParameters/gaussModelParameters/maxSigma": "$CONTINUE_CMA_MODELPARAMETERSGAUSSMODELPARAMETERSMAXSIGMA$",
+      "modelParameters/gaussModelParameters/pairsMode": "$CONTINUE_CMA_MODELPARAMETERSGAUSSMODELPARAMETERSPAIRSMODE$",
+      "outputPath": "$CONTINUE_CMA_OUTPUTPATH$"
+    }
+  },
+
+  "ConvertSiteSearchSummary": {
+    "do": "analyze",
+    "method": "Convert site search summary",
+    "workflow": false,
+    "wait": "$CONVERT_SITE_SEARCH_SUMMARY_WAIT$",
+    "progress": "$CONVERT_SITE_SEARCH_SUMMARY_PROGRESS$",
+    "parameters": {
+      "siteSearchResult": "$CONVERT_SITE_SEARCH_SUMMARY_SITESEARCHRESULT$",
+      "species": "$CONVERT_SITE_SEARCH_SUMMARY_SPECIES$",
+      "targetType": "$CONVERT_SITE_SEARCH_SUMMARY_TARGETTYPE$",
+      "ignoreNaNInAggregator": "$CONVERT_SITE_SEARCH_SUMMARY_IGNORENANINAGGREGATOR$",
+      "aggregator": "$CONVERT_SITE_SEARCH_SUMMARY_AGGREGATOR$",
+      "columnName": "$CONVERT_SITE_SEARCH_SUMMARY_COLUMNNAME$",
+      "outputTable": "$CONVERT_SITE_SEARCH_SUMMARY_OUTPUTTABLE$"
+    }
+  },
+
+  "CreateIPSModel": {
+    "do": "analyze",
+    "method": "Create IPS model",
+    "workflow": false,
+    "wait": "$CREATE_IPS_MODEL_WAIT$",
+    "progress": "$CREATE_IPS_MODEL_PROGRESS$",
+    "parameters": {
+      "frequencyMatrices": "$CREATE_IPS_MODEL_FREQUENCYMATRICES$",
+      "critIPS": "$CREATE_IPS_MODEL_CRITIPS$",
+      "windowSize": "$CREATE_IPS_MODEL_WINDOWSIZE$",
+      "distMin": "$CREATE_IPS_MODEL_DISTMIN$",
+      "outputCollection": "$CREATE_IPS_MODEL_OUTPUTCOLLECTION$",
+      "modelName": "$CREATE_IPS_MODEL_MODELNAME$"
+    }
+  },
+
+  "CreateMatchModel": {
+    "do": "analyze",
+    "method": "Create Match model",
+    "workflow": false,
+    "wait": "$CREATE_MATCH_MODEL_WAIT$",
+    "progress": "$CREATE_MATCH_MODEL_PROGRESS$",
+    "parameters": {
+      "matrixPath": "$CREATE_MATCH_MODEL_MATRIXPATH$",
+      "cutoff": "$CREATE_MATCH_MODEL_CUTOFF$",
+      "coreCutoff": "$CREATE_MATCH_MODEL_CORECUTOFF$",
+      "defaultCore": "$CREATE_MATCH_MODEL_DEFAULTCORE$",
+      "outputCollection": "$CREATE_MATCH_MODEL_OUTPUTCOLLECTION$",
+      "modelName": "$CREATE_MATCH_MODEL_MODELNAME$"
+    }
+  },
+
+  "CreateMatrixLogo": {
+    "do": "analyze",
+    "method": "Create matrix logo",
+    "workflow": false,
+    "wait": "$CREATE_MATRIX_LOGO_WAIT$",
+    "progress": "$CREATE_MATRIX_LOGO_PROGRESS$",
+    "parameters": {
+      "pwmPath": "$CREATE_MATRIX_LOGO_PWMPATH$",
+      "logoSize": "$CREATE_MATRIX_LOGO_LOGOSIZE$",
+      "withReverse": "$CREATE_MATRIX_LOGO_WITHREVERSE$",
+      "withEntropy": "$CREATE_MATRIX_LOGO_WITHENTROPY$",
+      "withSorting": "$CREATE_MATRIX_LOGO_WITHSORTING$",
+      "withLines": "$CREATE_MATRIX_LOGO_WITHLINES$",
+      "outputFolderPath": "$CREATE_MATRIX_LOGO_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "CreateProfileFromCMAModel": {
+    "do": "analyze",
+    "method": "Create profile from CMA model",
+    "workflow": false,
+    "wait": "$CREATE_PROFILE_FROM_CMA_MODEL_WAIT$",
+    "progress": "$CREATE_PROFILE_FROM_CMA_MODEL_PROGRESS$",
+    "parameters": {
+      "cmaResultPath": "$CREATE_PROFILE_FROM_CMA_MODEL_CMARESULTPATH$",
+      "outputProfilePath": "$CREATE_PROFILE_FROM_CMA_MODEL_OUTPUTPROFILEPATH$"
+    }
+  },
+
+  "CreateProfileFromGeneTable": {
+    "do": "analyze",
+    "method": "Create profile from gene table",
+    "workflow": false,
+    "wait": "$CREATE_PROFILE_FROM_GENE_TABLE_WAIT$",
+    "progress": "$CREATE_PROFILE_FROM_GENE_TABLE_PROGRESS$",
+    "parameters": {
+      "table": "$CREATE_PROFILE_FROM_GENE_TABLE_TABLE$",
+      "species": "$CREATE_PROFILE_FROM_GENE_TABLE_SPECIES$",
+      "profile": "$CREATE_PROFILE_FROM_GENE_TABLE_PROFILE$",
+      "output": "$CREATE_PROFILE_FROM_GENE_TABLE_OUTPUT$"
+    }
+  },
+
+  "CreateProfileFromMatrixLibrary": {
+    "do": "analyze",
+    "method": "Create profile from matrix library",
+    "workflow": false,
+    "wait": "$CREATE_PROFILE_FROM_MATRIX_LIBRARY_WAIT$",
+    "progress": "$CREATE_PROFILE_FROM_MATRIX_LIBRARY_PROGRESS$",
+    "parameters": {
+      "matrixLibrary": "$CREATE_PROFILE_FROM_MATRIX_LIBRARY_MATRIXLIBRARY$",
+      "coreCutoff": "$CREATE_PROFILE_FROM_MATRIX_LIBRARY_CORECUTOFF$",
+      "cutoffTemplate": "$CREATE_PROFILE_FROM_MATRIX_LIBRARY_CUTOFFTEMPLATE$",
+      "cutoff": "$CREATE_PROFILE_FROM_MATRIX_LIBRARY_CUTOFF$",
+      "nucleotideDistributionTemplate": "$CREATE_PROFILE_FROM_MATRIX_LIBRARY_NUCLEOTIDEDISTRIBUTIONTEMPLATE$",
+      "output": "$CREATE_PROFILE_FROM_MATRIX_LIBRARY_OUTPUT$"
+    }
+  },
+
+  "CreateProfileFromSiteModelTable": {
+    "do": "analyze",
+    "method": "Create profile from site model table",
+    "workflow": false,
+    "wait": "$CREATE_PROFILE_FROM_SITE_MODEL_TABLE_WAIT$",
+    "progress": "$CREATE_PROFILE_FROM_SITE_MODEL_TABLE_PROGRESS$",
+    "parameters": {
+      "table": "$CREATE_PROFILE_FROM_SITE_MODEL_TABLE_TABLE$",
+      "profile": "$CREATE_PROFILE_FROM_SITE_MODEL_TABLE_PROFILE$",
+      "thresholdsColumn": "$CREATE_PROFILE_FROM_SITE_MODEL_TABLE_THRESHOLDSCOLUMN$",
+      "outputProfile": "$CREATE_PROFILE_FROM_SITE_MODEL_TABLE_OUTPUTPROFILE$"
+    }
+  },
+
+  "CreateWeightMatrixModel": {
+    "do": "analyze",
+    "method": "Create weight matrix model",
+    "workflow": false,
+    "wait": "$CREATE_WEIGHT_MATRIX_MODEL_WAIT$",
+    "progress": "$CREATE_WEIGHT_MATRIX_MODEL_PROGRESS$",
+    "parameters": {
+      "matrixPath": "$CREATE_WEIGHT_MATRIX_MODEL_MATRIXPATH$",
+      "modelType": "$CREATE_WEIGHT_MATRIX_MODEL_MODELTYPE$",
+      "threshold": "$CREATE_WEIGHT_MATRIX_MODEL_THRESHOLD$",
+      "outputCollection": "$CREATE_WEIGHT_MATRIX_MODEL_OUTPUTCOLLECTION$",
+      "modelName": "$CREATE_WEIGHT_MATRIX_MODEL_MODELNAME$"
+    }
+  },
+
+  "FindRegulatoryRegions": {
+    "do": "analyze",
+    "method": "Find regulatory regions",
+    "workflow": false,
+    "wait": "$FIND_REGULATORY_REGIONS_WAIT$",
+    "progress": "$FIND_REGULATORY_REGIONS_PROGRESS$",
+    "parameters": {
+      "inputGenes": "$FIND_REGULATORY_REGIONS_INPUTGENES$",
+      "chipSeqPeaks": "$FIND_REGULATORY_REGIONS_CHIPSEQPEAKS$",
+      "ensembl": "$FIND_REGULATORY_REGIONS_ENSEMBL$",
+      "cageDatabase": "$FIND_REGULATORY_REGIONS_CAGEDATABASE$",
+      "cellCondition": "$FIND_REGULATORY_REGIONS_CELLCONDITION$",
+      "tssSelection": "$FIND_REGULATORY_REGIONS_TSSSELECTION$",
+      "promoterFrom": "$FIND_REGULATORY_REGIONS_PROMOTERFROM$",
+      "promoterTo": "$FIND_REGULATORY_REGIONS_PROMOTERTO$",
+      "geneLeftBoundShift": "$FIND_REGULATORY_REGIONS_GENELEFTBOUNDSHIFT$",
+      "geneRightBoundShift": "$FIND_REGULATORY_REGIONS_GENERIGHTBOUNDSHIFT$",
+      "regulatoryRegionFrom": "$FIND_REGULATORY_REGIONS_REGULATORYREGIONFROM$",
+      "regulatoryRegionTo": "$FIND_REGULATORY_REGIONS_REGULATORYREGIONTO$",
+      "outputPath": "$FIND_REGULATORY_REGIONS_OUTPUTPATH$"
+    }
+  },
+
+  "FindRegulatoryRegionsWithMutations": {
+    "do": "analyze",
+    "method": "Find regulatory regions with mutations",
+    "workflow": false,
+    "wait": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_WAIT$",
+    "progress": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_PROGRESS$",
+    "parameters": {
+      "inputGenes": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_INPUTGENES$",
+      "mutationTrack": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_MUTATIONTRACK$",
+      "weightProperty": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_WEIGHTPROPERTY$",
+      "geneProperty": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_GENEPROPERTY$",
+      "ensembl": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_ENSEMBL$",
+      "cageDatabase": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_CAGEDATABASE$",
+      "cellCondition": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_CELLCONDITION$",
+      "tssSelection": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_TSSSELECTION$",
+      "promoterFrom": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_PROMOTERFROM$",
+      "promoterTo": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_PROMOTERTO$",
+      "geneLeftBoundShift": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_GENELEFTBOUNDSHIFT$",
+      "geneRightBoundShift": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_GENERIGHTBOUNDSHIFT$",
+      "regulatoryRegionFrom": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_REGULATORYREGIONFROM$",
+      "regulatoryRegionTo": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_REGULATORYREGIONTO$",
+      "outputPath": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_OUTPUTPATH$"
+    }
+  },
+
+  "GetTranscriptsTrack": {
+    "do": "analyze",
+    "method": "Get transcripts track",
+    "workflow": false,
+    "wait": "$GET_TRANSCRIPTS_TRACK_WAIT$",
+    "progress": "$GET_TRANSCRIPTS_TRACK_PROGRESS$",
+    "parameters": {
+      "transcriptsTable": "$GET_TRANSCRIPTS_TRACK_TRANSCRIPTSTABLE$",
+      "ensembl": "$GET_TRANSCRIPTS_TRACK_ENSEMBL$",
+      "outputTrack": "$GET_TRANSCRIPTS_TRACK_OUTPUTTRACK$",
+      "unmatchedTranscripts": "$GET_TRANSCRIPTS_TRACK_UNMATCHEDTRANSCRIPTS$"
+    }
+  },
+
+  "IPSMotifDiscovery": {
+    "do": "analyze",
+    "method": "IPS motif discovery",
+    "workflow": false,
+    "wait": "$IPS_MOTIF_DISCOVERY_WAIT$",
+    "progress": "$IPS_MOTIF_DISCOVERY_PROGRESS$",
+    "parameters": {
+      "sequencesPath": "$IPS_MOTIF_DISCOVERY_SEQUENCESPATH$",
+      "initialMatrices": "$IPS_MOTIF_DISCOVERY_INITIALMATRICES$",
+      "extendInitialMatrices": "$IPS_MOTIF_DISCOVERY_EXTENDINITIALMATRICES$",
+      "maxIterations": "$IPS_MOTIF_DISCOVERY_MAXITERATIONS$",
+      "minClusterSize": "$IPS_MOTIF_DISCOVERY_MINCLUSTERSIZE$",
+      "windowSize": "$IPS_MOTIF_DISCOVERY_WINDOWSIZE$",
+      "critIPS": "$IPS_MOTIF_DISCOVERY_CRITIPS$",
+      "outputPath": "$IPS_MOTIF_DISCOVERY_OUTPUTPATH$"
+    }
+  },
+
+  "MEALRTracks": {
+    "do": "analyze",
+    "method": "MEALR (tracks)",
+    "workflow": false,
+    "wait": "$MEALR_TRACKS_WAIT$",
+    "progress": "$MEALR_TRACKS_PROGRESS$",
+    "parameters": {
+      "yesSetPath": "$MEALR_TRACKS_YESSETPATH$",
+      "noSetPath": "$MEALR_TRACKS_NOSETPATH$",
+      "dbSelector": "$MEALR_TRACKS_DBSELECTOR$",
+      "profilePath": "$MEALR_TRACKS_PROFILEPATH$",
+      "maxPosCoef": "$MEALR_TRACKS_MAXPOSCOEF$",
+      "maxComplexity": "$MEALR_TRACKS_MAXCOMPLEXITY$",
+      "complexityInc": "$MEALR_TRACKS_COMPLEXITYINC$",
+      "maxUnimproved": "$MEALR_TRACKS_MAXUNIMPROVED$",
+      "scoresWithNoSet": "$MEALR_TRACKS_SCORESWITHNOSET$",
+      "output": "$MEALR_TRACKS_OUTPUT$"
+    }
+  },
+
+  "MEALRClassifierTracks": {
+    "do": "analyze",
+    "method": "MEALR classifier (tracks)",
+    "workflow": false,
+    "wait": "$MEALR_CLASSIFIER_TRACKS_WAIT$",
+    "progress": "$MEALR_CLASSIFIER_TRACKS_PROGRESS$",
+    "parameters": {
+      "yesSetPath": "$MEALR_CLASSIFIER_TRACKS_YESSETPATH$",
+      "dbSelector": "$MEALR_CLASSIFIER_TRACKS_DBSELECTOR$",
+      "modelPath": "$MEALR_CLASSIFIER_TRACKS_MODELPATH$",
+      "profilePath": "$MEALR_CLASSIFIER_TRACKS_PROFILEPATH$",
+      "output": "$MEALR_CLASSIFIER_TRACKS_OUTPUT$"
+    }
+  },
+
+  "MSAT": {
+    "do": "analyze",
+    "method": "MSAT",
+    "workflow": false,
+    "wait": "$MSAT_WAIT$",
+    "progress": "$MSAT_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$MSAT_INPUTTABLEPATH$",
+      "species": "$MSAT_SPECIES$",
+      "responseColumn": "$MSAT_RESPONSECOLUMN$",
+      "treatAsPvalues": "$MSAT_TREATASPVALUES$",
+      "from": "$MSAT_FROM$",
+      "to": "$MSAT_TO$",
+      "profilePath": "$MSAT_PROFILEPATH$",
+      "useHighScore": "$MSAT_USEHIGHSCORE$",
+      "useMatchScore": "$MSAT_USEMATCHSCORE$",
+      "outputFolderPath": "$MSAT_OUTPUTFOLDERPATH$"
+    }
+  },
+
+  "MotifQualityAnalysis": {
+    "do": "analyze",
+    "method": "Motif quality analysis",
+    "workflow": false,
+    "wait": "$MOTIF_QUALITY_ANALYSIS_WAIT$",
+    "progress": "$MOTIF_QUALITY_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "sequences": "$MOTIF_QUALITY_ANALYSIS_SEQUENCES$",
+      "siteModel": "$MOTIF_QUALITY_ANALYSIS_SITEMODEL$",
+      "numberOfPoints": "$MOTIF_QUALITY_ANALYSIS_NUMBEROFPOINTS$",
+      "shufflesCount": "$MOTIF_QUALITY_ANALYSIS_SHUFFLESCOUNT$",
+      "seed": "$MOTIF_QUALITY_ANALYSIS_SEED$",
+      "output": "$MOTIF_QUALITY_ANALYSIS_OUTPUT$"
+    }
+  },
+
+  "RecalculateCompositeModuleScoreOnNewTrack": {
+    "do": "analyze",
+    "method": "Recalculate composite module score on new track",
+    "workflow": false,
+    "wait": "$RECALCULATE_COMPOSITE_MODULE_SCORE_ON_NEW_TRACK_WAIT$",
+    "progress": "$RECALCULATE_COMPOSITE_MODULE_SCORE_ON_NEW_TRACK_PROGRESS$",
+    "parameters": {
+      "cmaResultPath": "$RECALCULATE_COMPOSITE_MODULE_SCORE_ON_NEW_TRACK_CMARESULTPATH$",
+      "trackPath": "$RECALCULATE_COMPOSITE_MODULE_SCORE_ON_NEW_TRACK_TRACKPATH$",
+      "enableThreshold": "$RECALCULATE_COMPOSITE_MODULE_SCORE_ON_NEW_TRACK_ENABLETHRESHOLD$",
+      "outputPath": "$RECALCULATE_COMPOSITE_MODULE_SCORE_ON_NEW_TRACK_OUTPUTPATH$"
+    }
+  },
+
+  "SearchForEnrichedTFBSsGenes": {
+    "do": "analyze",
+    "method": "Search for enriched TFBSs (genes)",
+    "workflow": false,
+    "wait": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_WAIT$",
+    "progress": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_PROGRESS$",
+    "parameters": {
+      "yesSetPath": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_YESSETPATH$",
+      "noSetPath": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_NOSETPATH$",
+      "profilePath": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_PROFILEPATH$",
+      "species": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_SPECIES$",
+      "from": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_FROM$",
+      "to": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_TO$",
+      "output": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_OUTPUT$",
+      "cutoff": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_CUTOFF$",
+      "doSample": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_DOSAMPLE$",
+      "sampleNum": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_SAMPLENUM$",
+      "sampleSize": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_SAMPLESIZE$",
+      "siteFeCutoff": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_SITEFECUTOFF$",
+      "siteFdrCutoff": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_SITEFDRCUTOFF$",
+      "seqFeCutoff": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_SEQFECUTOFF$",
+      "seqFdrCutoff": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_SEQFDRCUTOFF$",
+      "randSeed": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_RANDSEED$",
+      "useOldPreparation": "$SEARCH_FOR_ENRICHED_TFBSS_GENES_USEOLDPREPARATION$"
+    }
+  },
+
+  "SearchForEnrichedTFBSsTracks": {
+    "do": "analyze",
+    "method": "Search for enriched TFBSs (tracks)",
+    "workflow": false,
+    "wait": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_WAIT$",
+    "progress": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_PROGRESS$",
+    "parameters": {
+      "yesSetPath": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_YESSETPATH$",
+      "noSetPath": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_NOSETPATH$",
+      "dbSelector": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_DBSELECTOR$",
+      "profilePath": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_PROFILEPATH$",
+      "output": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_OUTPUT$",
+      "cutoff": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_CUTOFF$",
+      "doSample": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_DOSAMPLE$",
+      "sampleNum": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_SAMPLENUM$",
+      "sampleSize": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_SAMPLESIZE$",
+      "siteFeCutoff": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_SITEFECUTOFF$",
+      "siteFdrCutoff": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_SITEFDRCUTOFF$",
+      "seqFeCutoff": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_SEQFECUTOFF$",
+      "seqFdrCutoff": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_SEQFDRCUTOFF$",
+      "randSeed": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_RANDSEED$",
+      "useOldPreparation": "$SEARCH_FOR_ENRICHED_TFBSS_TRACKS_USEOLDPREPARATION$"
+    }
+  },
+
+  "SiteSearchOnGeneSet": {
+    "do": "analyze",
+    "method": "Site search on gene set",
+    "workflow": false,
+    "wait": "$SITE_SEARCH_ON_GENE_SET_WAIT$",
+    "progress": "$SITE_SEARCH_ON_GENE_SET_PROGRESS$",
+    "parameters": {
+      "yesSetPath": "$SITE_SEARCH_ON_GENE_SET_YESSETPATH$",
+      "noSetPath": "$SITE_SEARCH_ON_GENE_SET_NOSETPATH$",
+      "species": "$SITE_SEARCH_ON_GENE_SET_SPECIES$",
+      "from": "$SITE_SEARCH_ON_GENE_SET_FROM$",
+      "to": "$SITE_SEARCH_ON_GENE_SET_TO$",
+      "profilePath": "$SITE_SEARCH_ON_GENE_SET_PROFILEPATH$",
+      "optimizeCutoff": "$SITE_SEARCH_ON_GENE_SET_OPTIMIZECUTOFF$",
+      "optimizeWindow": "$SITE_SEARCH_ON_GENE_SET_OPTIMIZEWINDOW$",
+      "pvalueCutoff": "$SITE_SEARCH_ON_GENE_SET_PVALUECUTOFF$",
+      "deleteNonOptimized": "$SITE_SEARCH_ON_GENE_SET_DELETENONOPTIMIZED$",
+      "overrepresentedOnly": "$SITE_SEARCH_ON_GENE_SET_OVERREPRESENTEDONLY$",
+      "outputPath": "$SITE_SEARCH_ON_GENE_SET_OUTPUTPATH$"
+    }
+  },
+
+  "SiteSearchOnTrack": {
+    "do": "analyze",
+    "method": "Site search on track",
+    "workflow": false,
+    "wait": "$SITE_SEARCH_ON_TRACK_WAIT$",
+    "progress": "$SITE_SEARCH_ON_TRACK_PROGRESS$",
+    "parameters": {
+      "trackPath": "$SITE_SEARCH_ON_TRACK_TRACKPATH$",
+      "dbSelector": "$SITE_SEARCH_ON_TRACK_DBSELECTOR$",
+      "profilePath": "$SITE_SEARCH_ON_TRACK_PROFILEPATH$",
+      "output": "$SITE_SEARCH_ON_TRACK_OUTPUT$"
+    }
+  },
+
+  "SiteSearchReport": {
+    "do": "analyze",
+    "method": "Site search report",
+    "workflow": false,
+    "wait": "$SITE_SEARCH_REPORT_WAIT$",
+    "progress": "$SITE_SEARCH_REPORT_PROGRESS$",
+    "parameters": {
+      "result": "$SITE_SEARCH_REPORT_RESULT$",
+      "topModels": "$SITE_SEARCH_REPORT_TOPMODELS$",
+      "addPositions": "$SITE_SEARCH_REPORT_ADDPOSITIONS$",
+      "target": "$SITE_SEARCH_REPORT_TARGET$"
+    }
+  },
+
+  "SiteSearchResultOptimization": {
+    "do": "analyze",
+    "method": "Site search result optimization",
+    "workflow": false,
+    "wait": "$SITE_SEARCH_RESULT_OPTIMIZATION_WAIT$",
+    "progress": "$SITE_SEARCH_RESULT_OPTIMIZATION_PROGRESS$",
+    "parameters": {
+      "inYesTrack": "$SITE_SEARCH_RESULT_OPTIMIZATION_INYESTRACK$",
+      "inNoTrack": "$SITE_SEARCH_RESULT_OPTIMIZATION_INNOTRACK$",
+      "pvalueCutoff": "$SITE_SEARCH_RESULT_OPTIMIZATION_PVALUECUTOFF$",
+      "optimizationType": "$SITE_SEARCH_RESULT_OPTIMIZATION_OPTIMIZATIONTYPE$",
+      "outYesTrack": "$SITE_SEARCH_RESULT_OPTIMIZATION_OUTYESTRACK$",
+      "outNoTrack": "$SITE_SEARCH_RESULT_OPTIMIZATION_OUTNOTRACK$",
+      "overrepresentedOnly": "$SITE_SEARCH_RESULT_OPTIMIZATION_OVERREPRESENTEDONLY$",
+      "outSummaryTable": "$SITE_SEARCH_RESULT_OPTIMIZATION_OUTSUMMARYTABLE$",
+      "outProfile": "$SITE_SEARCH_RESULT_OPTIMIZATION_OUTPROFILE$"
+    }
+  },
+
+  "SiteSearchSummary": {
+    "do": "analyze",
+    "method": "Site search summary",
+    "workflow": false,
+    "wait": "$SITE_SEARCH_SUMMARY_WAIT$",
+    "progress": "$SITE_SEARCH_SUMMARY_PROGRESS$",
+    "parameters": {
+      "yesTrackPath": "$SITE_SEARCH_SUMMARY_YESTRACKPATH$",
+      "noTrackPath": "$SITE_SEARCH_SUMMARY_NOTRACKPATH$",
+      "overrepresentedOnly": "$SITE_SEARCH_SUMMARY_OVERREPRESENTEDONLY$",
+      "outputPath": "$SITE_SEARCH_SUMMARY_OUTPUTPATH$"
+    }
+  },
+
+  "SplitVCFByRegulation": {
+    "do": "analyze",
+    "method": "Split VCF by regulation",
+    "workflow": false,
+    "wait": "$SPLIT_VCF_BY_REGULATION_WAIT$",
+    "progress": "$SPLIT_VCF_BY_REGULATION_PROGRESS$",
+    "parameters": {
+      "inputVCF": "$SPLIT_VCF_BY_REGULATION_INPUTVCF$",
+      "regulationTrack": "$SPLIT_VCF_BY_REGULATION_REGULATIONTRACK$",
+      "defaultVCF": "$SPLIT_VCF_BY_REGULATION_DEFAULTVCF$",
+      "minNoSize": "$SPLIT_VCF_BY_REGULATION_MINNOSIZE$",
+      "outYes": "$SPLIT_VCF_BY_REGULATION_OUTYES$",
+      "outNo": "$SPLIT_VCF_BY_REGULATION_OUTNO$"
+    }
+
+  }
+}

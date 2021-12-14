@@ -18,6 +18,8 @@
       "filterProperties/outsideOptions/useZeroColor": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSUSEZEROCOLOR$",
       "filterProperties/outsideOptions/colorZero": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSCOLORZERO$",
       "filterProperties/outsideOptions/zeroLevel": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSZEROLEVEL$",
+      "filterProperties/outsideOptions/colorNan": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSCOLORNAN$",
+      "filterProperties/outsideOptions/useGradientFill": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESOUTSIDEOPTIONSUSEGRADIENTFILL$",
       "filterProperties/useInsideFill": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESUSEINSIDEFILL$",
       "filterProperties/usePval": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESUSEPVAL$",
       "filterProperties/useFlux": "$ADD_EXPRESSION_VALUES_FILTERPROPERTIESUSEFLUX$",
@@ -53,6 +55,44 @@
     }
   },
 
+  "CalculateCMARegulation": {
+    "do": "analyze",
+    "method": "Calculate CMA regulation",
+    "workflow": false,
+    "wait": "$CALCULATE_CMA_REGULATION_WAIT$",
+    "progress": "$CALCULATE_CMA_REGULATION_PROGRESS$",
+    "parameters": {
+      "tfTablePath": "$CALCULATE_CMA_REGULATION_TFTABLEPATH$",
+      "keynodesPath": "$CALCULATE_CMA_REGULATION_KEYNODESPATH$",
+      "rankColumn": "$CALCULATE_CMA_REGULATION_RANKCOLUMN$",
+      "geneIdColumn": "$CALCULATE_CMA_REGULATION_GENEIDCOLUMN$",
+      "topSelected": "$CALCULATE_CMA_REGULATION_TOPSELECTED$",
+      "lowestRanking": "$CALCULATE_CMA_REGULATION_LOWESTRANKING$",
+      "cmaTablePath": "$CALCULATE_CMA_REGULATION_CMATABLEPATH$",
+      "resultTablePath": "$CALCULATE_CMA_REGULATION_RESULTTABLEPATH$",
+      "resultDiagramPath": "$CALCULATE_CMA_REGULATION_RESULTDIAGRAMPATH$"
+    }
+  },
+
+  "CalculateKeynodesRanks": {
+    "do": "analyze",
+    "method": "Calculate keynodes ranks",
+    "workflow": false,
+    "wait": "$CALCULATE_KEYNODES_RANKS_WAIT$",
+    "progress": "$CALCULATE_KEYNODES_RANKS_PROGRESS$",
+    "parameters": {
+      "knTablePath": "$CALCULATE_KEYNODES_RANKS_KNTABLEPATH$",
+      "geneIdColumn": "$CALCULATE_KEYNODES_RANKS_GENEIDCOLUMN$",
+      "transcriptomePath": "$CALCULATE_KEYNODES_RANKS_TRANSCRIPTOMEPATH$",
+      "transcriptomicsOptional": "$CALCULATE_KEYNODES_RANKS_TRANSCRIPTOMICSOPTIONAL$",
+      "tScoreColumn": "$CALCULATE_KEYNODES_RANKS_TSCORECOLUMN$",
+      "proteomePath": "$CALCULATE_KEYNODES_RANKS_PROTEOMEPATH$",
+      "pScoreColumn": "$CALCULATE_KEYNODES_RANKS_PSCORECOLUMN$",
+      "cmaScoreTablePath": "$CALCULATE_KEYNODES_RANKS_CMASCORETABLEPATH$",
+      "outputPath": "$CALCULATE_KEYNODES_RANKS_OUTPUTPATH$"
+    }
+  },
+
   "ClusterByPath": {
     "do": "analyze",
     "method": "Cluster by path",
@@ -61,6 +101,7 @@
     "progress": "$CLUSTER_BY_PATH_PROGRESS$",
     "parameters": {
       "sourcePath": "$CLUSTER_BY_PATH_SOURCEPATH$",
+      "inputSizeLimit": "$CLUSTER_BY_PATH_INPUTSIZELIMIT$",
       "direction": "$CLUSTER_BY_PATH_DIRECTION$",
       "maxRadius": "$CLUSTER_BY_PATH_MAXRADIUS$",
       "bioHub": "$CLUSTER_BY_PATH_BIOHUB$",
@@ -77,12 +118,32 @@
     "progress": "$CLUSTER_BY_SHORTEST_PATH_PROGRESS$",
     "parameters": {
       "sourcePath": "$CLUSTER_BY_SHORTEST_PATH_SOURCEPATH$",
+      "inputSizeLimit": "$CLUSTER_BY_SHORTEST_PATH_INPUTSIZELIMIT$",
       "direction": "$CLUSTER_BY_SHORTEST_PATH_DIRECTION$",
       "maxRadius": "$CLUSTER_BY_SHORTEST_PATH_MAXRADIUS$",
       "useFullPath": "$CLUSTER_BY_SHORTEST_PATH_USEFULLPATH$",
       "bioHub": "$CLUSTER_BY_SHORTEST_PATH_BIOHUB$",
       "species": "$CLUSTER_BY_SHORTEST_PATH_SPECIES$",
       "outputPath": "$CLUSTER_BY_SHORTEST_PATH_OUTPUTPATH$"
+    }
+  },
+
+  "CompareDiagrams": {
+    "do": "analyze",
+    "method": "Compare diagrams",
+    "workflow": false,
+    "wait": "$COMPARE_DIAGRAMS_WAIT$",
+    "progress": "$COMPARE_DIAGRAMS_PROGRESS$",
+    "parameters": {
+      "inputPath1": "$COMPARE_DIAGRAMS_INPUTPATH1$",
+      "inputPath2": "$COMPARE_DIAGRAMS_INPUTPATH2$",
+      "startNodeName1": "$COMPARE_DIAGRAMS_STARTNODENAME1$",
+      "startNodeName2": "$COMPARE_DIAGRAMS_STARTNODENAME2$",
+      "depth": "$COMPARE_DIAGRAMS_DEPTH$",
+      "directionStr": "$COMPARE_DIAGRAMS_DIRECTIONSTR$",
+      "outputPath": "$COMPARE_DIAGRAMS_OUTPUTPATH$",
+      "needLayout": "$COMPARE_DIAGRAMS_NEEDLAYOUT$",
+      "comparator/type": "$COMPARE_DIAGRAMS_COMPARATORTYPE$"
     }
   },
 
@@ -94,12 +155,17 @@
     "progress": "$EFFECTOR_SEARCH_PROGRESS$",
     "parameters": {
       "sourcePath": "$EFFECTOR_SEARCH_SOURCEPATH$",
+      "weightColumn": "$EFFECTOR_SEARCH_WEIGHTCOLUMN$",
+      "isInputSizeLimited": "$EFFECTOR_SEARCH_ISINPUTSIZELIMITED$",
+      "inputSizeLimit": "$EFFECTOR_SEARCH_INPUTSIZELIMIT$",
       "maxRadius": "$EFFECTOR_SEARCH_MAXRADIUS$",
       "scoreCutoff": "$EFFECTOR_SEARCH_SCORECUTOFF$",
       "bioHub": "$EFFECTOR_SEARCH_BIOHUB$",
       "species": "$EFFECTOR_SEARCH_SPECIES$",
       "calculatingFDR": "$EFFECTOR_SEARCH_CALCULATINGFDR$",
+      "penalty": "$EFFECTOR_SEARCH_PENALTY$",
       "decorators": "$EFFECTOR_SEARCH_DECORATORS$",
+      "isoformFactor": "$EFFECTOR_SEARCH_ISOFORMFACTOR$",
       "outputTable": "$EFFECTOR_SEARCH_OUTPUTTABLE$"
     }
   },
@@ -126,6 +192,8 @@
     "progress": "$FIND_LONGEST_CONNECTED_CHAINS_PROGRESS$",
     "parameters": {
       "sourcePath": "$FIND_LONGEST_CONNECTED_CHAINS_SOURCEPATH$",
+      "isInputSizeLimited": "$FIND_LONGEST_CONNECTED_CHAINS_ISINPUTSIZELIMITED$",
+      "inputSizeLimit": "$FIND_LONGEST_CONNECTED_CHAINS_INPUTSIZELIMIT$",
       "direction": "$FIND_LONGEST_CONNECTED_CHAINS_DIRECTION$",
       "maxRadius": "$FIND_LONGEST_CONNECTED_CHAINS_MAXRADIUS$",
       "maxDijkstraDepth": "$FIND_LONGEST_CONNECTED_CHAINS_MAXDIJKSTRADEPTH$",
@@ -133,7 +201,8 @@
       "bioHub": "$FIND_LONGEST_CONNECTED_CHAINS_BIOHUB$",
       "species": "$FIND_LONGEST_CONNECTED_CHAINS_SPECIES$",
       "decorators": "$FIND_LONGEST_CONNECTED_CHAINS_DECORATORS$",
-      "outputTable": "$FIND_LONGEST_CONNECTED_CHAINS_OUTPUTTABLE$"
+      "outputTable": "$FIND_LONGEST_CONNECTED_CHAINS_OUTPUTTABLE$",
+      "scoreCoeff": "$FIND_LONGEST_CONNECTED_CHAINS_SCORECOEFF$"
     }
   },
 
@@ -151,6 +220,19 @@
       "bioHub": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_BIOHUB$",
       "species": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_SPECIES$",
       "outputPath": "$FIND_SHORTEST_PATH_BETWEEN_TWO_SETS_OUTPUTPATH$"
+    }
+  },
+
+  "GetMoleculesFromDiagram": {
+    "do": "analyze",
+    "method": "Get molecules from diagram",
+    "workflow": false,
+    "wait": "$GET_MOLECULES_FROM_DIAGRAM_WAIT$",
+    "progress": "$GET_MOLECULES_FROM_DIAGRAM_PROGRESS$",
+    "parameters": {
+      "diagramPath": "$GET_MOLECULES_FROM_DIAGRAM_DIAGRAMPATH$",
+      "elementNames": "$GET_MOLECULES_FROM_DIAGRAM_ELEMENTNAMES$",
+      "outputPath": "$GET_MOLECULES_FROM_DIAGRAM_OUTPUTPATH$"
     }
   },
 
@@ -190,12 +272,17 @@
     "progress": "$REGULATOR_SEARCH_PROGRESS$",
     "parameters": {
       "sourcePath": "$REGULATOR_SEARCH_SOURCEPATH$",
+      "weightColumn": "$REGULATOR_SEARCH_WEIGHTCOLUMN$",
+      "isInputSizeLimited": "$REGULATOR_SEARCH_ISINPUTSIZELIMITED$",
+      "inputSizeLimit": "$REGULATOR_SEARCH_INPUTSIZELIMIT$",
       "maxRadius": "$REGULATOR_SEARCH_MAXRADIUS$",
       "scoreCutoff": "$REGULATOR_SEARCH_SCORECUTOFF$",
       "bioHub": "$REGULATOR_SEARCH_BIOHUB$",
       "species": "$REGULATOR_SEARCH_SPECIES$",
       "calculatingFDR": "$REGULATOR_SEARCH_CALCULATINGFDR$",
+      "penalty": "$REGULATOR_SEARCH_PENALTY$",
       "decorators": "$REGULATOR_SEARCH_DECORATORS$",
+      "isoformFactor": "$REGULATOR_SEARCH_ISOFORMFACTOR$",
       "outputTable": "$REGULATOR_SEARCH_OUTPUTTABLE$"
     }
   },
@@ -224,7 +311,27 @@
       "knResultPath": "$SAVE_NETWORK_KNRESULTPATH$",
       "rankColumn": "$SAVE_NETWORK_RANKCOLUMN$",
       "numTopRanking": "$SAVE_NETWORK_NUMTOPRANKING$",
+      "separateResults": "$SAVE_NETWORK_SEPARATERESULTS$",
       "outputPath": "$SAVE_NETWORK_OUTPUTPATH$"
+    }
+  },
+
+  "SelectKeynodesWithTopTargets": {
+    "do": "analyze",
+    "method": "Select keynodes with top targets",
+    "workflow": false,
+    "wait": "$SELECT_KEYNODES_WITH_TOP_TARGETS_WAIT$",
+    "progress": "$SELECT_KEYNODES_WITH_TOP_TARGETS_PROGRESS$",
+    "parameters": {
+      "knResultPath": "$SELECT_KEYNODES_WITH_TOP_TARGETS_KNRESULTPATH$",
+      "geneIdColumn": "$SELECT_KEYNODES_WITH_TOP_TARGETS_GENEIDCOLUMN$",
+      "rankColumn": "$SELECT_KEYNODES_WITH_TOP_TARGETS_RANKCOLUMN$",
+      "numSelected": "$SELECT_KEYNODES_WITH_TOP_TARGETS_NUMSELECTED$",
+      "topTargetsPaths": "$SELECT_KEYNODES_WITH_TOP_TARGETS_TOPTARGETSPATHS$",
+      "sortTargetsColumn": "$SELECT_KEYNODES_WITH_TOP_TARGETS_SORTTARGETSCOLUMN$",
+      "sortTargetsAscending": "$SELECT_KEYNODES_WITH_TOP_TARGETS_SORTTARGETSASCENDING$",
+      "maxTargets": "$SELECT_KEYNODES_WITH_TOP_TARGETS_MAXTARGETS$",
+      "resultPath": "$SELECT_KEYNODES_WITH_TOP_TARGETS_RESULTPATH$"
     }
   },
 
@@ -239,6 +346,7 @@
       "rankColumn": "$VISUALIZE_RESULTS_RANKCOLUMN$",
       "numTopRanking": "$VISUALIZE_RESULTS_NUMTOPRANKING$",
       "lowestRanking": "$VISUALIZE_RESULTS_LOWESTRANKING$",
+      "separateResults": "$VISUALIZE_RESULTS_SEPARATERESULTS$",
       "outputPath": "$VISUALIZE_RESULTS_OUTPUTPATH$",
       "layoutDiagram": "$VISUALIZE_RESULTS_LAYOUTDIAGRAM$",
       "addParticipants": "$VISUALIZE_RESULTS_ADDPARTICIPANTS$"

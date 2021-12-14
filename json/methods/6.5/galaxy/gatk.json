@@ -1,0 +1,120 @@
+{
+  "IndelRealigner": {
+    "do": "analyze",
+    "method": "indel_realigner",
+    "workflow": false,
+    "wait": "$INDEL_REALIGNER_WAIT$",
+    "progress": "$INDEL_REALIGNER_PROGRESS$",
+    "parameters": {
+      "input_bam": "$INDEL_REALIGNER_INPUT_BAM$",
+      "targetIntervals": "$INDEL_REALIGNER_TARGETINTERVALS$",
+      "refGenome": "$INDEL_REALIGNER_REFGENOME$",
+      "knownSites": "$INDEL_REALIGNER_KNOWNSITES$",
+      "compressionLevel": "$INDEL_REALIGNER_COMPRESSIONLEVEL$",
+      "maxReads": "$INDEL_REALIGNER_MAXREADS$",
+      "tmpFolder": "$INDEL_REALIGNER_TMPFOLDER$",
+      "nThreads": "$INDEL_REALIGNER_NTHREADS$",
+      "memoryUsage": "$INDEL_REALIGNER_MEMORYUSAGE$",
+      "log": "$INDEL_REALIGNER_LOG$",
+      "output": "$INDEL_REALIGNER_OUTPUT$"
+    }
+  },
+
+  "RealignerTargetCreator": {
+    "do": "analyze",
+    "method": "realigner_target_creator",
+    "workflow": false,
+    "wait": "$REALIGNER_TARGET_CREATOR_WAIT$",
+    "progress": "$REALIGNER_TARGET_CREATOR_PROGRESS$",
+    "parameters": {
+      "input_bam": "$REALIGNER_TARGET_CREATOR_INPUT_BAM$",
+      "refGenome": "$REALIGNER_TARGET_CREATOR_REFGENOME$",
+      "windowSize": "$REALIGNER_TARGET_CREATOR_WINDOWSIZE$",
+      "mismatchFraction": "$REALIGNER_TARGET_CREATOR_MISMATCHFRACTION$",
+      "minReadsAtLocus": "$REALIGNER_TARGET_CREATOR_MINREADSATLOCUS$",
+      "maxIntervalSize": "$REALIGNER_TARGET_CREATOR_MAXINTERVALSIZE$",
+      "numThreads": "$REALIGNER_TARGET_CREATOR_NUMTHREADS$",
+      "memoryUsage": "$REALIGNER_TARGET_CREATOR_MEMORYUSAGE$",
+      "logFile": "$REALIGNER_TARGET_CREATOR_LOGFILE$",
+      "targetIntervals": "$REALIGNER_TARGET_CREATOR_TARGETINTERVALS$"
+    }
+  },
+
+  "TableRecalibration": {
+    "do": "analyze",
+    "method": "table_recalibration",
+    "workflow": false,
+    "wait": "$TABLE_RECALIBRATION_WAIT$",
+    "progress": "$TABLE_RECALIBRATION_PROGRESS$",
+    "parameters": {
+      "input_bam": "$TABLE_RECALIBRATION_INPUT_BAM$",
+      "refGenome": "$TABLE_RECALIBRATION_REFGENOME$",
+      "recalFile": "$TABLE_RECALIBRATION_RECALFILE$",
+      "defaultPlatform": "$TABLE_RECALIBRATION_DEFAULTPLATFORM$",
+      "compressionLevel": "$TABLE_RECALIBRATION_COMPRESSIONLEVEL$",
+      "tmpFolder": "$TABLE_RECALIBRATION_TMPFOLDER$",
+      "nThreads": "$TABLE_RECALIBRATION_NTHREADS$",
+      "memoryUsage": "$TABLE_RECALIBRATION_MEMORYUSAGE$",
+      "log": "$TABLE_RECALIBRATION_LOG$",
+      "output": "$TABLE_RECALIBRATION_OUTPUT$"
+    }
+  },
+
+  "CountCovariates": {
+    "do": "analyze",
+    "method": "count_covariates",
+    "workflow": false,
+    "wait": "$COUNT_COVARIATES_WAIT$",
+    "progress": "$COUNT_COVARIATES_PROGRESS$",
+    "parameters": {
+      "input_bam": "$COUNT_COVARIATES_INPUT_BAM$",
+      "refGenome": "$COUNT_COVARIATES_REFGENOME$",
+      "knownSites": "$COUNT_COVARIATES_KNOWNSITES$",
+      "covariates": "$COUNT_COVARIATES_COVARIATES$",
+      "interval": "$COUNT_COVARIATES_INTERVAL$",
+      "defaultPlatform": "$COUNT_COVARIATES_DEFAULTPLATFORM$",
+      "numThreads": "$COUNT_COVARIATES_NUMTHREADS$",
+      "memoryUsage": "$COUNT_COVARIATES_MEMORYUSAGE$",
+      "tmpFolder": "$COUNT_COVARIATES_TMPFOLDER$",
+      "log": "$COUNT_COVARIATES_LOG$",
+      "recalFile": "$COUNT_COVARIATES_RECALFILE$"
+    }
+  },
+
+  "AnalyzeCovariates": {
+    "do": "analyze",
+    "method": "analyze_covariates",
+    "workflow": false,
+    "wait": "$ANALYZE_COVARIATES_WAIT$",
+    "progress": "$ANALYZE_COVARIATES_PROGRESS$",
+    "parameters": {
+      "input_recal": "$ANALYZE_COVARIATES_INPUT_RECAL$",
+      "analysis_param_type|analysis_param_type_selector": "$ANALYZE_COVARIATES_ANALYSIS_PARAM_TYPEANALYSIS_PARAM_TYPE_SELECTOR$",
+      "output": "$ANALYZE_COVARIATES_OUTPUT$",
+      "output_log": "$ANALYZE_COVARIATES_OUTPUT_LOG$"
+    }
+  },
+
+  "GatkUnifiedGenotyper": {
+    "do": "analyze",
+    "method": "gatk_unified_genotyper",
+    "workflow": false,
+    "wait": "$GATK_UNIFIED_GENOTYPER_WAIT$",
+    "progress": "$GATK_UNIFIED_GENOTYPER_PROGRESS$",
+    "parameters": {
+      "reference_source|reference_source_selector": "$GATK_UNIFIED_GENOTYPER_REFERENCE_SOURCEREFERENCE_SOURCE_SELECTOR$",
+      "reference_source|cached|input_bams": "$GATK_UNIFIED_GENOTYPER_REFERENCE_SOURCECACHEDINPUT_BAMS$",
+      "reference_source|cached|ref_file": "$GATK_UNIFIED_GENOTYPER_REFERENCE_SOURCECACHEDREF_FILE$",
+      "rod_bind": "$GATK_UNIFIED_GENOTYPER_ROD_BIND$",
+      "genotype_likelihoods_model": "$GATK_UNIFIED_GENOTYPER_GENOTYPE_LIKELIHOODS_MODEL$",
+      "standard_min_confidence_threshold_for_calling": "$GATK_UNIFIED_GENOTYPER_STANDARD_MIN_CONFIDENCE_THRESHOLD_FOR_CALLING$",
+      "standard_min_confidence_threshold_for_emitting": "$GATK_UNIFIED_GENOTYPER_STANDARD_MIN_CONFIDENCE_THRESHOLD_FOR_EMITTING$",
+      "gatk_param_type|gatk_param_type_selector": "$GATK_UNIFIED_GENOTYPER_GATK_PARAM_TYPEGATK_PARAM_TYPE_SELECTOR$",
+      "analysis_param_type|analysis_param_type_selector": "$GATK_UNIFIED_GENOTYPER_ANALYSIS_PARAM_TYPEANALYSIS_PARAM_TYPE_SELECTOR$",
+      "output_vcf": "$GATK_UNIFIED_GENOTYPER_OUTPUT_VCF$",
+      "output_metrics": "$GATK_UNIFIED_GENOTYPER_OUTPUT_METRICS$",
+      "output_log": "$GATK_UNIFIED_GENOTYPER_OUTPUT_LOG$"
+    }
+
+  }
+}

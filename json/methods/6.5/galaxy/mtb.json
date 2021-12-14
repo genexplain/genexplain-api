@@ -1,0 +1,16 @@
+{
+  "MTB": {
+    "do": "analyze",
+    "method": "MTB",
+    "workflow": false,
+    "wait": "$MTB_WAIT$",
+    "progress": "$MTB_PROGRESS$",
+    "parameters": {
+      "inputTable": "$MTB_INPUTTABLE$",
+      "cancer_type": "$MTB_CANCER_TYPE$",
+      "output": "$MTB_OUTPUT$",
+      "report": "$MTB_REPORT$"
+    }
+
+  }
+}

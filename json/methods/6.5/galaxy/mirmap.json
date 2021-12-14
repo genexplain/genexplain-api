@@ -1,0 +1,17 @@
+{
+  "Mirmap": {
+    "do": "analyze",
+    "method": "mirmap",
+    "workflow": false,
+    "wait": "$MIRMAP_WAIT$",
+    "progress": "$MIRMAP_PROGRESS$",
+    "parameters": {
+      "fasta_file": "$MIRMAP_FASTA_FILE$",
+      "mirna_file": "$MIRMAP_MIRNA_FILE$",
+      "site_outfile": "$MIRMAP_SITE_OUTFILE$",
+      "total_outfile": "$MIRMAP_TOTAL_OUTFILE$",
+      "site_track": "$MIRMAP_SITE_TRACK$"
+    }
+
+  }
+}

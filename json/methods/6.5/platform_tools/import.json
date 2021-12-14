@@ -34,8 +34,7 @@
     "parameters": {
       "file": "$BED_FORMAT_BED_FILE$",
       "resultPath": "$BED_FORMAT_BED_RESULTPATH$",
-      "properties/dbSelector": "$BED_FORMAT_BED_PROPERTIESDBSELECTOR$",
-      "properties/genomeId": "$BED_FORMAT_BED_PROPERTIESGENOMEID$"
+      "properties/dbSelector": "$BED_FORMAT_BED_PROPERTIESDBSELECTOR$"
     }
   },
 
@@ -108,8 +107,7 @@
     "parameters": {
       "file": "$GENERAL_FEATURE_FORMAT_GFF_FILE$",
       "resultPath": "$GENERAL_FEATURE_FORMAT_GFF_RESULTPATH$",
-      "properties/dbSelector": "$GENERAL_FEATURE_FORMAT_GFF_PROPERTIESDBSELECTOR$",
-      "properties/genomeId": "$GENERAL_FEATURE_FORMAT_GFF_PROPERTIESGENOMEID$"
+      "properties/dbSelector": "$GENERAL_FEATURE_FORMAT_GFF_PROPERTIESDBSELECTOR$"
     }
   },
 
@@ -216,6 +214,7 @@
       "properties/headerRow": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESHEADERROW$",
       "properties/dataRow": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESDATAROW$",
       "properties/commentString": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESCOMMENTSTRING$",
+      "properties/generateUniqueID": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESGENERATEUNIQUEID$",
       "properties/columnForID": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESCOLUMNFORID$",
       "properties/addSuffix": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESADDSUFFIX$",
       "properties/tableType": "$TABULAR_TXT_XLS_TAB_ETC_PROPERTIESTABLETYPE$"
@@ -243,7 +242,7 @@
     "parameters": {
       "fileURL": "$UPLOAD_FROM_FTP_FILEURL$",
       "resultPath": "$UPLOAD_FROM_FTP_RESULTPATH$",
-      "importFormat": "$UPLOAD_FROM_FTP_IMPORTFORMAT$",
+      "importerFormat": "$UPLOAD_FROM_FTP_IMPORTERFORMAT$",
       "importerProperties/preserveExtension": "$UPLOAD_FROM_FTP_IMPORTERPROPERTIESPRESERVEEXTENSION$"
     }
   },
@@ -257,8 +256,7 @@
     "parameters": {
       "file": "$WIGGLE_FORMAT_WIG_FILE$",
       "resultPath": "$WIGGLE_FORMAT_WIG_RESULTPATH$",
-      "properties/dbSelector": "$WIGGLE_FORMAT_WIG_PROPERTIESDBSELECTOR$",
-      "properties/genomeId": "$WIGGLE_FORMAT_WIG_PROPERTIESGENOMEID$"
+      "properties/dbSelector": "$WIGGLE_FORMAT_WIG_PROPERTIESDBSELECTOR$"
     }
   },
 
@@ -274,7 +272,7 @@
       "properties/cleanupFolder": "$ZIPARCHIVE_ZIP_PROPERTIESCLEANUPFOLDER$",
       "properties/preserveExtension": "$ZIPARCHIVE_ZIP_PROPERTIESPRESERVEEXTENSION$",
       "properties/preserveArchiveStructure": "$ZIPARCHIVE_ZIP_PROPERTIESPRESERVEARCHIVESTRUCTURE$",
-      "properties/importFormat": "$ZIPARCHIVE_ZIP_PROPERTIESIMPORTFORMAT$"
+      "properties/importerInfo": "$ZIPARCHIVE_ZIP_PROPERTIESIMPORTERINFO$"
     }
 
   }

@@ -1,0 +1,23 @@
+{
+  "PeakcallingSicer": {
+    "do": "analyze",
+    "method": "peakcalling_sicer",
+    "workflow": false,
+    "wait": "$PEAKCALLING_SICER_WAIT$",
+    "progress": "$PEAKCALLING_SICER_PROGRESS$",
+    "parameters": {
+      "input_bed_file": "$PEAKCALLING_SICER_INPUT_BED_FILE$",
+      "input_control_file": "$PEAKCALLING_SICER_INPUT_CONTROL_FILE$",
+      "genome": "$PEAKCALLING_SICER_GENOME$",
+      "fix_off_by_one_errors": "$PEAKCALLING_SICER_FIX_OFF_BY_ONE_ERRORS$",
+      "redundancy_threshold": "$PEAKCALLING_SICER_REDUNDANCY_THRESHOLD$",
+      "window_size": "$PEAKCALLING_SICER_WINDOW_SIZE$",
+      "fragment_size": "$PEAKCALLING_SICER_FRAGMENT_SIZE$",
+      "effective_genome_fraction": "$PEAKCALLING_SICER_EFFECTIVE_GENOME_FRACTION$",
+      "gap_size": "$PEAKCALLING_SICER_GAP_SIZE$",
+      "error_cut_off": "$PEAKCALLING_SICER_ERROR_CUT_OFF$",
+      "output": "$PEAKCALLING_SICER_OUTPUT$"
+    }
+
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "PicardCollectMultipleMetrics": {
+    "do": "analyze",
+    "method": "picard_CollectMultipleMetrics",
+    "workflow": false,
+    "wait": "$PICARD_COLLECTMULTIPLEMETRICS_WAIT$",
+    "progress": "$PICARD_COLLECTMULTIPLEMETRICS_PROGRESS$",
+    "parameters": {
+      "input_bam": "$PICARD_COLLECTMULTIPLEMETRICS_INPUT_BAM$",
+      "refGenome": "$PICARD_COLLECTMULTIPLEMETRICS_REFGENOME$",
+      "program": "$PICARD_COLLECTMULTIPLEMETRICS_PROGRAM$",
+      "sort": "$PICARD_COLLECTMULTIPLEMETRICS_SORT$",
+      "stopafter": "$PICARD_COLLECTMULTIPLEMETRICS_STOPAFTER$",
+      "baseName": "$PICARD_COLLECTMULTIPLEMETRICS_BASENAME$",
+      "memoryUsage": "$PICARD_COLLECTMULTIPLEMETRICS_MEMORYUSAGE$",
+      "log": "$PICARD_COLLECTMULTIPLEMETRICS_LOG$",
+      "output": "$PICARD_COLLECTMULTIPLEMETRICS_OUTPUT$"
+    }
+  },
+
+  "PicardMarkDuplicates": {
+    "do": "analyze",
+    "method": "picard_MarkDuplicates",
+    "workflow": false,
+    "wait": "$PICARD_MARKDUPLICATES_WAIT$",
+    "progress": "$PICARD_MARKDUPLICATES_PROGRESS$",
+    "parameters": {
+      "input": "$PICARD_MARKDUPLICATES_INPUT$",
+      "remDups": "$PICARD_MARKDUPLICATES_REMDUPS$",
+      "memoryUsage": "$PICARD_MARKDUPLICATES_MEMORYUSAGE$",
+      "compressionLevel": "$PICARD_MARKDUPLICATES_COMPRESSIONLEVEL$",
+      "maxFileHandles": "$PICARD_MARKDUPLICATES_MAXFILEHANDLES$",
+      "tmpFolder": "$PICARD_MARKDUPLICATES_TMPFOLDER$",
+      "createIndex": "$PICARD_MARKDUPLICATES_CREATEINDEX$",
+      "createMD5": "$PICARD_MARKDUPLICATES_CREATEMD5$",
+      "readRegex": "$PICARD_MARKDUPLICATES_READREGEX$",
+      "optDupeDist": "$PICARD_MARKDUPLICATES_OPTDUPEDIST$",
+      "log": "$PICARD_MARKDUPLICATES_LOG$",
+      "outMetrics": "$PICARD_MARKDUPLICATES_OUTMETRICS$",
+      "outBAM": "$PICARD_MARKDUPLICATES_OUTBAM$"
+    }
+  },
+
+  "PicardReorderBAM": {
+    "do": "analyze",
+    "method": "picard_ReorderBAM",
+    "workflow": false,
+    "wait": "$PICARD_REORDERBAM_WAIT$",
+    "progress": "$PICARD_REORDERBAM_PROGRESS$",
+    "parameters": {
+      "input": "$PICARD_REORDERBAM_INPUT$",
+      "reference": "$PICARD_REORDERBAM_REFERENCE$",
+      "output": "$PICARD_REORDERBAM_OUTPUT$"
+    }
+
+  }
+}

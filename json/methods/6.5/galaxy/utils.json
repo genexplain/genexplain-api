@@ -1,0 +1,14 @@
+{
+  "Cat": {
+    "do": "analyze",
+    "method": "cat",
+    "workflow": false,
+    "wait": "$CAT_WAIT$",
+    "progress": "$CAT_PROGRESS$",
+    "parameters": {
+      "inputs": "$CAT_INPUTS$",
+      "output": "$CAT_OUTPUT$"
+    }
+
+  }
+}

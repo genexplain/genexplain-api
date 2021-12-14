@@ -1,0 +1,23 @@
+{
+  "HgvSift": {
+    "do": "analyze",
+    "method": "hgv_sift",
+    "workflow": false,
+    "wait": "$HGV_SIFT_WAIT$",
+    "progress": "$HGV_SIFT_PROGRESS$",
+    "parameters": {
+      "input": "$HGV_SIFT_INPUT$",
+      "genome_id": "$HGV_SIFT_GENOME_ID$",
+      "chrom_col": "$HGV_SIFT_CHROM_COL$",
+      "pos_col": "$HGV_SIFT_POS_COL$",
+      "base": "$HGV_SIFT_BASE$",
+      "allele_col": "$HGV_SIFT_ALLELE_COL$",
+      "strand_source|strand_choice": "$HGV_SIFT_STRAND_SOURCESTRAND_CHOICE$",
+      "strand_source|data_column|strand_col": "$HGV_SIFT_STRAND_SOURCEDATA_COLUMNSTRAND_COL$",
+      "comment_source|comment_choice": "$HGV_SIFT_COMMENT_SOURCECOMMENT_CHOICE$",
+      "output_opts": "$HGV_SIFT_OUTPUT_OPTS$",
+      "output": "$HGV_SIFT_OUTPUT$"
+    }
+
+  }
+}

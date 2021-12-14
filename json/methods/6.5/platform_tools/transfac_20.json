@@ -1,0 +1,190 @@
+{
+  "AddCalculatedColumn": {
+    "do": "analyze",
+    "method": "Add calculated column",
+    "workflow": false,
+    "wait": "$ADD_CALCULATED_COLUMN_WAIT$",
+    "progress": "$ADD_CALCULATED_COLUMN_PROGRESS$",
+    "parameters": {
+      "inputPath": "$ADD_CALCULATED_COLUMN_INPUTPATH$",
+      "newName": "$ADD_CALCULATED_COLUMN_NEWNAME$",
+      "type": "$ADD_CALCULATED_COLUMN_TYPE$",
+      "expression": "$ADD_CALCULATED_COLUMN_EXPRESSION$",
+      "useSameTable": "$ADD_CALCULATED_COLUMN_USESAMETABLE$",
+      "convertToValues": "$ADD_CALCULATED_COLUMN_CONVERTTOVALUES$",
+      "outputPath": "$ADD_CALCULATED_COLUMN_OUTPUTPATH$"
+    }
+  },
+
+  "AddRankColumn": {
+    "do": "analyze",
+    "method": "Add rank column",
+    "workflow": false,
+    "wait": "$ADD_RANK_COLUMN_WAIT$",
+    "progress": "$ADD_RANK_COLUMN_PROGRESS$",
+    "parameters": {
+      "inputPath": "$ADD_RANK_COLUMN_INPUTPATH$",
+      "column": "$ADD_RANK_COLUMN_COLUMN$",
+      "acsending": "$ADD_RANK_COLUMN_ACSENDING$",
+      "rankColumnName": "$ADD_RANK_COLUMN_RANKCOLUMNNAME$",
+      "sortTable": "$ADD_RANK_COLUMN_SORTTABLE$",
+      "outputPath": "$ADD_RANK_COLUMN_OUTPUTPATH$"
+    }
+  },
+
+  "AffinityMatchTMForTracks": {
+    "do": "analyze",
+    "method": "Affinity Match(TM) for tracks",
+    "workflow": false,
+    "wait": "$AFFINITY_MATCHTM_FOR_TRACKS_WAIT$",
+    "progress": "$AFFINITY_MATCHTM_FOR_TRACKS_PROGRESS$",
+    "parameters": {
+      "sequencePath": "$AFFINITY_MATCHTM_FOR_TRACKS_SEQUENCEPATH$",
+      "dbSelector": "$AFFINITY_MATCHTM_FOR_TRACKS_DBSELECTOR$",
+      "profilePath": "$AFFINITY_MATCHTM_FOR_TRACKS_PROFILEPATH$",
+      "output": "$AFFINITY_MATCHTM_FOR_TRACKS_OUTPUT$"
+    }
+  },
+
+  "ExtractMatricesFromProfile": {
+    "do": "analyze",
+    "method": "Extract matrices from profile",
+    "workflow": false,
+    "wait": "$EXTRACT_MATRICES_FROM_PROFILE_WAIT$",
+    "progress": "$EXTRACT_MATRICES_FROM_PROFILE_PROGRESS$",
+    "parameters": {
+      "profilePath": "$EXTRACT_MATRICES_FROM_PROFILE_PROFILEPATH$",
+      "outputPath": "$EXTRACT_MATRICES_FROM_PROFILE_OUTPUTPATH$"
+    }
+  },
+
+  "FactorclusterRedundancyFilter": {
+    "do": "analyze",
+    "method": "Factor-cluster redundancy filter",
+    "workflow": false,
+    "wait": "$FACTORCLUSTER_REDUNDANCY_FILTER_WAIT$",
+    "progress": "$FACTORCLUSTER_REDUNDANCY_FILTER_PROGRESS$",
+    "parameters": {
+      "matrixTable": "$FACTORCLUSTER_REDUNDANCY_FILTER_MATRIXTABLE$",
+      "maxSiteColumn": "$FACTORCLUSTER_REDUNDANCY_FILTER_MAXSITECOLUMN$",
+      "maxSeqColumn": "$FACTORCLUSTER_REDUNDANCY_FILTER_MAXSEQCOLUMN$",
+      "clusterTable": "$FACTORCLUSTER_REDUNDANCY_FILTER_CLUSTERTABLE$",
+      "matrixColumn": "$FACTORCLUSTER_REDUNDANCY_FILTER_MATRIXCOLUMN$",
+      "outputPath": "$FACTORCLUSTER_REDUNDANCY_FILTER_OUTPUTPATH$"
+    }
+  },
+
+  "FindRegulatoryRegions": {
+    "do": "analyze",
+    "method": "Find regulatory regions",
+    "workflow": false,
+    "wait": "$FIND_REGULATORY_REGIONS_WAIT$",
+    "progress": "$FIND_REGULATORY_REGIONS_PROGRESS$",
+    "parameters": {
+      "inputGenes": "$FIND_REGULATORY_REGIONS_INPUTGENES$",
+      "chipSeqPeaks": "$FIND_REGULATORY_REGIONS_CHIPSEQPEAKS$",
+      "ensembl": "$FIND_REGULATORY_REGIONS_ENSEMBL$",
+      "cageDatabase": "$FIND_REGULATORY_REGIONS_CAGEDATABASE$",
+      "cellCondition": "$FIND_REGULATORY_REGIONS_CELLCONDITION$",
+      "tssSelection": "$FIND_REGULATORY_REGIONS_TSSSELECTION$",
+      "promoterFrom": "$FIND_REGULATORY_REGIONS_PROMOTERFROM$",
+      "promoterTo": "$FIND_REGULATORY_REGIONS_PROMOTERTO$",
+      "geneLeftBoundShift": "$FIND_REGULATORY_REGIONS_GENELEFTBOUNDSHIFT$",
+      "geneRightBoundShift": "$FIND_REGULATORY_REGIONS_GENERIGHTBOUNDSHIFT$",
+      "regulatoryRegionFrom": "$FIND_REGULATORY_REGIONS_REGULATORYREGIONFROM$",
+      "regulatoryRegionTo": "$FIND_REGULATORY_REGIONS_REGULATORYREGIONTO$",
+      "outputPath": "$FIND_REGULATORY_REGIONS_OUTPUTPATH$"
+    }
+  },
+
+  "GenerateReportForTransfac20": {
+    "do": "analyze",
+    "method": "Generate report for Transfac 2_0",
+    "workflow": false,
+    "wait": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_WAIT$",
+    "progress": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_PROGRESS$",
+    "parameters": {
+      "resultFolder": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_RESULTFOLDER$",
+      "originalPath": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_ORIGINALPATH$",
+      "inputPath": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_INPUTPATH$",
+      "tissue": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_TISSUE$",
+      "goSelected": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_GOSELECTED$",
+      "goDomain": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_GODOMAIN$",
+      "goClusters": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_GOCLUSTERS$",
+      "from": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_FROM$",
+      "to": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_TO$",
+      "tracks": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_TRACKS$",
+      "reportPath": "$GENERATE_REPORT_FOR_TRANSFAC_2_0_REPORTPATH$"
+    }
+  },
+
+  "GroupAndTransposeTable": {
+    "do": "analyze",
+    "method": "Group and transpose table",
+    "workflow": false,
+    "wait": "$GROUP_AND_TRANSPOSE_TABLE_WAIT$",
+    "progress": "$GROUP_AND_TRANSPOSE_TABLE_PROGRESS$",
+    "parameters": {
+      "inputPath": "$GROUP_AND_TRANSPOSE_TABLE_INPUTPATH$",
+      "names": "$GROUP_AND_TRANSPOSE_TABLE_NAMES$",
+      "columns": "$GROUP_AND_TRANSPOSE_TABLE_COLUMNS$",
+      "values": "$GROUP_AND_TRANSPOSE_TABLE_VALUES$",
+      "outputPath": "$GROUP_AND_TRANSPOSE_TABLE_OUTPUTPATH$"
+    }
+  },
+
+  "SaveHitsFromFunctionalClassification": {
+    "do": "analyze",
+    "method": "Save hits from Functional classification",
+    "workflow": false,
+    "wait": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_WAIT$",
+    "progress": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_PROGRESS$",
+    "parameters": {
+      "sourcePath": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_SOURCEPATH$",
+      "species": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_SPECIES$",
+      "pValueColumn": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_PVALUECOLUMN$",
+      "pValueThreshold": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_PVALUETHRESHOLD$",
+      "maxGroupSize": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_MAXGROUPSIZE$",
+      "minHits": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_MINHITS$",
+      "minCategories": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_MINCATEGORIES$",
+      "maxCategories": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_MAXCATEGORIES$",
+      "obligateCategories": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_OBLIGATECATEGORIES$",
+      "outputPath": "$SAVE_HITS_FROM_FUNCTIONAL_CLASSIFICATION_OUTPUTPATH$"
+    }
+  },
+
+  "SiteSearchReportWithMatrixTable": {
+    "do": "analyze",
+    "method": "Site search report with matrix table",
+    "workflow": false,
+    "wait": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_WAIT$",
+    "progress": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_PROGRESS$",
+    "parameters": {
+      "matrixTable": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_MATRIXTABLE$",
+      "pValueColumn": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_PVALUECOLUMN$",
+      "ascending": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_ASCENDING$",
+      "track": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_TRACK$",
+      "topModels": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_TOPMODELS$",
+      "addPositions": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_ADDPOSITIONS$",
+      "sitesColumnHidden": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_SITESCOLUMNHIDDEN$",
+      "target": "$SITE_SEARCH_REPORT_WITH_MATRIX_TABLE_TARGET$"
+    }
+  },
+
+  "TRANSFACRMatchTMForTracks": {
+    "do": "analyze",
+    "method": "TRANSFAC(R) Match(TM) for tracks",
+    "workflow": false,
+    "wait": "$TRANSFACR_MATCHTM_FOR_TRACKS_WAIT$",
+    "progress": "$TRANSFACR_MATCHTM_FOR_TRACKS_PROGRESS$",
+    "parameters": {
+      "sequencePath": "$TRANSFACR_MATCHTM_FOR_TRACKS_SEQUENCEPATH$",
+      "dbSelector": "$TRANSFACR_MATCHTM_FOR_TRACKS_DBSELECTOR$",
+      "profilePath": "$TRANSFACR_MATCHTM_FOR_TRACKS_PROFILEPATH$",
+      "withoutDuplicates": "$TRANSFACR_MATCHTM_FOR_TRACKS_WITHOUTDUPLICATES$",
+      "ignoreCore": "$TRANSFACR_MATCHTM_FOR_TRACKS_IGNORECORE$",
+      "output": "$TRANSFACR_MATCHTM_FOR_TRACKS_OUTPUT$"
+    }
+
+  }
+}

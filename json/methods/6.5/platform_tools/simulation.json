@@ -9,6 +9,8 @@
       "modelPath": "$SIMULATION_ANALYSIS_MODELPATH$",
       "simulationEngineName": "$SIMULATION_ANALYSIS_SIMULATIONENGINENAME$",
       "simulationEngine/": "$SIMULATION_ANALYSIS_SIMULATIONENGINE$",
+      "skipPoints": "$SIMULATION_ANALYSIS_SKIPPOINTS$",
+      "outputStartTime": "$SIMULATION_ANALYSIS_OUTPUTSTARTTIME$",
       "simulationResultPath": "$SIMULATION_ANALYSIS_SIMULATIONRESULTPATH$"
     }
 

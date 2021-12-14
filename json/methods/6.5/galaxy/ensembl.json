@@ -1,0 +1,15 @@
+{
+  "VariantEffectPredictor": {
+    "do": "analyze",
+    "method": "variant_effect_predictor",
+    "workflow": false,
+    "wait": "$VARIANT_EFFECT_PREDICTOR_WAIT$",
+    "progress": "$VARIANT_EFFECT_PREDICTOR_PROGRESS$",
+    "parameters": {
+      "input": "$VARIANT_EFFECT_PREDICTOR_INPUT$",
+      "reference": "$VARIANT_EFFECT_PREDICTOR_REFERENCE$",
+      "output": "$VARIANT_EFFECT_PREDICTOR_OUTPUT$"
+    }
+
+  }
+}

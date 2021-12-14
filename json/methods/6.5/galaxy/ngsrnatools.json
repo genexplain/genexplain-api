@@ -1,0 +1,180 @@
+{
+  "Tophat": {
+    "do": "analyze",
+    "method": "tophat",
+    "workflow": false,
+    "wait": "$TOPHAT_WAIT$",
+    "progress": "$TOPHAT_PROGRESS$",
+    "parameters": {
+      "input1": "$TOPHAT_INPUT1$",
+      "refGenomeSource|genomeSource": "$TOPHAT_REFGENOMESOURCEGENOMESOURCE$",
+      "refGenomeSource|indexed|index": "$TOPHAT_REFGENOMESOURCEINDEXEDINDEX$",
+      "singlePaired|sPaired": "$TOPHAT_SINGLEPAIREDSPAIRED$",
+      "singlePaired|single|sParams|sSettingsType": "$TOPHAT_SINGLEPAIREDSINGLESPARAMSSSETTINGSTYPE$",
+      "insertions": "$TOPHAT_INSERTIONS$",
+      "deletions": "$TOPHAT_DELETIONS$",
+      "junctions": "$TOPHAT_JUNCTIONS$",
+      "accepted_hits": "$TOPHAT_ACCEPTED_HITS$"
+    }
+  },
+
+  "Cuffdiff": {
+    "do": "analyze",
+    "method": "cuffdiff",
+    "workflow": false,
+    "wait": "$CUFFDIFF_WAIT$",
+    "progress": "$CUFFDIFF_PROGRESS$",
+    "parameters": {
+      "reference_annotation|source": "$CUFFDIFF_REFERENCE_ANNOTATIONSOURCE$",
+      "reference_annotation|Predefined|annotation": "$CUFFDIFF_REFERENCE_ANNOTATIONPREDEFINEDANNOTATION$",
+      "conditions": "$CUFFDIFF_CONDITIONS$",
+      "library_norm_method": "$CUFFDIFF_LIBRARY_NORM_METHOD$",
+      "dispersion_method": "$CUFFDIFF_DISPERSION_METHOD$",
+      "fdr": "$CUFFDIFF_FDR$",
+      "min_alignment_count": "$CUFFDIFF_MIN_ALIGNMENT_COUNT$",
+      "multiread_correct": "$CUFFDIFF_MULTIREAD_CORRECT$",
+      "bias_correction|do_bias_correction": "$CUFFDIFF_BIAS_CORRECTIONDO_BIAS_CORRECTION$",
+      "include_read_group_files": "$CUFFDIFF_INCLUDE_READ_GROUP_FILES$",
+      "additional|sAdditional": "$CUFFDIFF_ADDITIONALSADDITIONAL$",
+      "splicing_diff": "$CUFFDIFF_SPLICING_DIFF$",
+      "promoters_diff": "$CUFFDIFF_PROMOTERS_DIFF$",
+      "cds_diff": "$CUFFDIFF_CDS_DIFF$",
+      "cds_exp_fpkm_tracking": "$CUFFDIFF_CDS_EXP_FPKM_TRACKING$",
+      "cds_fpkm_tracking": "$CUFFDIFF_CDS_FPKM_TRACKING$",
+      "tss_groups_exp": "$CUFFDIFF_TSS_GROUPS_EXP$",
+      "tss_groups_fpkm_tracking": "$CUFFDIFF_TSS_GROUPS_FPKM_TRACKING$",
+      "genes_exp": "$CUFFDIFF_GENES_EXP$",
+      "genes_fpkm_tracking": "$CUFFDIFF_GENES_FPKM_TRACKING$",
+      "isoforms_exp": "$CUFFDIFF_ISOFORMS_EXP$",
+      "isoforms_fpkm_tracking": "$CUFFDIFF_ISOFORMS_FPKM_TRACKING$"
+    }
+  },
+
+  "Cufflinks": {
+    "do": "analyze",
+    "method": "cufflinks",
+    "workflow": false,
+    "wait": "$CUFFLINKS_WAIT$",
+    "progress": "$CUFFLINKS_PROGRESS$",
+    "parameters": {
+      "input": "$CUFFLINKS_INPUT$",
+      "max_intron_len": "$CUFFLINKS_MAX_INTRON_LEN$",
+      "min_isoform_fraction": "$CUFFLINKS_MIN_ISOFORM_FRACTION$",
+      "pre_mrna_fraction": "$CUFFLINKS_PRE_MRNA_FRACTION$",
+      "do_normalization": "$CUFFLINKS_DO_NORMALIZATION$",
+      "reference_annotation|use_ref": "$CUFFLINKS_REFERENCE_ANNOTATIONUSE_REF$",
+      "bias_correction|do_bias_correction": "$CUFFLINKS_BIAS_CORRECTIONDO_BIAS_CORRECTION$",
+      "multiread_correct": "$CUFFLINKS_MULTIREAD_CORRECT$",
+      "effective_length_correction": "$CUFFLINKS_EFFECTIVE_LENGTH_CORRECTION$",
+      "global_model": "$CUFFLINKS_GLOBAL_MODEL$",
+      "genes_expression": "$CUFFLINKS_GENES_EXPRESSION$",
+      "transcripts_expression": "$CUFFLINKS_TRANSCRIPTS_EXPRESSION$",
+      "assembled_isoforms": "$CUFFLINKS_ASSEMBLED_ISOFORMS$",
+      "total_map_mass": "$CUFFLINKS_TOTAL_MAP_MASS$"
+    }
+  },
+
+  "Cuffmerge": {
+    "do": "analyze",
+    "method": "cuffmerge",
+    "workflow": false,
+    "wait": "$CUFFMERGE_WAIT$",
+    "progress": "$CUFFMERGE_PROGRESS$",
+    "parameters": {
+      "inputs": "$CUFFMERGE_INPUTS$",
+      "annotation|use_ref_annotation": "$CUFFMERGE_ANNOTATIONUSE_REF_ANNOTATION$",
+      "seq_data|use_seq_data": "$CUFFMERGE_SEQ_DATAUSE_SEQ_DATA$",
+      "merged_transcripts": "$CUFFMERGE_MERGED_TRANSCRIPTS$"
+    }
+  },
+
+  "Hisat2": {
+    "do": "analyze",
+    "method": "hisat2",
+    "workflow": false,
+    "wait": "$HISAT2_WAIT$",
+    "progress": "$HISAT2_PROGRESS$",
+    "parameters": {
+      "library|type": "$HISAT2_LIBRARYTYPE$",
+      "library|single|input_1": "$HISAT2_LIBRARYSINGLEINPUT_1$",
+      "library|single|rna_strandness": "$HISAT2_LIBRARYSINGLERNA_STRANDNESS$",
+      "reference_genome|source": "$HISAT2_REFERENCE_GENOMESOURCE$",
+      "reference_genome|indexed|index": "$HISAT2_REFERENCE_GENOMEINDEXEDINDEX$",
+      "known_junctions|use_junctions": "$HISAT2_KNOWN_JUNCTIONSUSE_JUNCTIONS$",
+      "tma": "$HISAT2_TMA$",
+      "input_options|input_options_selector": "$HISAT2_INPUT_OPTIONSINPUT_OPTIONS_SELECTOR$",
+      "alignment_options|alignment_options_selector": "$HISAT2_ALIGNMENT_OPTIONSALIGNMENT_OPTIONS_SELECTOR$",
+      "scoring_options|scoring_options_selector": "$HISAT2_SCORING_OPTIONSSCORING_OPTIONS_SELECTOR$",
+      "spliced_options|spliced_options_selector": "$HISAT2_SPLICED_OPTIONSSPLICED_OPTIONS_SELECTOR$",
+      "reporting_options|reporting_options_selector": "$HISAT2_REPORTING_OPTIONSREPORTING_OPTIONS_SELECTOR$",
+      "output_options|output_options_selector": "$HISAT2_OUTPUT_OPTIONSOUTPUT_OPTIONS_SELECTOR$",
+      "other_options|other_options_selector": "$HISAT2_OTHER_OPTIONSOTHER_OPTIONS_SELECTOR$",
+      "output_alignments": "$HISAT2_OUTPUT_ALIGNMENTS$",
+      "summary_file": "$HISAT2_SUMMARY_FILE$"
+    }
+  },
+
+  "HtseqCount": {
+    "do": "analyze",
+    "method": "htseq_count",
+    "workflow": false,
+    "wait": "$HTSEQ_COUNT_WAIT$",
+    "progress": "$HTSEQ_COUNT_PROGRESS$",
+    "parameters": {
+      "samfile": "$HTSEQ_COUNT_SAMFILE$",
+      "ref_gtf|source": "$HTSEQ_COUNT_REF_GTFSOURCE$",
+      "ref_gtf|pre-installed|annotation": "$HTSEQ_COUNT_REF_GTFPREINSTALLEDANNOTATION$",
+      "mode": "$HTSEQ_COUNT_MODE$",
+      "stranded": "$HTSEQ_COUNT_STRANDED$",
+      "minaqual": "$HTSEQ_COUNT_MINAQUAL$",
+      "featuretype": "$HTSEQ_COUNT_FEATURETYPE$",
+      "idattr": "$HTSEQ_COUNT_IDATTR$",
+      "advanced_options|advanced_options_selector": "$HTSEQ_COUNT_ADVANCED_OPTIONSADVANCED_OPTIONS_SELECTOR$",
+      "counts": "$HTSEQ_COUNT_COUNTS$",
+      "othercounts": "$HTSEQ_COUNT_OTHERCOUNTS$"
+    }
+  },
+
+  "HtseqQa": {
+    "do": "analyze",
+    "method": "htseq_qa",
+    "workflow": false,
+    "wait": "$HTSEQ_QA_WAIT$",
+    "progress": "$HTSEQ_QA_PROGRESS$",
+    "parameters": {
+      "type|selector": "$HTSEQ_QA_TYPESELECTOR$",
+      "type|fastq|reads": "$HTSEQ_QA_TYPEFASTQREADS$",
+      "plot": "$HTSEQ_QA_PLOT$"
+    }
+  },
+
+  "Edger": {
+    "do": "analyze",
+    "method": "edgeR",
+    "workflow": false,
+    "wait": "$EDGER_WAIT$",
+    "progress": "$EDGER_PROGRESS$",
+    "parameters": {
+      "input1": "$EDGER_INPUT1$",
+      "exp_columns": "$EDGER_EXP_COLUMNS$",
+      "ctrl_columns": "$EDGER_CTRL_COLUMNS$",
+      "out_file1": "$EDGER_OUT_FILE1$"
+    }
+  },
+
+  "EdgerTwo": {
+    "do": "analyze",
+    "method": "edgeR_two",
+    "workflow": false,
+    "wait": "$EDGER_TWO_WAIT$",
+    "progress": "$EDGER_TWO_PROGRESS$",
+    "parameters": {
+      "exp_counts": "$EDGER_TWO_EXP_COUNTS$",
+      "exp_columns": "$EDGER_TWO_EXP_COLUMNS$",
+      "ctrl_counts": "$EDGER_TWO_CTRL_COUNTS$",
+      "ctrl_columns": "$EDGER_TWO_CTRL_COLUMNS$",
+      "degs_out": "$EDGER_TWO_DEGS_OUT$"
+    }
+
+  }
+}

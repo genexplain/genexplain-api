@@ -1,0 +1,72 @@
+{
+  "AnalyzeMirnaTargetEnrichment": {
+    "do": "analyze",
+    "method": "Analyze miRNA target enrichment",
+    "workflow": false,
+    "wait": "$ANALYZE_MIRNA_TARGET_ENRICHMENT_WAIT$",
+    "progress": "$ANALYZE_MIRNA_TARGET_ENRICHMENT_PROGRESS$",
+    "parameters": {
+      "inputSetPath": "$ANALYZE_MIRNA_TARGET_ENRICHMENT_INPUTSETPATH$",
+      "species": "$ANALYZE_MIRNA_TARGET_ENRICHMENT_SPECIES$",
+      "mirdbPath": "$ANALYZE_MIRNA_TARGET_ENRICHMENT_MIRDBPATH$",
+      "mirnaSpecies": "$ANALYZE_MIRNA_TARGET_ENRICHMENT_MIRNASPECIES$",
+      "fdrCutoff": "$ANALYZE_MIRNA_TARGET_ENRICHMENT_FDRCUTOFF$",
+      "outputPath": "$ANALYZE_MIRNA_TARGET_ENRICHMENT_OUTPUTPATH$"
+    }
+  },
+
+  "CreateMirnaPromoters": {
+    "do": "analyze",
+    "method": "Create miRNA promoters",
+    "workflow": false,
+    "wait": "$CREATE_MIRNA_PROMOTERS_WAIT$",
+    "progress": "$CREATE_MIRNA_PROMOTERS_PROGRESS$",
+    "parameters": {
+      "inTable": "$CREATE_MIRNA_PROMOTERS_INTABLE$",
+      "from": "$CREATE_MIRNA_PROMOTERS_FROM$",
+      "to": "$CREATE_MIRNA_PROMOTERS_TO$",
+      "promoterSelectMode": "$CREATE_MIRNA_PROMOTERS_PROMOTERSELECTMODE$",
+      "outTrack": "$CREATE_MIRNA_PROMOTERS_OUTTRACK$"
+    }
+  },
+
+  "GetMirnaTargets": {
+    "do": "analyze",
+    "method": "Get miRNA targets",
+    "workflow": false,
+    "wait": "$GET_MIRNA_TARGETS_WAIT$",
+    "progress": "$GET_MIRNA_TARGETS_PROGRESS$",
+    "parameters": {
+      "inTable": "$GET_MIRNA_TARGETS_INTABLE$",
+      "targetScanDB": "$GET_MIRNA_TARGETS_TARGETSCANDB$",
+      "scoreThreshold": "$GET_MIRNA_TARGETS_SCORETHRESHOLD$",
+      "outTable": "$GET_MIRNA_TARGETS_OUTTABLE$",
+      "scoresTable": "$GET_MIRNA_TARGETS_SCORESTABLE$"
+    }
+  },
+
+  "MirnaFeedForwardLoops": {
+    "do": "analyze",
+    "method": "miRNA feed forward loops",
+    "workflow": false,
+    "wait": "$MIRNA_FEED_FORWARD_LOOPS_WAIT$",
+    "progress": "$MIRNA_FEED_FORWARD_LOOPS_PROGRESS$",
+    "parameters": {
+      "miRNAs": "$MIRNA_FEED_FORWARD_LOOPS_MIRNAS$",
+      "targetGenes": "$MIRNA_FEED_FORWARD_LOOPS_TARGETGENES$",
+      "siteModelCollection": "$MIRNA_FEED_FORWARD_LOOPS_SITEMODELCOLLECTION$",
+      "ensembl": "$MIRNA_FEED_FORWARD_LOOPS_ENSEMBL$",
+      "scoreType": "$MIRNA_FEED_FORWARD_LOOPS_SCORETYPE$",
+      "backgroundGenes": "$MIRNA_FEED_FORWARD_LOOPS_BACKGROUNDGENES$",
+      "from": "$MIRNA_FEED_FORWARD_LOOPS_FROM$",
+      "to": "$MIRNA_FEED_FORWARD_LOOPS_TO$",
+      "targetScanDB": "$MIRNA_FEED_FORWARD_LOOPS_TARGETSCANDB$",
+      "miRNAPromoterScoreThreshold": "$MIRNA_FEED_FORWARD_LOOPS_MIRNAPROMOTERSCORETHRESHOLD$",
+      "targetGenePromoterScoreThreshold": "$MIRNA_FEED_FORWARD_LOOPS_TARGETGENEPROMOTERSCORETHRESHOLD$",
+      "miRNATargetScoreThreshold": "$MIRNA_FEED_FORWARD_LOOPS_MIRNATARGETSCORETHRESHOLD$",
+      "scoreThreshold": "$MIRNA_FEED_FORWARD_LOOPS_SCORETHRESHOLD$",
+      "outTable": "$MIRNA_FEED_FORWARD_LOOPS_OUTTABLE$"
+    }
+
+  }
+}

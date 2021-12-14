@@ -24,6 +24,7 @@
       "species": "$ANNOTATE_TABLE_SPECIES$",
       "annotationCollectionPath": "$ANNOTATE_TABLE_ANNOTATIONCOLLECTIONPATH$",
       "annotationColumns": "$ANNOTATE_TABLE_ANNOTATIONCOLUMNS$",
+      "replaceDuplicates": "$ANNOTATE_TABLE_REPLACEDUPLICATES$",
       "outputTablePath": "$ANNOTATE_TABLE_OUTPUTTABLEPATH$"
     }
   },
@@ -43,6 +44,50 @@
     }
   },
 
+  "CRClusterSelector": {
+    "do": "analyze",
+    "method": "CR cluster selector",
+    "workflow": false,
+    "wait": "$CR_CLUSTER_SELECTOR_WAIT$",
+    "progress": "$CR_CLUSTER_SELECTOR_PROGRESS$",
+    "parameters": {
+      "inputClusters": "$CR_CLUSTER_SELECTOR_INPUTCLUSTERS$",
+      "maxClusters": "$CR_CLUSTER_SELECTOR_MAXCLUSTERS$",
+      "maxItemsPerCluster": "$CR_CLUSTER_SELECTOR_MAXITEMSPERCLUSTER$",
+      "minItemsPerCluster": "$CR_CLUSTER_SELECTOR_MINITEMSPERCLUSTER$",
+      "outputFolder": "$CR_CLUSTER_SELECTOR_OUTPUTFOLDER$"
+    }
+  },
+
+  "CalculateWeightedMutationScore": {
+    "do": "analyze",
+    "method": "Calculate weighted mutation score",
+    "workflow": false,
+    "wait": "$CALCULATE_WEIGHTED_MUTATION_SCORE_WAIT$",
+    "progress": "$CALCULATE_WEIGHTED_MUTATION_SCORE_PROGRESS$",
+    "parameters": {
+      "inputTable": "$CALCULATE_WEIGHTED_MUTATION_SCORE_INPUTTABLE$",
+      "useSimpleScore": "$CALCULATE_WEIGHTED_MUTATION_SCORE_USESIMPLESCORE$",
+      "countColumn": "$CALCULATE_WEIGHTED_MUTATION_SCORE_COUNTCOLUMN$",
+      "exonCountColumn": "$CALCULATE_WEIGHTED_MUTATION_SCORE_EXONCOUNTCOLUMN$",
+      "promoterCountColumn": "$CALCULATE_WEIGHTED_MUTATION_SCORE_PROMOTERCOUNTCOLUMN$",
+      "species": "$CALCULATE_WEIGHTED_MUTATION_SCORE_SPECIES$",
+      "diseases": "$CALCULATE_WEIGHTED_MUTATION_SCORE_DISEASES$",
+      "outputTable": "$CALCULATE_WEIGHTED_MUTATION_SCORE_OUTPUTTABLE$"
+    }
+  },
+
+  "CheckQuotas": {
+    "do": "analyze",
+    "method": "Check quotas",
+    "workflow": false,
+    "wait": "$CHECK_QUOTAS_WAIT$",
+    "progress": "$CHECK_QUOTAS_PROGRESS$",
+    "parameters": {
+      "projects": "$CHECK_QUOTAS_PROJECTS$"
+    }
+  },
+
   "CompositeModuleToProteins": {
     "do": "analyze",
     "method": "Composite module to proteins",
@@ -54,6 +99,7 @@
       "siteModelsCollection": "$COMPOSITE_MODULE_TO_PROTEINS_SITEMODELSCOLLECTION$",
       "species": "$COMPOSITE_MODULE_TO_PROTEINS_SPECIES$",
       "targetType": "$COMPOSITE_MODULE_TO_PROTEINS_TARGETTYPE$",
+      "ignoreNaNInAggregator": "$COMPOSITE_MODULE_TO_PROTEINS_IGNORENANINAGGREGATOR$",
       "outputTable": "$COMPOSITE_MODULE_TO_PROTEINS_OUTPUTTABLE$"
     }
   },
@@ -66,12 +112,37 @@
     "progress": "$CONVERT_TABLE_PROGRESS$",
     "parameters": {
       "sourceTable": "$CONVERT_TABLE_SOURCETABLE$",
+      "idsColumnName": "$CONVERT_TABLE_IDSCOLUMNNAME$",
       "species": "$CONVERT_TABLE_SPECIES$",
       "sourceType": "$CONVERT_TABLE_SOURCETYPE$",
       "targetType": "$CONVERT_TABLE_TARGETTYPE$",
+      "ignoreNaNInAggregator": "$CONVERT_TABLE_IGNORENANINAGGREGATOR$",
       "aggregator": "$CONVERT_TABLE_AGGREGATOR$",
       "columnName": "$CONVERT_TABLE_COLUMNNAME$",
+      "maxMatches": "$CONVERT_TABLE_MAXMATCHES$",
+      "outputSourceIds": "$CONVERT_TABLE_OUTPUTSOURCEIDS$",
+      "unmatchedTable": "$CONVERT_TABLE_UNMATCHEDTABLE$",
       "outputTable": "$CONVERT_TABLE_OUTPUTTABLE$"
+    }
+  },
+
+  "ConvertTableToVCFTrack": {
+    "do": "analyze",
+    "method": "Convert table to VCF track",
+    "workflow": false,
+    "wait": "$CONVERT_TABLE_TO_VCF_TRACK_WAIT$",
+    "progress": "$CONVERT_TABLE_TO_VCF_TRACK_PROGRESS$",
+    "parameters": {
+      "inputTable": "$CONVERT_TABLE_TO_VCF_TRACK_INPUTTABLE$",
+      "chromosomeColumn": "$CONVERT_TABLE_TO_VCF_TRACK_CHROMOSOMECOLUMN$",
+      "fromColumn": "$CONVERT_TABLE_TO_VCF_TRACK_FROMCOLUMN$",
+      "toColumn": "$CONVERT_TABLE_TO_VCF_TRACK_TOCOLUMN$",
+      "altAlleleColumn": "$CONVERT_TABLE_TO_VCF_TRACK_ALTALLELECOLUMN$",
+      "refAlleleColumn": "$CONVERT_TABLE_TO_VCF_TRACK_REFALLELECOLUMN$",
+      "strandColumn": "$CONVERT_TABLE_TO_VCF_TRACK_STRANDCOLUMN$",
+      "sequenceCollectionPath": "$CONVERT_TABLE_TO_VCF_TRACK_SEQUENCECOLLECTIONPATH$",
+      "genomeId": "$CONVERT_TABLE_TO_VCF_TRACK_GENOMEID$",
+      "outputTrack": "$CONVERT_TABLE_TO_VCF_TRACK_OUTPUTTRACK$"
     }
   },
 
@@ -101,12 +172,17 @@
     "progress": "$CONVERT_TABLE_VIA_HOMOLOGY_PROGRESS$",
     "parameters": {
       "sourceTable": "$CONVERT_TABLE_VIA_HOMOLOGY_SOURCETABLE$",
+      "idsColumnName": "$CONVERT_TABLE_VIA_HOMOLOGY_IDSCOLUMNNAME$",
       "species": "$CONVERT_TABLE_VIA_HOMOLOGY_SPECIES$",
       "sourceType": "$CONVERT_TABLE_VIA_HOMOLOGY_SOURCETYPE$",
       "targetType": "$CONVERT_TABLE_VIA_HOMOLOGY_TARGETTYPE$",
+      "ignoreNaNInAggregator": "$CONVERT_TABLE_VIA_HOMOLOGY_IGNORENANINAGGREGATOR$",
       "targetSpecies": "$CONVERT_TABLE_VIA_HOMOLOGY_TARGETSPECIES$",
       "aggregator": "$CONVERT_TABLE_VIA_HOMOLOGY_AGGREGATOR$",
       "columnName": "$CONVERT_TABLE_VIA_HOMOLOGY_COLUMNNAME$",
+      "maxMatches": "$CONVERT_TABLE_VIA_HOMOLOGY_MAXMATCHES$",
+      "outputSourceIds": "$CONVERT_TABLE_VIA_HOMOLOGY_OUTPUTSOURCEIDS$",
+      "unmatchedTable": "$CONVERT_TABLE_VIA_HOMOLOGY_UNMATCHEDTABLE$",
       "outputTable": "$CONVERT_TABLE_VIA_HOMOLOGY_OUTPUTTABLE$"
     }
   },
@@ -119,21 +195,6 @@
     "progress": "$CREATE_FOLDER_PROGRESS$",
     "parameters": {
       "folderName": "$CREATE_FOLDER_FOLDERNAME$"
-    }
-  },
-
-  "CreateMirnaPromoters": {
-    "do": "analyze",
-    "method": "Create miRNA promoters",
-    "workflow": false,
-    "wait": "$CREATE_MIRNA_PROMOTERS_WAIT$",
-    "progress": "$CREATE_MIRNA_PROMOTERS_PROGRESS$",
-    "parameters": {
-      "inTable": "$CREATE_MIRNA_PROMOTERS_INTABLE$",
-      "from": "$CREATE_MIRNA_PROMOTERS_FROM$",
-      "to": "$CREATE_MIRNA_PROMOTERS_TO$",
-      "promoterSelectMode": "$CREATE_MIRNA_PROMOTERS_PROMOTERSELECTMODE$",
-      "outTrack": "$CREATE_MIRNA_PROMOTERS_OUTTRACK$"
     }
   },
 
@@ -150,8 +211,12 @@
       "standardChromosomes": "$CREATE_RANDOM_TRACK_STANDARDCHROMOSOMES$",
       "seqNumber": "$CREATE_RANDOM_TRACK_SEQNUMBER$",
       "seqLength": "$CREATE_RANDOM_TRACK_SEQLENGTH$",
+      "from": "$CREATE_RANDOM_TRACK_FROM$",
+      "to": "$CREATE_RANDOM_TRACK_TO$",
       "withOverlap": "$CREATE_RANDOM_TRACK_WITHOVERLAP$",
-      "outputTrackPath": "$CREATE_RANDOM_TRACK_OUTPUTTRACKPATH$"
+      "randomShift": "$CREATE_RANDOM_TRACK_RANDOMSHIFT$",
+      "outputTrackPath": "$CREATE_RANDOM_TRACK_OUTPUTTRACKPATH$",
+      "randSeed": "$CREATE_RANDOM_TRACK_RANDSEED$"
     }
   },
 
@@ -190,6 +255,33 @@
     }
   },
 
+  "FilterVCFByGenotype": {
+    "do": "analyze",
+    "method": "Filter VCF by genotype",
+    "workflow": false,
+    "wait": "$FILTER_VCF_BY_GENOTYPE_WAIT$",
+    "progress": "$FILTER_VCF_BY_GENOTYPE_PROGRESS$",
+    "parameters": {
+      "inputTrack": "$FILTER_VCF_BY_GENOTYPE_INPUTTRACK$",
+      "mode": "$FILTER_VCF_BY_GENOTYPE_MODE$",
+      "outputPath": "$FILTER_VCF_BY_GENOTYPE_OUTPUTPATH$"
+    }
+  },
+
+  "FilterDuplicateRows": {
+    "do": "analyze",
+    "method": "Filter duplicate rows",
+    "workflow": false,
+    "wait": "$FILTER_DUPLICATE_ROWS_WAIT$",
+    "progress": "$FILTER_DUPLICATE_ROWS_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$FILTER_DUPLICATE_ROWS_INPUTTABLEPATH$",
+      "primaryColumn": "$FILTER_DUPLICATE_ROWS_PRIMARYCOLUMN$",
+      "scoreColumn": "$FILTER_DUPLICATE_ROWS_SCORECOLUMN$",
+      "outputPath": "$FILTER_DUPLICATE_ROWS_OUTPUTPATH$"
+    }
+  },
+
   "FilterOneTrackByAnother": {
     "do": "analyze",
     "method": "Filter one track by another",
@@ -201,6 +293,9 @@
       "filterTrack": "$FILTER_ONE_TRACK_BY_ANOTHER_FILTERTRACK$",
       "maxDistance": "$FILTER_ONE_TRACK_BY_ANOTHER_MAXDISTANCE$",
       "fieldNames": "$FILTER_ONE_TRACK_BY_ANOTHER_FIELDNAMES$",
+      "selectedFilterFieldNames": "$FILTER_ONE_TRACK_BY_ANOTHER_SELECTEDFILTERFIELDNAMES$",
+      "ignoreNaNInAggregator": "$FILTER_ONE_TRACK_BY_ANOTHER_IGNORENANINAGGREGATOR$",
+      "aggregator": "$FILTER_ONE_TRACK_BY_ANOTHER_AGGREGATOR$",
       "mode": "$FILTER_ONE_TRACK_BY_ANOTHER_MODE$",
       "outputTrack": "$FILTER_ONE_TRACK_BY_ANOTHER_OUTPUTTRACK$"
     }
@@ -244,7 +339,21 @@
       "species": "$GENE_SET_TO_TRACK_SPECIES$",
       "from": "$GENE_SET_TO_TRACK_FROM$",
       "to": "$GENE_SET_TO_TRACK_TO$",
+      "overlapMergingMode": "$GENE_SET_TO_TRACK_OVERLAPMERGINGMODE$",
       "destPath": "$GENE_SET_TO_TRACK_DESTPATH$"
+    }
+  },
+
+  "GroupTableRows": {
+    "do": "analyze",
+    "method": "Group table rows",
+    "workflow": false,
+    "wait": "$GROUP_TABLE_ROWS_WAIT$",
+    "progress": "$GROUP_TABLE_ROWS_PROGRESS$",
+    "parameters": {
+      "inputTable": "$GROUP_TABLE_ROWS_INPUTTABLE$",
+      "columnName": "$GROUP_TABLE_ROWS_COLUMNNAME$",
+      "outputTable": "$GROUP_TABLE_ROWS_OUTPUTTABLE$"
     }
   },
 
@@ -263,6 +372,40 @@
     }
   },
 
+  "ImportFromTranSMART": {
+    "do": "analyze",
+    "method": "Import from TranSMART",
+    "workflow": false,
+    "wait": "$IMPORT_FROM_TRANSMART_WAIT$",
+    "progress": "$IMPORT_FROM_TRANSMART_PROGRESS$",
+    "parameters": {
+      "server": "$IMPORT_FROM_TRANSMART_SERVER$",
+      "token": "$IMPORT_FROM_TRANSMART_TOKEN$",
+      "study": "$IMPORT_FROM_TRANSMART_STUDY$",
+      "conceptMatch": "$IMPORT_FROM_TRANSMART_CONCEPTMATCH$",
+      "conceptLink": "$IMPORT_FROM_TRANSMART_CONCEPTLINK$",
+      "dataConstraints": "$IMPORT_FROM_TRANSMART_DATACONSTRAINTS$",
+      "assayConstraints": "$IMPORT_FROM_TRANSMART_ASSAYCONSTRAINTS$",
+      "trialName": "$IMPORT_FROM_TRANSMART_TRIALNAME$",
+      "patientSet": "$IMPORT_FROM_TRANSMART_PATIENTSET$",
+      "ontologyTerm": "$IMPORT_FROM_TRANSMART_ONTOLOGYTERM$",
+      "assayIds": "$IMPORT_FROM_TRANSMART_ASSAYIDS$",
+      "patientIds": "$IMPORT_FROM_TRANSMART_PATIENTIDS$",
+      "chromosome": "$IMPORT_FROM_TRANSMART_CHROMOSOME$",
+      "genes": "$IMPORT_FROM_TRANSMART_GENES$",
+      "geneIds": "$IMPORT_FROM_TRANSMART_GENEIDS$",
+      "geneSignatures": "$IMPORT_FROM_TRANSMART_GENESIGNATURES$",
+      "geneSignatureIds": "$IMPORT_FROM_TRANSMART_GENESIGNATUREIDS$",
+      "proteins": "$IMPORT_FROM_TRANSMART_PROTEINS$",
+      "proteinIds": "$IMPORT_FROM_TRANSMART_PROTEINIDS$",
+      "pathways": "$IMPORT_FROM_TRANSMART_PATHWAYS$",
+      "pathwayIds": "$IMPORT_FROM_TRANSMART_PATHWAYIDS$",
+      "projection": "$IMPORT_FROM_TRANSMART_PROJECTION$",
+      "snps": "$IMPORT_FROM_TRANSMART_SNPS$",
+      "outputPath": "$IMPORT_FROM_TRANSMART_OUTPUTPATH$"
+    }
+  },
+
   "IntersectTables": {
     "do": "analyze",
     "method": "Intersect tables",
@@ -275,6 +418,8 @@
       "rightGroup/tablePath": "$INTERSECT_TABLES_RIGHTGROUPTABLEPATH$",
       "rightGroup/columns": "$INTERSECT_TABLES_RIGHTGROUPCOLUMNS$",
       "mergeColumns": "$INTERSECT_TABLES_MERGECOLUMNS$",
+      "ignoreNaNInAggregator": "$INTERSECT_TABLES_IGNORENANINAGGREGATOR$",
+      "aggregator": "$INTERSECT_TABLES_AGGREGATOR$",
       "output": "$INTERSECT_TABLES_OUTPUT$"
     }
   },
@@ -288,8 +433,29 @@
     "parameters": {
       "inputTrackPath": "$INTERSECT_TRACKS_INPUTTRACKPATH$",
       "filterTrackPath": "$INTERSECT_TRACKS_FILTERTRACKPATH$",
-      "operation": "$INTERSECT_TRACKS_OPERATION$",
-      "outputTrackPath": "$INTERSECT_TRACKS_OUTPUTTRACKPATH$"
+      "outputFolderPath": "$INTERSECT_TRACKS_OUTPUTFOLDERPATH$",
+      "simpleOverlap": "$INTERSECT_TRACKS_SIMPLEOVERLAP$",
+      "overlapProp": "$INTERSECT_TRACKS_OVERLAPPROP$",
+      "maxUncovered": "$INTERSECT_TRACKS_MAXUNCOVERED$"
+    }
+  },
+
+  "JoinFullTables": {
+    "do": "analyze",
+    "method": "Join full tables",
+    "workflow": false,
+    "wait": "$JOIN_FULL_TABLES_WAIT$",
+    "progress": "$JOIN_FULL_TABLES_PROGRESS$",
+    "parameters": {
+      "leftGroup/tablePath": "$JOIN_FULL_TABLES_LEFTGROUPTABLEPATH$",
+      "leftGroup/columns": "$JOIN_FULL_TABLES_LEFTGROUPCOLUMNS$",
+      "rightGroup/tablePath": "$JOIN_FULL_TABLES_RIGHTGROUPTABLEPATH$",
+      "rightGroup/columns": "$JOIN_FULL_TABLES_RIGHTGROUPCOLUMNS$",
+      "joinType": "$JOIN_FULL_TABLES_JOINTYPE$",
+      "mergeColumns": "$JOIN_FULL_TABLES_MERGECOLUMNS$",
+      "ignoreNaNInAggregator": "$JOIN_FULL_TABLES_IGNORENANINAGGREGATOR$",
+      "aggregator": "$JOIN_FULL_TABLES_AGGREGATOR$",
+      "output": "$JOIN_FULL_TABLES_OUTPUT$"
     }
   },
 
@@ -302,6 +468,9 @@
     "parameters": {
       "tablePaths": "$JOIN_SEVERAL_TABLES_TABLEPATHS$",
       "joinType": "$JOIN_SEVERAL_TABLES_JOINTYPE$",
+      "mergeColumns": "$JOIN_SEVERAL_TABLES_MERGECOLUMNS$",
+      "ignoreNaNInAggregator": "$JOIN_SEVERAL_TABLES_IGNORENANINAGGREGATOR$",
+      "aggregator": "$JOIN_SEVERAL_TABLES_AGGREGATOR$",
       "outputPath": "$JOIN_SEVERAL_TABLES_OUTPUTPATH$"
     }
   },
@@ -318,6 +487,8 @@
       "rightGroup/tablePath": "$JOIN_TABLES_RIGHTGROUPTABLEPATH$",
       "rightGroup/columns": "$JOIN_TABLES_RIGHTGROUPCOLUMNS$",
       "mergeColumns": "$JOIN_TABLES_MERGECOLUMNS$",
+      "ignoreNaNInAggregator": "$JOIN_TABLES_IGNORENANINAGGREGATOR$",
+      "aggregator": "$JOIN_TABLES_AGGREGATOR$",
       "output": "$JOIN_TABLES_OUTPUT$"
     }
   },
@@ -345,9 +516,102 @@
       "siteModelsCollection": "$MATRICES_TO_MOLECULES_SITEMODELSCOLLECTION$",
       "species": "$MATRICES_TO_MOLECULES_SPECIES$",
       "targetType": "$MATRICES_TO_MOLECULES_TARGETTYPE$",
+      "ignoreNaNInAggregator": "$MATRICES_TO_MOLECULES_IGNORENANINAGGREGATOR$",
       "aggregator": "$MATRICES_TO_MOLECULES_AGGREGATOR$",
       "columnName": "$MATRICES_TO_MOLECULES_COLUMNNAME$",
       "outputTable": "$MATRICES_TO_MOLECULES_OUTPUTTABLE$"
+    }
+  },
+
+  "MergeTableColumns": {
+    "do": "analyze",
+    "method": "Merge table columns",
+    "workflow": false,
+    "wait": "$MERGE_TABLE_COLUMNS_WAIT$",
+    "progress": "$MERGE_TABLE_COLUMNS_PROGRESS$",
+    "parameters": {
+      "tableColumns/tablePath": "$MERGE_TABLE_COLUMNS_TABLECOLUMNSTABLEPATH$",
+      "tableColumns/columns": "$MERGE_TABLE_COLUMNS_TABLECOLUMNSCOLUMNS$",
+      "ignoreNaNInAggregator": "$MERGE_TABLE_COLUMNS_IGNORENANINAGGREGATOR$",
+      "aggregator": "$MERGE_TABLE_COLUMNS_AGGREGATOR$",
+      "mergedColumnName": "$MERGE_TABLE_COLUMNS_MERGEDCOLUMNNAME$",
+      "outputTable": "$MERGE_TABLE_COLUMNS_OUTPUTTABLE$"
+    }
+  },
+
+  "MutationsToGenesWithWeights": {
+    "do": "analyze",
+    "method": "Mutations to genes with weights",
+    "workflow": false,
+    "wait": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_WAIT$",
+    "progress": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_PROGRESS$",
+    "parameters": {
+      "inputTrack": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_INPUTTRACK$",
+      "species": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_SPECIES$",
+      "from": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_FROM$",
+      "to": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_TO$",
+      "promoterFrom": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_PROMOTERFROM$",
+      "promoterTo": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_PROMOTERTO$",
+      "resultTypes": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_RESULTTYPES$",
+      "weightProperty": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_WEIGHTPROPERTY$",
+      "outputTrack": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_OUTPUTTRACK$",
+      "outputTable": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_OUTPUTTABLE$"
+    }
+  },
+
+  "PSDPharmaceuticalCompoundsAnalysis": {
+    "do": "analyze",
+    "method": "PSD pharmaceutical compounds analysis",
+    "workflow": false,
+    "wait": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_WAIT$",
+    "progress": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_INPUTTABLEPATH$",
+      "weightColumn": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_WEIGHTCOLUMN$",
+      "useWeightAsRank": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_USEWEIGHTASRANK$",
+      "secondaryTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_SECONDARYTABLEPATH$",
+      "diseases": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_DISEASES$",
+      "fpTargetWeight": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FPTARGETWEIGHT$",
+      "useActivators": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_USEACTIVATORS$",
+      "structTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_STRUCTTABLEPATH$",
+      "targTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_TARGTABLEPATH$"
+    }
+  },
+
+  "PlotBarChart": {
+    "do": "analyze",
+    "method": "Plot bar chart",
+    "workflow": false,
+    "wait": "$PLOT_BAR_CHART_WAIT$",
+    "progress": "$PLOT_BAR_CHART_PROGRESS$",
+    "parameters": {
+      "inputTable": "$PLOT_BAR_CHART_INPUTTABLE$",
+      "column": "$PLOT_BAR_CHART_COLUMN$",
+      "labelsColumn": "$PLOT_BAR_CHART_LABELSCOLUMN$",
+      "maxPieces": "$PLOT_BAR_CHART_MAXPIECES$",
+      "addRemaininig": "$PLOT_BAR_CHART_ADDREMAININIG$",
+      "paletteName": "$PLOT_BAR_CHART_PALETTENAME$",
+      "autoFillLabels": "$PLOT_BAR_CHART_AUTOFILLLABELS$",
+      "xAxisLabel": "$PLOT_BAR_CHART_XAXISLABEL$",
+      "yAxisLabel": "$PLOT_BAR_CHART_YAXISLABEL$",
+      "outputChart": "$PLOT_BAR_CHART_OUTPUTCHART$"
+    }
+  },
+
+  "PlotPieChart": {
+    "do": "analyze",
+    "method": "Plot pie chart",
+    "workflow": false,
+    "wait": "$PLOT_PIE_CHART_WAIT$",
+    "progress": "$PLOT_PIE_CHART_PROGRESS$",
+    "parameters": {
+      "inputTable": "$PLOT_PIE_CHART_INPUTTABLE$",
+      "column": "$PLOT_PIE_CHART_COLUMN$",
+      "labelsColumn": "$PLOT_PIE_CHART_LABELSCOLUMN$",
+      "maxPieces": "$PLOT_PIE_CHART_MAXPIECES$",
+      "addRemaininig": "$PLOT_PIE_CHART_ADDREMAININIG$",
+      "paletteName": "$PLOT_PIE_CHART_PALETTENAME$",
+      "outputChart": "$PLOT_PIE_CHART_OUTPUTCHART$"
     }
   },
 
@@ -367,6 +631,21 @@
       "removeSmallSites": "$PROCESS_TRACK_WITH_SITES_REMOVESMALLSITES$",
       "minimalSize": "$PROCESS_TRACK_WITH_SITES_MINIMALSIZE$",
       "destPath": "$PROCESS_TRACK_WITH_SITES_DESTPATH$"
+    }
+  },
+
+  "ReduceTrack": {
+    "do": "analyze",
+    "method": "Reduce track",
+    "workflow": false,
+    "wait": "$REDUCE_TRACK_WAIT$",
+    "progress": "$REDUCE_TRACK_PROGRESS$",
+    "parameters": {
+      "inputTrack": "$REDUCE_TRACK_INPUTTRACK$",
+      "fieldNames": "$REDUCE_TRACK_FIELDNAMES$",
+      "ignoreNaNInAggregator": "$REDUCE_TRACK_IGNORENANINAGGREGATOR$",
+      "aggregator": "$REDUCE_TRACK_AGGREGATOR$",
+      "outputTrack": "$REDUCE_TRACK_OUTPUTTRACK$"
     }
   },
 
@@ -413,10 +692,25 @@
       "threePrimeSize": "$SNP_MATCHING_THREEPRIMESIZE$",
       "outputNonMatched": "$SNP_MATCHING_OUTPUTNONMATCHED$",
       "column": "$SNP_MATCHING_COLUMN$",
+      "ignoreNaNInAggregator": "$SNP_MATCHING_IGNORENANINAGGREGATOR$",
       "aggregator": "$SNP_MATCHING_AGGREGATOR$",
       "destPath": "$SNP_MATCHING_DESTPATH$",
       "annotatedPath": "$SNP_MATCHING_ANNOTATEDPATH$",
       "outputGenes": "$SNP_MATCHING_OUTPUTGENES$"
+    }
+  },
+
+  "SelectRandomRows": {
+    "do": "analyze",
+    "method": "Select random rows",
+    "workflow": false,
+    "wait": "$SELECT_RANDOM_ROWS_WAIT$",
+    "progress": "$SELECT_RANDOM_ROWS_PROGRESS$",
+    "parameters": {
+      "inputTable": "$SELECT_RANDOM_ROWS_INPUTTABLE$",
+      "rndCount": "$SELECT_RANDOM_ROWS_RNDCOUNT$",
+      "rndPercent": "$SELECT_RANDOM_ROWS_RNDPERCENT$",
+      "rndTable": "$SELECT_RANDOM_ROWS_RNDTABLE$"
     }
   },
 
@@ -430,6 +724,45 @@
       "columnGroup/tablePath": "$SELECT_TABLE_COLUMNS_COLUMNGROUPTABLEPATH$",
       "columnGroup/columns": "$SELECT_TABLE_COLUMNS_COLUMNGROUPCOLUMNS$",
       "output": "$SELECT_TABLE_COLUMNS_OUTPUT$"
+    }
+  },
+
+  "SelectTopRows": {
+    "do": "analyze",
+    "method": "Select top rows",
+    "workflow": false,
+    "wait": "$SELECT_TOP_ROWS_WAIT$",
+    "progress": "$SELECT_TOP_ROWS_PROGRESS$",
+    "parameters": {
+      "inputTable": "$SELECT_TOP_ROWS_INPUTTABLE$",
+      "column": "$SELECT_TOP_ROWS_COLUMN$",
+      "types": "$SELECT_TOP_ROWS_TYPES$",
+      "topPercent": "$SELECT_TOP_ROWS_TOPPERCENT$",
+      "topCount": "$SELECT_TOP_ROWS_TOPCOUNT$",
+      "topMinCount": "$SELECT_TOP_ROWS_TOPMINCOUNT$",
+      "topTable": "$SELECT_TOP_ROWS_TOPTABLE$",
+      "middlePercent": "$SELECT_TOP_ROWS_MIDDLEPERCENT$",
+      "middleCount": "$SELECT_TOP_ROWS_MIDDLECOUNT$",
+      "middleMinCount": "$SELECT_TOP_ROWS_MIDDLEMINCOUNT$",
+      "middleTable": "$SELECT_TOP_ROWS_MIDDLETABLE$",
+      "bottomPercent": "$SELECT_TOP_ROWS_BOTTOMPERCENT$",
+      "bottomCount": "$SELECT_TOP_ROWS_BOTTOMCOUNT$",
+      "bottomMinCount": "$SELECT_TOP_ROWS_BOTTOMMINCOUNT$",
+      "bottomTable": "$SELECT_TOP_ROWS_BOTTOMTABLE$"
+    }
+  },
+
+  "SuperAnnotateTable": {
+    "do": "analyze",
+    "method": "Super annotate table",
+    "workflow": false,
+    "wait": "$SUPER_ANNOTATE_TABLE_WAIT$",
+    "progress": "$SUPER_ANNOTATE_TABLE_PROGRESS$",
+    "parameters": {
+      "inputTable": "$SUPER_ANNOTATE_TABLE_INPUTTABLE$",
+      "idColumn": "$SUPER_ANNOTATE_TABLE_IDCOLUMN$",
+      "annotationTables": "$SUPER_ANNOTATE_TABLE_ANNOTATIONTABLES$",
+      "outputTable": "$SUPER_ANNOTATE_TABLE_OUTPUTTABLE$"
     }
   },
 
@@ -461,7 +794,22 @@
       "species": "$TRANSCRIPT_SET_TO_TRACK_SPECIES$",
       "from": "$TRANSCRIPT_SET_TO_TRACK_FROM$",
       "to": "$TRANSCRIPT_SET_TO_TRACK_TO$",
+      "overlapMergingMode": "$TRANSCRIPT_SET_TO_TRACK_OVERLAPMERGINGMODE$",
       "destPath": "$TRANSCRIPT_SET_TO_TRACK_DESTPATH$"
+    }
+  },
+
+  "TransformTable": {
+    "do": "analyze",
+    "method": "Transform table",
+    "workflow": false,
+    "wait": "$TRANSFORM_TABLE_WAIT$",
+    "progress": "$TRANSFORM_TABLE_PROGRESS$",
+    "parameters": {
+      "columnGroup/tablePath": "$TRANSFORM_TABLE_COLUMNGROUPTABLEPATH$",
+      "columnGroup/columns": "$TRANSFORM_TABLE_COLUMNGROUPCOLUMNS$",
+      "operation": "$TRANSFORM_TABLE_OPERATION$",
+      "outputTable": "$TRANSFORM_TABLE_OUTPUTTABLE$"
     }
   },
 
@@ -473,8 +821,14 @@
     "progress": "$VENN_DIAGRAMS_PROGRESS$",
     "parameters": {
       "table1Path": "$VENN_DIAGRAMS_TABLE1PATH$",
+      "table1Name": "$VENN_DIAGRAMS_TABLE1NAME$",
+      "circle1Color": "$VENN_DIAGRAMS_CIRCLE1COLOR$",
       "table2Path": "$VENN_DIAGRAMS_TABLE2PATH$",
+      "table2Name": "$VENN_DIAGRAMS_TABLE2NAME$",
+      "circle2Color": "$VENN_DIAGRAMS_CIRCLE2COLOR$",
       "table3Path": "$VENN_DIAGRAMS_TABLE3PATH$",
+      "table3Name": "$VENN_DIAGRAMS_TABLE3NAME$",
+      "circle3Color": "$VENN_DIAGRAMS_CIRCLE3COLOR$",
       "simple": "$VENN_DIAGRAMS_SIMPLE$",
       "output": "$VENN_DIAGRAMS_OUTPUT$"
     }

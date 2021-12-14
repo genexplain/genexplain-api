@@ -1,0 +1,114 @@
+{
+  "SummaryStatistics1": {
+    "do": "analyze",
+    "method": "Summary_Statistics1",
+    "workflow": false,
+    "wait": "$SUMMARY_STATISTICS1_WAIT$",
+    "progress": "$SUMMARY_STATISTICS1_PROGRESS$",
+    "parameters": {
+      "input": "$SUMMARY_STATISTICS1_INPUT$",
+      "cond": "$SUMMARY_STATISTICS1_COND$",
+      "out_file1": "$SUMMARY_STATISTICS1_OUT_FILE1$"
+    }
+  },
+
+  "Count1": {
+    "do": "analyze",
+    "method": "Count1",
+    "workflow": false,
+    "wait": "$COUNT1_WAIT$",
+    "progress": "$COUNT1_PROGRESS$",
+    "parameters": {
+      "input": "$COUNT1_INPUT$",
+      "column": "$COUNT1_COLUMN$",
+      "delim": "$COUNT1_DELIM$",
+      "out_file1": "$COUNT1_OUT_FILE1$"
+    }
+  },
+
+  "GenerateMatrixForPcaAndLda1": {
+    "do": "analyze",
+    "method": "generate_matrix_for_pca_and_lda1",
+    "workflow": false,
+    "wait": "$GENERATE_MATRIX_FOR_PCA_AND_LDA1_WAIT$",
+    "progress": "$GENERATE_MATRIX_FOR_PCA_AND_LDA1_PROGRESS$",
+    "parameters": {
+      "input_1": "$GENERATE_MATRIX_FOR_PCA_AND_LDA1_INPUT_1$",
+      "input_2": "$GENERATE_MATRIX_FOR_PCA_AND_LDA1_INPUT_2$",
+      "output": "$GENERATE_MATRIX_FOR_PCA_AND_LDA1_OUTPUT$"
+    }
+  },
+
+  "LdaAnaly1": {
+    "do": "analyze",
+    "method": "lda_analy1",
+    "workflow": false,
+    "wait": "$LDA_ANALY1_WAIT$",
+    "progress": "$LDA_ANALY1_PROGRESS$",
+    "parameters": {
+      "input": "$LDA_ANALY1_INPUT$",
+      "cond": "$LDA_ANALY1_COND$",
+      "output": "$LDA_ANALY1_OUTPUT$"
+    }
+  },
+
+  "PlotForLdaOutput1": {
+    "do": "analyze",
+    "method": "plot_for_lda_output1",
+    "workflow": false,
+    "wait": "$PLOT_FOR_LDA_OUTPUT1_WAIT$",
+    "progress": "$PLOT_FOR_LDA_OUTPUT1_PROGRESS$",
+    "parameters": {
+      "input": "$PLOT_FOR_LDA_OUTPUT1_INPUT$",
+      "my_title": "$PLOT_FOR_LDA_OUTPUT1_MY_TITLE$",
+      "X_axis": "$PLOT_FOR_LDA_OUTPUT1_X_AXIS$",
+      "Y_axis": "$PLOT_FOR_LDA_OUTPUT1_Y_AXIS$",
+      "pdf_output": "$PLOT_FOR_LDA_OUTPUT1_PDF_OUTPUT$"
+    }
+  },
+
+  "TTestTwoSamples": {
+    "do": "analyze",
+    "method": "t_test_two_samples",
+    "workflow": false,
+    "wait": "$T_TEST_TWO_SAMPLES_WAIT$",
+    "progress": "$T_TEST_TWO_SAMPLES_PROGRESS$",
+    "parameters": {
+      "inputFile1": "$T_TEST_TWO_SAMPLES_INPUTFILE1$",
+      "inputFile2": "$T_TEST_TWO_SAMPLES_INPUTFILE2$",
+      "inputTestSidedness3": "$T_TEST_TWO_SAMPLES_INPUTTESTSIDEDNESS3$",
+      "inputStandardDeviationEquality4": "$T_TEST_TWO_SAMPLES_INPUTSTANDARDDEVIATIONEQUALITY4$",
+      "outputFile1": "$T_TEST_TWO_SAMPLES_OUTPUTFILE1$"
+    }
+  },
+
+  "ComputeQValues": {
+    "do": "analyze",
+    "method": "compute_q_values",
+    "workflow": false,
+    "wait": "$COMPUTE_Q_VALUES_WAIT$",
+    "progress": "$COMPUTE_Q_VALUES_PROGRESS$",
+    "parameters": {
+      "inputFile1": "$COMPUTE_Q_VALUES_INPUTFILE1$",
+      "inputLambda2": "$COMPUTE_Q_VALUES_INPUTLAMBDA2$",
+      "inputPI0_method3": "$COMPUTE_Q_VALUES_INPUTPI0_METHOD3$",
+      "inputFDR_level4": "$COMPUTE_Q_VALUES_INPUTFDR_LEVEL4$",
+      "inputRobust5": "$COMPUTE_Q_VALUES_INPUTROBUST5$",
+      "outputFile1": "$COMPUTE_Q_VALUES_OUTPUTFILE1$",
+      "outputFile2": "$COMPUTE_Q_VALUES_OUTPUTFILE2$"
+    }
+  },
+
+  "CountGffFeatures": {
+    "do": "analyze",
+    "method": "count_gff_features",
+    "workflow": false,
+    "wait": "$COUNT_GFF_FEATURES_WAIT$",
+    "progress": "$COUNT_GFF_FEATURES_PROGRESS$",
+    "parameters": {
+      "input": "$COUNT_GFF_FEATURES_INPUT$",
+      "output": "$COUNT_GFF_FEATURES_OUTPUT$"
+    }
+
+  }
+}

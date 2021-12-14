@@ -1,0 +1,39 @@
+{
+  "SamtoolsFlagstat": {
+    "do": "analyze",
+    "method": "samtools_flagstat",
+    "workflow": false,
+    "wait": "$SAMTOOLS_FLAGSTAT_WAIT$",
+    "progress": "$SAMTOOLS_FLAGSTAT_PROGRESS$",
+    "parameters": {
+      "input1": "$SAMTOOLS_FLAGSTAT_INPUT1$",
+      "output1": "$SAMTOOLS_FLAGSTAT_OUTPUT1$"
+    }
+  },
+
+  "SamtoolsSort": {
+    "do": "analyze",
+    "method": "samtools_sort",
+    "workflow": false,
+    "wait": "$SAMTOOLS_SORT_WAIT$",
+    "progress": "$SAMTOOLS_SORT_PROGRESS$",
+    "parameters": {
+      "input1": "$SAMTOOLS_SORT_INPUT1$",
+      "sort_mode": "$SAMTOOLS_SORT_SORT_MODE$",
+      "output1": "$SAMTOOLS_SORT_OUTPUT1$"
+    }
+  },
+
+  "SamtoolsMerge": {
+    "do": "analyze",
+    "method": "samtools_merge",
+    "workflow": false,
+    "wait": "$SAMTOOLS_MERGE_WAIT$",
+    "progress": "$SAMTOOLS_MERGE_PROGRESS$",
+    "parameters": {
+      "input1": "$SAMTOOLS_MERGE_INPUT1$",
+      "output1": "$SAMTOOLS_MERGE_OUTPUT1$"
+    }
+
+  }
+}

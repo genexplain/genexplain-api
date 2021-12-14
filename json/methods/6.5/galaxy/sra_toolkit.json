@@ -1,0 +1,28 @@
+{
+  "Fastqdump": {
+    "do": "analyze",
+    "method": "fastq-dump",
+    "workflow": false,
+    "wait": "$FASTQDUMP_WAIT$",
+    "progress": "$FASTQDUMP_PROGRESS$",
+    "parameters": {
+      "srafile": "$FASTQDUMP_SRAFILE$",
+      "fastqfile": "$FASTQDUMP_FASTQFILE$"
+    }
+  },
+
+  "Fastqdumppaired": {
+    "do": "analyze",
+    "method": "fastq-dump-paired",
+    "workflow": false,
+    "wait": "$FASTQDUMPPAIRED_WAIT$",
+    "progress": "$FASTQDUMPPAIRED_PROGRESS$",
+    "parameters": {
+      "srafile": "$FASTQDUMPPAIRED_SRAFILE$",
+      "forward": "$FASTQDUMPPAIRED_FORWARD$",
+      "reverse": "$FASTQDUMPPAIRED_REVERSE$",
+      "unpaired": "$FASTQDUMPPAIRED_UNPAIRED$"
+    }
+
+  }
+}

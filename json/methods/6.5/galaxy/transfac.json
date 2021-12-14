@@ -1,0 +1,18 @@
+{
+  "Hmaps": {
+    "do": "analyze",
+    "method": "hmaps",
+    "workflow": false,
+    "wait": "$HMAPS_WAIT$",
+    "progress": "$HMAPS_PROGRESS$",
+    "parameters": {
+      "geneClassTable": "$HMAPS_GENECLASSTABLE$",
+      "motifTable": "$HMAPS_MOTIFTABLE$",
+      "tallOutfile": "$HMAPS_TALLOUTFILE$",
+      "wideOutfile": "$HMAPS_WIDEOUTFILE$",
+      "classOrderFile": "$HMAPS_CLASSORDERFILE$",
+      "motifOrderFile": "$HMAPS_MOTIFORDERFILE$"
+    }
+
+  }
+}

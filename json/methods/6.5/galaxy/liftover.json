@@ -1,0 +1,32 @@
+{
+  "Liftover1": {
+    "do": "analyze",
+    "method": "liftOver1",
+    "workflow": false,
+    "wait": "$LIFTOVER1_WAIT$",
+    "progress": "$LIFTOVER1_PROGRESS$",
+    "parameters": {
+      "input": "$LIFTOVER1_INPUT$",
+      "mapping": "$LIFTOVER1_MAPPING$",
+      "minMatch": "$LIFTOVER1_MINMATCH$",
+      "multiple|choice": "$LIFTOVER1_MULTIPLECHOICE$",
+      "out_file1": "$LIFTOVER1_OUT_FILE1$",
+      "out_file2": "$LIFTOVER1_OUT_FILE2$"
+    }
+  },
+
+  "PicardLiftoverVCF": {
+    "do": "analyze",
+    "method": "picard_LiftoverVCF",
+    "workflow": false,
+    "wait": "$PICARD_LIFTOVERVCF_WAIT$",
+    "progress": "$PICARD_LIFTOVERVCF_PROGRESS$",
+    "parameters": {
+      "input": "$PICARD_LIFTOVERVCF_INPUT$",
+      "mapping": "$PICARD_LIFTOVERVCF_MAPPING$",
+      "output": "$PICARD_LIFTOVERVCF_OUTPUT$",
+      "unmapped": "$PICARD_LIFTOVERVCF_UNMAPPED$"
+    }
+
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "ParameterFitting": {
+    "do": "analyze",
+    "method": "Parameter fitting",
+    "workflow": false,
+    "wait": "$PARAMETER_FITTING_WAIT$",
+    "progress": "$PARAMETER_FITTING_PROGRESS$",
+    "parameters": {
+      "diagramPath": "$PARAMETER_FITTING_DIAGRAMPATH$",
+      "experimentPath": "$PARAMETER_FITTING_EXPERIMENTPATH$",
+      "regime": "$PARAMETER_FITTING_REGIME$",
+      "dataColumn": "$PARAMETER_FITTING_DATACOLUMN$",
+      "algorithm/type": "$PARAMETER_FITTING_ALGORITHMTYPE$",
+      "algorithm/numOfIterations": "$PARAMETER_FITTING_ALGORITHMNUMOFITERATIONS$",
+      "algorithm/survivalSize": "$PARAMETER_FITTING_ALGORITHMSURVIVALSIZE$",
+      "outputDiagram": "$PARAMETER_FITTING_OUTPUTDIAGRAM$",
+      "engineWrapper/engineName": "$PARAMETER_FITTING_ENGINEWRAPPERENGINENAME$"
+    }
+
+  }
+}

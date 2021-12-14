@@ -1,0 +1,395 @@
+{
+  "AddCalculatedColumn": {
+    "do": "analyze",
+    "method": "Add calculated column",
+    "workflow": false,
+    "wait": "$ADD_CALCULATED_COLUMN_WAIT$",
+    "progress": "$ADD_CALCULATED_COLUMN_PROGRESS$",
+    "parameters": {
+      "inputPath": "$ADD_CALCULATED_COLUMN_INPUTPATH$",
+      "newName": "$ADD_CALCULATED_COLUMN_NEWNAME$",
+      "type": "$ADD_CALCULATED_COLUMN_TYPE$",
+      "expression": "$ADD_CALCULATED_COLUMN_EXPRESSION$",
+      "useSameTable": "$ADD_CALCULATED_COLUMN_USESAMETABLE$",
+      "convertToValues": "$ADD_CALCULATED_COLUMN_CONVERTTOVALUES$",
+      "outputPath": "$ADD_CALCULATED_COLUMN_OUTPUTPATH$"
+    }
+  },
+
+  "CalculateCMARegulation": {
+    "do": "analyze",
+    "method": "Calculate CMA regulation",
+    "workflow": false,
+    "wait": "$CALCULATE_CMA_REGULATION_WAIT$",
+    "progress": "$CALCULATE_CMA_REGULATION_PROGRESS$",
+    "parameters": {
+      "tfTablePath": "$CALCULATE_CMA_REGULATION_TFTABLEPATH$",
+      "keynodesPath": "$CALCULATE_CMA_REGULATION_KEYNODESPATH$",
+      "rankColumn": "$CALCULATE_CMA_REGULATION_RANKCOLUMN$",
+      "geneIdColumn": "$CALCULATE_CMA_REGULATION_GENEIDCOLUMN$",
+      "topSelected": "$CALCULATE_CMA_REGULATION_TOPSELECTED$",
+      "lowestRanking": "$CALCULATE_CMA_REGULATION_LOWESTRANKING$",
+      "cmaTablePath": "$CALCULATE_CMA_REGULATION_CMATABLEPATH$",
+      "resultTablePath": "$CALCULATE_CMA_REGULATION_RESULTTABLEPATH$",
+      "resultDiagramPath": "$CALCULATE_CMA_REGULATION_RESULTDIAGRAMPATH$"
+    }
+  },
+
+  "CalculateKeynodesRanks": {
+    "do": "analyze",
+    "method": "Calculate keynodes ranks",
+    "workflow": false,
+    "wait": "$CALCULATE_KEYNODES_RANKS_WAIT$",
+    "progress": "$CALCULATE_KEYNODES_RANKS_PROGRESS$",
+    "parameters": {
+      "knTablePath": "$CALCULATE_KEYNODES_RANKS_KNTABLEPATH$",
+      "geneIdColumn": "$CALCULATE_KEYNODES_RANKS_GENEIDCOLUMN$",
+      "transcriptomePath": "$CALCULATE_KEYNODES_RANKS_TRANSCRIPTOMEPATH$",
+      "transcriptomicsOptional": "$CALCULATE_KEYNODES_RANKS_TRANSCRIPTOMICSOPTIONAL$",
+      "tScoreColumn": "$CALCULATE_KEYNODES_RANKS_TSCORECOLUMN$",
+      "proteomePath": "$CALCULATE_KEYNODES_RANKS_PROTEOMEPATH$",
+      "pScoreColumn": "$CALCULATE_KEYNODES_RANKS_PSCORECOLUMN$",
+      "cmaScoreTablePath": "$CALCULATE_KEYNODES_RANKS_CMASCORETABLEPATH$",
+      "outputPath": "$CALCULATE_KEYNODES_RANKS_OUTPUTPATH$"
+    }
+  },
+
+  "CalculateWeightedMutationScore": {
+    "do": "analyze",
+    "method": "Calculate weighted mutation score",
+    "workflow": false,
+    "wait": "$CALCULATE_WEIGHTED_MUTATION_SCORE_WAIT$",
+    "progress": "$CALCULATE_WEIGHTED_MUTATION_SCORE_PROGRESS$",
+    "parameters": {
+      "inputTable": "$CALCULATE_WEIGHTED_MUTATION_SCORE_INPUTTABLE$",
+      "useSimpleScore": "$CALCULATE_WEIGHTED_MUTATION_SCORE_USESIMPLESCORE$",
+      "countColumn": "$CALCULATE_WEIGHTED_MUTATION_SCORE_COUNTCOLUMN$",
+      "exonCountColumn": "$CALCULATE_WEIGHTED_MUTATION_SCORE_EXONCOUNTCOLUMN$",
+      "promoterCountColumn": "$CALCULATE_WEIGHTED_MUTATION_SCORE_PROMOTERCOUNTCOLUMN$",
+      "species": "$CALCULATE_WEIGHTED_MUTATION_SCORE_SPECIES$",
+      "diseases": "$CALCULATE_WEIGHTED_MUTATION_SCORE_DISEASES$",
+      "outputTable": "$CALCULATE_WEIGHTED_MUTATION_SCORE_OUTPUTTABLE$"
+    }
+  },
+
+  "CompareTFBSMutationsAdvanced": {
+    "do": "analyze",
+    "method": "Compare TFBS mutations advanced",
+    "workflow": false,
+    "wait": "$COMPARE_TFBS_MUTATIONS_ADVANCED_WAIT$",
+    "progress": "$COMPARE_TFBS_MUTATIONS_ADVANCED_PROGRESS$",
+    "parameters": {
+      "yesVCFTrack": "$COMPARE_TFBS_MUTATIONS_ADVANCED_YESVCFTRACK$",
+      "noVCFTrack": "$COMPARE_TFBS_MUTATIONS_ADVANCED_NOVCFTRACK$",
+      "genome/dbSelector": "$COMPARE_TFBS_MUTATIONS_ADVANCED_GENOMEDBSELECTOR$",
+      "siteModels": "$COMPARE_TFBS_MUTATIONS_ADVANCED_SITEMODELS$",
+      "pValueCutoff": "$COMPARE_TFBS_MUTATIONS_ADVANCED_PVALUECUTOFF$",
+      "inputSizeLimit": "$COMPARE_TFBS_MUTATIONS_ADVANCED_INPUTSIZELIMIT$",
+      "siteGainsTable": "$COMPARE_TFBS_MUTATIONS_ADVANCED_SITEGAINSTABLE$",
+      "siteLossesTable": "$COMPARE_TFBS_MUTATIONS_ADVANCED_SITELOSSESTABLE$",
+      "filterVCF": "$COMPARE_TFBS_MUTATIONS_ADVANCED_FILTERVCF$"
+    }
+  },
+
+  "ConvertSiteModelsToProteins": {
+    "do": "analyze",
+    "method": "Convert site models to proteins",
+    "workflow": false,
+    "wait": "$CONVERT_SITE_MODELS_TO_PROTEINS_WAIT$",
+    "progress": "$CONVERT_SITE_MODELS_TO_PROTEINS_PROGRESS$",
+    "parameters": {
+      "sitesCollection": "$CONVERT_SITE_MODELS_TO_PROTEINS_SITESCOLLECTION$",
+      "siteModelsCollection": "$CONVERT_SITE_MODELS_TO_PROTEINS_SITEMODELSCOLLECTION$",
+      "species": "$CONVERT_SITE_MODELS_TO_PROTEINS_SPECIES$",
+      "targetType": "$CONVERT_SITE_MODELS_TO_PROTEINS_TARGETTYPE$",
+      "ignoreNaNInAggregator": "$CONVERT_SITE_MODELS_TO_PROTEINS_IGNORENANINAGGREGATOR$",
+      "aggregator": "$CONVERT_SITE_MODELS_TO_PROTEINS_AGGREGATOR$",
+      "columnName": "$CONVERT_SITE_MODELS_TO_PROTEINS_COLUMNNAME$",
+      "outputTable": "$CONVERT_SITE_MODELS_TO_PROTEINS_OUTPUTTABLE$"
+    }
+  },
+
+  "CreateProfileFromCMAModel": {
+    "do": "analyze",
+    "method": "Create profile from CMA model",
+    "workflow": false,
+    "wait": "$CREATE_PROFILE_FROM_CMA_MODEL_WAIT$",
+    "progress": "$CREATE_PROFILE_FROM_CMA_MODEL_PROGRESS$",
+    "parameters": {
+      "cmaResultPath": "$CREATE_PROFILE_FROM_CMA_MODEL_CMARESULTPATH$",
+      "outputProfilePath": "$CREATE_PROFILE_FROM_CMA_MODEL_OUTPUTPROFILEPATH$"
+    }
+  },
+
+  "FastTableFilter": {
+    "do": "analyze",
+    "method": "Fast table filter",
+    "workflow": false,
+    "wait": "$FAST_TABLE_FILTER_WAIT$",
+    "progress": "$FAST_TABLE_FILTER_PROGRESS$",
+    "parameters": {
+      "inputPath": "$FAST_TABLE_FILTER_INPUTPATH$",
+      "filterExpression": "$FAST_TABLE_FILTER_FILTEREXPRESSION$",
+      "outputPath": "$FAST_TABLE_FILTER_OUTPUTPATH$"
+    }
+  },
+
+  "FindRegulatoryRegions": {
+    "do": "analyze",
+    "method": "Find regulatory regions",
+    "workflow": false,
+    "wait": "$FIND_REGULATORY_REGIONS_WAIT$",
+    "progress": "$FIND_REGULATORY_REGIONS_PROGRESS$",
+    "parameters": {
+      "inputGenes": "$FIND_REGULATORY_REGIONS_INPUTGENES$",
+      "chipSeqPeaks": "$FIND_REGULATORY_REGIONS_CHIPSEQPEAKS$",
+      "ensembl": "$FIND_REGULATORY_REGIONS_ENSEMBL$",
+      "cageDatabase": "$FIND_REGULATORY_REGIONS_CAGEDATABASE$",
+      "cellCondition": "$FIND_REGULATORY_REGIONS_CELLCONDITION$",
+      "tssSelection": "$FIND_REGULATORY_REGIONS_TSSSELECTION$",
+      "promoterFrom": "$FIND_REGULATORY_REGIONS_PROMOTERFROM$",
+      "promoterTo": "$FIND_REGULATORY_REGIONS_PROMOTERTO$",
+      "geneLeftBoundShift": "$FIND_REGULATORY_REGIONS_GENELEFTBOUNDSHIFT$",
+      "geneRightBoundShift": "$FIND_REGULATORY_REGIONS_GENERIGHTBOUNDSHIFT$",
+      "regulatoryRegionFrom": "$FIND_REGULATORY_REGIONS_REGULATORYREGIONFROM$",
+      "regulatoryRegionTo": "$FIND_REGULATORY_REGIONS_REGULATORYREGIONTO$",
+      "outputPath": "$FIND_REGULATORY_REGIONS_OUTPUTPATH$"
+    }
+  },
+
+  "FindRegulatoryRegionsWithMutations": {
+    "do": "analyze",
+    "method": "Find regulatory regions with mutations",
+    "workflow": false,
+    "wait": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_WAIT$",
+    "progress": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_PROGRESS$",
+    "parameters": {
+      "inputGenes": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_INPUTGENES$",
+      "mutationTrack": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_MUTATIONTRACK$",
+      "weightProperty": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_WEIGHTPROPERTY$",
+      "geneProperty": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_GENEPROPERTY$",
+      "ensembl": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_ENSEMBL$",
+      "cageDatabase": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_CAGEDATABASE$",
+      "cellCondition": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_CELLCONDITION$",
+      "tssSelection": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_TSSSELECTION$",
+      "promoterFrom": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_PROMOTERFROM$",
+      "promoterTo": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_PROMOTERTO$",
+      "geneLeftBoundShift": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_GENELEFTBOUNDSHIFT$",
+      "geneRightBoundShift": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_GENERIGHTBOUNDSHIFT$",
+      "regulatoryRegionFrom": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_REGULATORYREGIONFROM$",
+      "regulatoryRegionTo": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_REGULATORYREGIONTO$",
+      "outputPath": "$FIND_REGULATORY_REGIONS_WITH_MUTATIONS_OUTPUTPATH$"
+    }
+  },
+
+  "GenerateWorkflowFromAnnotationDiagram": {
+    "do": "analyze",
+    "method": "Generate workflow from annotation diagram",
+    "workflow": false,
+    "wait": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_WAIT$",
+    "progress": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_PROGRESS$",
+    "parameters": {
+      "annotationDiagram": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_ANNOTATIONDIAGRAM$",
+      "species": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_SPECIES$",
+      "tissue": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_TISSUE$",
+      "diseases": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_DISEASES$",
+      "conditions": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_CONDITIONS$",
+      "runWorkflow": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_RUNWORKFLOW$",
+      "uniqueOutput": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_UNIQUEOUTPUT$",
+      "generateReport": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_GENERATEREPORT$",
+      "notifyOnComplete": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_NOTIFYONCOMPLETE$",
+      "addMTBReport": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_ADDMTBREPORT$",
+      "outPath": "$GENERATE_WORKFLOW_FROM_ANNOTATION_DIAGRAM_OUTPATH$"
+    }
+  },
+
+  "IlluminaMethylationProbesToTrack": {
+    "do": "analyze",
+    "method": "Illumina methylation probes to track",
+    "workflow": false,
+    "wait": "$ILLUMINA_METHYLATION_PROBES_TO_TRACK_WAIT$",
+    "progress": "$ILLUMINA_METHYLATION_PROBES_TO_TRACK_PROGRESS$",
+    "parameters": {
+      "inputTable": "$ILLUMINA_METHYLATION_PROBES_TO_TRACK_INPUTTABLE$",
+      "ensembl": "$ILLUMINA_METHYLATION_PROBES_TO_TRACK_ENSEMBL$",
+      "width": "$ILLUMINA_METHYLATION_PROBES_TO_TRACK_WIDTH$",
+      "outputTrack": "$ILLUMINA_METHYLATION_PROBES_TO_TRACK_OUTPUTTRACK$"
+    }
+  },
+
+  "JoinTwoTables": {
+    "do": "analyze",
+    "method": "Join two tables",
+    "workflow": false,
+    "wait": "$JOIN_TWO_TABLES_WAIT$",
+    "progress": "$JOIN_TWO_TABLES_PROGRESS$",
+    "parameters": {
+      "leftGroup/tablePath": "$JOIN_TWO_TABLES_LEFTGROUPTABLEPATH$",
+      "leftGroup/columns": "$JOIN_TWO_TABLES_LEFTGROUPCOLUMNS$",
+      "rightGroup/tablePath": "$JOIN_TWO_TABLES_RIGHTGROUPTABLEPATH$",
+      "rightGroup/columns": "$JOIN_TWO_TABLES_RIGHTGROUPCOLUMNS$",
+      "joinType": "$JOIN_TWO_TABLES_JOINTYPE$",
+      "mergeColumns": "$JOIN_TWO_TABLES_MERGECOLUMNS$",
+      "ignoreNaNInAggregator": "$JOIN_TWO_TABLES_IGNORENANINAGGREGATOR$",
+      "aggregator": "$JOIN_TWO_TABLES_AGGREGATOR$",
+      "output": "$JOIN_TWO_TABLES_OUTPUT$"
+    }
+  },
+
+  "MutationsToGenesWithWeights": {
+    "do": "analyze",
+    "method": "Mutations to genes with weights",
+    "workflow": false,
+    "wait": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_WAIT$",
+    "progress": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_PROGRESS$",
+    "parameters": {
+      "inputTrack": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_INPUTTRACK$",
+      "species": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_SPECIES$",
+      "from": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_FROM$",
+      "to": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_TO$",
+      "promoterFrom": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_PROMOTERFROM$",
+      "promoterTo": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_PROMOTERTO$",
+      "resultTypes": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_RESULTTYPES$",
+      "weightProperty": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_WEIGHTPROPERTY$",
+      "outputTrack": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_OUTPUTTRACK$",
+      "outputTable": "$MUTATIONS_TO_GENES_WITH_WEIGHTS_OUTPUTTABLE$"
+    }
+  },
+
+  "PSDPharmaceuticalCompoundsAnalysis": {
+    "do": "analyze",
+    "method": "PSD pharmaceutical compounds analysis",
+    "workflow": false,
+    "wait": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_WAIT$",
+    "progress": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "inputTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_INPUTTABLEPATH$",
+      "weightColumn": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_WEIGHTCOLUMN$",
+      "useWeightAsRank": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_USEWEIGHTASRANK$",
+      "secondaryTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_SECONDARYTABLEPATH$",
+      "diseases": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_DISEASES$",
+      "fpTargetWeight": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FPTARGETWEIGHT$",
+      "useActivators": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_USEACTIVATORS$",
+      "structTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_STRUCTTABLEPATH$",
+      "targTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_TARGTABLEPATH$"
+    }
+  },
+
+  "PSDPharmaceuticalCompoundsAnalysisForTwoDatasets": {
+    "do": "analyze",
+    "method": "PSD pharmaceutical compounds analysis for two datasets",
+    "workflow": false,
+    "wait": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_WAIT$",
+    "progress": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_PROGRESS$",
+    "parameters": {
+      "upTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_UPTABLEPATH$",
+      "upWeightColumn": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_UPWEIGHTCOLUMN$",
+      "useUpWeightAsRank": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_USEUPWEIGHTASRANK$",
+      "downTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_DOWNTABLEPATH$",
+      "downWeightColumn": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_DOWNWEIGHTCOLUMN$",
+      "useDownWeightAsRank": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_USEDOWNWEIGHTASRANK$",
+      "diseases": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_DISEASES$",
+      "fpTargetWeight": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_FPTARGETWEIGHT$",
+      "useActivators": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_USEACTIVATORS$",
+      "structTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_STRUCTTABLEPATH$",
+      "targTablePath": "$PSD_PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FOR_TWO_DATASETS_TARGTABLEPATH$"
+    }
+  },
+
+  "PharmaceuticalCompoundsAnalysis": {
+    "do": "analyze",
+    "method": "Pharmaceutical Compounds analysis",
+    "workflow": false,
+    "wait": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_WAIT$",
+    "progress": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_PROGRESS$",
+    "parameters": {
+      "genesPath": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_GENESPATH$",
+      "weightColumn": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_WEIGHTCOLUMN$",
+      "diseases": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_DISEASES$",
+      "minTargets": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_MINTARGETS$",
+      "mechThresholdEnabled": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_MECHTHRESHOLDENABLED$",
+      "toxicityThreshold": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_TOXICITYTHRESHOLD$",
+      "effThresholdEnabled": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_EFFTHRESHOLDENABLED$",
+      "fpTargetWeight": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_FPTARGETWEIGHT$",
+      "structTablePath": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_STRUCTTABLEPATH$",
+      "targTablePath": "$PHARMACEUTICAL_COMPOUNDS_ANALYSIS_TARGTABLEPATH$"
+    }
+  },
+
+  "QuantileNormalization": {
+    "do": "analyze",
+    "method": "Quantile normalization",
+    "workflow": false,
+    "wait": "$QUANTILE_NORMALIZATION_WAIT$",
+    "progress": "$QUANTILE_NORMALIZATION_PROGRESS$",
+    "parameters": {
+      "inputTable": "$QUANTILE_NORMALIZATION_INPUTTABLE$",
+      "outputTable": "$QUANTILE_NORMALIZATION_OUTPUTTABLE$"
+    }
+  },
+
+  "ReduceCMAResults": {
+    "do": "analyze",
+    "method": "Reduce CMA results",
+    "workflow": false,
+    "wait": "$REDUCE_CMA_RESULTS_WAIT$",
+    "progress": "$REDUCE_CMA_RESULTS_PROGRESS$",
+    "parameters": {
+      "cmaResultPath": "$REDUCE_CMA_RESULTS_CMARESULTPATH$",
+      "changeThreshold": "$REDUCE_CMA_RESULTS_CHANGETHRESHOLD$",
+      "maxChange": "$REDUCE_CMA_RESULTS_MAXCHANGE$",
+      "outputPath": "$REDUCE_CMA_RESULTS_OUTPUTPATH$"
+    }
+  },
+
+  "SelectKeynodesWithTopTargets": {
+    "do": "analyze",
+    "method": "Select keynodes with top targets",
+    "workflow": false,
+    "wait": "$SELECT_KEYNODES_WITH_TOP_TARGETS_WAIT$",
+    "progress": "$SELECT_KEYNODES_WITH_TOP_TARGETS_PROGRESS$",
+    "parameters": {
+      "knResultPath": "$SELECT_KEYNODES_WITH_TOP_TARGETS_KNRESULTPATH$",
+      "geneIdColumn": "$SELECT_KEYNODES_WITH_TOP_TARGETS_GENEIDCOLUMN$",
+      "rankColumn": "$SELECT_KEYNODES_WITH_TOP_TARGETS_RANKCOLUMN$",
+      "numSelected": "$SELECT_KEYNODES_WITH_TOP_TARGETS_NUMSELECTED$",
+      "topTargetsPaths": "$SELECT_KEYNODES_WITH_TOP_TARGETS_TOPTARGETSPATHS$",
+      "sortTargetsColumn": "$SELECT_KEYNODES_WITH_TOP_TARGETS_SORTTARGETSCOLUMN$",
+      "sortTargetsAscending": "$SELECT_KEYNODES_WITH_TOP_TARGETS_SORTTARGETSASCENDING$",
+      "maxTargets": "$SELECT_KEYNODES_WITH_TOP_TARGETS_MAXTARGETS$",
+      "resultPath": "$SELECT_KEYNODES_WITH_TOP_TARGETS_RESULTPATH$"
+    }
+  },
+
+  "SplitVCFByRegulation": {
+    "do": "analyze",
+    "method": "Split VCF by regulation",
+    "workflow": false,
+    "wait": "$SPLIT_VCF_BY_REGULATION_WAIT$",
+    "progress": "$SPLIT_VCF_BY_REGULATION_PROGRESS$",
+    "parameters": {
+      "inputVCF": "$SPLIT_VCF_BY_REGULATION_INPUTVCF$",
+      "regulationTrack": "$SPLIT_VCF_BY_REGULATION_REGULATIONTRACK$",
+      "defaultVCF": "$SPLIT_VCF_BY_REGULATION_DEFAULTVCF$",
+      "minNoSize": "$SPLIT_VCF_BY_REGULATION_MINNOSIZE$",
+      "outYes": "$SPLIT_VCF_BY_REGULATION_OUTYES$",
+      "outNo": "$SPLIT_VCF_BY_REGULATION_OUTNO$"
+    }
+  },
+
+  "VerifyConditionForTable": {
+    "do": "analyze",
+    "method": "Verify Condition for Table",
+    "workflow": false,
+    "wait": "$VERIFY_CONDITION_FOR_TABLE_WAIT$",
+    "progress": "$VERIFY_CONDITION_FOR_TABLE_PROGRESS$",
+    "parameters": {
+      "inputPath": "$VERIFY_CONDITION_FOR_TABLE_INPUTPATH$",
+      "conditionMode": "$VERIFY_CONDITION_FOR_TABLE_CONDITIONMODE$",
+      "conditionValue": "$VERIFY_CONDITION_FOR_TABLE_CONDITIONVALUE$",
+      "outputPath": "$VERIFY_CONDITION_FOR_TABLE_OUTPUTPATH$",
+      "emptyOutput": "$VERIFY_CONDITION_FOR_TABLE_EMPTYOUTPUT$"
+    }
+
+  }
+}
