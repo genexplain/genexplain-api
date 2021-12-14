@@ -483,6 +483,7 @@ public class GxHttpClientImpl implements GxHttpClient {
         GxUtil.showMessage(verbose, "Getting parameters for " + appName, logger, GxUtil.LogLevel.INFO);
         Map<String,String> params = new HashMap<>();
         params.put("de", "properties/method/parameters/" + appName);
+        params.put("showMode", "1");
         JsonObject js = con.queryJSON(con.getBasePath() + Path.ANALYSIS_PARAMS.getPath(),params);
         if (js.getInt("type",-1) != 0) {
             return js;
