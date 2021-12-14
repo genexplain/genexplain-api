@@ -16,18 +16,23 @@
  */
 package com.genexplain.api.eg;
 
+import java.io.FileReader;
+
 import org.slf4j.LoggerFactory;
 
 import com.eclipsesource.json.JsonObject;
+import com.genexplain.api.core.GxHttpClientImpl;
+import com.genexplain.api.core.GxHttpConnectionImpl;
 
 /**
  * @author pst
  */
 @GxAPIExample(name="getParameters", description="Fetches parameter descriptions for a specified analysis tool")
 public class GetParametersExample extends AbstractAPIExample {
-
+	
     public GetParametersExample() {
         logger = LoggerFactory.getLogger(this.getClass());
+        config = null;
     }
     
     /* (non-Javadoc)
@@ -35,6 +40,10 @@ public class GetParametersExample extends AbstractAPIExample {
      */
     @Override
     public void run() throws Exception {
+    	if (config == null) {
+            System.out.println("Please provide configuration parameters");
+            return;
+        }
         connect();
         
         JsonObject result = client.getAnalysisParameters("Search for enriched TFBSs (genes)");
@@ -43,6 +52,9 @@ public class GetParametersExample extends AbstractAPIExample {
 
     @Override
     void run(String[] args) throws Exception {
+    	if (args.length > 0) {
+            setConfig(new FileReader(args[0]));
+        }
         run();
     }
 }

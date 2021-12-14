@@ -16,6 +16,8 @@
  */
 package com.genexplain.api.eg;
 
+import java.io.FileReader;
+
 import org.slf4j.LoggerFactory;
 
 import com.eclipsesource.json.JsonObject;
@@ -35,6 +37,10 @@ public class ListAFolderExample extends AbstractAPIExample {
      */
     @Override
     public void run() throws Exception {
+    	if (config == null) {
+            System.out.println("Please provide configuration parameters");
+            return;
+        }
         connect();
         JsonObject result = client.list("data/Projects");
         logger.info(result.toString());
@@ -42,6 +48,9 @@ public class ListAFolderExample extends AbstractAPIExample {
 
     @Override
     void run(String[] args) throws Exception {
+    	if (args.length > 0) {
+            setConfig(new FileReader(args[0]));
+        }
         run();
     }
 }

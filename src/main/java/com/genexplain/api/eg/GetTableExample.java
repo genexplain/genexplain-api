@@ -16,6 +16,8 @@
  */
 package com.genexplain.api.eg;
 
+import java.io.FileReader;
+
 import org.slf4j.LoggerFactory;
 
 import com.eclipsesource.json.JsonObject;
@@ -35,13 +37,20 @@ public class GetTableExample extends AbstractAPIExample {
      */
     @Override
     public void run() throws Exception {
+    	if (config == null) {
+            System.out.println("Please provide configuration parameters");
+            return;
+        }
         connect();
-        JsonObject result = client.getTable("data/Examples/Encode TFBS CEBPB in H1-hESC cells/Data/ChIPMunk/CEBP H1-hESC cells motif profile CEBP in H1-hESC cells YES roc 50");
+        JsonObject result = client.getTable("data/Examples/TNF-stimulation of HUVECs GSE2639, Affymetrix HG-U133A microarray/Data/Sample_metadata");
         logger.info(result.toString());
     }
 
     @Override
     void run(String[] args) throws Exception {
+    	if (args.length > 0) {
+            setConfig(new FileReader(args[0]));
+        }
         run();
     }
 

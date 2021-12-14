@@ -65,63 +65,19 @@ import com.genexplain.api.eg.TfbsAnalysisForFolderExample.Parameter;
 @GxAPIExample(name="zipImport", description="Imports multiple files of same type as a ZIP archive")
 public class ZipImportExample extends AbstractAPIExample {
 
-    // Default import parameters are for ASCII text files 
-    // containing Ensembl gene ids in a column named Gene
-    // and possibly other data in tab-separated columns.
-    public static final String DEFAULT_IMPORT_PARAMS = "[\n" + 
-            "  {\"name\":\"cleanupFolder\",\"value\":false},\n" + 
-            "  {\"name\":\"preserveExtension\",\"value\":false},\n" + 
-            "  {\"name\":\"preserveArchiveStructure\",\"value\":false},\n" + 
-            "  {\"name\":\"importFormat\",\"value\":\"Tabular (*.txt, *.xls, *.tab, etc.)\"},\n" + 
-            "  {\"name\":\"importerProperties\",\"value\": [\n" + 
-            "    {\"name\":\"delimiterType\",\"value\":\"0\"},\n" + 
-            "    {\"name\":\"processQuotes\",\"value\":true},\n" + 
-            "    {\"name\":\"headerRow\",\"value\":\"1\"},\n" + 
-            "    {\"name\":\"dataRow\",\"value\":\"2\"},\n" + 
-            "    {\"name\":\"commentString\",\"value\":\"\"},\n" + 
-            "    {\"name\":\"columnForID\",\"value\":\"Gene\"},\n" + 
-            "    {\"name\":\"addSuffix\",\"value\":false},\n" + 
-            "    {\"name\":\"tableType\",\"value\":\"Genes: Ensembl\"}\n" + 
-            "  ]}\n" + 
-            "]";
-    
-    public static final String CEL_IMPORT_PARAMS = "[\n" + 
-            "  {\"name\":\"cleanupFolder\",\"value\":false},\n" + 
-            "  {\"name\":\"preserveExtension\",\"value\":false},\n" + 
-            "  {\"name\":\"preserveArchiveStructure\",\"value\":true},\n" + 
-            "  {\"name\":\"importFormat\",\"value\":\"Affymetrix CEL file (*.cel)\"}\n" + 
-            "]";
-    
     public static final String ZIP_IMPORTER_NAME = "ZIP-archive (*.zip)";
-    
-    public enum Parameter {
-        user(Json.value("")),
-        password(Json.value("")),
-        server(Json.value(PUBLIC_SERVER)),
-        zipArchive(Json.value("")),
-        importParams(Json.parse(DEFAULT_IMPORT_PARAMS)),
-        outputFolder(Json.value(""));
-        
-        private JsonValue def;
-        
-        private Parameter(JsonValue deFault) {
-            def = deFault;
-        }
-        
-        public JsonValue getDefault() { return def; } 
-    }
-    
-    private JsonObject config;
     
     
     public ZipImportExample() {
         logger = LoggerFactory.getLogger(this.getClass());
     }
     
+    
     @Override
     public void run() throws Exception {
         if (config == null) {
-            throw new IllegalArgumentException("Missing configuration object");
+            System.out.println("Please provide configuration parameters");
+            return;
         }
         String outputFolder = config.getString(Parameter.outputFolder.name(), Parameter.outputFolder.def.asString());
         if (outputFolder.isEmpty()) {
@@ -143,34 +99,12 @@ public class ZipImportExample extends AbstractAPIExample {
         logger.info(res.toString());
     }
     
+    
     @Override
     void run(String[] args) throws Exception {
         if (args.length > 0) {
             setConfig(new FileReader(args[0]));
         }
         run();
-    }
-    
-    public ZipImportExample setConfig(Reader reader) throws Exception {
-        return setConfig(Json.parse(reader).asObject());
-    }
-    
-    public ZipImportExample setConfig(JsonObject config) throws Exception {
-        this.config = config;
-        return this;
-    }
-    
-    @Override
-    protected void connect() throws Exception {
-        connection = new GxHttpConnectionImpl();
-        connection.setServer(config.getString(Parameter.server.name(), Parameter.server.def.asString()));
-        connection.setUsername(config.getString(Parameter.user.name(), Parameter.user.def.asString()));
-        connection.setPassword(config.getString(Parameter.password.name(), Parameter.password.def.asString()));
-        connection.setVerbose(true);
-        connection.login();
-         
-        client = new GxHttpClientImpl();
-        client.setConnection(connection);
-        client.setVerbose(true);
     }
 }
