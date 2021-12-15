@@ -71,12 +71,12 @@ where the JSON file contains an object with the following properties.
     "server":          "<https://example.com>",
     "user":            "<username>",
     "password":        "<password>",
-    "with-parameters": true
+    "withParameters": true
 }
 ```
 
 The *server* property specifies the URL of the platform server to connect to and consists of protocol
-and hostname. The *with-parameters* property is optional. If omitted or set to *false* the app 
+and hostname. The *withParameters* property is optional. If omitted or set to *false* the app 
 will only produce a list of analysis tools. Otherwise a table with application names, their 
 parameter names and descriptions is printed out.
 
