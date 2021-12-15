@@ -85,8 +85,7 @@ The demo application _zipImport_ imports a ZIP archive containing multiple files
 ## apps - Listing available tools
 
 The application named _apps_ produces a listing of the available analysis tools on a certain server. It takes a single argument that specifies
-a file containing a JSON object with several properties of which only the _server_ property is required. An example input file can be found in the _json_ folder of this repository. Invoking the application with this file lists platform tools available for the _demo_ account on the
-_platform.genexplain.com_ server as shown here:
+a file containing a JSON object with several properties of which only the _server_ property is required. Example output:
 
 ```Bash
 genexplain-api$ java -jar build/libs/genexplain-api-1.0.jar apps json/application_lister_demo.json 
@@ -117,9 +116,32 @@ The parameters that can be specified with the JSON input file are described in t
 | **server**                                   | Server URL to connect to                              |
 | **user**                                     | Username to use for connection                        |
 | **password**                                 | Password that belongs to the username                 |
-| **withParameters**                           | If `true` will also list the platform tool parameters |
+| **withParameters**                           | If `true` will produce tsv-table of tools and their parameters |
+| **withGalaxy**                               | If `true` will also include tools integrated from Galaxy |
+| **outfile**                                  | Output file. Prints to standard output if `outfile` is absent or empty |
 | **connection**                               | Package and name to locate a Java class to use for connection. This class must implement _com.genexplain.api.core.GxHttpConnection_. |
 | **client**                                   | Package and name to locate a Java class to use as platform client. This class must implement _com.genexplain.api.core.GxHttpClient_. |
+
+
+
+## parameters - Parameter descriptions for platform and Galaxy tools
+
+The _parameters_ application fetches parameter descriptions in JSON format for one or more tools from a platform server. It takes a single argument that specifies
+a file containing a JSON object with several properties of which only the _server_ property is required. The output is a JSON object containing the tool names
+as keys as the retrieved parameter descriptions as values.
+
+
+| Parameter                                    | Description                                           |
+|----------------------------------------------|-------------------------------------------------------|
+| **server**                                   | Server URL to connect to                              |
+| **user**                                     | Username to use for connection                        |
+| **password**                                 | Password that belongs to the username                 |
+| **tools**                                    | JSON array with tool names                            |
+| **outfile**                                  | Output file. Prints to standard output is `outfile` is absent or empty |
+| **connection**                               | Package and name to locate a Java class to use for connection. This class must implement _com.genexplain.api.core.GxHttpConnection_. |
+| **client**                                   | Package and name to locate a Java class to use as platform client. This class must implement _com.genexplain.api.core.GxHttpClient_. |
+
+
 
 
 ## regulator-search - Regulator (and effector) search tool
