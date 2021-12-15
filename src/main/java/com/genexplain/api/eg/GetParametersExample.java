@@ -17,10 +17,12 @@
 package com.genexplain.api.eg;
 
 import java.io.FileReader;
+import java.io.StringWriter;
 
 import org.slf4j.LoggerFactory;
 
 import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.PrettyPrint;
 import com.genexplain.api.core.GxHttpClientImpl;
 import com.genexplain.api.core.GxHttpConnectionImpl;
 
@@ -47,7 +49,10 @@ public class GetParametersExample extends AbstractAPIExample {
         connect();
         
         JsonObject result = client.getAnalysisParameters("Search for enriched TFBSs (genes)");
-        logger.info(result.toString());
+        StringWriter writer = new StringWriter();
+        result.get("parameters").writeTo(writer, PrettyPrint.indentWithSpaces(4));
+        System.out.println(writer.toString());
+        writer.close();
     }
 
     @Override

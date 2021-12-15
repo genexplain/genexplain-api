@@ -17,12 +17,13 @@
 package com.genexplain.api.app;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
@@ -39,8 +40,6 @@ import prophecy.common.JSONMinify;
  */
 @Command(name="apps", description="Lists available analysis applications")
 public class ApplicationLister implements ApplicationCommand {
-    
-    public static final String NO_ARGS_MESSAGE = "Please provide an input file in JSON format as first argument";
     
     private JsonObject config;
     
@@ -74,29 +73,107 @@ public class ApplicationLister implements ApplicationCommand {
     public void getApplications() throws Exception {
         JsonObject apps = client.listApplications();
         if (apps.getInt("type",-1) == 0) {
+        	StringBuilder sb = new StringBuilder();
+        	if (config.getBoolean("withParameters", false)) {
+        		sb.append("Tool folder/name\tAPI name\tParameter name\tShort description\tType\tClass\tRequired\tDescription\n");
+        	}
             apps.get("values").asArray().forEach(app -> {
                 if (config.getBoolean("withParameters", false)) {
                     try {
-                        getAppParameters(app.asString());
+                        getAppParameters(app.asString(), sb);
                     } catch (Exception e) {
                         throw new ApplicationListerException(e);
                     }
                 } else {
-                    System.out.println(app.asString());
+                    sb.append(app.asString() + "\n");
                 }
             });
+            if (config.getBoolean("withGalaxy", false)) {
+            	List<String[]> gtools = getGalaxy();
+            	for (String[] gt : gtools) {
+            		if (config.getBoolean("withParameters", false)) {
+            			getGalaxyParameters(gt, sb);
+            		} else {
+            			sb.append(gt[2] + "/" + gt[0] + "\n");
+            		}
+            	}
+            }
+            String outfile = config.getString("outfile", "");
+            if (outfile.isEmpty()) {
+            	System.out.print(sb.toString());
+            } else {
+            	FileWriter fw = new FileWriter(outfile);
+            	fw.write(sb.toString());
+            	fw.close();
+            }
+            sb.setLength(0);
         } else {
             throw new ApplicationListerException("An error occurred: " + apps.toString());
         }
     }
     
-    public void getAppParameters(String app) throws Exception {
+    
+    public void getGalaxyParameters(String[] tool, StringBuilder sb) throws Exception {
+        JsonObject params = client.getAnalysisParameters(tool[1]);
+        if (params.getInt("type",-1) == 0) {
+            params.get("parameters").asArray().forEach(param -> {
+            	sb.append(tool[2] + "/" + tool[0] + "\t" + tool[1] + "\t" + 
+            					   param.asObject().get("name").asString() + "\t" +
+                                   param.asObject().get("displayName").asString() + "\t" + 
+                                   param.asObject().getString("type", "") + "\t" +
+                                   param.asObject().getString("elementClass", "") + "\t" +
+                                   param.asObject().getBoolean("elementMustExist", false) + "\t" +
+                                   param.asObject().get("description").asString() + "\n");
+            });
+        } else {
+            System.err.println("An error occurred when retrieving parameters for Galaxy tool " + tool[2] + "/" + tool[0] +
+                               ":\n\n" + params.toString());
+        }
+    }
+    
+    
+    private void collectGalaxyTools(String folder, String displayFolder, List<String[]> tools) throws Exception {
+    	JsonObject js = client.list(folder);
+    	if (js.names().contains("names")) {
+    		js.get("names").asArray().forEach(elem -> {
+    			JsonObject emo = elem.asObject();
+    			if (emo.getBoolean("hasChildren", false)) {
+    				try {
+    					collectGalaxyTools(folder + "/" + emo.get("name").asString(),
+    									   displayFolder + "/" + emo.get("title").asString(), tools);
+    				} catch (Exception e) {
+    					System.out.println("An error occurred: " + e.getMessage());
+    				}
+    			} else {
+    				tools.add(new String[] {emo.getString("title", ""),
+    										emo.getString("name", ""),
+    										displayFolder,
+    										folder});
+    			}
+    		});
+    	}
+    }
+    
+    
+    public List<String[]> getGalaxy() throws Exception {
+    	List<String[]> tools = new ArrayList<>();
+    	collectGalaxyTools("analyses/Galaxy", "analyses/Galaxy", tools);
+    	return tools;
+    }
+    
+    
+    public void getAppParameters(String app, StringBuilder sb) throws Exception {
         JsonObject params = client.getAnalysisParameters(app);
         if (params.getInt("type",-1) == 0) {
+        	String[] tname = app.split("/");
             params.get("values").asArray().forEach(param -> {
-                System.out.println(app + "\t" + param.asObject().get("name").asString() + "\t" +
+            	sb.append(app + "\t" + tname[tname.length - 1] + "\t" + 
+            					   param.asObject().get("name").asString() + "\t" +
                                    param.asObject().get("displayName").asString() + "\t" + 
-                                   param.asObject().get("description").asString());
+                                   param.asObject().getString("type", "") + "\t" +
+                                   param.asObject().getString("elementClass", "") + "\t" +
+                                   param.asObject().getBoolean("elementMustExist", false) + "\t" +
+                                   param.asObject().get("description").asString() + "\n");
             });
         } else {
             System.err.println("An error occurred when retrieving parameters for " + app +
