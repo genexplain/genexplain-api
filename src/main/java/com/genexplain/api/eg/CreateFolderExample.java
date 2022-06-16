@@ -38,7 +38,7 @@ public class CreateFolderExample extends AbstractAPIExample {
     public void run() throws Exception {
         connect();
         JsonObject result = client.createFolder("data/Projects/Demo project/Data", 
-                "test_folder");
+                								"test_folder");
         logger.info(result.toString());
     }
 

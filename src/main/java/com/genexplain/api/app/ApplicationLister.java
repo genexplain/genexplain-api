@@ -41,6 +41,25 @@ import prophecy.common.JSONMinify;
 @Command(name="apps", description="Lists available analysis applications")
 public class ApplicationLister implements ApplicationCommand {
     
+	public static final String USAGE_HELP = "apps - Lists available analysis applications" +
+	                                        "Usage: <java -jar genexplain-api.jar> apps INPUT.JSON\n\n" +
+	                                        "JSON options:\n\n" +
+	                                        "   server         - Server URL, e.g. https://platform.genexplain.com (required)\n" +
+	                                        "   user           - Login name/email (required)\n" +
+	                                        "   password       - Login password (required)\n" +
+	                                        "   client         - Name of GxHttpClient class to be used instead of default client (optional)\n" +
+	                                        "   withParameters - If false, 'apps' produces a list of available tools showing the platform\n" +
+	                                        "                    folder and the tool name separated by slash (<folder>/<tool name>).\n" +
+	                                        "                    If true, 'apps' produces a table that additionally includes parameter\n" +
+	                                        "                    descriptions for each tool. Each tool is described on one or more table rows.\n" +
+	                                        "                    The table columns contain, from left to right, the folder/tool name,\n" +
+	                                        "                    the API name of the tool, the parameter name, short description of the parameter,\n" +
+	                                        "                    the parameter type, a corresponding Java class, whether the parameter is required,\n" +
+	                                        "                    and a longer description of the parameter if available.\n" +
+	                                        "                    (optional, default: false)\n" +
+	                                        "   withGalaxy     - Include available Galaxy tools (optional, default: false)\n" +
+	                                        "\n";
+	
     private JsonObject config;
     
     private GxHttpConnection connection;
@@ -203,6 +222,9 @@ public class ApplicationLister implements ApplicationCommand {
         if (args.length == 0) {
             System.out.println(NO_ARGS_MESSAGE);
             return;
+        } else if (APIRunner.helpFlags.contains(args[0])) {
+        	System.out.println(USAGE_HELP);
+        	return;
         }
         setParameters(new FileInputStream(args[0]));
         login();

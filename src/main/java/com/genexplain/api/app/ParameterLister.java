@@ -1,6 +1,5 @@
 package com.genexplain.api.app;
 
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.InputStream;
@@ -22,6 +21,16 @@ import prophecy.common.JSONMinify;
 
 @Command(name="parameters", description="Fetches JSON parameter descriptions for platform tools")
 public class ParameterLister implements ApplicationCommand {
+	
+	public static final String USAGE_HELP = "parameters - Fetches JSON parameter descriptions for platform tools" +
+            "Usage: <java -jar genexplain-api.jar> parameters INPUT.JSON\n\n" +
+            "JSON options:\n\n" +
+            "   server         - Server URL, e.g. https://platform.genexplain.com (required)\n" +
+            "   user           - Login name/email (required)\n" +
+            "   password       - Login password (required)\n" +
+            "   client         - Name of GxHttpClient class to be used instead of default client (optional)\n" +
+            "   tools          - Array of tool names (required)\n" +
+            "\n";
 	
 	private JsonObject config;
     private GxHttpConnection connection;
@@ -108,6 +117,9 @@ public class ParameterLister implements ApplicationCommand {
 		if (args.length == 0) {
             System.out.println(NO_ARGS_MESSAGE);
             return;
+        } else if (APIRunner.helpFlags.contains(args[0])) {
+        	System.out.println(USAGE_HELP);
+        	return;
         }
         setParameters(new FileInputStream(args[0]));
         login();
