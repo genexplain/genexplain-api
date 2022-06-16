@@ -70,11 +70,13 @@ jacocoTestReport {
     }
     
     afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
+    	classDirectories = files(classDirectories.files.collect {
+        //classDirectories.setFrom(files(classDirectories.files.collect {
             // Don't unit test the examples
             // Omitting the external selector, because of at least one test failing only in the CI system. 
             fileTree(dir: it, exclude: ['**/com/genexplain/api/eg/**', '**/com/genexplain/api/pipe/ExternalSelector**'])
-        }))
+        })
+        //)
     }
 }
 
