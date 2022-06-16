@@ -103,7 +103,7 @@ public class APIRunner {
             System.out.println(cmd + "  -  " + commands.get(cmd).description);
         }
         
-        System.out.println("\nJava packages to be scanned for ApplicationCommand implemenations\n" +
+        System.out.println("\nFor API users: Java packages to be scanned for ApplicationCommand implementations\n" +
                            "can be specified as system property using the java -D option\n");
         System.out.println("\nFor more info about each command try (java -D" + 
                               API_PACKAGE_PROPERTY + "=... -jar ...) COMMAND -h\n");
