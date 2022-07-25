@@ -37,6 +37,7 @@ import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
+import com.genexplain.api.app.APIRunner;
 import com.genexplain.api.app.ApplicationCommand;
 import com.genexplain.api.app.Command;
 import com.genexplain.util.GxUtil;
@@ -62,7 +63,10 @@ import com.genexplain.util.GxUtil;
 public class GxJsonExecutor implements ApplicationCommand {
     
     public static final String NO_INPUT_MESSAGE = "Please specify a config file in JSON format";
-    
+    public static final String USAGE_HELP = "exec - Executes analysis tasks on a geneXplain platform instance\n" +
+            "Usage: <java -jar genexplain-api.jar> exec INPUT.JSON\n\n" +
+            "Please see documentation for JSON options\n" +
+            "\n";
     /**
      * Available executor types.
      * 
@@ -751,6 +755,9 @@ public class GxJsonExecutor implements ApplicationCommand {
         if (args.length < 1) {
             System.out.println(NO_INPUT_MESSAGE);
             return;
+        } else if (APIRunner.helpFlags.contains(args[0])) {
+        	System.out.println(USAGE_HELP);
+        	return;
         }
         new GxJsonExecutor().run(new FileInputStream(args[0]));
     }

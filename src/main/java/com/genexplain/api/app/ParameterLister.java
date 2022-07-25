@@ -22,7 +22,7 @@ import prophecy.common.JSONMinify;
 @Command(name="parameters", description="Fetches JSON parameter descriptions for platform tools")
 public class ParameterLister implements ApplicationCommand {
 	
-	public static final String USAGE_HELP = "parameters - Fetches JSON parameter descriptions for platform tools" +
+	public static final String USAGE_HELP = "parameters - Fetches JSON parameter descriptions for platform tools\n" +
             "Usage: <java -jar genexplain-api.jar> parameters INPUT.JSON\n\n" +
             "JSON options:\n\n" +
             "   server         - Server URL, e.g. https://platform.genexplain.com (required)\n" +
@@ -30,6 +30,7 @@ public class ParameterLister implements ApplicationCommand {
             "   password       - Login password (required)\n" +
             "   client         - Name of GxHttpClient class to be used instead of default client (optional)\n" +
             "   tools          - Array of tool names (required)\n" +
+            "   outfile        - Outfile (optional, default: empty string)\n" +
             "\n";
 	
 	private JsonObject config;

@@ -41,7 +41,7 @@ import prophecy.common.JSONMinify;
 @Command(name="apps", description="Lists available analysis applications")
 public class ApplicationLister implements ApplicationCommand {
     
-	public static final String USAGE_HELP = "apps - Lists available analysis applications" +
+	public static final String USAGE_HELP = "apps - Lists available analysis applications\n" +
 	                                        "Usage: <java -jar genexplain-api.jar> apps INPUT.JSON\n\n" +
 	                                        "JSON options:\n\n" +
 	                                        "   server         - Server URL, e.g. https://platform.genexplain.com (required)\n" +
@@ -58,6 +58,7 @@ public class ApplicationLister implements ApplicationCommand {
 	                                        "                    and a longer description of the parameter if available.\n" +
 	                                        "                    (optional, default: false)\n" +
 	                                        "   withGalaxy     - Include available Galaxy tools (optional, default: false)\n" +
+	                                        "   outfile        - Outfile (optional, default: empty string)\n" +
 	                                        "\n";
 	
     private JsonObject config;
