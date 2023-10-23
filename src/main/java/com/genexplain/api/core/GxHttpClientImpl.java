@@ -206,7 +206,7 @@ public class GxHttpClientImpl implements GxHttpClient {
         folder = folder.replaceAll("[\\s+\\/]+$", "");
         String[] F = folder.split("/");
         if (F.length == 3 && folder.startsWith("data/Projects") &&
-            (name.contentEquals("Data") || name.contentEquals("Journal"))) {
+            (name.contentEquals("Data") || name.contentEquals("Journal") || name.contentEquals("tmp"))) {
             throw new IllegalArgumentException("Cannot delete element " + name + " in " + folder);
         }
         Map<String,String> params = new HashMap<>();
