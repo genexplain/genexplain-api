@@ -203,6 +203,12 @@ public class GxHttpClientImpl implements GxHttpClient {
         if (!folder.startsWith("data")) {
             throw new IllegalArgumentException("Element must be located in the data branch.");
         }
+        folder = folder.replaceAll("[\\s+\\/]+$", "");
+        String[] F = folder.split("/");
+        if (F.length == 3 && folder.startsWith("data/Projects") &&
+            (name.contentEquals("Data") || name.contentEquals("Journal") || name.contentEquals("tmp"))) {
+            throw new IllegalArgumentException("Cannot delete element " + name + " in " + folder);
+        }
         Map<String,String> params = new HashMap<>();
         params.put("service", "access.service");
         params.put("command", "26");
@@ -429,6 +435,7 @@ public class GxHttpClientImpl implements GxHttpClient {
         int nonJsonCounter = 0;
         do {
             JsonObject js = getJobStatus(jobId);
+            System.out.println(js.toString());
             if (js.getInt("type", 0) == -1) {
                 nonJsonCounter++;
                 if (nonJsonCounter >= NON_JSON_RESPONSE_LIMIT) {
